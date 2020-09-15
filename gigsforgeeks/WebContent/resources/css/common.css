@@ -17,8 +17,8 @@ body {
 	padding: 2rem;
 	margin: 0;
 	text-align: center;
-	color: #eeeeee;
-	background-color: #00adb5;
+	color: #303841;
+	background-color: #ff5722;
 }
 
 #headerMainNav {
@@ -31,7 +31,7 @@ body {
 
 #headerMain {
 	padding: 0.75rem;
-	background-color: #393e46;
+	background-color: #00adb5;
 	overflow: hidden;
 }
 
@@ -48,14 +48,14 @@ body {
 }
 
 #headerMainNav > a:hover, #headerAside > a:hover {
-	color: #00adb5;
+	color: #ff5722;
 	text-decoration: none;
 }
 
 /* Content */
 #contentMain {
 	padding: 1.5rem;
-	color: #222831;
+	color: #303841;
 }
 
 #contentTitle {
@@ -67,5 +67,5 @@ body {
 	padding: 2rem;
 	text-align: center;
 	color: #eeeeee;
-	background-color: #00adb5;
+	background-color: #ff5722;
 }
