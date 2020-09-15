@@ -1,1 +1,71 @@
 @charset "UTF-8";
+
+/* Web Font */
+@font-face {
+    font-family: 'Cafe24Simplehae';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Simplehae.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	font-family: 'Cafe24Simplehae', 'sans-serif';
+}
+
+/* Header */
+#letterMark {
+	padding: 2rem;
+	margin: 0;
+	text-align: center;
+	color: #eeeeee;
+	background-color: #00adb5;
+}
+
+#headerMainNav {
+    float: left;
+}
+
+#headerAside {
+    float: right;
+}
+
+#headerMain {
+	padding: 0.75rem;
+	background-color: #393e46;
+	overflow: hidden;
+}
+
+#headerMain:after {
+	display:block;
+	content:'';
+	height:0;
+	clear:both;
+}
+
+#headerMainNav > a, #headerAside > a {
+	padding: 0.75rem;
+	color: #eeeeee;
+}
+
+#headerMainNav > a:hover, #headerAside > a:hover {
+	color: #00adb5;
+	text-decoration: none;
+}
+
+/* Content */
+#contentMain {
+	padding: 1.5rem;
+	color: #222831;
+}
+
+#contentTitle {
+	margin-bottom: 1.5rem;
+}
+
+/* Footer */
+#footer {
+	padding: 2rem;
+	text-align: center;
+	color: #eeeeee;
+	background-color: #00adb5;
+}

@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-	<footer id="footer">
-		Copyright 2020 Job Hunters Org. All right reserved.
-	</footer>
+
 </body>
 </html>
