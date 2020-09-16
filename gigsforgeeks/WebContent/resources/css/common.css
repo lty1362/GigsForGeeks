@@ -13,12 +13,13 @@ body {
 }
 
 /* Header */
+#header {
+	background-color: #1b262c;
+}
+
 #letterMark {
-	padding: 2rem;
-	margin: 0;
-	text-align: center;
-	color: #303841;
-	background-color: #ff5722;
+	display: block;
+	margin: 0 auto;
 }
 
 #headerMainNav {
@@ -31,15 +32,15 @@ body {
 
 #headerMain {
 	padding: 0.75rem;
-	background-color: #00adb5;
+	background-color: #0f4c75;
 	overflow: hidden;
 }
 
 #headerMain:after {
-	display:block;
-	content:'';
-	height:0;
-	clear:both;
+	display: block;
+	content: '';
+	height: 0;
+	clear: both;
 }
 
 #headerMainNav > a, #headerAside > a {
@@ -48,14 +49,14 @@ body {
 }
 
 #headerMainNav > a:hover, #headerAside > a:hover {
-	color: #ff5722;
+	color: #bbe1fa;
 	text-decoration: none;
 }
 
 /* Content */
 #contentMain {
 	padding: 1.5rem;
-	color: #303841;
+	color: #1b262c;
 }
 
 #contentTitle {
@@ -67,5 +68,5 @@ body {
 	padding: 2rem;
 	text-align: center;
 	color: #eeeeee;
-	background-color: #ff5722;
+	background-color: #0f4c75;
 }
