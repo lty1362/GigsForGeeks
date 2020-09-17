@@ -15,3 +15,4 @@
             }
 .loginArea table{margin:auto;}
 .loginArea input{margin:5px;} /*input요소인 글들 사이에 간격을 준다*/
+input::placeholder { font-size: 90%; }
