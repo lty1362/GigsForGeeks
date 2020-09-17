@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<%-- adminMenubar --%>
+    <jsp:include page="/views/admin/adminMenubar.jsp" flush="true"></jsp:include>
+    
+    
 </body>
 </html>
