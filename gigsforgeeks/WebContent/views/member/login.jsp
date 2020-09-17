@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="${contextPath}/resources/css/login.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,11 +17,13 @@
 	
 </head>
 <body>
-	<!-- 로그인 관련 -->
-    <div class="loginArea">
-        <!-- 1. 로그인 전에 보여지는 로그인 form-->
+	 <!-- 로그인 관련 -->
+    <div class="loginAll">
+        <div class="loginArea">
+        
+        <!-- 1. 로그인페이지로 들어왔을때 보여지는 로그인 form-->
             <form id="loginForm" action="" method="post">
-            <table>
+            <table >
                 <tr>
                     <td><h1>Gigs for Geeks</h1></td>
                 </tr>
@@ -33,6 +36,7 @@
                 <tr>
                     <td><input type="password" id="userPwd" name="userPwd" required placeholder="비밀번호를 입력하세요."></td> 
                 </tr>
+                <br><br>
                 <tr>
                     <td><button type="submit"  class="btn btn-outline-info">로그인</button></td>
                 </tr>
@@ -50,5 +54,6 @@
             </table>
             </form>
         </div>
+    </div>
 </body>
 </html>
