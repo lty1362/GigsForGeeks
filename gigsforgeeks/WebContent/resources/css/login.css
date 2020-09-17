@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+/* Web Font */
+@font-face {
+    font-family: 'Cafe24Simplehae';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Simplehae.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.loginArea{
+            text-align: center;
+            width: 300px;
+            margin:auto; /*화면이 정가운데로 가게한다*/
+            margin-top: 50px; /*위에 공간을 준다*/
+            }
+.loginArea table{margin:auto;}
+.loginArea input{margin:5px;} /*input요소인 글들 사이에 간격을 준다*/
