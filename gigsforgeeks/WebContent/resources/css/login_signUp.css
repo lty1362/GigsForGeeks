@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+div{
+	font-family: 'Cafe24Simplehae', 'sans-serif';
+}
+
+ html, body{height: 100%;}
+ input::placeholder {font-size: 90%;}
+.loginAll,  .signUpAll{
+    background-color: #0f4c75;
+    width: 100%; height: 100%;
+    }
+#loginForm>table, #signUpForm>table{
+    background-color: white;
+    text-align: center;
+    width: 400px;
+    height:550px;
+    box-shadow: 8px 8px 8px 8px #26353d;
+    }
+#loginForm input#userId, #loginForm input#userPwd{
+             width:300px;
+            height:50px;
+    }
+.loginArea table{margin:auto;}
+
+/*signUp*/
+#signUpForm input#userId{
+     width:220px;
+     height:50px;
+    }
+#btn{
+    width: 80px;
+    height: 30px;
+    font-size: 13px;
+    }
+#signUpForm input#email, #signUpForm input#userPwd{
+    width:300px;
+    height:50px;
+    }
+.signUpArea table{margin:auto;}
+input::placeholder {font-size: 90%;}
+
+/*userTypeForm*/
+.modal-header{text-align: center;}
+#userTypeForm table{margin:auto;}
+#userTypeForm input{margin:5px;}
+#userTypeForm p{font-size: 12px;}
