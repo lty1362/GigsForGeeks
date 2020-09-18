@@ -109,8 +109,8 @@
              </form>
          </div>
      <br><br><br><br><br>
-
-	<%-- footer --%>
+	</main>	
+	
     <%@ include file="../common/footer.jsp" %>
     
 </body>
