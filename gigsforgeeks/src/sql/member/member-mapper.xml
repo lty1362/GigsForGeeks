@@ -1,1 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="loginMember">
+	   SELECT 
+              USER_ID
+            , USER_EMAIL
+            , USER_PWD
+            , ENROLL_DATE
+            , OUTROLL_DATE
+            , STATUS
+            , MEMBERSHIP
+            , EXCELLENT_FREELANCE
+            , BLACKLIST
+            , IDENTIFY_EMAIL
+            , ADMIN
+            , USER_TYPE
+            , JOB_TITLE
+            , COMPANY
+            , SKILL
+            , PAY_RATE
+            , PROFILE_IMAGE
+            , LOCATION
+		  FROM MEMBER 
+	     WHERE STATUS='N' 
+		   AND USER_ID=? 
+		   AND USER_PWD=?
+	</entry>
+
+</properties>
