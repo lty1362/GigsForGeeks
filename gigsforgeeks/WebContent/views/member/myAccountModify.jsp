@@ -4,17 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../../resources/css/myAccount.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
+<title>Geeks Swim In Gigs! | Gigs For Geeks</title>
+<link rel="stylesheet" href="${contextPath}/resources/css/member.css">
 </head>
 <body>
- 
- 
- <!--header자리-->
-   <%@ include file="../common/header.jsp" %>
-    <form action="" method="POST">
+    <%-- Header --%>
+    <jsp:include page="/views/common/header.jsp" flush="true"></jsp:include>
+    <%-- End Of Header --%>
+    
+    <%-- Content --%>
+    <main id="contentMain">
+        <h2 id="contentTitle">Hello World!</h2>
+        <section>
+            <form action="" method="POST">
     <div class="wrap" align="center">
         
         <div id="profile" name="profile">
@@ -143,10 +145,16 @@
 
 
 
-
-
-    <!--footer자리-->
-    <%@ include file="../common/footer.jsp" %>
-
+        
+        
+        
+        
+        </section>
+    </main>	
+    <%-- End Of Content --%>
+    
+    <%-- Footer --%>
+    <jsp:include page="/views/common/footer.jsp" flush="true"></jsp:include>
+    <%-- End Of Footer --%>
 </body>
 </html>

@@ -4,15 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../../resources/css/myAccount.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<title>Geeks Swim In Gigs! | Gigs For Geeks</title>
+<link rel="stylesheet" href="../../resources/css/member.css">
 </head>
 <body>
-    <!--header-->
-    <%@ include file="../common/header.jsp" %>
+    <%-- Header --%>
+    <jsp:include page="/views/common/header.jsp" flush="true"></jsp:include>
+    <%-- End Of Header --%>
     
-    <form action="/**/" id="myPageForm" method="POST"> 
+    <%-- Content --%>
+    <main id="contentMain">
+       
+        <section>
+    
+    
+         <form action="/**/" id="myPageForm" method="POST"> 
     <!--로그인 전에 보이는 메뉴-->
    <!--   if(/*로그인관련 서블릿 필요*/) { %>-->
     <div class="wrap" align="center">
@@ -207,14 +213,18 @@
             </div>
         </div>-->
      
-         <br><br><br><br><br><br><br><br><br><br><br><br><br>
-         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-         <br><br><br><br><br><br><br><br>
-    <!--footer-->
-    <%@ include file="../common/footer.jsp" %>   
-     
+
     </form>
     
-
+            
+            
+            
+        </section>
+    </main>	
+    <%-- End Of Content --%>
+    
+    <%-- Footer --%>
+    <jsp:include page="/views/common/footer.jsp" flush="true"></jsp:include>
+    <%-- End Of Footer --%>
 </body>
 </html>
