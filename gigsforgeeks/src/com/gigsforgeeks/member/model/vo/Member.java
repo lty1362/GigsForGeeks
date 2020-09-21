@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class Member {
 
-	private int userNo;					// 회원번호
 	private String userId;				// 회원아이디
 	private String userEmail;			// 회원이메일
 	private String userPwd;				// 회원 비밀번호
@@ -29,12 +28,11 @@ public class Member {
 		
 	}
 	
-	public Member(int userNo, String userId, String userEmail, String userPwd, Date enrollDate, Date outrpllDate,
+	public Member(String userId, String userEmail, String userPwd, Date enrollDate, Date outrpllDate,
 			String status, String membership, String excellentFreelance, String blackList, String identifyEmail,
 			String admin, String userType, String jobTitle, String company, String skill, int payRate,
 			String profileImage, String location) {
 		super();
-		this.userNo = userNo;
 		this.userId = userId;
 		this.userEmail = userEmail;
 		this.userPwd = userPwd;
@@ -53,15 +51,6 @@ public class Member {
 		this.payRate = payRate;
 		this.profileImage = profileImage;
 		this.location = location;
-	}
-
-
-	public int getUserNo() {
-		return userNo;
-	}
-
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
 	}
 
 	public String getUserId() {
@@ -211,7 +200,7 @@ public class Member {
 	
 	@Override
 	public String toString() {
-		return "Member [userNo=" + userNo + ", userId=" + userId + ", userEmail=" + userEmail + ", userPwd=" + userPwd
+		return "Member [userId=" + userId + ", userEmail=" + userEmail + ", userPwd=" + userPwd
 				+ ", enrollDate=" + enrollDate + ", outrpllDate=" + outrpllDate + ", status=" + status + ", membership="
 				+ membership + ", excellentFreelance=" + excellentFreelance + ", blackList=" + blackList
 				+ ", identifyEmail=" + identifyEmail + ", admin=" + admin + ", userType=" + userType + ", jobTitle="
