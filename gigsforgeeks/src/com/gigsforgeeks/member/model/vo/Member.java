@@ -8,7 +8,7 @@ public class Member {
 	private String userEmail;			// 회원이메일
 	private String userPwd;				// 회원 비밀번호
 	private Date enrollDate;			// 가입일
-	private Date outrpllDate;			// 탈퇴일
+	private Date outrollDate;			// 탈퇴일
 	private String status;				// 탈퇴여부
 	private String membership;			// 멤버십여부
 	private String excellentFreelance;	// 우수 프리랜서 여부
@@ -28,7 +28,7 @@ public class Member {
 		
 	}
 	
-	public Member(String userId, String userEmail, String userPwd, Date enrollDate, Date outrpllDate,
+	public Member(String userId, String userEmail, String userPwd, Date enrollDate, Date outrollDate,
 			String status, String membership, String excellentFreelance, String blackList, String identifyEmail,
 			String admin, String userType, String jobTitle, String company, String skill, int payRate,
 			String profileImage, String location) {
@@ -37,7 +37,7 @@ public class Member {
 		this.userEmail = userEmail;
 		this.userPwd = userPwd;
 		this.enrollDate = enrollDate;
-		this.outrpllDate = outrpllDate;
+		this.outrollDate = outrollDate;
 		this.status = status;
 		this.membership = membership;
 		this.excellentFreelance = excellentFreelance;
@@ -85,12 +85,12 @@ public class Member {
 		this.enrollDate = enrollDate;
 	}
 
-	public Date getOutrpllDate() {
-		return outrpllDate;
+	public Date getOutpllDate() {
+		return outrollDate;
 	}
 
-	public void setOutrpllDate(Date outrpllDate) {
-		this.outrpllDate = outrpllDate;
+	public void setOutpllDate(Date outrpllDate) {
+		this.outrollDate = outrpllDate;
 	}
 
 	public String getStatus() {
@@ -201,7 +201,7 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [userId=" + userId + ", userEmail=" + userEmail + ", userPwd=" + userPwd
-				+ ", enrollDate=" + enrollDate + ", outrpllDate=" + outrpllDate + ", status=" + status + ", membership="
+				+ ", enrollDate=" + enrollDate + ", outrollDate=" + outrollDate + ", status=" + status + ", membership="
 				+ membership + ", excellentFreelance=" + excellentFreelance + ", blackList=" + blackList
 				+ ", identifyEmail=" + identifyEmail + ", admin=" + admin + ", userType=" + userType + ", jobTitle="
 				+ jobTitle + ", company=" + company + ", skill=" + skill + ", payRate=" + payRate + ", profileImage="
