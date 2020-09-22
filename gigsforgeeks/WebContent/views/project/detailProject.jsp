@@ -85,6 +85,7 @@
 
                            <br><br><br><br>
 
+						   <!-- 프로젝트 멤버십 -->
                            <h3>멤버십 추가</h3>
                            <hr>
                            <p>
@@ -108,6 +109,7 @@
                    </div>
                </div>
    
+   			   <!-- 고용주 소개 -->
                <div style="float:right">
                    <div id="employerInfo1" style="border: 1px solid black;">
                        <h3>고용주 소개</h3>
