@@ -9,17 +9,17 @@ import com.gigsforgeeks.member.model.dao.MemberDAO;
 import com.gigsforgeeks.member.model.vo.Member;
 
 
-public class memberService {
+public class MemberService {
 
 	/*login*/
 	public Member loginMember(String userId, String userPwd) {
 		
 		Connection conn = getConnection();
 		
-		Member m = new MemberDAO().loginMember(conn, userId, userPwd);
+		Member loginUser = new MemberDAO().loginMember(conn, userId, userPwd);
 		
 		close(conn);
 		
-		return m;
+		return loginUser;
 	}
 }
