@@ -9,15 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-
-  <!-- Admin JSP File Mapping -->
   <servlet>
-  	<servlet-name>Admin</servlet-name>
-  	<jsp-file>/views/admin/admin.jsp</jsp-file>
+    <servlet-name>Admin</servlet-name>
+    <jsp-file>/views/admin/admin.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Admin</servlet-name>
-  	<url-pattern>/admin</url-pattern>
+    <servlet-name>Admin</servlet-name>
+    <url-pattern>/admin</url-pattern>
   </servlet-mapping>
-  <!-- End of Admin JSP File Mapping -->
 </web-app>
