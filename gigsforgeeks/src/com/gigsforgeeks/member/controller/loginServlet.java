@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.gigsforgeeks.member.model.service.memberService;
+import com.gigsforgeeks.member.model.service.MemberService;
 import com.gigsforgeeks.member.model.vo.Member;
 
 /**
@@ -38,18 +38,19 @@ public class loginServlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
 		
-		Member m = new memberService().loginMember(userId, userPwd);
+		Member loginUser = new MemberService().loginMember(userId, userPwd);
 		
-		if(m != null) {
+		if(loginUser != null) {
 			
 			 HttpSession session = request.getSession();
-	    	 session.setAttribute("m", m);
+	    	 session.setAttribute("loginUser", loginUser);
 			
 	    	 response.sendRedirect(request.getContextPath());
 			
 		}else {
 			
 			request.getSession().setAttribute("errorMsg", "로그인에 실패했습니다.");
+			
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
 			
