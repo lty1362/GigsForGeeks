@@ -25,7 +25,11 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	}
-	/*login*/
+
+	
+	/**
+	 * 1. 로그인 기능
+	 */
 	public Member loginMember(Connection conn, String userId, String userPwd) {
 		
 		Member m = null;
@@ -39,7 +43,8 @@ public class MemberDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, userId);
-			pstmt.setString(2, userPwd);
+			pstmt.setString(2, userId);
+			pstmt.setString(3, userPwd);
 			
 			rset = pstmt.executeQuery();
 			

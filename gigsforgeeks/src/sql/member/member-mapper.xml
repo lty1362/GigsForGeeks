@@ -24,7 +24,7 @@
             , LOCATION
 		  FROM MEMBER 
 	     WHERE STATUS='N' 
-		   AND USER_ID=? 
+		   AND USER_ID=? OR USER_EMAIL=?
 		   AND USER_PWD=?
 	</entry>
 

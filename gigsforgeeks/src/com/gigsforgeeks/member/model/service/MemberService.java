@@ -11,7 +11,13 @@ import com.gigsforgeeks.member.model.vo.Member;
 
 public class MemberService {
 
-	/*login*/
+
+	/**
+	 * 1. 로그인기능
+	 * @param userId 	회원아이디
+	 * @param userPwd	회원비밀번호
+	 * @return
+	 */
 	public Member loginMember(String userId, String userPwd) {
 		
 		Connection conn = getConnection();

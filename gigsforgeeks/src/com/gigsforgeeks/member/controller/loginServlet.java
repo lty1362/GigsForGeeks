@@ -49,7 +49,7 @@ public class loginServlet extends HttpServlet {
 			
 		}else {
 			
-			request.getSession().setAttribute("errorMsg", "로그인에 실패했습니다.");
+			request.getSession().setAttribute("errorMsg", "로그인에 실패하셨습니다.");
 			
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
