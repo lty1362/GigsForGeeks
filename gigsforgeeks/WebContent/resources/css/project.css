@@ -88,5 +88,46 @@
 }
 
 
+/* searchListProject 시작 */
+#searchContent{
+    padding: 100px;
+    margin:auto;
+    width:1300px;
+}
+#projectCategory{
+    background: #f0f1f3;
+    padding: 18px;
+    width:280px;
+    float:left;
+}
+form #feelter_sub{font-weight: bold}
+.feelter_main{
+    font-size: 18px;
+    margin: 5px;
+}
+.feelter_main:hover{
+    font-size: 20px;
+    height: 40px;
+    font-weight: bold;
+    background: #cfd1d8;
+}
+#searchProjectList{
+    background: #f0f1f3;
+    padding: 30px;
+    width: 880px;
+    float: right;
+}
+#projectTitle{
+    font-size: 20px;
+    font-weight: bold;
+}
+#price{
+    font-size: 20px;
+    font-weight: bold;
+    float: right;
+}
+#searchprojectList:hover{box-shadow: 6px 6px 6px 6px gray}
+
+
 
 

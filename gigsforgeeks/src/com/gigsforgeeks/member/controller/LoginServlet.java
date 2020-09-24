@@ -42,10 +42,22 @@ public class LoginServlet extends HttpServlet {
 		
 		if(loginUser != null) {
 			
-			 HttpSession session = request.getSession();
-	    	 session.setAttribute("loginUser", loginUser);
+			// 관리자일경우 (진섭작성)
+			if(loginUser.getAdmin().equals("Y")) {
+				
+				HttpSession session = request.getSession();
+		    	session.setAttribute("loginUser", loginUser);
+				
+		    	response.sendRedirect(request.getContextPath() + "/admin");
+			}
 			
-	    	 response.sendRedirect(request.getContextPath());
+			// 관리자 아닌경우(일반로그인)
+			else {
+			HttpSession session = request.getSession();
+	    	session.setAttribute("loginUser", loginUser);
+			
+	    	response.sendRedirect(request.getContextPath());
+			}
 			
 		}else {
 			

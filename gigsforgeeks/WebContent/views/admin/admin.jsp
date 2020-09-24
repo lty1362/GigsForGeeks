@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>관리자 메인페이지</title>
 
+	<!-- header2 이름바뀌면 불러오기 -->
    	<link rel="stylesheet" href="resources/css/adminCommon.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
