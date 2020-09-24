@@ -43,13 +43,19 @@ input::placeholder {font-size: 90%;}
     }
 .signUpArea table{margin:auto;}
 
-/*Modal*/
+/*Modal공통*/
 .modal-header{text-align: center;}
+/*회원유형 Modal*/
 #userTypeForm table{margin:auto;}
 #userTypeForm input{margin:5px;}
+/*비밀번호 찾기 Modal*/
 #pwdFindForm table{margin:auto;}
 #pwdFindForm input{margin:5px;}
-
+#pwdFindForm input#email, #pwdFindForm input#certification{
+    width:200px;
+    height:40px;
+    }
+       
 
 
 /*myPage css*/
