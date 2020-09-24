@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+<style>
+
+    /* 메인 틀 잡기 */
+    div{
+        /* 테두리 검정틀 */
+        /* border: 1px solid green; */
+        box-sizing: border-box;
+    }
+
+    .wrap{
+        width: auto;
+        height: 1200px;
+        margin: auto;
+    }
+
+    .wrap>div{width: 100%;}
+    #content{height: 100%;}
+
+    #content>div{height: 100%; float: left;}
+
+    #content_l{width: 20%; background: rgba(23, 34, 59, 0.95); color: white;}
+    #content_r{width: 80%;}
+
+    /* 세부 틀 잡기 */
+    #content_l_high{height: 10%; text-align: center; padding-top: 30px; font-size: 35px; font-weight: 700;}
+    #content_l_mid{height: 15%; padding: 20px;}
+    #content_l_navi{height: 75%;}
+
+    #content_r_header{height: 10%; background: rgba(107, 119, 141, 0.21);}
+    #content_r_header_l{width: 10%; height: 100%; float: left;}
+    #content_r_header_m{width: 40%; height: 100%; float: left;}
+    #content_r_header_r{width: 50%; height: 100%; float: left;}
+
+    #content_r_center{height: 90%;}
+    #content_r_center_h{height: 10%;}
+    #content_r_center_m{height: 25%;}
+    #content_r_center_l{height: 65%;}
+
+    #navi_main{
+        width: 100%;
+        height: 55px;
+        line-height: 55px;
+        text-align: center;
+        font-size: 20px;
+        font-weight:800;
+        background: rgb(23, 34, 59);
+        cursor:pointer;
+    }
+
+    #navi_sub{
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 14px;
+        font-weight:600;
+        color: rgb(190, 190, 190);
+        cursor:pointer;
+    }
+
+    #navi_sub:hover{
+        background: rgb(127, 127, 127, 0.3);
+        color: goldenrod;
+        font-size: 15px;
+        font-weight: 900;
+    }
+
+    #content_r_header,#content_r_center_h{
+        color: rgb(23, 34, 59);
+    }
+
+</style>
