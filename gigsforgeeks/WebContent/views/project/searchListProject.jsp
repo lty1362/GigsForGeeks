@@ -11,6 +11,7 @@
 
     <!-- Header  -->
     <%@ include file="../../views/common/header.jsp" %>
+    <link rel= "stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
     
     <!--  Content  -->
     <main id="contentMain">
@@ -48,20 +49,6 @@
                         <br>
                         <input type="checkbox" name="requiredSkill" id="WordPress">
                         <label for="WordPress">WordPress</label>
-                        <br>
-                        <input type="checkbox" name="requiredSkill" id="MobileDevelopment">
-                        <label for="MobileDevelopment">Mobile Development</label>
-                        <br>
-                        <input type="checkbox" name="requiredSkill" id="WebsiteDesign">
-                        <label for="WebsiteDesign">Website Design</label>
-                        <br>
-                        <input type="checkbox" name="requiredSkill" id="GraphicDesign">
-                        <label for="GraphicDesign">Graphic Design</label>
-                        <br>
-                        <input type="checkbox" name="requiredSkill" id="WebeDevelopment">
-                        <label for="WebDevelopment">Web Development</label>
-                        <br>
-                        <input type="checkbox" name="requiredSkill" id="etc">
                         <label for="etc">기타</label>
                     </div>
                     <br>
@@ -71,7 +58,7 @@
                         <select name="payProject">
                             <option value="small">초소형프로젝트 (200,000￦ ~ 700,000￦)</option>
                             <option value="medium">중간형프로젝트 (700,000￦ ~ 2,000,000￦)</option>
-                            <option value="large">대형프로젝트 (2,000,000￦ ~ 그이상)</option>
+                            <option value="large">대형프로젝트 (2,000,000￦ ~ 5,000,000￦)</option>
                         </select>
                         
                         <br><br><br>
@@ -100,7 +87,7 @@
                     
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     
-                    분류기준 : <select name="searchStandard">
+                   	 분류기준 : <select name="searchStandard">
                                 <option value="bid_large">입찰다수순</option>
                                 <option value="bid_small">입찰소수순</option>
                                 <option value="pay_large">최다금액</option>
@@ -116,8 +103,8 @@
                     <label id="projectTitle">프로젝트명1</label> 
                     <label id="price">700,000￦ - 2,000,000￦</label><br>
                     <p>
-                        내 웹사이트에 두 가지 기능을 추가해야 하는데, 
-                        하나는 고객이 체육관을 위한 평면도를 만들 수 있는 페이지를 만드는 것이다.
+			                        내 웹사이트에 두 가지 기능을 추가해야 하는데, 
+			                        하나는 고객이 체육관을 위한 평면도를 만들 수 있는 페이지를 만드는 것이다.
                     </p>
                     
                     <br>

@@ -9,6 +9,7 @@ import java.util.Properties;
 
 import static com.gigsforgeeks.common.JDBCTemplate.*;
 import com.gigsforgeeks.project.model.vo.Project;
+import com.gigsforgeeks.project.model.vo.Proposal;
 
 public class ProjectDAO {
 	
@@ -68,4 +69,36 @@ public class ProjectDAO {
 		
 	}
 
+	
+	/**
+	 * 사용자에게서 전달받은 입찰견적서 제안내용
+	 */
+	public int insertProposal(Connection conn, Proposal proposal) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = properties.getProperty("insertProposal");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, proposal.getProposalInfo());
+			pstmt.setInt(2, proposal.getProposalPrice());
+			pstmt.setDate(3, proposal.getProposalStart());
+			pstmt.setDate(4, proposal.getProposalEnd());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+	
+	
 }

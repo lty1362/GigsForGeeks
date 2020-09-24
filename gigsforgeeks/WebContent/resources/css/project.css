@@ -86,9 +86,15 @@
     float: right;
     height: 40px;
 }
+#btnGroup>button{
+    width: 250px; 
+    height: 30px;
+}
+
 
 
 /* searchListProject 시작 */
+
 #searchContent{
     padding: 100px;
     margin:auto;
