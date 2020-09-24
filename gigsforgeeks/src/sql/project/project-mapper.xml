@@ -46,4 +46,25 @@
 		    NULL
 		  )
 	</entry>
+	
+	<entry key="insertProposal">
+	INSERT
+	  INTO PROPOSAL
+	  (
+	      PROPOSAL_NO
+	    , PROPOSAL_INFO
+	    , PROPOSAL_PRICE
+	    , PROPOSAL_START
+	    , PROPOSAL_END
+	  )
+	VALUES
+	  (
+	      SEQ_PNO.NEXTVAL
+	    , ?
+	    , ?
+	    , ?
+	    , ?
+	  );
+	</entry>
+	
 </properties>
