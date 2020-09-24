@@ -43,20 +43,12 @@ input::placeholder {font-size: 90%;}
     }
 .signUpArea table{margin:auto;}
 
-/*Modal Header*/
+/*Modal*/
 .modal-header{text-align: center;}
-
-
-
-
-
-
-
-
-
-
-
-
+#userTypeForm table{margin:auto;}
+#userTypeForm input{margin:5px;}
+#pwdFindForm table{margin:auto;}
+#pwdFindForm input{margin:5px;}
 
 
 

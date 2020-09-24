@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="${contextPath}/resources/css/member.css">
 	<%-- End Of Header --%>
 	<!-- 페이지의 타이틀을 작성하세요 -->
-	<title>Insert title here</title>
+	<title>SignUP</title>
 </head>
 <body>
     <%-- Content --%>
@@ -23,9 +23,9 @@
         <div class="signUpArea">
         <!-- 1. 회원가입 form-->
             <form id="signUpForm" action="<%= request.getContextPath()%>/insert.me" method="post">
+            <br><br>
             <input type="hidden" name="userType" id="userType" value="">
             <table>
-                <br><br>
                 <tr>
                     <td><h1>Gigs for Geeks</h1></td>
                 </tr>
@@ -66,14 +66,14 @@
 	      
 	        <!-- Modal Header -->
 	        <div class="modal-header">
-	            <table align="center">
-	                <tr>
+	              <table>
+	                 <tr>
 	                    <td><h1>Gigs for Geeks</h1></td>
-	                </tr>
-	                <tr>
+	                 </tr>
+	                 <tr>
 	                    <td><h4 class="model-title">계정 유형 설정</h4></td>
-	                </tr>
-	            </table>
+	                 </tr>
+	              </table>
 	        </div>
 	        <!-- Modal body -->
 	        <div class="modal-body"  align="center">

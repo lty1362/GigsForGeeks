@@ -25,6 +25,7 @@
         
         <!-- 1. 로그인페이지로 들어왔을때 보여지는 로그인 form-->
             <form id="loginForm" action="<%= request.getContextPath()%>/login.me" method="post">
+            <br><br>
             <table>
                 <tr>
                     <td><h1>Gigs for Geeks</h1></td>
@@ -38,7 +39,6 @@
                 <tr>
                     <td><input type="password" id="userPwd" name="userPwd" required placeholder="비밀번호를 입력하세요."></td> 
                 </tr>
-                <br><br>
                 <tr>
                     <td><button type="submit"  class="btn btn-outline-info">로그인</button></td>
                 </tr>
@@ -64,7 +64,7 @@
     <div class="modal-content">
         <!-- Modal Header -->
         <div class="modal-header">
-            <table align="center">
+            <table>
 	                <tr>
 	                    <td><h1>Gigs for Geeks</h1></td>
 	                </tr>
