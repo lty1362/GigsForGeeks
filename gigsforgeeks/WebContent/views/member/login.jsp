@@ -2,22 +2,24 @@
     pageEncoding="UTF-8"
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<%-- Template HTML 2 : 헤더 없는 화면용 --%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<%-- Header --%>
+	<%@ include file="../../views/common/header2.jsp" %>
+	<!-- 필요한 외부 파일은 여기서 불러오세요 -->
+	<link rel= "stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/member.css">
-	<link rel="stylesheet" href="${contextPath}/resources/css/common.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<%-- End Of Header --%>
+	<!-- 페이지의 타이틀을 작성하세요 -->
+	<title>Login</title>
 </head>
 <body>
-	 <!-- 로그인 관련 -->
+    <%-- Content --%>
+    <!-- 여기서부터 내용 작성하면 됩니다. -->
+    <!-- 로그인 관련 -->
     <div class="loginAll">
         <div class="loginArea">
         
@@ -104,5 +106,6 @@
     </div>
 </div>
 </div>
+    <%-- End Of Content --%>
 </body>
 </html>
