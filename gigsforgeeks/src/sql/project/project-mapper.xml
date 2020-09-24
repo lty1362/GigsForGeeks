@@ -1,1 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertProject">
+		INSERT
+		  INTO PROJECT
+		  (
+		   PROJECT_ID,
+		   REQUIRED_SKILL,
+		   PROJECT_NAME,
+		   DESCRIPTION,
+		   PROJECT_STATUS,
+		   EXPECT_START,
+		   EXPECT_END,
+		   MEANS_OF_PAYMENT,
+		   MIN_BID,
+		   MAX_BID,
+		   START_BID,
+		   END_BID,
+		   COUNT_BID,
+		   AVERAGE_BID,
+		   WINNER_ID,
+		   WINNING_BID,
+		   START_DATE,
+		   END_DATE
+		  )
+		  VALUES
+		  (
+		    SEQ_PNO.NEXTVAL,
+		    ?,
+		    ?,
+		    ?,
+		    DEFAULT,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		    ?,
+		   	DEFAULT,
+		    ?,
+		    NULL,
+		    NULL,
+		    NULL,
+		    NULL,
+		    NULL,
+		    NULL
+		  )
+	</entry>
+</properties>

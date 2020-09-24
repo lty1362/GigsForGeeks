@@ -1,6 +1,6 @@
 package com.gigsforgeeks.project.model.vo;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Project {
 	
@@ -11,26 +11,26 @@ public class Project {
 	private String projectName;
 	private String description;
 	private String projectStatus;
-	private Date expectStart;
-	private Date expectEnd;
+	private LocalDate expectStart;
+	private LocalDate expectEnd;
 	private String meansOfPayment;
 	private int minBid;
 	private int MaxBid;
-	private Date startBid;
-	private Date endBid;
+	private LocalDate startBid;
+	private LocalDate endBid;
 	private int countBid;
 	private int averageBid;
 	private String winnerId;
 	private String winningBid;
-	private Date startDate;
-	private Date endDate;
+	private LocalDate startDate;
+	private LocalDate endDate;
 	
 	// Constructors
 	public Project() {}
 	public Project(String projectId, /* String clientId,*/String requiredSkill, String projectName, String description,
-			String projectStatus, Date expectStart, Date expectEnd, String meansOfPayment, int minBid, int maxBid,
-			Date startBid, Date endBid, int countBid, int averageBid, String winnerId, String winningBid,
-			Date startDate, Date endDate) {
+			String projectStatus, LocalDate expectStart, LocalDate expectEnd, String meansOfPayment, int minBid, int maxBid,
+			LocalDate startBid, LocalDate endBid, int countBid, int averageBid, String winnerId, String winningBid,
+			LocalDate startDate, LocalDate endDate) {
 		super();
 		this.projectId = projectId;
 		/*this.clientId = clientId;*/
@@ -55,7 +55,7 @@ public class Project {
 	
 	// to call insertProject method
 	public Project(String requiredSkill, String projectName, String description, 
-			Date expectStart, Date expectEnd, String meansOfPayment, int minBid, int maxBid, Date endBid) {
+			LocalDate expectStart, LocalDate expectEnd, String meansOfPayment, int minBid, int maxBid, LocalDate endBid) {
 		super();
 		this.requiredSkill = requiredSkill;
 		this.projectName = projectName;
@@ -105,16 +105,16 @@ public class Project {
 	public void setProjectStatus(String projectStatus) {
 		this.projectStatus = projectStatus;
 	}
-	public Date getExpectStart() {
+	public LocalDate getExpectStart() {
 		return expectStart;
 	}
-	public void setExpectStart(Date expectStart) {
+	public void setExpectStart(LocalDate expectStart) {
 		this.expectStart = expectStart;
 	}
-	public Date getExpectEnd() {
+	public LocalDate getExpectEnd() {
 		return expectEnd;
 	}
-	public void setExpectEnd(Date expectEnd) {
+	public void setExpectEnd(LocalDate expectEnd) {
 		this.expectEnd = expectEnd;
 	}
 	public String getMeansOfPayment() {
@@ -135,16 +135,16 @@ public class Project {
 	public void setMaxBid(int maxBid) {
 		MaxBid = maxBid;
 	}
-	public Date getStartBid() {
+	public LocalDate getStartBid() {
 		return startBid;
 	}
-	public void setStartBid(Date startBid) {
+	public void setStartBid(LocalDate startBid) {
 		this.startBid = startBid;
 	}
-	public Date getEndBid() {
+	public LocalDate getEndBid() {
 		return endBid;
 	}
-	public void setEndBid(Date endBid) {
+	public void setEndBid(LocalDate endBid) {
 		this.endBid = endBid;
 	}
 	public int getCountBid() {
@@ -171,16 +171,16 @@ public class Project {
 	public void setWinningBid(String winningBid) {
 		this.winningBid = winningBid;
 	}
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 	

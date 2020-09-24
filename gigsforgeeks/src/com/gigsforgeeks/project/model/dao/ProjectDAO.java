@@ -14,9 +14,6 @@ public class ProjectDAO {
 	
 	private Properties properties = new Properties();
 	
-	/**
-	 * SQL문을 모아둔 XML 파일을 읽어온다.
-	 */
 	public ProjectDAO() {
 		
 		String fileName = ProjectDAO.class.getResource("/sql/project/project-mapper.xml").getPath();
@@ -48,12 +45,15 @@ public class ProjectDAO {
 			statement.setString(1, project.getRequiredSkill());
 			statement.setString(2, project.getProjectName());
 			statement.setString(3, project.getDescription());
-			statement.setDate(4, project.getExpectStart());
-			statement.setDate(5, project.getExpectEnd());
+			statement.setDate(4, java.sql.Date.valueOf(project.getExpectStart()));
+			statement.setDate(5, java.sql.Date.valueOf(project.getExpectEnd()));
 			statement.setString(6, project.getMeansOfPayment());
 			statement.setInt(7, project.getMinBid());
 			statement.setInt(8, project.getMaxBid());
-			statement.setDate(9, project.getEndBid());
+			statement.setDate(9, java.sql.Date.valueOf(project.getEndBid()));
+			System.out.println(project.getExpectStart());
+			System.out.println(project.getMeansOfPayment());
+			System.out.println(statement);
 			result = statement.executeUpdate();
 			
 		} catch (SQLException e) {
