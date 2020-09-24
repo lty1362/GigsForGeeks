@@ -25,16 +25,7 @@
     
     
          <form action="<%= request.getContextPath() %>/myAccountModify.me" id="myPageForm" method="POST"> 
-    <!--로그인 전에 보이는 화면-->
-    <% if(false/*loginUser == null*/) { %>
-  
-    
-    <!-- 로그인 필요하다는 에러메세지 출력칸 -->
-    
-    
 
-   	 <% }else{ %>
-    <!--로그인 이후 보이는 화면--> 
         <div class="wrap" align="center">
         
             <div id="profile" name="profile">
@@ -128,7 +119,6 @@
                 <div id="publicationModifiy" name="cartificationModifiy"><button>관리</button></div>
             </div>
         </div>
-        <% } %>
      
 
     </form>

@@ -10,20 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.gigsforgeeks.member.model.service.MemberService;
-import com.gigsforgeeks.member.model.vo.Member;
-
 /**
- * Servlet implementation class loginServlet
+ * Servlet implementation class MyAccountServlet
  */
-@WebServlet("/login.me")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/MyAccount.me")
+public class MyAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public MyAccountServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,29 +29,21 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
 		
-		request.setCharacterEncoding("UTF-8");
-		
-		String userId = request.getParameter("userId");
-		String userPwd = request.getParameter("userPwd");
-		
-		Member loginUser = new MemberService().loginMember(userId, userPwd);
-		
-		if(loginUser != null) {
+		if(session.getAttribute("loginUser") == null) {
 			
-			 HttpSession session = request.getSession();
-	    	 session.setAttribute("loginUser", loginUser);
-			
-	    	 response.sendRedirect(request.getContextPath());
+			session.setAttribute("alertMsg", "로그인 후 이용가능한 서비스입니다.");
+			response.sendRedirect(request.getContextPath());
 			
 		}else {
-			
-			request.getSession().setAttribute("errorMsg", "로그인에 실패하셨습니다.");
-			
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("views/member/myAccount.jsp");
 			view.forward(request, response);
-			
 		}
+		
+		
+		
 	}
 
 	/**
