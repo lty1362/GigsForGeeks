@@ -17,13 +17,13 @@ import com.gigsforgeeks.member.model.vo.Member;
  * Servlet implementation class loginServlet
  */
 @WebServlet("/login.me")
-public class loginServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public loginServlet() {
+    public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
