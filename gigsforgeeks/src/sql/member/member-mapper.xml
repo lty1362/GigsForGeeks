@@ -36,5 +36,22 @@
         WHERE C.USER_ID = ?;
 	
 	</entry>
-
+	
+	<entry key="insertMember">
+	 INSERT
+   	   INTO MEMBER
+             (
+               USER_ID
+             , USER_EMAIL
+             , USER_PWD
+             , USER_TYPE
+             ) 
+            VALUES
+            (
+               ?
+             , ?
+             , ?
+             , ?
+             )
+	</entry>
 </properties>

@@ -52,7 +52,18 @@ public class Member {
 		this.profileImage = profileImage;
 		this.location = location;
 	}
+	
+	/*signUp에서의 Member m*/
+	public Member(String userId, String userEmail, String userPwd, String userType) {
+		super();
+		this.userId = userId;
+		this.userEmail = userEmail;
+		this.userPwd = userPwd;
+		this.userType = userType;
+	}
 
+	
+	
 	public String getUserId() {
 		return userId;
 	}

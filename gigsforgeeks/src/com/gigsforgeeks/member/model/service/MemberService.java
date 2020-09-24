@@ -1,8 +1,9 @@
 package com.gigsforgeeks.member.model.service;
 
 import static com.gigsforgeeks.common.JDBCTemplate.close;
+import static com.gigsforgeeks.common.JDBCTemplate.commit;
 import static com.gigsforgeeks.common.JDBCTemplate.getConnection;
-
+import static com.gigsforgeeks.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 
 import com.gigsforgeeks.member.model.dao.MemberDAO;
@@ -50,5 +51,28 @@ public class MemberService {
 		close(conn);
 		
 		return userCareer;
+	}
+
+
+	/**
+	 *  2. 회원가입
+	 * @param m (아이디,이메일,비밀번호,회원유형)
+	 * @return
+	 */
+	public int insertMember(Member m) {
+		
+		Connection conn = getConnection();
+		   
+		   int result = new MemberDAO().insertMember(conn,m);
+		  
+		   if(result > 0) {
+			   commit(conn);
+		   }else {
+			  rollback(conn);
+		   }
+		   
+close(conn);
+		   
+		   return result;
 	}
 }

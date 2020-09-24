@@ -1,27 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    isELIgnored="false"%>
+    isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<%-- Template HTML 2 : 헤더 없는 화면용 --%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<%-- Header --%>
+	<%@ include file="../../views/common/header2.jsp" %>
+	<!-- 필요한 외부 파일은 여기서 불러오세요 -->
+	<link rel= "stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/member.css">
-	<link rel="stylesheet" href="${contextPath}/resources/css/common.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+	<%-- End Of Header --%>
+	<!-- 페이지의 타이틀을 작성하세요 -->
+	<title>Insert title here</title>
 </head>
 <body>
-	 <div class="signUpAll">
+    <%-- Content --%>
+    <!-- 여기서부터 내용 작성하면 됩니다. -->
+    	 <div class="signUpAll">
         <div class="signUpArea">
         <!-- 1. 회원가입 form-->
-            <form id="signUpForm" action="" method="post">
+            <form id="signUpForm" action="<%= request.getContextPath()%>/insert.me" method="post">
+            <input type="hidden" name="userType" id="userType" value="">
             <table>
                 <br><br>
                 <tr>
@@ -75,7 +77,6 @@
 	        </div>
 	        <!-- Modal body -->
 	        <div class="modal-body"  align="center">
-	            <form action="" method="post">
 	                <p> 
 			                    심각하게 고민 하지 않으셔도 됩니다. <br>
 			                    언제든지 계정 설정 페이지에서 변경 하실수 있습니다.
@@ -83,20 +84,20 @@
 	                <table>
 	                <tr>
 	                    <td>
-	                      <a href="" class="btn btn-outline-info btn-lg">
-	                          <img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt=""> 
+	                      <button type="button" class="btn btn-outline-info btn-lg" id="freelancer">
+	                          <img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt="프리랜서"> 
 	                         <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	                          	 일자리를 알아보고자 합니다.</b>
-	                        </a>
+	                        </button>
 	                    </td>
 	                </tr>
 	                <tr>
 	                    <td>
 	                        <br>
-	                        <a href="" class="btn btn-outline-info btn-lg"> 
-	                           <img src="${contextPath}/resources/images/gigsforgeeks_usertype_2.png" alt=""> 
+	                        <button type="button" class="btn btn-outline-info btn-lg" id="employer"> 
+	                           <img src="${contextPath}/resources/images/gigsforgeeks_usertype_2.png" alt="고용주"> 
 	                           <b>프리랜서를 채용하고자 합니다.</b>
-	                        </a>
+	                        </button>
 	                    </td>
 	                </tr>
 	                </table>
@@ -105,5 +106,20 @@
 	     </div>
 	    </div>
 	</div>
+	
+	<script>
+
+			$('#freelancer').click(function(){
+				$('#userType').val('F');
+				$("#signUpForm").submit();
+			});
+			
+			$('#employer').click(function(){
+				$('#userType').val('E');
+				$("#signUpForm").submit();
+			});
+		
+	</script>
+    <%-- End Of Content --%>
 </body>
 </html>
