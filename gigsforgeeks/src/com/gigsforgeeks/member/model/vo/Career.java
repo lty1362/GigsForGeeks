@@ -5,18 +5,19 @@ import java.sql.Date;
 public class Career {
 
 	private int careerNumber;     // 경력 번호
+	private String userId;        // 회원 아이디
 	private String companyInfo;   // 회사정보
 	private String careerTitle;   // 직급
 	private String careerInfo;    // 회사 설명
 	private Date hireDate;        // 고용날짜
 	private Date retireDate;      // 퇴직날짜
-	private boolean careerStatus; // 재직여부
-	private String userId;        // 회원 아이디
+	private String careerStatus; // 재직여부
 	
-	public Career() {}
 
-	public Career(int careerNumber, String companyInfo, String careerTitle, String careerInfo, Date hireDate,
-			Date retireDate, boolean careerStatus, String userId) {
+
+
+	public Career(int careerNumber, String userId, String careerTitle, String careerInfo, Date hireDate,
+			Date retireDate, String careerStatus, String companyInfo) {
 		super();
 		this.careerNumber = careerNumber;
 		this.companyInfo = companyInfo;
@@ -76,11 +77,11 @@ public class Career {
 		this.retireDate = retireDate;
 	}
 
-	public boolean isCareerStatus() {
+	public String isCareerStatus() {
 		return careerStatus;
 	}
 
-	public void setCareerStatus(boolean careerStatus) {
+	public void setCareerStatus(String careerStatus) {
 		this.careerStatus = careerStatus;
 	}
 

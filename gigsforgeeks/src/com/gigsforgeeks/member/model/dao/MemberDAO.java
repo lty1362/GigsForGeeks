@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import com.gigsforgeeks.member.model.vo.Career;
 import com.gigsforgeeks.member.model.vo.Member;
 
 public class MemberDAO {
@@ -78,6 +79,57 @@ public class MemberDAO {
 		}
 		
 		return m;
+	}
+
+
+	
+	/**
+	 * 로그인한 유저의 경력 객체 db에서 가져오기
+	 * @param userId 로그인한 유저아이디
+	 * @param conn
+	 * @return
+	 */
+	public Career seachCareer(String userId, Connection conn) {
+		
+		Career c = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("userCareer");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				c= new Career(rset.getInt("CAREER_NO"),
+							  rset.getString("USER_ID"),
+							  rset.getString("COMPANY_INFO"),
+							  rset.getString("CAREER_TITLE"),
+							  rset.getDate("RETIRE_DATE"),
+							  rset.getDate("HIRE_DATE"),
+							  rset.getString("CAREER_INFO"),
+							  rset.getString("CAREER_STATUS")
+						);
+			}
+				
+			
+
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		
+		return c;
 	}
 	
 }

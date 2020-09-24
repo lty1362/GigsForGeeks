@@ -1,19 +1,32 @@
+<%@page import="com.gigsforgeeks.member.model.vo.Career"%>
+<%@page import="java.sql.Date"%>
+<%@page import="com.gigsforgeeks.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Geeks Swim In Gigs! | Gigs For Geeks</title>
-<link rel="stylesheet" href="${contextPath}/resources/css/member.css">
+	<meta charset="UTF-8">
+	<%-- Header --%>
+	<%@ include file="../../views/common/header.jsp" %>
+	<!-- 필요한 외부 파일은 여기서 불러오세요 -->
+	<link rel= "stylesheet" type="text/css" href="${contextPath}/resources/css/member.css">
+	<%-- End Of Header --%>
+	<!-- 페이지의 타이틀을 작성하세요 -->
+	<title>Insert title here</title>
 </head>
-<body>
-    <%-- Header --%>
-    <jsp:include page="/views/common/header.jsp" flush="true"></jsp:include>
-    <%-- End Of Header --%>
+<body>    
     
     <%
-    	/*String userId = loginUser.getUserId();*/
+    	
+    	String userId = loginUser.getUserId();
+    	/* int payRate = loginUser.getPayRate(); */
+    	String location = (loginUser.getLocation() == null) ? "입력하지 않으셨습니다." : loginUser.getLocation();
+    	/* Date enrollDate = loginUser.getEnrollDate(); */
+    	String company = (loginUser.getCompany()== null) ? "입력하지 않으셨습니다." :loginUser.getCompany() ;
+    	String jobTitle = (loginUser.getJobTitle() == null) ? "입력하지 않으셨습니다." : loginUser.getJobTitle();
+    	
+    	Career userCareer = (Career)session.getAttribute("career");
     
     %>
     
@@ -31,7 +44,7 @@
             <div id="profile" name="profile">
                 <div id="profilePhoto" name="profilePhoto">프로필 사진(이미지링크)</div>
                 <div id="location" name="location">희망시급/지역/현재시각/가입일</div>
-                <div id="userName" name="userName">유저아이디/@회사명/직급명</div>
+                <div id="userName" name="userName"><span aligh="left"><%= userId %></span>/@ <%= company%> /직급명</div>
                 <div id="workship" name="workship">워크쉽(리뷰기반)</div>
                 <div id="userContent" name="userContent">자기소개</div>
                 <div id="hirePositionButton" name="hireButton"><button>고용주측의 프로필 확인</button></div>

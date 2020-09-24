@@ -6,6 +6,7 @@ import static com.gigsforgeeks.common.JDBCTemplate.getConnection;
 import java.sql.Connection;
 
 import com.gigsforgeeks.member.model.dao.MemberDAO;
+import com.gigsforgeeks.member.model.vo.Career;
 import com.gigsforgeeks.member.model.vo.Member;
 
 
@@ -27,5 +28,27 @@ public class MemberService {
 		close(conn);
 		
 		return loginUser;
+	}
+
+	
+	
+	
+	
+	
+	/**
+	 * userId 기반 carrer 객체 전달
+	 * @param userId 	회원아이디
+	 * @param userCareer	회원 경력 객체
+	 * @return 
+	 */
+	public Career searchCareer(String userId) {
+		
+		Connection conn = getConnection();
+		
+		Career userCareer = new MemberDAO().seachCareer(userId, conn);
+				
+		close(conn);
+		
+		return userCareer;
 	}
 }

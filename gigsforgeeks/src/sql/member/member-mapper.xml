@@ -23,9 +23,18 @@
             , PROFILE_IMAGE
             , LOCATION
 		  FROM MEMBER 
-	     WHERE STATUS='N' 
+	     WHERE STATUS='Y' 
 		   AND USER_ID=? OR USER_EMAIL=?
 		   AND USER_PWD=?
+	</entry>
+	
+	<entry key="userCareer">
+	   SELECT 
+	  		  C.*
+	     FROM CAREER C
+	     JOIN MEMBER M ON(C.USER_ID=M.USER_ID)
+        WHERE C.USER_ID = ?;
+	
 	</entry>
 
 </properties>
