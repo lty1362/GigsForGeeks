@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import com.gigsforgeeks.member.model.service.MemberService;
 import com.gigsforgeeks.member.model.vo.Career;
+import com.gigsforgeeks.member.model.vo.Certificate;
+import com.gigsforgeeks.member.model.vo.Education;
 import com.gigsforgeeks.member.model.vo.Member;
 
 /**
@@ -50,6 +52,10 @@ public class MyAccountServlet extends HttpServlet {
 			String userId = loginUser.getUserId(); 
 			
 			Career userCareer = new MemberService().searchCareer(userId);		//userCareer = 회원 경력정보
+			
+			//Education userEducation = new MemberService().searchEducation(userId);
+			
+			//Certificate userCartificate
 			
 			session.setAttribute("career", userCareer);
 			
