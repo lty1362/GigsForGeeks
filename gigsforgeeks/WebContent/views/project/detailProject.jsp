@@ -77,7 +77,9 @@
                            <input type="number" name="proposalPrice" placeholder="￦200,000이상 입력해주세요." min="200000" required> 
                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                            <label>이 프로젝트의 작업 예상기간 : </label>
-                           <input type="date" name="proposalDate" placeholder="날짜를 입력해주세요.">
+                           <input type="date" name="proposalStart" placeholder="날짜를 입력해주세요." required>
+                           ~
+                           <input type="date" name="proposalEnd" placeholder="날짜를 입력해주세요." required>
    
                            <br><br>
                            <h4>고객님의 입찰 견적서에 대한 설명</h4>
