@@ -33,13 +33,13 @@
                     <td><h3 class="model-title">회원가입</h3></td>
                 </tr>
                 <tr>
-                    <td><input type="email" id="email" name="email" required placeholder="이메일 주소"></td> 
-                </tr>
-                <tr>
                     <td>
                         <input type="text" id="userId" name="userId" required placeholder="사용할 아이디 입력">
                         <a type="button" class="btn btn-outline-info" id="btn">중복확인</a>
                     </td> 
+                </tr>
+                <tr>
+                    <td><input type="email" id="email" name="email" required placeholder="이메일 주소"></td> 
                 </tr>
                 <tr>
                     <td><input type="password" id="userPwd" name="userPwd" maxlength="15" required placeholder="비밀번호를 입력"></td> 
@@ -108,17 +108,15 @@
 	</div>
 	
 	<script>
-
-			$('#freelancer').click(function(){
-				$('#userType').val('F');
-				$("#signUpForm").submit();
-			});
-			
-			$('#employer').click(function(){
-				$('#userType').val('E');
-				$("#signUpForm").submit();
-			});
+		$('#freelancer').click(function(){
+			$('#userType').val('F');
+			$("#signUpForm").submit();
+		});
 		
+		$('#employer').click(function(){
+			$('#userType').val('E');
+			$("#signUpForm").submit();
+		});
 	</script>
     <%-- End Of Content --%>
 </body>

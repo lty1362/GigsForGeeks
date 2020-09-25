@@ -40,7 +40,7 @@ public class SignUpInsertServlet extends HttpServlet {
 	      String userType = request.getParameter("userType");
 	      
 
-	      Member m = new Member(userId, userPwd, email, userType);
+	      Member m = new Member(userId, email, userPwd , userType);
 	      
 	     int result = new MemberService().insertMember(m);
 	      
