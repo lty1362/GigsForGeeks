@@ -25,9 +25,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/common.css">
+    <script src="${contextPath}/resources/js/common.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    	/* 사용자 요청 성공시 alert 메시지 띄워주는 script */
+    	window.onload = function() {
+    		var msg = "${alertMsg}";
+    		
+    		if(msg != "null" && msg != "") {
+    			alert(msg);
+    		}
+    	}
+    </script>
+    <c:remove var="alertMsg" scope="session" />
 </head>
 <body>
     <header id="header">
