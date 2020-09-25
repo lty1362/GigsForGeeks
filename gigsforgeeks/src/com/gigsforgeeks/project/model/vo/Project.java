@@ -6,7 +6,7 @@ public class Project {
 	
 	// Fields
 	private String projectId;
-	/*private String clientId;*/
+	private String clientId;
 	private String requiredSkill;
 	private String projectName;
 	private String description;
@@ -27,13 +27,13 @@ public class Project {
 	
 	// Constructors
 	public Project() {}
-	public Project(String projectId, /* String clientId,*/String requiredSkill, String projectName, String description,
+	public Project(String projectId, String clientId, String requiredSkill, String projectName, String description,
 			String projectStatus, LocalDate expectStart, LocalDate expectEnd, String meansOfPayment, int minBid, int maxBid,
 			LocalDate startBid, LocalDate endBid, int countBid, int averageBid, String winnerId, String winningBid,
 			LocalDate startDate, LocalDate endDate) {
 		super();
 		this.projectId = projectId;
-		/*this.clientId = clientId;*/
+		this.clientId = clientId;
 		this.requiredSkill = requiredSkill;
 		this.projectName = projectName;
 		this.description = description;
@@ -54,9 +54,10 @@ public class Project {
 	}
 	
 	// to call insertProject method
-	public Project(String requiredSkill, String projectName, String description, 
+	public Project(String clientId, String requiredSkill, String projectName, String description, 
 			LocalDate expectStart, LocalDate expectEnd, String meansOfPayment, int minBid, int maxBid, LocalDate endBid) {
 		super();
+		this.clientId = clientId;
 		this.requiredSkill = requiredSkill;
 		this.projectName = projectName;
 		this.description = description;
@@ -81,12 +82,12 @@ public class Project {
 	public void setRequiredSkill(String requiredSkill) {
 		this.requiredSkill = requiredSkill;
 	}
-	/*public String getClientId() {
+	public String getClientId() {
 		return clientId;
 	}
 	public void setClientId(String clientId) {
 		this.clientId = clientId;
-	}*/
+	}
 	public String getProjectName() {
 		return projectName;
 	}
@@ -187,7 +188,7 @@ public class Project {
 	// toString method
 	@Override
 	public String toString() {
-		return "Project [projectId=" + projectId + ", requiredSkill=" + requiredSkill/* + ", clientId=" + clientId*/
+		return "Project [projectId=" + projectId + ", requiredSkill=" + requiredSkill + ", clientId=" + clientId
 				+ ", projectName=" + projectName + ", description=" + description + ", projectStatus=" + projectStatus
 				+ ", expectStart=" + expectStart + ", expectEnd=" + expectEnd + ", meansOfPayment=" + meansOfPayment
 				+ ", minBid=" + minBid + ", MaxBid=" + MaxBid + ", startBid=" + startBid + ", endBid=" + endBid
