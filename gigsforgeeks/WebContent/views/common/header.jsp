@@ -34,7 +34,7 @@
     	<%-- 로고 이미지 --%>
         <a href="${contextPath}"><img src="${contextPath}/resources/images/gigsforgeeks_logo.png" alt="Gigs For Geeks" id="letterMark"></a>
             <%-- 로그인 전에 보여지는 main 시작 --%>
-            <% if(loginUser != null) { %>
+            <% if(loginUser == null) { %>
                 <main id="headerMain">
                     <nav id="headerMainNav">
                         <a href="${contextPath}/views/project/search.jsp">탐색</a>
