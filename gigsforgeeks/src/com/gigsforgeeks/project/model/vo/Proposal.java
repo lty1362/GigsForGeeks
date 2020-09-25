@@ -4,23 +4,27 @@ import java.sql.Date;
 
 public class Proposal {
 	
-	private int proposalNo;			// 작업제안번호
-	private String proposalStatus;	// 입찰승락여부(Y/N)
-	private String proposalInfo;	// 작업제안내용
-	private int proposalPrice;		// 작업제안가
-	private Date proposalStart;		// 입찰작업시작일
-	private Date proposalEnd;		// 입찰작업마감일
+	private int proposalNo;					// 작업제안번호
+	private String proposalProjectId;		// 입찰제안한 프로젝트아이디
+	private String proposalUserId;			// 사용자 회원아이디
+	private String proposalStatus;			// 입찰승락여부(Y/N)
+	private String proposalInfo;			// 작업제안내용
+	private int proposalPrice;				// 작업제안가
+	private Date proposalStart;				// 입찰작업시작일
+	private Date proposalEnd;				// 입찰작업마감일
 	
 	
 	public Proposal() {
 		
 	}
+	
 
-
-	public Proposal(int proposalNo, String proposalStatus, String proposalInfo, int proposalPrice, Date proposalStart,
-			Date proposalEnd) {
+	public Proposal(int proposalNo, String proposalProjectId, String proposalUserId, String proposalStatus,
+			String proposalInfo, int proposalPrice, Date proposalStart, Date proposalEnd) {
 		super();
 		this.proposalNo = proposalNo;
+		this.proposalProjectId = proposalProjectId;
+		this.proposalUserId = proposalUserId;
 		this.proposalStatus = proposalStatus;
 		this.proposalInfo = proposalInfo;
 		this.proposalPrice = proposalPrice;
@@ -28,10 +32,14 @@ public class Proposal {
 		this.proposalEnd = proposalEnd;
 	}
 
-	
 
-	public Proposal(String proposalInfo, int proposalPrice, Date proposalStart, Date proposalEnd) {
+
+	public Proposal(String proposalProjectId, String proposalUserId, String proposalStatus, String proposalInfo,
+			int proposalPrice, Date proposalStart, Date proposalEnd) {
 		super();
+		this.proposalProjectId = proposalProjectId;
+		this.proposalUserId = proposalUserId;
+		this.proposalStatus = proposalStatus;
 		this.proposalInfo = proposalInfo;
 		this.proposalPrice = proposalPrice;
 		this.proposalStart = proposalStart;
@@ -46,6 +54,26 @@ public class Proposal {
 
 	public void setProposalNo(int proposalNo) {
 		this.proposalNo = proposalNo;
+	}
+
+
+	public String getProposalProjectId() {
+		return proposalProjectId;
+	}
+
+
+	public void setProposalProjectId(String proposalProjectId) {
+		this.proposalProjectId = proposalProjectId;
+	}
+
+
+	public String getProposalUserId() {
+		return proposalUserId;
+	}
+
+
+	public void setProposalUserId(String proposalUserId) {
+		this.proposalUserId = proposalUserId;
 	}
 
 
@@ -101,11 +129,11 @@ public class Proposal {
 
 	@Override
 	public String toString() {
-		return "Proposal [proposalNo=" + proposalNo + ", proposalStatus=" + proposalStatus + ", proposalInfo="
-				+ proposalInfo + ", proposalPrice=" + proposalPrice + ", proposalStart=" + proposalStart
-				+ ", proposalEnd=" + proposalEnd + "]";
+		return "Proposal [proposalNo=" + proposalNo + ", proposalProjectId=" + proposalProjectId + ", proposalUserId="
+				+ proposalUserId + ", proposalStatus=" + proposalStatus + ", proposalInfo=" + proposalInfo
+				+ ", proposalPrice=" + proposalPrice + ", proposalStart=" + proposalStart + ", proposalEnd="
+				+ proposalEnd + "]";
 	}
-
 	
 
 }

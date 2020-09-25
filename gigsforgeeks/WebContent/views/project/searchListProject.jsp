@@ -4,14 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>searchListProject</title>
-<link rel= "stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
+	<%-- Header --%>
+	<%@ include file="../../views/common/header.jsp" %>
+	<!-- 필요한 외부 파일은 여기서 불러오세요 -->
+	<link rel= "stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
+	<%-- End Of Header --%>
+	<!-- 페이지의 타이틀을 작성하세요 -->
+	<title>searchListProject</title>
 </head>
 <body>
-
-    <!-- Header  -->
-    <%@ include file="../../views/common/header.jsp" %>
-    <link rel= "stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
     
     <!--  Content  -->
     <main id="contentMain">
@@ -123,8 +124,9 @@
         <!-- <p align="center">일치하는 프로젝트를 찾을 수 없습니다.</p> -->
     </main>	
     
-    <!-- Footer -->
+    <%-- Footer --%>
     <jsp:include page="/views/common/footer.jsp" flush="true"></jsp:include>
+    <%-- End Of Footer --%>
     
 </body>
 </html>

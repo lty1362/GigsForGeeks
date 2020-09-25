@@ -4,19 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>detailproject</title>
+	<%-- Header --%>
+	<%@ include file="../../views/common/header.jsp" %>
+	<!-- 필요한 외부 파일은 여기서 불러오세요 -->
+	<link rel= "stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
+	<%-- End Of Header --%>
+	<!-- 페이지의 타이틀을 작성하세요 -->
+<title>detail</title>
 </head>
 <body>
 
 	<!-- 프로젝트 클릭시 보여지는 프로젝트 상세페이지-->
-       
-     <!-- hedaer -->
-     <%@ include file="../../views/common/header.jsp" %>
-     <link rel= "stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
-     
-       
        <!-- content  -->
-       <Main id="contentMain">
+       <main id="contentMain">
    
            <!-- 프로젝트내의 카테고리 -->
            <div id="deatail_Category">
@@ -66,7 +66,7 @@
    
                    <!-- 프로젝트 입찰견적서 -->
                    <div id="proposal">
-                       <form action="<%= request.getContextPath()%>/proposal.do" method="POST">
+                       <form action="${contextPath}/proposal.do" method="POST">
                            <h3>이 프로젝트에 대한 입찰견적서</h3>
                            <hr>
                            <p>입찰 견적서의 내용을 추가하시면 견적서는 고용주에게로 전달됩니다.</p>
@@ -74,7 +74,7 @@
    
                            <h4>입찰 관련 세부사항</h4>
                            <label>입찰 제안가 : </label>
-                           <input type="number" name="proposalPrice" placeholder="￦금액을 입력해주세요." required> 
+                           <input type="number" name="proposalPrice" placeholder="￦200,000이상 입력해주세요." min="200000" required> 
                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                            <label>이 프로젝트의 작업 예상기간 : </label>
                            <input type="date" name="proposalDate" placeholder="날짜를 입력해주세요.">
@@ -101,7 +101,6 @@
                            <label for="membership1">멤버십 추가</label>
                            <input type="radio" name="addmembership" id="membership2"> 
                            <label for="membership2">멤버십 추가안함</label>
-                           </form>
 
                            <br>
                            <button type="submit" id="submitBtn" class="btn btn-outline-info">프로젝트 내용 제출하기</button>
@@ -153,7 +152,8 @@
            </div>
        </main>   
       
-       <!-- footer -->
-       <jsp:include page="/views/common/footer.jsp" flush="true"></jsp:include>
+    <%-- Footer --%>
+    <jsp:include page="/views/common/footer.jsp" flush="true"></jsp:include>
+    <%-- End Of Footer --%>
 </body>
 </html>
