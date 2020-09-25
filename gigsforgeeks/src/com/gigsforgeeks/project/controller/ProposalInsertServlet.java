@@ -35,13 +35,15 @@ public class ProposalInsertServlet extends HttpServlet {
 		// 사용자가 프로젝트 입찰견적서 입력시 실행될 서블릿
 	
 		request.setCharacterEncoding("utf-8");
-				
-		int proposalPrice = Integer.parseInt(request.getParameter("proposalPrice"));			// 사용자가 입력한 제안가격
-		Date proposalStart = java.sql.Date.valueOf(request.getParameter("proposalDate"));		// 사용자가 입력한 작업시작일
-		Date proposalEnd = java.sql.Date.valueOf(request.getParameter("proposalDate"));			// 사용자가 입력한 작업마감일
-		String proposalInfo = request.getParameter("proposalInfo");								// 사용자가 입력한 제안내용
 		
-		Proposal proposal = new Proposal(proposalInfo, proposalPrice, proposalStart, proposalEnd);
+		String proposalProjectId = request.getParameter("projectId");							// 프로젝트 아이디
+		String proposalUserId = request.getParameter("loginUser");								// 사용자 회원아이디
+		String proposalInfo = request.getParameter("proposalInfo");								// 사용자가 입력한 제안내용
+		int proposalPrice = Integer.parseInt(request.getParameter("proposalPrice"));			// 사용자가 입력한 제안가격
+		Date proposalStart =java.sql.Date.valueOf(request.getParameter("proposalStart"));		// 사용자가 입력한 작업시작일
+		Date proposalEnd = java.sql.Date.valueOf(request.getParameter("proposalEnd"));			// 사용자가 입력한 작업마감일
+		
+		Proposal proposal = new Proposal(proposalProjectId, proposalUserId, proposalInfo, proposalInfo, proposalPrice, proposalStart, proposalEnd);
 		
 		int result = new ProjectService().insertProposal(proposal);
 		

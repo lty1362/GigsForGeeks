@@ -39,31 +39,31 @@
 						프로젝트를 가장 잘 설명할 수 있는 기술 항목 최대를 5건까지 입력하세요. <br>
 	                    각 프리랜서는 이 기술 항목을 이용해 자신이 관심을 갖고있거나 전문 기술이 있는 프로젝트를 검색합니다. <br>
 					</p>
-					<input type="checkbox" name="requriedSkill" id="java" value="Java" required>
+					<input type="checkbox" name="requriedSkill" id="java" value="Java">
 					<label for="java">JAVA</label>
-					<input type="checkbox" name="requriedSkill" id="python" value="PYTHON" required>
+					<input type="checkbox" name="requriedSkill" id="python" value="PYTHON">
 					<label for="python">PYTHON</label>
-					<input type="checkbox" name="requriedSkill" id="php" value="PHP" required>
+					<input type="checkbox" name="requriedSkill" id="php" value="PHP">
 					<label for="php">PHP</label>
-					<input type="checkbox" name="requriedSkill" id="javascript" value="JavaScript" required>
+					<input type="checkbox" name="requriedSkill" id="javascript" value="JavaScript">
 					<label for="javascript">JavaScript</label>
-					<input type="checkbox" name="requriedSkill" id="nodejs" value="Node.js" required>
+					<input type="checkbox" name="requriedSkill" id="nodejs" value="Node.js">
 					<label for="nodejs">Node.js</label>
-					<input type="checkbox" name="requriedSkill" id="apache" value="Apache" required>
+					<input type="checkbox" name="requriedSkill" id="apache" value="Apache">
 					<label for="apache">Apache</label>
-					<input type="checkbox" name="requriedSkill" id="nginx" value="Nginx" required>
+					<input type="checkbox" name="requriedSkill" id="nginx" value="Nginx">
 					<label for="nginx">Nginx</label>
-					<input type="checkbox" name="requriedSkill" id="tomcat" value="Tomcat" required>
+					<input type="checkbox" name="requriedSkill" id="tomcat" value="Tomcat">
 					<label for="tomcat">Tomcat</label>
-					<input type="checkbox" name="requriedSkill" id="iis" value="IIS" required>
+					<input type="checkbox" name="requriedSkill" id="iis" value="IIS">
 					<label for="iis">IIS</label>
-					<input type="checkbox" name="requriedSkill" id="sql" value="SQL" required>
+					<input type="checkbox" name="requriedSkill" id="sql" value="SQL">
 					<label for="sql">SQL</label>
-					<input type="checkbox" name="requriedSkill" id="nosql" value="NoSQL" required>
+					<input type="checkbox" name="requriedSkill" id="nosql" value="NoSQL">
 					<label for="nosql">NoSQL</label>
-					<input type="checkbox" name="requriedSkill" id="aws" value="AWS" required>
+					<input type="checkbox" name="requriedSkill" id="aws" value="AWS">
 					<label for="aws">AWS</label>
-					<input type="checkbox" name="requriedSkill" id="azure" value="Azure" required>
+					<input type="checkbox" name="requriedSkill" id="azure" value="Azure">
 					<label for="azure">Azure</label>
 				</section>
 				<section>

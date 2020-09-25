@@ -54,6 +54,8 @@
 	  INTO PROPOSAL
 	  (
 	      PROPOSAL_NO
+	    , PROJECT_ID
+	    , USER_ID
 	    , PROPOSAL_INFO
 	    , PROPOSAL_PRICE
 	    , PROPOSAL_START
@@ -66,7 +68,9 @@
 	    , ?
 	    , ?
 	    , ?
-	  );
+	    , ?
+	    , ?
+	  )
 	</entry>
 	
 </properties>
