@@ -41,6 +41,30 @@
 					</p>
 					<input type="checkbox" name="requriedSkill" id="java" value="Java" required>
 					<label for="java">JAVA</label>
+					<input type="checkbox" name="requriedSkill" id="python" value="PYTHON" required>
+					<label for="python">PYTHON</label>
+					<input type="checkbox" name="requriedSkill" id="php" value="PHP" required>
+					<label for="php">PHP</label>
+					<input type="checkbox" name="requriedSkill" id="javascript" value="JavaScript" required>
+					<label for="javascript">JavaScript</label>
+					<input type="checkbox" name="requriedSkill" id="nodejs" value="Node.js" required>
+					<label for="nodejs">Node.js</label>
+					<input type="checkbox" name="requriedSkill" id="apache" value="Apache" required>
+					<label for="apache">Apache</label>
+					<input type="checkbox" name="requriedSkill" id="nginx" value="Nginx" required>
+					<label for="nginx">Nginx</label>
+					<input type="checkbox" name="requriedSkill" id="tomcat" value="Tomcat" required>
+					<label for="tomcat">Tomcat</label>
+					<input type="checkbox" name="requriedSkill" id="iis" value="IIS" required>
+					<label for="iis">IIS</label>
+					<input type="checkbox" name="requriedSkill" id="sql" value="SQL" required>
+					<label for="sql">SQL</label>
+					<input type="checkbox" name="requriedSkill" id="nosql" value="NoSQL" required>
+					<label for="nosql">NoSQL</label>
+					<input type="checkbox" name="requriedSkill" id="aws" value="AWS" required>
+					<label for="aws">AWS</label>
+					<input type="checkbox" name="requriedSkill" id="azure" value="Azure" required>
+					<label for="azure">Azure</label>
 				</section>
 				<section>
 					<p>지불 수단과 예상 금액을 말씀해주세요.</p>
@@ -50,6 +74,9 @@
 					<label for="account">계좌이체</label>
 					<select name="bidding">
 						<option value="2000000-5000000">대형 프로젝트 (2,000,000₩~5,000,000₩)</option>
+						<option value="1000000-2000000">중형 프로젝트 (1,000,000₩~2,000,000₩)</option>
+						<option value="500000-1000000">소형 프로젝트 (500,000₩~1,000,000₩)</option>
+						<option value="200000-500000">초소형 프로젝트 (200,000₩~500,000₩)</option>
 					</select>
 				</section>
 				<section>
