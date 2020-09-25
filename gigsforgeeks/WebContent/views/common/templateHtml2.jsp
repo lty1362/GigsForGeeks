@@ -10,7 +10,7 @@
 	<%-- Header --%>
 	<%@ include file="../../views/common/header2.jsp" %>
 	<!-- 필요한 외부 파일은 여기서 불러오세요 -->
-	<link rel= "stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
+	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
 	<%-- End Of Header --%>
 	<!-- 페이지의 타이틀을 작성하세요 -->
 	<title>Insert title here</title>
