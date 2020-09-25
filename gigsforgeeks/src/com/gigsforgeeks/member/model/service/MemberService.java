@@ -75,4 +75,19 @@ close(conn);
 		   
 		   return result;
 	}
+
+	/**
+	 * 2_1. 아이디 중복검사
+	 * @param checkId
+	 * @return
+	 */
+	public int idCheck(String checkId) {
+		Connection conn = getConnection();
+		
+		int count = new MemberDAO().idCheck(conn, checkId);
+		
+		close(conn);
+		
+		return count;
+	}
 }

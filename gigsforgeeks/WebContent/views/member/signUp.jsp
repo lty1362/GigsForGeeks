@@ -10,7 +10,6 @@
 	<%-- Header --%>
 	<%@ include file="../../views/common/header2.jsp" %>
 	<!-- 필요한 외부 파일은 여기서 불러오세요 -->
-	<link rel= "stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/member.css">
 	<%-- End Of Header --%>
 	<!-- 페이지의 타이틀을 작성하세요 -->
@@ -23,7 +22,7 @@
         <div class="signUpArea">
         <!-- 1. 회원가입 form-->
             <form id="signUpForm" action="<%= request.getContextPath()%>/insert.me" method="post">
-            <br><br>
+            <br><br><br><br><br><br>
             <input type="hidden" name="userType" id="userType" value="">
             <table>
                 <tr>
@@ -35,7 +34,7 @@
                 <tr>
                     <td>
                         <input type="text" id="userId" name="userId" required placeholder="사용할 아이디 입력">
-                        <a type="button" class="btn btn-outline-info" id="btn">중복확인</a>
+                        <button type="button" class="btn btn-outline-info" name="checkId" onclick="idCheck();">중복확인</button>
                     </td> 
                 </tr>
                 <tr>
@@ -45,13 +44,13 @@
                     <td><input type="password" id="userPwd" name="userPwd" maxlength="15" required placeholder="비밀번호를 입력"></td> 
                 </tr>
                 <tr>
-                    <td> <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#userTypeForm">회원가입</button></td>
+                    <td> <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#userTypeForm" id="sigbtn" disabled>회원가입</button></td>
                 </tr>
                 <tr>
                     <td>
                         <div class="modal-footer">
                             <p>이미  계정을 가지고 계십니까?</p>
-                            <a href="">로그인</a>
+                            <a href="${contextPath}/views/member/login.jsp">로그인</a>
                           </div>
                     </td>
                 </tr>
@@ -108,6 +107,7 @@
 	</div>
 	
 	<script>
+	  	/*계정유형*/
 		$('#freelancer').click(function(){
 			$('#userType').val('F');
 			$("#signUpForm").submit();
@@ -117,6 +117,40 @@
 			$('#userType').val('E');
 			$("#signUpForm").submit();
 		});
+		
+		/*아이디중복확인*/
+		function idCheck(){
+    		
+    		var $userId = $("#signUpForm input[name=userId]");
+    		
+    		$.ajax({
+    			url:"${contextPath}/idCheck.me",
+    			data:{checkId:$userId.val()},
+    			type:"get",
+    			success:function(result){
+    				console.log(result);
+    				
+    				if(result == "fail"){ 
+
+    					alert("이미 존재하는아이디입니다.");
+    					$userId.focus();
+    					
+    				}else{ 
+
+    					if(confirm("사용가능한 아이디입니다. 사용하시겠습니까?")){
+    						
+    						$userId.attr("readonly", true); 
+    						$("#sigbtn").removeAttr("disabled");
+    						
+    					}else{
+    						$userId.focus();
+    					}
+    				}
+    			}, error:function(){
+    				console.log("실패!ㅜ-ㅜ");
+    			}
+    		});
+    	}
 	</script>
     <%-- End Of Content --%>
 </body>
