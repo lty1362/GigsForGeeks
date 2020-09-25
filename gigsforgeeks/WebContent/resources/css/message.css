@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+div{
+/*border: 1px solid green;*/
+box-sizing: border-box;
+}
+
+#content{
+	width: 100%;
+	height: 1000px;
+	margin: auto;
+ }
+
+/*content*/
+#content>div{
+	height: 100%;
+	float: left;
+	padding: 5px;
+}
+#con{width: 15%;}
+#main{width: 85%;}
+#main>#cont{
+	width: 100%;
+	height: 100%;
+}
+#content_2{height: 12%;}
+#content_3{height: 88%;}
+
+/*검색창*/
+#content_2 #search_text{margin:55px 0px 5px 200px;}
+#content_2 #search_btn1{margin-top:50px;}
+#content_2 #search_btn2{margin-top:50px;margin-left:180px;}
+
+#search_form{
+    width: 100%;
+    height: 40%;
+    margin: auto;
+    padding: 10px;
+}
+
+#search_form>div{
+    height: 100%;
+    float: left;
+}
+#search_text{width: 40%;}
+#search_btn1{width: 8%;padding: 5px 5px 15px 5px;}
+#search_btn2{width: 25%;padding: 5px 5px 15px 5px;}
+
+#search_text input{
+	width: 10%;
+    height: 5%;
+}
+#search_form input{
+    width: 100%;
+    height: 100%;
+}
+#search_btn1 #btn1{
+    margin: auto;
+    font-size: 12px;
+    width: 110px;
+    height: 35px;
+}
+#search_btn2 #btn2{
+    margin: auto;
+    font-size: 12px;
+    width: 80px;
+    height: 35px;
+}
+
+/*메뉴바*/
+#content_1>div{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top:55px;
+}
+
+ #content_1 a{
+    text-decoration: none;
+    color:rgb(48, 171, 202);
+    font-size: 18px;
+    font-weight: 700;
+    height: 100%;
+    display: block;
+    line-height: 35px;
+}
+#content_1 a:hover{
+    color: #0f4c75;
+}
+
+/*전체메세지*/
+.messageFull{
+   border:1px solid white;
+   text-align:center;
+   width: 100%;
+   height: 80%;
+}
+.messageFull>tbody>tr:hover{
+   cursor:pointer;
+   background:gray;
+}

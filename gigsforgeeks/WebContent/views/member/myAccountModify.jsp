@@ -112,7 +112,7 @@
                 졸업 : <input type="month"></span>
                 <br><br>
                 졸업여부 : <input type="checkbox">
-            <div id="educationModifiy" name="educationModifiy"><button type="submit">저장</button></div>
+            <div id="educationModifiy" ><button type="submit">저장</button></div>
 
         </div>
 
