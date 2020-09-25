@@ -1,54 +1,54 @@
 package com.gigsforgeeks.member.model.vo;
 
 public class Certificate {
-	private int cartificateNumber;		//자격증 번호
-	private String cartificateName;	    //자격증 이름
-	private String cartificateAuth;	    //주최기관
-	private String cartificateDate;     //취득년도
+	private int cetificateNumber;		//자격증 번호
+	private String cetificateName;	    //자격증 이름
+	private String cetificateAuth;	    //주최기관
+	private String cetificateDate;     //취득년도
 	private String userId;			    //회원아이디
 	
 	public Certificate() {}
 
-	public Certificate(int cartificateNumber, String cartificateName, String cartificateAuth, String cartificateDate,
+	public Certificate(int cetificateNumber, String cetificateName, String cetificateAuth, String cetificateDate,
 			String userId) {
 		super();
-		this.cartificateNumber = cartificateNumber;
-		this.cartificateName = cartificateName;
-		this.cartificateAuth = cartificateAuth;
-		this.cartificateDate = cartificateDate;
+		this.cetificateNumber = cetificateNumber;
+		this.cetificateName = cetificateName;
+		this.cetificateAuth = cetificateAuth;
+		this.cetificateDate = cetificateDate;
 		this.userId = userId;
 	}
 
-	public int getCartificateNumber() {
-		return cartificateNumber;
+	public int getcetificateNumber() {
+		return cetificateNumber;
 	}
 
-	public void setCartificateNumber(int cartificateNumber) {
-		this.cartificateNumber = cartificateNumber;
+	public void setcetificateNumber(int cetificateNumber) {
+		this.cetificateNumber = cetificateNumber;
 	}
 
-	public String getCartificateName() {
-		return cartificateName;
+	public String getcetificateName() {
+		return cetificateName;
 	}
 
-	public void setCartificateName(String cartificateName) {
-		this.cartificateName = cartificateName;
+	public void setcetificateName(String cetificateName) {
+		this.cetificateName = cetificateName;
 	}
 
-	public String getCartificateAuth() {
-		return cartificateAuth;
+	public String getcetificateAuth() {
+		return cetificateAuth;
 	}
 
-	public void setCartificateAuth(String cartificateAuth) {
-		this.cartificateAuth = cartificateAuth;
+	public void setcetificateAuth(String cetificateAuth) {
+		this.cetificateAuth = cetificateAuth;
 	}
 
-	public String getCartificateDate() {
-		return cartificateDate;
+	public String getcetificateDate() {
+		return cetificateDate;
 	}
 
-	public void setCartificateDate(String cartificateDate) {
-		this.cartificateDate = cartificateDate;
+	public void setcetificateDate(String cetificateDate) {
+		this.cetificateDate = cetificateDate;
 	}
 
 	public String getUserId() {
@@ -61,8 +61,8 @@ public class Certificate {
 
 	@Override
 	public String toString() {
-		return "Certificate [cartificateNumber=" + cartificateNumber + ", cartificateName=" + cartificateName
-				+ ", cartificateAuth=" + cartificateAuth + ", cartificateDate=" + cartificateDate + ", userId=" + userId
+		return "Certificate [cetificateNumber=" + cetificateNumber + ", cetificateName=" + cetificateName
+				+ ", cetificateAuth=" + cetificateAuth + ", cetificateDate=" + cetificateDate + ", userId=" + userId
 				+ "]";
 	}
 	
