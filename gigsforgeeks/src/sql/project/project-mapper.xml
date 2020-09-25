@@ -6,6 +6,7 @@
 		  INTO PROJECT
 		  (
 		   PROJECT_ID,
+		   CLIENT_ID,
 		   REQUIRED_SKILL,
 		   PROJECT_NAME,
 		   DESCRIPTION,
@@ -27,6 +28,7 @@
 		  VALUES
 		  (
 		    SEQ_PNO.NEXTVAL,
+		    ?,
 		    ?,
 		    ?,
 		    ?,

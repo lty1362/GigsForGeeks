@@ -43,18 +43,17 @@ public class ProjectDAO {
 		
 		try {
 			statement = connection.prepareStatement(sql);
-			statement.setString(1, project.getRequiredSkill());
-			statement.setString(2, project.getProjectName());
-			statement.setString(3, project.getDescription());
-			statement.setDate(4, java.sql.Date.valueOf(project.getExpectStart()));
-			statement.setDate(5, java.sql.Date.valueOf(project.getExpectEnd()));
-			statement.setString(6, project.getMeansOfPayment());
-			statement.setInt(7, project.getMinBid());
-			statement.setInt(8, project.getMaxBid());
-			statement.setDate(9, java.sql.Date.valueOf(project.getEndBid()));
-			System.out.println(project.getExpectStart());
-			System.out.println(project.getMeansOfPayment());
-			System.out.println(statement);
+			statement.setString(1, project.getClientId());
+			statement.setString(2, project.getRequiredSkill());
+			statement.setString(3, project.getProjectName());
+			statement.setString(4, project.getDescription());
+			statement.setDate(5, java.sql.Date.valueOf(project.getExpectStart()));
+			statement.setDate(6, java.sql.Date.valueOf(project.getExpectEnd()));
+			statement.setString(7, project.getMeansOfPayment());
+			statement.setInt(8, project.getMinBid());
+			statement.setInt(9, project.getMaxBid());
+			statement.setDate(10, java.sql.Date.valueOf(project.getEndBid()));
+			System.out.println(statement); // test code
 			result = statement.executeUpdate();
 			
 		} catch (SQLException e) {
