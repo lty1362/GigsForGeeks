@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.project.model.service.ProjectService;
 import com.gigsforgeeks.project.model.vo.Project;
 
@@ -32,8 +33,11 @@ public class PostProjectServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
-		int test = Integer.parseInt("123");
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		System.out.println(loginUser);
 		
+		String clientId = loginUser.getUserId();
 		String requriedSkill = request.getParameter("requriedSkill");
 		String projectName = request.getParameter("projectName");
 		String description = request.getParameter("description");
@@ -49,7 +53,8 @@ public class PostProjectServlet extends HttpServlet {
 		
 		Project project = null;
 		try {
-			project = new Project(requriedSkill,
+			project = new Project(clientId,
+								  requriedSkill,
 								  projectName,
 								  description,
 								  expectStart,
@@ -65,7 +70,6 @@ public class PostProjectServlet extends HttpServlet {
 		
 		int result = new ProjectService().insertProject(project);
 		if(result > 0) {
-			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "프로젝트가 성공적으로 등록되었습니다.");
 			response.sendRedirect(request.getContextPath());
 			
