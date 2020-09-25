@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="insertProposal">
+	INSERT
+	  INTO PROPOSAL
+	  (
+	      PROPOSAL_NO
+	    , PROJECT_ID
+	    , USER_ID
+	    , PROPOSAL_INFO
+	    , PROPOSAL_PRICE
+	    , PROPOSAL_START
+	    , PROPOSAL_END
+	  )
+	VALUES
+	  (
+	      SEQ_PNO.NEXTVAL
+	    , ?
+	    , ?
+	    , ?
+	    , ?
+	    , ?
+	    , ?
+	  )
+	</entry>
+
+</properties>

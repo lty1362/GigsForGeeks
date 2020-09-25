@@ -1,6 +1,6 @@
 package com.gigsforgeeks.project.model.vo;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Proposal {
 	
@@ -10,17 +10,17 @@ public class Proposal {
 	private String proposalStatus;			// 입찰승락여부(Y/N)
 	private String proposalInfo;			// 작업제안내용
 	private int proposalPrice;				// 작업제안가
-	private Date proposalStart;				// 입찰작업시작일
-	private Date proposalEnd;				// 입찰작업마감일
+	private LocalDate proposalStart;				// 입찰작업시작일
+	private LocalDate proposalEnd;				// 입찰작업마감일
 	
 	
 	public Proposal() {
 		
 	}
-	
 
+	
 	public Proposal(int proposalNo, String proposalProjectId, String proposalUserId, String proposalStatus,
-			String proposalInfo, int proposalPrice, Date proposalStart, Date proposalEnd) {
+			String proposalInfo, int proposalPrice, LocalDate proposalStart, LocalDate proposalEnd) {
 		super();
 		this.proposalNo = proposalNo;
 		this.proposalProjectId = proposalProjectId;
@@ -33,13 +33,11 @@ public class Proposal {
 	}
 
 
-
-	public Proposal(String proposalProjectId, String proposalUserId, String proposalStatus, String proposalInfo,
-			int proposalPrice, Date proposalStart, Date proposalEnd) {
+	public Proposal(String proposalProjectId, String proposalUserId, String proposalInfo, int proposalPrice,
+			LocalDate proposalStart, LocalDate proposalEnd) {
 		super();
 		this.proposalProjectId = proposalProjectId;
 		this.proposalUserId = proposalUserId;
-		this.proposalStatus = proposalStatus;
 		this.proposalInfo = proposalInfo;
 		this.proposalPrice = proposalPrice;
 		this.proposalStart = proposalStart;
@@ -107,22 +105,22 @@ public class Proposal {
 	}
 
 
-	public Date getProposalStart() {
+	public LocalDate getProposalStart() {
 		return proposalStart;
 	}
 
 
-	public void setProposalStart(Date proposalStart) {
+	public void setProposalStart(LocalDate proposalStart) {
 		this.proposalStart = proposalStart;
 	}
 
 
-	public Date getProposalEnd() {
+	public LocalDate getProposalEnd() {
 		return proposalEnd;
 	}
 
 
-	public void setProposalEnd(Date proposalEnd) {
+	public void setProposalEnd(LocalDate proposalEnd) {
 		this.proposalEnd = proposalEnd;
 	}
 
@@ -134,6 +132,8 @@ public class Proposal {
 				+ ", proposalPrice=" + proposalPrice + ", proposalStart=" + proposalStart + ", proposalEnd="
 				+ proposalEnd + "]";
 	}
+
+
 	
 
 }
