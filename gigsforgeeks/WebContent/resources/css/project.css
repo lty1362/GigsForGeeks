@@ -8,14 +8,10 @@
     font-style: normal;
 }
 
-/* post 시작 */
-
-#postForm>p{
-    font-size: large;
-    font-weight: bold;
+/* Post Project */
+.projectForm section {
+	margin-bottom: 1em;
 }
-
-
 
 /* detailProject 시작 */
 
