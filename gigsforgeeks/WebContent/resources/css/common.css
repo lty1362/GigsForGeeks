@@ -8,8 +8,17 @@
     font-style: normal;
 }
 
-body {
+html, body {
 	font-family: 'Cafe24Simplehae', 'sans-serif';
+}
+
+/* Form */
+input[type=password] {
+	font-family: "sans-serif";
+}
+
+input::placeholder {
+	font-family: "Cafe24Simplehae"; 
 }
 
 /* Header */
