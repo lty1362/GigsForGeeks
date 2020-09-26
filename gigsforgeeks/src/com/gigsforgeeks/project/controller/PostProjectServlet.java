@@ -42,7 +42,7 @@ public class PostProjectServlet extends HttpServlet {
 			System.out.println(userId);
 			
 			String clientId = userId;
-			String requriedSkill = request.getParameter("requriedSkill");
+			String[] requriedSkills = request.getParameterValues("requriedSkill");
 			String projectName = request.getParameter("projectName");
 			String description = request.getParameter("description");
 			LocalDate expectStart = LocalDate.parse(request.getParameter("expectStart"), formatter);
@@ -51,6 +51,8 @@ public class PostProjectServlet extends HttpServlet {
 			String bidding = request.getParameter("bidding");
 			LocalDate endBid = LocalDate.parse(request.getParameter("endBid"), formatter);
 			
+			String requriedSkill = String.join(",", requriedSkills);
+			
 			String[] splitBid = bidding.split("-");
 			String minBid = splitBid[0];
 			String maxBid = splitBid[1];
@@ -58,15 +60,15 @@ public class PostProjectServlet extends HttpServlet {
 			Project project = null;
 			try {
 				project = new Project(clientId,
-						requriedSkill,
-						projectName,
-						description,
-						expectStart,
-						expectEnd,
-						meansOfPayment,
-						Integer.parseInt(minBid),
-						Integer.parseInt(maxBid),
-						endBid);
+									  requriedSkill,
+									  projectName,
+									  description,
+									  expectStart,
+									  expectEnd,
+									  meansOfPayment,
+									  Integer.parseInt(minBid),
+									  Integer.parseInt(maxBid),
+									  endBid);
 				
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
