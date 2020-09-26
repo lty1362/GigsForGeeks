@@ -32,8 +32,8 @@ public class ProjectDAO {
 	/**
 	 * 1. 프로젝트 등록 DAO
 	 * 
-	 * @param project       사용자로부터 전달받은 프로젝트 객체
 	 * @param connection    Service로부터 받은 DB Connection 객체
+	 * @param project       사용자로부터 전달받은 프로젝트 객체
 	 * @return              사용자가 요청한 프로젝트 객체 등록 성공/실패 여부
 	 */
 	public int insertProject(Connection connection, Project project) {
@@ -55,7 +55,7 @@ public class ProjectDAO {
 			statement.setInt(8, project.getMinBid());
 			statement.setInt(9, project.getMaxBid());
 			statement.setDate(10, java.sql.Date.valueOf(project.getEndBid()));
-			System.out.println(statement); // test code
+			// System.out.println(statement); // test code
 			result = statement.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -73,9 +73,9 @@ public class ProjectDAO {
 	/**
 	 * 2. 내 프로젝트 조회 DAO
 	 * 
-	 * @param con
-	 * @param userId
-	 * @return
+	 * @param con       Service로부터 받은 DB Connection 객체
+	 * @param userId    현재 로그인한 사용자 아이디
+	 * @return          해당 사용자의 등록/진행 프로젝트 목록
 	 */
 	public ArrayList<Project> selectMyProject(Connection con, String userId) {
 		

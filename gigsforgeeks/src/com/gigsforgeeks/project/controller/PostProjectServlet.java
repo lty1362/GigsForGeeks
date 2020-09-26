@@ -38,10 +38,7 @@ public class PostProjectServlet extends HttpServlet {
 		
 		if(loginUser != null) {
 			
-			String userId = loginUser.getUserId();
-			System.out.println(userId);
-			
-			String clientId = userId;
+			String clientId = loginUser.getUserId();
 			String[] requriedSkills = request.getParameterValues("requriedSkill");
 			String projectName = request.getParameter("projectName");
 			String description = request.getParameter("description");
