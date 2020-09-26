@@ -5,16 +5,19 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import static com.gigsforgeeks.common.JDBCTemplate.*;
 import com.gigsforgeeks.project.model.vo.Project;
-import com.gigsforgeeks.project.model.vo.Proposal;
 
 public class ProjectDAO {
 	
 	private Properties properties = new Properties();
 	
+	/**
+	 * 외부 Properties에 담긴 SQL문을 필요한 메서드에서 꺼내쓸 수 있게 하는 DAO 생성자
+	 */
 	public ProjectDAO() {
 		
 		String fileName = ProjectDAO.class.getResource("/sql/project/project-mapper.xml").getPath();
@@ -27,14 +30,13 @@ public class ProjectDAO {
 	}
 	
 	/**
-	 * 사용자로부터 등록할 프로젝트의 정보를 전달받아서 
-	 * 해당 프로젝트 정보를 DB에 등록하고 성공 여부를 반환하는 메서드
+	 * 1. 프로젝트 등록 DAO
 	 * 
-	 * @param project 클라이언트 서버의 사용자로부터 전달받은 프로젝트 객체
-	 * @param connection Service 클래스로부터 받은 DB서버와의 Connection 객체
-	 * @return 클라이언트 서버가 요청한 프로젝트 객체 DB서버 등록 성공여부
+	 * @param project       사용자로부터 전달받은 프로젝트 객체
+	 * @param connection    Service로부터 받은 DB Connection 객체
+	 * @return              사용자가 요청한 프로젝트 객체 등록 성공/실패 여부
 	 */
-	public int insertProject(Project project, Connection connection) {
+	public int insertProject(Connection connection, Project project) {
 		
 		int result = 0;
 		
@@ -67,37 +69,22 @@ public class ProjectDAO {
 		return result;
 		
 	}
-
 	
 	/**
-	 * 사용자에게서 전달받은 입찰견적서 제안내용
+	 * 2. 내 프로젝트 조회 DAO
+	 * 
+	 * @param con
+	 * @param userId
+	 * @return
 	 */
-	public int insertProposal(Connection conn, Proposal proposal) {
+	public ArrayList<Project> selectMyProject(Connection con, String userId) {
 		
-		int result = 0;
+		ArrayList<Project> myProject = null;
 		
-		PreparedStatement pstmt = null;
-		String sql = properties.getProperty("insertProposal");
 		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, proposal.getProposalInfo());
-			pstmt.setInt(2, proposal.getProposalPrice());
-			pstmt.setDate(3, proposal.getProposalStart());
-			pstmt.setDate(4, proposal.getProposalEnd());
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
 		
-		return result;
+		return myProject;
 		
 	}
-	
 	
 }
