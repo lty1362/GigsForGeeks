@@ -1,10 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.gigsforgeeks.member.model.vo.Member" %>
+<%
+	Member loginUser = (Member)session.getAttribute("loginUser");
+	// > 로그인 전 : null
+	// > 로그인 후 : 로그인성공한 회원정보들이 담겨있는 객체
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>관리자 회원 조회 페이지</title>
+	<meta charset="UTF-8">
+	<title>관리자 회원 조회 페이지</title>
+	
 
 	<!-- SelectMember 추가영역 -->
     <style>
@@ -121,41 +129,21 @@
 	                </tr>
 	            </thead>
 	            <tbody>
+	            	<%-- <% if(list.isEmpty()){ %>
+	            	<tr>
+	            		<td colspan="6">조회된 리스트가 없습니다.</td>
+	            	</tr>
+	            	<% }else { %>
+            			<% for(Member m : list) { %> --%>
 	                <tr>
-	                    <td>5</td>
-	                    <td>user999</td>
-	                    <td>user999@gmail.com</td>
-	                    <td>2020.01.01</td>
+	                    <td>1</td> <!-- 회원No 컬럼없어서 자바문으로 만들어줘야할듯! -->
+	                    <td><%= loginUser.getUserId() %></td>
+	                    <td><%= loginUser.getUserEmail() %></td>
+	                    <td><%= loginUser.getEnrollDate() %></td>
 	                    <td><button type="button" class="btn btn-success">상세보기</button></td>
 	                </tr>
-	                <tr>
-	                    <td>4</td>
-	                    <td>user950</td>
-	                    <td>user959@gmail.com</td>
-	                    <td>2020.01.01</td>
-	                    <td><button type="button" class="btn btn-success">상세보기</button></td>
-	                </tr>
-	                <tr>
-	                    <td>3</td>
-	                    <td>user900</td>
-	                    <td>user950@gmail.com</td>
-	                    <td>2020.01.01</td>
-	                    <td><button type="button" class="btn btn-success">상세보기</button></td>
-	                </tr>
-	                <tr>
-	                    <td>2</td>
-	                    <td>user800</td>
-	                    <td>user800@gmail.com</td>
-	                    <td>2020.01.01</td>
-	                    <td><button type="button" class="btn btn-success">상세보기</button></td>
-	                </tr>
-	                <tr>
-	                    <td>1</td>
-	                    <td>user700</td>
-	                    <td>user700@gmail.com</td>
-	                    <td>2020.01.01</td>
-	                    <td><button type="button" class="btn btn-success">상세보기</button></td>
-	                </tr>
+		               <%--  <% } %>
+	            	<% } %> --%>
 	            </tbody>
 	        </table>
 	
