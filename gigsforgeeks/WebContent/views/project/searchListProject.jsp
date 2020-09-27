@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<%-- Header --%>
 	<%@ include file="../../views/common/header.jsp" %>
 	<!-- 필요한 외부 파일은 여기서 불러오세요 -->
@@ -26,8 +26,8 @@
                     <div class="feelter_main">우수 프리랜서</div>
                     <br>
              
-                    <div>
-                        <h4>기술 :</h4>
+                    <div id="feelter_sub">
+                        <p>기술 :</p>
                         <input type="checkbox" name="requiredSkill" id="JAVA">
                         <label for="Java">JAVA</label>
                         <input type="checkbox" name="requiredSkill" id="PHP">
@@ -51,10 +51,8 @@
                         <input type="checkbox" name="requiredSkill" id="WordPress">
                         <label for="WordPress">WordPress</label>
                         <label for="etc">기타</label>
-                    </div>
-                    <br>
-
-                    <div id="feelter_sub">
+                        
+                    <br><br>
                         <p>프로젝트 가격대</p>
                         <select name="payProject">
 	                        <option value="2000000-5000000">대형 프로젝트 (2,000,000₩~5,000,000₩)</option>
@@ -64,7 +62,7 @@
                         </select>
                         
                         <br><br><br>
-                        <label>지역 : </label>
+                        <label><b>지역 : </b></label>
                         <select name="location">
                             <option value="selectNo">선택안함</option>
                             <option value="seoul">서울특별시</option>
@@ -84,8 +82,9 @@
             <!-- 검색필터 적용시 보이는 프로젝트 목록 -->
             <div id="searchProjectList">
                 <form action="" method="POST">
-                    <input type="text" name="search" placeholder="프로젝트 검색" style="width:500px; height:18px;">
-                    <button type="button" class="btn">검색</button>
+                    <input type="text" name="search" placeholder="프로젝트 검색" style="width:500px; height:40px;">
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-outline-info">검색</button>
                     
                     <!-- 넣을지 안넣을지 고민중
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -97,14 +96,14 @@
                                 <option value="time">시간순</option>
                              </select>
                       -->
-                    <br><br>
+                    <br>
                     <hr>
                 </form>
 
                 <br>
                 <div id="searchprojectList">
                     <label id="projectTitle">프로젝트명1</label> 
-                    <label id="price">700,000￦ - 2,000,000￦</label><br>
+                    <label id="price">700,000￦ - 2,000,000￦</label><br><br>
                     <p>
 			                        내 웹사이트에 두 가지 기능을 추가해야 하는데, 
 			                        하나는 고객이 체육관을 위한 평면도를 만들 수 있는 페이지를 만드는 것이다.
@@ -126,9 +125,14 @@
         <!-- <p align="center">일치하는 프로젝트를 찾을 수 없습니다.</p> -->
     </main>	
     
+    
+    <br style="clear:both"><br><br><br><br><br><br>
+    
     <%-- Footer --%>
     <jsp:include page="/views/common/footer.jsp" flush="true"></jsp:include>
     <%-- End Of Footer --%>
+    
+    
     
 </body>
 </html>

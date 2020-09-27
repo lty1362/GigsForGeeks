@@ -24,7 +24,7 @@
                <label align="center">입찰중</label>
                <br>
                <a href="">프로젝트 상세보기</a> |
-               <a href="">이 프로젝트에 대한 제안들</a> |
+               <a href="">이 프로젝트에 대한 제안들</a>
                <!-- <a href="">파일등록</a> | -->
                <!-- <a href="">프로젝트 재등록</a> | -->
                <!-- <a href="">프로젝트 삭제</a> -->
@@ -34,7 +34,7 @@
            <div id="detail" style="width:1500px; margin:auto;">
                <div id="detailProject">    
                    <div id="detail_Content">
-                       
+
                        <label id="detail_Title">프로젝트 관련 세부사항</label>  
                        <label id="price">700,000￦ - 1,500,000￦</label>
                        
@@ -46,8 +46,7 @@
                         
                        <br> 
                        <h4>작업기간</h4>
-                       <h4>작업기간</h4>
-			                         예상 작업일자 : <span>2020-09-14 ~ 2020-09-19</span><br>
+			                         예상 작업기간 : <span>2020-09-14 ~ 2020-09-19</span><br>
 			                         총 예상 작업일수 : <span>총 5일</span>
                        <br><br>
                        
@@ -74,14 +73,15 @@
    
                            <h4>입찰 관련 세부사항</h4>
                            <label>입찰 제안가 : </label>
-                           <input type="number" name="proposalPrice" placeholder="￦200,000이상 입력해주세요." min="200000" required> 
+                           <input type="number" name="proposalPrice" placeholder="￦200,000이상 입력해주세요." 
+                           		  min="200000" style="width:250px" required> 
                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                            <label>이 프로젝트의 작업 예상기간 : </label>
                            <input type="date" name="proposalStart" placeholder="날짜를 입력해주세요." required>
                            ~
                            <input type="date" name="proposalEnd" placeholder="날짜를 입력해주세요." required>
    
-                           <br><br>
+                           <br><br><br>
                            <h4>고객님의 입찰 견적서에 대한 설명</h4>
                            <textarea name="proposalInfo" id="proposalInfo" cols="125" rows="10" style="resize:none;"></textarea>
 
@@ -153,6 +153,8 @@
                </div>
            </div>
        </main>   
+       
+      <br style="clear:both">
       
     <%-- Footer --%>
     <jsp:include page="/views/common/footer.jsp" flush="true"></jsp:include>

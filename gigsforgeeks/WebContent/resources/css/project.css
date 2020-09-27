@@ -74,8 +74,8 @@
     margin-top: 20px;
 }
 #employerInfo1, #btnGroup{
-    width: 230px;
-    padding: 30px;
+    width: 280px;
+    padding: 20px;
     margin: 40px;
 }
 #submitBtn{
@@ -83,7 +83,7 @@
     height: 40px;
 }
 #btnGroup>button{
-    width: 250px; 
+    width: 230px; 
     height: 30px;
 }
 
@@ -92,17 +92,17 @@
 /* searchListProject 시작 */
 
 #searchContent{
-    padding: 100px;
+    padding: 25px;
     margin:auto;
     width:1300px;
 }
 #projectCategory{
     background: #f0f1f3;
     padding: 18px;
-    width:280px;
+    width:340px;
     float:left;
 }
-form #feelter_sub{font-weight: bold}
+form #feelter_sub p{font-weight: bold}
 .feelter_main{
     font-size: 18px;
     margin: 5px;
