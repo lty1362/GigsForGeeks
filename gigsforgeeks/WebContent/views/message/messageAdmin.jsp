@@ -1,37 +1,40 @@
-<%-- EL 활성화 및 JSTL 설정  --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- ContextPath 변수 선언 및 초기화 --%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<%-- EL 활성화 / JSTL 설정 / ContextPath 변수 선언 및 초기화 끝 --%>
+<%-- Template HTML 1 : 일반 화면용 --%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Message Full</title>
+	<meta charset="UTF-8">
+	<%-- Header --%>
+	<%@ include file="../../views/common/header.jsp" %>
+	<!-- 필요한 외부 파일은 여기서 불러오세요 -->
+	<%-- End Of Header --%>
+	<!-- 페이지의 타이틀을 작성하세요 -->
+	<title>Message Admin</title>
 </head>
 <body>
-		<!--검색창-->
-        <div id="cont">
-            <div id="content_2" align="right">
-                <form action="" id="search_form">
-	                    <div id="search_text">
-	                        <input class="form-control mr-sm-2" type="text" placeholder="회원ID">
-	                    </div>
-	                    
-	                    <div id="search_btn1">
-	                        <a href="${contextPath}/views/message/messageSend.jsp" id="btn1" class="btn btn-outline-info" type="submit">메세지 보내기</a>
-	                	</div>
-	                	<div id="search_btn2">
-	                    	<button type="button" id="btn2" class="btn btn-outline-info" type="submit">보관하기</button>
-	                	</div>
-                </form>
+  
+    <%-- Content --%>
+    <!-- 여기서부터 내용 작성하면 됩니다. -->
+    <!--메세지 화면-->
+    <div id="content">
+        <!-- 메뉴바 -->
+        <div id="con">           
+            <div id="content_1">
+                <div id="naviMain"><a href="${contextPath}/views/message/message.jsp">전체메세지</a></div>
+                <div id="naviNotRead"><a href="${contextPath}/views/message/messageNotRead.jsp">읽지않음(갯수)</a></div>
+                <div id="naviKeep"><a href="${contextPath}/views/message/messageKeep.jsp">보관 메세지</a></div>
+                <div id="naviAdmin"><a href="${contextPath}/views/message/messageAdmin.jsp">고객 지원팀</a></div>
             </div>
-
-            <div id="content_3">
-            
+        </div>  
+        <div id="main">
+        <!-- 내용변경할곳 -->
+        <!-- 고객지원 메세지 -->
+        <br><br>
+        <div id="cont">
+            <div id="content_3"> 
             <table align="center" class="messageFull">
 		        <thead>
 		            <tr>
@@ -47,49 +50,49 @@
 		            <tr>
 		                <td>6</td>
 		                <td><input type="checkbox"></td>
-		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_2.png" alt="프로필"></td>
-		                <td>제목자리</td>
-		                <td>user01</td>
+		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt="프로필"></td>
+		                <td>고객지원메세지 제목자리</td>
+		                <td>admin</td>
 		                <td>2020-09-02</td>
 		            </tr>
 		            <tr>
 		                <td>5</td>
 		                <td><input type="checkbox"></td>
 		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt="프로필"></td>
-		                <td>제목자리</td>
-		                <td>user01</td>
+		                <td>고객지원메세지 제목자리</td>
+		                <td>admin</td>
 		                <td>2020-08-30</td>
 		            </tr>
 		            <tr>
 		                <td>4</td>
 		                <td><input type="checkbox"></td>
-		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_2.png" alt="프로필"></td>
-		                <td>제목자리</td>
-		                <td>user01</td>
+		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt="프로필"></td>
+		                <td>고객지원메세지 제목자리</td>
+		                <td>admin</td>
 		                <td>2020-08-22</td>
 		            </tr>
 		            <tr>
 		                <td>3</td>
 		                <td><input type="checkbox"></td>
 		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt="프로필"></td>
-		                <td>제목자리</td>
-		                <td>user01</td>
+		                <td>고객지원메세지 제목자리</td>
+		                <td>admin</td>
 		                <td>2020-08-12</td>
 		            </tr>
 		            <tr>
 		                <td>2</td>
 		                <td><input type="checkbox"></td>
-		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_2.png" alt="프로필"></td>
-		                <td>제목자리</td>
-		                <td>user01</td>
+		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt="프로필"></td>
+		                <td>고객지원메세지 제목자리</td>
+		                <td>admin</td>
 		                <td>2020-09-25</td>
 		            </tr>
 		            <tr>
 		                <td>1</td>
 		                <td><input type="checkbox"></td>
 		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt="프로필"></td>
-		                <td>제목자리</td>
-		                <td>user01</td>
+		                <td>고객지원메세지 제목자리</td>
+		                <td>admin</td>
 		                <td>2020-09-02</td>
 		            </tr>
 		       
@@ -143,5 +146,12 @@
             </div>
           </div>
         </div>
+    </div>
+ </div>
+    <%-- End Of Content --%>
+    
+    <%-- Footer --%>
+    <jsp:include page="/views/common/footer.jsp" flush="true"></jsp:include>
+    <%-- End Of Footer --%>
 </body>
 </html>
