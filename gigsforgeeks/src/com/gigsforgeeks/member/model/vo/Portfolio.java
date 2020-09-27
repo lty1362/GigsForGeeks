@@ -11,13 +11,14 @@ public class Portfolio {
 	private Date portfolioStart;      //포트폴리오 시작일
 	private Date portfolioEnd;        //포트폴리오 완료일
 	private String userId;		      //회원아이디
+	private String portfolioFile;     //포트폴리오 파일
 	
 	
 	public Portfolio() {}
 
 
 	public Portfolio(int portfolioNumber, String portfolioTitle, String portfolioContent, String portfolioLink,
-			String portfolioSkill, Date portfolioStart, Date portfolioEnd, String userId) {
+			String portfolioSkill, Date portfolioStart, Date portfolioEnd, String userId, String portfolioFile) {
 		super();
 		this.portfolioNumber = portfolioNumber;
 		this.portfolioTitle = portfolioTitle;
@@ -27,6 +28,7 @@ public class Portfolio {
 		this.portfolioStart = portfolioStart;
 		this.portfolioEnd = portfolioEnd;
 		this.userId = userId;
+		this.portfolioFile = portfolioFile;
 	}
 
 
@@ -110,15 +112,24 @@ public class Portfolio {
 	}
 
 
+	public String getPortfolioFile() {
+		return portfolioFile;
+	}
+
+
+	public void setPortfolioFile(String portfolioFile) {
+		this.portfolioFile = portfolioFile;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Portfolio [portfolioNumber=" + portfolioNumber + ", portfolioTitle=" + portfolioTitle
 				+ ", portfolioContent=" + portfolioContent + ", portfolioLink=" + portfolioLink + ", portfolioSkill="
 				+ portfolioSkill + ", portfolioStart=" + portfolioStart + ", portfolioEnd=" + portfolioEnd + ", userId="
-				+ userId + "]";
+				+ userId + ", portfolioFile=" + portfolioFile + "]";
 	}
 	
 	
-	
-	
+
 }

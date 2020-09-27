@@ -1,3 +1,7 @@
+<%@page import="com.gigsforgeeks.member.model.vo.Publication"%>
+<%@page import="com.gigsforgeeks.member.model.vo.Certificate"%>
+<%@page import="com.gigsforgeeks.member.model.vo.Education"%>
+<%@page import="com.gigsforgeeks.member.model.vo.Portfolio"%>
 <%@page import="com.gigsforgeeks.member.model.vo.Career"%>
 <%@page import="java.sql.Date"%>
 <%@page import="com.gigsforgeeks.member.model.vo.Member"%>
@@ -20,14 +24,18 @@
     <%
     	
     	String userId = loginUser.getUserId();
-    	int payRate = (loginUser.getPayRate() == 0) ? 0 : loginUser.getPayRate(); //
+    	int payRate = (loginUser.getPayRate() == 0) ? 0 : loginUser.getPayRate(); // 'user01'계정에서 payrate 부분 null값으로 대입되어서 user01로 로그인시 오류날수있음
     	String location = (loginUser.getLocation() == null) ? "입력하지 않으셨습니다." : loginUser.getLocation();
-    	/* Date enrollDate = loginUser.getEnrollDate(); */
-    	String company = (loginUser.getCompany()== null) ? "입력하지 않으셨습니다." :loginUser.getCompany() ;
+    	Date enrollDate = loginUser.getEnrollDate(); 
+    	String company = (loginUser.getCompany()== null) ? "COMPANY" :loginUser.getCompany() ;
     	String jobTitle = (loginUser.getJobTitle() == null) ? "입력하지 않으셨습니다." : loginUser.getJobTitle();
+    	String selfIntroduction =(loginUser.getSelfIntroduction() == null) ? "" : loginUser.getSelfIntroduction();
     	
     	Career userCareer = (Career)session.getAttribute("career");
-    	
+    	Portfolio userPortfolio = (Portfolio)session.getAttribute("portfolio");
+    	Education userEducation = (Education)session.getAttribute("education");
+    	Certificate userCertificate =(Certificate)session.getAttribute("certificate");
+    	Publication userPublication =(Publication)session.getAttribute("publication");
     
     %>
     
@@ -44,10 +52,10 @@
         
             <div id="profile" name="profile">
                 <div id="profilePhoto" name="profilePhoto">프로필 사진(이미지링크)</div>
-                <div id="location" name="location">희망시급/지역/현재시각/가입일</div>
-                <div id="userName" name="userName"><span align="left"><%= userId %></span>/@ <%= company%> /직급명</div>
+                <div id="location" name="location"><%= payRate %>/<%= location %>/현재시각/<%= enrollDate %></div>
+                <div id="userName" name="userName"><span align="left"><%= userId %></span>/@ <%= company%> /<%= jobTitle %></div>
                 <div id="workship" name="workship">워크쉽(리뷰기반)</div>
-                <div id="userContent" name="userContent">자기소개</div>
+                <div id="userContent" name="userContent"><%= selfIntroduction %></div>
                 <div id="hirePositionButton" name="hireButton"><button>고용주측의 프로필 확인</button></div>
                 
                 

@@ -71,7 +71,8 @@ public class MemberDAO {
 						       rset.getString("SKILL"),
 						       rset.getInt("PAY_RATE"),
 						       rset.getString("PROFILE_IMAGE"),
-						       rset.getString("LOCATION")
+						       rset.getString("LOCATION"),
+						       rset.getString("SELF_INTRODUCTION")
 							   );
 				
 			}
@@ -274,7 +275,8 @@ public class MemberDAO {
 							  rset.getString("PORTFOLIO_SKILL"),
 							  rset.getDate("PORTFOLIO_START"),
 							  rset.getDate("PORTFOLIO_END"),
-							  rset.getString("USER_ID")
+							  rset.getString("USER_ID"),
+							  rset.getString("PORTFOLIO_FILE")
 						);
 			}
 		} catch (SQLException e) {

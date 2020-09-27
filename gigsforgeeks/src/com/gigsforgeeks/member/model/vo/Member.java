@@ -22,6 +22,7 @@ public class Member {
 	private int payRate;				// 희망시급
 	private String profileImage;		// 프로필 이미지 (파일명)
 	private String location;			// 지역
+	private String selfIntroduction;	// 자기소개
 	
 	
 	public Member() {
@@ -31,7 +32,7 @@ public class Member {
 	public Member(String userId, String userEmail, String userPwd, Date enrollDate, Date outrollDate,
 			String status, String membership, String excellentFreelance, String blackList, String identifyEmail,
 			String admin, String userType, String jobTitle, String company, String skill, int payRate,
-			String profileImage, String location) {
+			String profileImage, String location, String selfIntroduction) {
 		super();
 		this.userId = userId;
 		this.userEmail = userEmail;
@@ -51,6 +52,8 @@ public class Member {
 		this.payRate = payRate;
 		this.profileImage = profileImage;
 		this.location = location;
+		this.selfIntroduction = selfIntroduction;
+		
 	}
 	
 	/*signUp에서의 Member m*/
@@ -207,6 +210,14 @@ public class Member {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	
+	public void setSelfIntroduction(String selfIntroduction) {
+		this.selfIntroduction = selfIntroduction;
+	}
+	
+	public String getSelfIntroduction() {
+		return selfIntroduction;
+	}
 
 	
 	@Override
@@ -216,7 +227,7 @@ public class Member {
 				+ membership + ", excellentFreelance=" + excellentFreelance + ", blackList=" + blackList
 				+ ", identifyEmail=" + identifyEmail + ", admin=" + admin + ", userType=" + userType + ", jobTitle="
 				+ jobTitle + ", company=" + company + ", skill=" + skill + ", payRate=" + payRate + ", profileImage="
-				+ profileImage + ", location=" + location + "]";
+				+ profileImage + ", location=" + location + ", selfIntroduction="+selfIntroduction+"]";
 	}
 	
 	
