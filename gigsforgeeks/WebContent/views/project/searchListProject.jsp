@@ -57,9 +57,10 @@
                     <div id="feelter_sub">
                         <p>프로젝트 가격대</p>
                         <select name="payProject">
-                            <option value="small">초소형프로젝트 (200,000￦ ~ 700,000￦)</option>
-                            <option value="medium">중간형프로젝트 (700,000￦ ~ 2,000,000￦)</option>
-                            <option value="large">대형프로젝트 (2,000,000￦ ~ 5,000,000￦)</option>
+	                        <option value="2000000-5000000">대형 프로젝트 (2,000,000₩~5,000,000₩)</option>
+							<option value="1000000-2000000">중형 프로젝트 (1,000,000₩~2,000,000₩)</option>
+							<option value="500000-1000000">소형 프로젝트 (500,000₩~1,000,000₩)</option>
+							<option value="200000-500000">초소형 프로젝트 (200,000₩~500,000₩)</option>
                         </select>
                         
                         <br><br><br>
@@ -86,8 +87,8 @@
                     <input type="text" name="search" placeholder="프로젝트 검색" style="width:500px; height:18px;">
                     <button type="button" class="btn">검색</button>
                     
+                    <!-- 넣을지 안넣을지 고민중
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    
                    	 분류기준 : <select name="searchStandard">
                                 <option value="bid_large">입찰다수순</option>
                                 <option value="bid_small">입찰소수순</option>
@@ -95,6 +96,7 @@
                                 <option value="pay_small">최저금액</option>
                                 <option value="time">시간순</option>
                              </select>
+                      -->
                     <br><br>
                     <hr>
                 </form>
