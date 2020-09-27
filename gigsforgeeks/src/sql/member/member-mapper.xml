@@ -29,12 +29,40 @@
 	</entry>
 	
 	<entry key="userCareer">
-	   SELECT 
-	  		  C.*
-	     FROM CAREER C
-	     JOIN MEMBER M ON(C.USER_ID=M.USER_ID)
-        WHERE C.USER_ID = ?;
+	    SELECT 
+	   		   C.*
+	      FROM CAREER C
+	      JOIN MEMBER M ON(C.USER_ID=M.USER_ID)
+         WHERE C.USER_ID = ?
 	
+	</entry>
+	
+	<entry key="userEducation">
+		SELECT E.*
+	      FROM EDUCATION E
+		  JOIN MEMBER M ON (E.USER_ID =M.USER_ID)
+	     WHERE E.USER_ID = ?
+	</entry>
+	
+	<entry key="userCertification">
+		SELECT CERT.*
+	      FROM CERTIFICATION CERT
+          JOIN MEMBER M ON (CERT.USER_ID =M.USER_ID)
+         WHERE CERT.USER_ID = ?
+	</entry>
+	
+	<entry key="userPortfolio">
+	    SELECT PORT.*
+          FROM PORTFOLIO PORT
+          JOIN MEMBER M ON (PORT.USER_ID =M.USER_ID)
+         WHERE PORT.USER_ID = ?
+	</entry>
+	
+   	<entry key="userPublication">
+	    SELECT PUB.*
+          FROM PUBLICATION PUB
+          JOIN MEMBER M ON (PUB.USER_ID =M.USER_ID)
+          WHERE PUB.USER_ID = ?
 	</entry>
 	
 	<entry key="insertMember">
@@ -45,6 +73,7 @@
              , USER_EMAIL
              , USER_PWD
              , USER_TYPE
+             , PAY_RATE
              ) 
             VALUES
             (
@@ -52,6 +81,7 @@
              , ?
              , ?
              , ?
+             , 0
              )
 	</entry>
 	

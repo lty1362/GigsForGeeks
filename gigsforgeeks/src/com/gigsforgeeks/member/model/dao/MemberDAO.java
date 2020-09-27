@@ -10,7 +10,11 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import com.gigsforgeeks.member.model.vo.Career;
+import com.gigsforgeeks.member.model.vo.Certificate;
+import com.gigsforgeeks.member.model.vo.Education;
 import com.gigsforgeeks.member.model.vo.Member;
+import com.gigsforgeeks.member.model.vo.Portfolio;
+import com.gigsforgeeks.member.model.vo.Publication;
 
 public class MemberDAO {
 	
@@ -84,10 +88,10 @@ public class MemberDAO {
 
 	
 	/**
-	 * 로그인한 유저의 경력 객체 db에서 가져오기
+	 * 경력부분 데이터 db에서 뽑아와서 Career 객체에 담기
 	 * @param userId 로그인한 유저아이디
 	 * @param conn
-	 * @return
+	 * @return c career 객체
 	 */
 	public Career seachCareer(String userId, Connection conn) {
 		
@@ -198,6 +202,170 @@ public class MemberDAO {
 		}
 		
 		return count;
+	}
+
+	/**
+	 * 경력부분 데이터 db에서 뽑아와서 Publication 객체에 담기
+	 * @param  userId 로그인한 유저아이디
+	 * @param  conn
+	 * @return Publication p 객체
+	 */
+	public Publication seachPublication(String userId, Connection conn) {
+		
+		Publication p = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("userPublication");
+		
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			
+
+			if(rset.next()) {
+				p = new Publication(rset.getInt("BOOK_NO"),
+							  rset.getString("BOOK_NAME"),
+							  rset.getString("BOOK_INFO"),
+							  rset.getString("PUBLISHER"),
+							  rset.getString("BOOK_DATE"),
+							  rset.getString("USER_ID")
+						);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return p;
+	}
+
+	
+	/**
+	 * 경력부분 데이터 db에서 뽑아와서 Portfolio 객체에 담기
+	 * @param  userId 로그인한 유저아이디
+	 * @param  conn
+	 * @return Portfolio port 객체
+	 */
+	public Portfolio seachPortfolio(String userId, Connection conn) {
+		
+		Portfolio port = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("userPortfolio");
+		
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			
+
+			if(rset.next()) {
+				port= new Portfolio(rset.getInt("PORTFOLIO_NO"),
+							  rset.getString("PORTFOLIO_TITLE"),
+							  rset.getString("PORTFOLIO_CONTENTS"),
+							  rset.getString("PORTFOLIO_LINK"),
+							  rset.getString("PORTFOLIO_SKILL"),
+							  rset.getDate("PORTFOLIO_START"),
+							  rset.getDate("PORTFOLIO_END"),
+							  rset.getString("USER_ID")
+						);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return port;
+	}
+
+
+	/**
+	 * 경력부분 데이터 db에서 뽑아와서  Certificate 객체에 담기
+	 * @param userId 로그인한 유저아이디
+	 * @param conn
+	 * @return Certificate certificate 객체
+	 */
+	public Certificate seachCertficate(String userId, Connection conn) {
+		
+		Certificate certificate = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("userCertification");
+		
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+
+			if(rset.next()) {
+				certificate= new Certificate(rset.getInt("CERTIFICATE_NO"),
+							  rset.getString("CERTIFICATE_NAME"),
+							  rset.getString("CERTIFICATE_AUTH"),
+							  rset.getString("CERTIFICATE_DATE"),
+							  rset.getString("USER_ID")
+						);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return certificate;
+	}
+
+
+	/**
+	 * 경력부분 데이터 db에서 뽑아와서 Education 객체에 담기
+	 * @param  userId 로그인한 유저아이디
+	 * @param  conn
+	 * @return Education edu 객체
+	 */
+	public Education seachEducation(String userId, Connection conn) {
+
+		Education edu =null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("userEducation");
+		
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+
+			if(rset.next()) {
+				edu= new Education(rset.getInt("EDUCATION_NO"),
+							  rset.getString("UNIVERSITY"),
+							  rset.getString("MAJOR"),
+							  rset.getString("DEGREE"),
+							  rset.getString("ENROLL_DATE"),
+							  rset.getString("GRAUATED_DATE"),
+							  rset.getString("USER_ID")
+						);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return edu;
 	}
 	
 }

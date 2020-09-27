@@ -20,13 +20,14 @@
     <%
     	
     	String userId = loginUser.getUserId();
-    	/* int payRate = loginUser.getPayRate(); */
+    	int payRate = (loginUser.getPayRate() == 0) ? 0 : loginUser.getPayRate(); //
     	String location = (loginUser.getLocation() == null) ? "입력하지 않으셨습니다." : loginUser.getLocation();
     	/* Date enrollDate = loginUser.getEnrollDate(); */
     	String company = (loginUser.getCompany()== null) ? "입력하지 않으셨습니다." :loginUser.getCompany() ;
     	String jobTitle = (loginUser.getJobTitle() == null) ? "입력하지 않으셨습니다." : loginUser.getJobTitle();
     	
     	Career userCareer = (Career)session.getAttribute("career");
+    	
     
     %>
     
@@ -44,7 +45,7 @@
             <div id="profile" name="profile">
                 <div id="profilePhoto" name="profilePhoto">프로필 사진(이미지링크)</div>
                 <div id="location" name="location">희망시급/지역/현재시각/가입일</div>
-                <div id="userName" name="userName"><span aligh="left"><%= userId %></span>/@ <%= company%> /직급명</div>
+                <div id="userName" name="userName"><span align="left"><%= userId %></span>/@ <%= company%> /직급명</div>
                 <div id="workship" name="workship">워크쉽(리뷰기반)</div>
                 <div id="userContent" name="userContent">자기소개</div>
                 <div id="hirePositionButton" name="hireButton"><button>고용주측의 프로필 확인</button></div>

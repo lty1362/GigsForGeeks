@@ -15,6 +15,8 @@ import com.gigsforgeeks.member.model.vo.Career;
 import com.gigsforgeeks.member.model.vo.Certificate;
 import com.gigsforgeeks.member.model.vo.Education;
 import com.gigsforgeeks.member.model.vo.Member;
+import com.gigsforgeeks.member.model.vo.Portfolio;
+import com.gigsforgeeks.member.model.vo.Publication;
 
 /**
  * Servlet implementation class MyAccountServlet
@@ -51,13 +53,25 @@ public class MyAccountServlet extends HttpServlet {
 			Member loginUser = (Member)session.getAttribute("loginUser");
 			String userId = loginUser.getUserId(); 
 			
-			Career userCareer = new MemberService().searchCareer(userId);		//userCareer = 회원 경력정보
+			Career userCareer = new MemberService().searchCareer(userId);	          	  //userCareer = 회원 경력정보
 			
-			//Education userEducation = new MemberService().searchEducation(userId);
+			Education userEducation = new MemberService().searchEducation(userId);        //userEducation = 회원 교육정보
 			
-			//Certificate userCartificate
+			Certificate userCertificate = new MemberService().searchCertificate(userId);  //userCertificate = 회원 자격증정보
+			
+			Portfolio userPortfolio = new MemberService().searchPortfolio(userId);	 	  //userProtfolio = 회원 포트폴리오 정보
+			
+			Publication userPublication = new MemberService().searchPublication(userId);  //userPublication = 회원 출판물 정보
 			
 			session.setAttribute("career", userCareer);
+			
+			session.setAttribute("education", userEducation);
+			
+			session.setAttribute("certificatie", userCertificate);
+			
+			session.setAttribute("portfolio", userPortfolio);
+			
+			session.setAttribute("publication", userPublication);
 			
 			RequestDispatcher view = request.getRequestDispatcher("views/member/myAccount.jsp");
 			view.forward(request, response);
