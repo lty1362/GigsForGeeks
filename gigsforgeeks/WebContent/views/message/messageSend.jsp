@@ -39,15 +39,15 @@
 	        <br>
 	        
 	        <b>받는사람 : </b>
-	        <input type="text" id="meUserId" name="meUserId" placeholder="회원의 아이디를 입력해주세요." required style="width:200px; height:30px;">
+	        <input type="text" id="meUserId" name="meUserId" placeholder="회원의 아이디를 입력해주세요." required>
 	        <br><br>
 	        
 	        <b>제목 : </b> 
-	        <input type="text" id="meTitle" name="meTitle" placeholder="제목을 입력해주세요." required style="margin-right: 800px; width:500px; height:30px;">
+	        <input type="text" id="meTitle" name="meTitle" placeholder="제목을 입력해주세요." required>
 	        <button type="submit" class="btn btn-outline-info">메세지 보내기</button>
 	        <br><br>
 	        
-	        <textarea id="meContent" name="meContent" placeholder="내용을 입력해주세요." required  cols="210" rows="30" style="resize:none;" ></textarea>
+	        <textarea id="meContent" name="meContent" placeholder="내용을 입력해주세요." required  cols="210" rows="30" ></textarea>
    		 </div>
        </div>
       </div> 

@@ -10,6 +10,7 @@
 	<%-- Header --%>
 	<%@ include file="../../views/common/header.jsp" %>
 	<!-- 필요한 외부 파일은 여기서 불러오세요 -->
+	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/message.css">
 	<%-- End Of Header --%>
 	<!-- 페이지의 타이틀을 작성하세요 -->
 	<title>Message Admin</title>
@@ -35,7 +36,7 @@
         <br><br>
         <div id="cont">
             <div id="content_3"> 
-            <table align="center" class="messageFull">
+            <table align="center" class="messageAdmin">
 		        <thead>
 		            <tr>
 		                <th width="70"></th>

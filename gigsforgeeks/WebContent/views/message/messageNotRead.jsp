@@ -52,7 +52,7 @@
 
             <div id="content_3">
             
-            <table align="center" class="messageFull">
+            <table align="center" class="messageNotRead">
 		        <thead>
 		            <tr>
 		                <th width="70"></th>

@@ -51,7 +51,6 @@
             </div>
 
             <div id="content_3">
-            
             <table align="center" class="messageKeep">
 		        <thead>
 		            <tr>
