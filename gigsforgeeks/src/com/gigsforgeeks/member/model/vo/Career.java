@@ -8,26 +8,32 @@ public class Career {
 	private String userId;        // 회원 아이디
 	private String companyInfo;   // 회사정보
 	private String careerTitle;   // 직급
-	private String careerInfo;    // 회사 설명
-	private Date hireDate;        // 고용날짜
 	private Date retireDate;      // 퇴직날짜
+	private Date hireDate;        // 고용날짜
+	private String careerInfo;    // 회사 설명
 	private String careerStatus; // 재직여부
+	
+	
+	public Career() {}
 	
 
 
 
-	public Career(int careerNumber, String userId, String careerTitle, String careerInfo, Date hireDate,
-			Date retireDate, String careerStatus, String companyInfo) {
+	public Career(int careerNumber, String userId, String companyInfo, String careerTitle, Date retireDate,
+			Date hireDate, String careerInfo, String careerStatus) {
 		super();
 		this.careerNumber = careerNumber;
+		this.userId = userId;
 		this.companyInfo = companyInfo;
 		this.careerTitle = careerTitle;
-		this.careerInfo = careerInfo;
-		this.hireDate = hireDate;
 		this.retireDate = retireDate;
+		this.hireDate = hireDate;
+		this.careerInfo = careerInfo;
 		this.careerStatus = careerStatus;
-		this.userId = userId;
 	}
+
+
+
 
 	public int getCareerNumber() {
 		return careerNumber;

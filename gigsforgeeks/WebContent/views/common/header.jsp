@@ -70,7 +70,7 @@
                     </nav>
                     <aside id="headerAside">
                         <a href="${contextPath}/views/project/post.jsp">프로젝트 게시하기</a>
-                        <a href="${contextPath}/MyAccount.me">내 계정</a>
+                        <a href="${contextPath}/LoadingUser.load">내 계정</a>
                     </aside>
                 </main>
 	        <% }%>

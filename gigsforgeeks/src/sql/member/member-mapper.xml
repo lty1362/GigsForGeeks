@@ -31,7 +31,14 @@
 	
 	<entry key="userCareer">
 	    SELECT 
-	   		   C.*
+	   		   C.CAREER_NO
+	   		 , C.USER_ID
+	   		 , C.COMPANY_INFO
+	   		 , C.CAREER_TITLE
+	   		 , C.RETIRE_DATE
+	   		 , C.HIRE_DATE
+	   		 , CAREER_INFO
+	   		 , CAREER_STATUS
 	      FROM CAREER C
 	      JOIN MEMBER M ON(C.USER_ID=M.USER_ID)
          WHERE C.USER_ID = ?
@@ -39,28 +46,55 @@
 	</entry>
 	
 	<entry key="userEducation">
-		SELECT E.*
+		SELECT 
+			   E.EDUCATION_NO
+			 , E.UNIVERSITY
+			 , E.MAJOR
+			 , E.DEGREE
+			 , E.ENROLL_DATE
+			 , E.GRAUATED_DATE
+			 , E.USER_ID
 	      FROM EDUCATION E
 		  JOIN MEMBER M ON (E.USER_ID =M.USER_ID)
 	     WHERE E.USER_ID = ?
 	</entry>
 	
 	<entry key="userCertification">
-		SELECT CERT.*
+		SELECT 
+			   CERT.CERTIFICATE_NO
+			 , CERT.CERTIFICATE_NAME 
+			 , CERT.CERTIFICATE_AUTH
+			 , CERT.CERTIFICATE_DATE
+			 , CERT.USER_ID
 	      FROM CERTIFICATION CERT
           JOIN MEMBER M ON (CERT.USER_ID =M.USER_ID)
          WHERE CERT.USER_ID = ?
 	</entry>
 	
 	<entry key="userPortfolio">
-	    SELECT PORT.*
+	    SELECT 
+	    	   PORT.PORTFOLIO_NO
+	    	 , PORT.PORTFOLIO_TITLE
+	    	 , PORT.PORTFOLIO_CONTENTS
+	    	 , PORT.PORTFOLIO_LINK
+	    	 , PORT.PORTFOLIO_SKILL
+	    	 , PORT.PORTFOLIO_START
+	    	 , PORT.PORTFOLIO_END
+	    	 , PORT.USER_ID
+	    	 , PORT.PORTFOLIO_FILE
           FROM PORTFOLIO PORT
           JOIN MEMBER M ON (PORT.USER_ID =M.USER_ID)
          WHERE PORT.USER_ID = ?
 	</entry>
 	
    	<entry key="userPublication">
-	    SELECT PUB.*
+	    SELECT 
+	    	   PUB.BOOK_NO
+	    	 , PUB.BOOK_NAME
+	    	 , PUB.BOOK_INFO
+	    	 , PUB.PUBLISHER
+	    	 , PUB.BOOK_DATE
+	    	 , PUB.USER_ID
           FROM PUBLICATION PUB
           JOIN MEMBER M ON (PUB.USER_ID =M.USER_ID)
           WHERE PUB.USER_ID = ?
