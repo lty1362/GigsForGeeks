@@ -40,6 +40,18 @@
     	}
     </script>
     <c:remove var="alertMsg" scope="session" />
+    <style>
+        #trigger{float: right; width: 80px; height: 25px;}
+        div.modal-content{width: 350px; height: 450px; position: absolute; right: 10px;} 
+        div.modal-content>table{width: 100%; height: 100%; box-sizing: border-box;}
+        div.modal-header{width: 100%; height: 100%; box-sizing: border-box;}
+        div.modal-dialog{ position: absolute; right: 10px;}
+        div#trigger>img#test2{width: 25px; height: 25px; p}
+        div.modal-content>table>tfoot, tbody{text-align: right;}
+        #trigger:hover{cursor: pointer;}
+        div.modal-content>table>thead{text-align: center;}
+        div#trigger>a#myAccount{font-size: 10px;} 
+    </style>
 </head>
 <body>
     <header id="header">
@@ -51,7 +63,6 @@
                     <nav id="headerMainNav">
                         <a href="${contextPath}/views/project/search.jsp">탐색</a>
                         <a href="${contextPath}/views/project/post.jsp">프로젝트 등록</a>
-                        <a href="${contextPath}/views/service/detailService.jsp">문의하기</a>
                     </nav>
                     <aside id="headerAside">
                         <a href="${contextPath}/views/member/login.jsp">로그인</a>
@@ -68,11 +79,64 @@
                         <a href="${contextPath}/views/project/myProject.jsp">내 프로젝트</a>
                         <a href="${contextPath}/list.ms?currentPage=1">메시지</a>
                         <a href="">업데이트</a>
-                        <a href="${contextPath}/views/service/detailService.jsp">문의하기</a>
                     </nav>
                     <aside id="headerAside">
                         <a href="${contextPath}/views/project/post.jsp">프로젝트 게시하기</a>
-                        <a href="${contextPath}/LoadingUser.load">내 계정</a>
+                        <div id="trigger" align="center">
+                            <img src="${contextPath}/resources/images/avatar.png" id="test2"  data-toggle="modal" data-target="#myModal" ></img>
+                            
+                            <a id="myAccount" data-toggle="modal" data-target="#myModal" style="color: white;font-size: 15px;">내 계정</a>
+                        </div>
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>재정현황</th>
+                                                <th>계정</th>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><hr style="border: double 1px blue;"></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                <td><a href="" style="color: black;">잔고</a></td>
+                                                <td><a href="${contextPath}/LoadingUser.load" style="color: black;">내 프로필</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>1000원</td>
+                                                <td><a href="" style="color: black;">맴버쉽</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="" style="color: black;">입금서비스</a></td>
+                                                <td><a href="" style="color: black;">사용자설정</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="" style="color: black;">출금서비스 요청</a></td>
+                                                <td><a href="" style="color: black;">고객지원 요청</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="" style="color: black;">재정통계</a></td>
+                                                <td><a href="" style="color: black;">계정설정</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="" style="color: black;">재정설정</a></td>
+                                                <td><a href="${contextPath}/logout.me" style="color: black;">로그아웃</a></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td>이메일 인증여부</td>
+                                                <td><a href="" style="color: black;">인증페이지</a></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+  
+                            </div>
+                        </div>
                     </aside>
                 </main>
 	        <% }%>
