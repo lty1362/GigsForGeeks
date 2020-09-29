@@ -59,7 +59,9 @@
             <p>Freelancer 란 무엇입니까?</p>
         </div>
         
-        <a id="buttonENQ" href="${contextPath}/enrollForm.bo">문 의 하 기</a>
+        <br><br>
+        
+        <a id="buttonENQ" href="${contextPath}/views/service/detailEnquiry.jsp">문 의 하 기</a>
         
     </div>
 
