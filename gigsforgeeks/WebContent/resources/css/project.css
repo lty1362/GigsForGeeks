@@ -131,5 +131,40 @@ form #feelter_sub p{font-weight: bold}
 #searchprojectList:hover{box-shadow: 6px 6px 6px 6px gray}
 
 
+/* totalSearch 시작 */
+
+ #totalSearch{
+      width: 1000px;
+      height: 50px;
+      margin: auto;
+  }
+  .search{
+      font-size:23px;
+      font-weight:bold;
+  }
+  .title{
+      font-size:20px; 
+      font-weight: bold;
+  }
+  .price{
+      float:right; 
+      font-size:larger; 
+      font-weight: bold;
+  }
+  form input{height:35px}
+  #project,#freelancer{
+      border: 1px solid black;
+      padding: 25px;
+      width: 1000px;
+  }
+  #project div:hover{
+      box-shadow:4px 4px 4px 4px gray
+  }
+  #freelancer div:hover{
+      box-shadow: 4px 4px 4px 4px gray
+  }
+  #project input{width: 300px}
+  #freelancer input{width: 300px}
+
 
 

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- Template HTML 1 : 일반 화면용 --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,6 +53,7 @@
                         <br>
                         <input type="checkbox" name="requiredSkill" id="WordPress">
                         <label for="WordPress">WordPress</label>
+                        <input type="checkbox" name="requiredSkill" id="etc">
                         <label for="etc">기타</label>
                         
                     <br><br>
