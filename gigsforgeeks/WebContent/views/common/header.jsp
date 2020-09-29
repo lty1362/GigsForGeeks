@@ -76,7 +76,7 @@
 	            <main id="headerMain">
                     <nav id="headerMainNav">
                         <a href="${contextPath}/views/project/search.jsp">탐색</a>
-                        <a href="${contextPath}/views/project/myProject.jsp">내 프로젝트</a>
+                        <a href="${contextPath}/myProject.do">내 프로젝트</a>
                         <a href="${contextPath}/list.ms?currentPage=1">메시지</a>
                         <a href="">업데이트</a>
                     </nav>
