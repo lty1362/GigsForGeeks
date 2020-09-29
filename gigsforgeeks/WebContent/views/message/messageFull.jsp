@@ -4,8 +4,16 @@
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.ArrayList, com.gigsforgeeks.message.model.vo.*" %>
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*" %>
 <%
 	ArrayList<Message> list = (ArrayList<Message>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <%-- ContextPath 변수 선언 및 초기화 --%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
@@ -27,13 +35,14 @@
 	                    </div>
 	                    
 	                    <div id="search_btn1">
-	                        <a href="${contextPath}/views/message/messageSend.jsp" id="btn1" class="btn btn-outline-info" type="submit">메세지 보내기</a>
+	                        <a href="${contextPath}/send.ms" id="btn1" class="btn btn-outline-info" type="submit">메세지 보내기</a>
 	                	</div>
 	                	<div id="search_btn2">
 	                    	<button type="button" id="btn2" class="btn btn-outline-info" type="submit">보관하기</button>
 	                	</div>
                 </form>
             </div>
+
             <div id="content_3" align="center">
             <table class="messageFull">
 		        <thead>
@@ -45,9 +54,7 @@
 		                <th width="30">보낸회원</th>
 		                <th width="30">받은날짜</th>
 		            </tr>
-		            <tr>
-		            	<td colspan="5"> <p class="modal-footer"></p></td>
-		            </tr>
+		            <tr><td colspan="5"><div class="modal-footer"></div></td></tr>            
 		        </thead>
 		        
 		        <tbody>
@@ -70,13 +77,33 @@
 		        	  <% } %>	  
 		        </tbody>
 		    </table>
-		
+			
 		    <br><br>
 		    
 		    <div align="right" style="width:98%;">
        		 <button class="btn btn-outline-info" data-toggle="modal" data-target="#message_delete">메세지 삭제</button>
         	 <br><br>
-   			</div>  
+   			</div>
+   			 <div class="pagingArea" align="center">
+		
+		        <!-- 맨 처음으로 (<<) -->
+		        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=1';"> &lt;&lt; </button>
+		        <!-- 이전페이지로 (<) -->
+		        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=<%=currentPage-1%>';"> &lt; </button>
+		        
+			<% for(int p=startPage; p<=endPage; p++) {%>
+				<%if(p != currentPage){ %>
+          			<button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=<%=p%>';"><%= p %></button>
+          		<%}else{ %>
+          			<button class="btn btn-outline-info" disabled><%= p %></button>
+          		<%} %>
+          <%} %>
+		
+		        <!-- 다음페이지로 (>) -->
+		        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=<%=currentPage+1%>';"> &gt; </button>
+		        <!-- 맨 끝으로 (>>) -->
+		        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=<%=maxPage%>';"> &gt;&gt; </button>
+		    </div>  
 		 </div>
       </div>
 
