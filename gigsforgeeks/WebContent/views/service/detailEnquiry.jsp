@@ -27,18 +27,22 @@
             <br>
             <h2><b>우리에게 문의하세요!</b></h2>
             <br>
-            <form action="enq.bo" method="POST">
+            <form action="insert.enq" method="POST">
+            	<input type="hidden" name="userId" value="<%= loginUser.getUserId() %>">
                 <div class="form-group">
-                    <label for="userId">사용자 아이디(필수입력)</label>
-                    <input type="text" class="form-control" id="userId" required placeholder="아이디를 입력해주세요">
-                </div>
-                <div class="form-group">
-                    <label for="email">이메일 주소</label>
-                    <input type="email" class="form-control" id="email" placeholder="이메일을 입력해주세요.">
+                    <label for="enqType">문의 유형</label><br>
+                    <select name="enqType" id="enqType">
+                        <option value="10">일반</option>
+                        <option value="20">프로젝트</option>
+                        <option value="30">지불</option>
+                        <option value="40">멤버십</option>
+                        <option value="50">프로필</option>
+                        <option value="60">기타</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="title">문의 제목</label>
-                    <input type="text" class="form-control" id="title" required maxlength="100" placeholder="제목을 입력해주세요.">
+                    <input type="text" name="title" class="form-control" id="title" required maxlength="100" placeholder="제목을 입력해주세요.">
                 </div>
                 <div class="form-group">
                     <label for="content">문의 내용</label>
@@ -46,7 +50,7 @@
                     <textarea name="content" id="content" cols="67" rows="7" maxlength="1000" placeholder="최대 1000글자까지 작성 가능합니다." style="border-radius: 10px;"></textarea>
                 </div>
                 
-                <button type="summit" class="btn btn-info">제출하기</button>
+                <button type="submit" class="btn btn-info">제출하기</button>
                 <button type="reset" class="btn btn-secondary">초기화</button>
                 
             </form>

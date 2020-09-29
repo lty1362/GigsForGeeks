@@ -27,7 +27,7 @@
         <br>
 
         <div id="question">
-	        <form action="${contextPath}/enq.do" method="POST">
+	        <form action="${contextPath}/insert.enq" method="POST">
 	            <input id="question1" type="text" placeholder="무엇을 도와드릴까요?">
 	            <button id="question2">검색</button>
             </form>
@@ -61,7 +61,7 @@
         
         <br><br>
         
-        <a id="buttonENQ" href="${contextPath}/views/service/detailEnquiry.jsp">문 의 하 기</a>
+        <a id="buttonENQ" href="${contextPath}/enquiryEnrollForm">문 의 하 기</a>
         
     </div>
 
