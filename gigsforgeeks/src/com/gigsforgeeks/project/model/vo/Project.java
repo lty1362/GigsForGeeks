@@ -69,6 +69,22 @@ public class Project {
 		this.endBid = endBid;
 	}
 	
+	
+	// searcListProject
+	public Project(String projectId, String projectName, String projectStatus, String description, LocalDate endBid,
+			int minBid, int maxBid,  int countBid) {
+		super();
+		this.projectId = projectId;
+		this.projectName = projectName;
+		this.description = description;
+		this.projectStatus = projectStatus;
+		this.minBid = minBid;
+		this.MaxBid = maxBid;
+		this.endBid = endBid;
+		this.countBid = countBid;
+	}
+	
+	
 	// Getters and Setters
 	public String getProjectId() {
 		return projectId;

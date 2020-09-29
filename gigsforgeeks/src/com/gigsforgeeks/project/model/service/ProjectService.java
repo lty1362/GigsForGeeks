@@ -47,4 +47,22 @@ public class ProjectService {
 		
 	}
 	
+	
+	/**
+	 * 프로젝트 검색목록을 조회해오는 메소드
+	 * 
+	 * @param project	프로젝트의 목록객체
+	 * @return
+	 */
+	public ArrayList<Project> searchListProject(Project project) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Project> list = new ProjectDAO().searchListProject(conn, project);
+		
+		close(conn);
+		
+		return list;
+	}
+	
 }

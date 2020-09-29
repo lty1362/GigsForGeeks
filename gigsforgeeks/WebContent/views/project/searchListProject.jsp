@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- Template HTML 1 : 일반 화면용 --%>
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*" %>
+<%@ page import="com.gigsforgeeks.member.model.vo.Member" %>
+<%
+	ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>

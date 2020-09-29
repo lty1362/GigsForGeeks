@@ -1,14 +1,16 @@
 package com.gigsforgeeks.project.model.dao;
 
+import static com.gigsforgeeks.common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import static com.gigsforgeeks.common.JDBCTemplate.*;
 import com.gigsforgeeks.project.model.vo.Project;
 
 public class ProjectDAO {
@@ -87,4 +89,47 @@ public class ProjectDAO {
 		
 	}
 	
+	
+	public ArrayList<Project> searchListProject(Connection conn, Project project) {
+		// select문 => 여러행조회
+		ArrayList<Project> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = properties.getProperty("searchListProject");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, project.getMinBid());
+			pstmt.setInt(2, project.getMaxBid());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Project(rset.getString("project_id"),
+									rset.getString("project_name"),
+									rset.getString("project_status"),
+									rset.getString("description"),
+									rset.getDate("end_bid").toLocalDate(),
+									rset.getInt("min_bid"),
+									rset.getInt("max_bid"),
+									rset.getInt("count_bid")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close(rset);
+			close(pstmt);
+		}
+			
+		return list;
+	
+	}
+	
+	
 }
+
+
