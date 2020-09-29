@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+	<entry key="selectListCount">
+	 SELECT 
+           COUNT(*) LISTCOUNT
+      FROM MESSAGE
+	 WHERE MESSAGE_RECEIVER=?
+	   AND STATUS = 'Y'
+	</entry>
+
 	<entry key="selectMessageList">
-         SELECT 
-                 MESSAGE_NO
-               , MESSAGE_TITLE
-               , MESSAGE_RECEIVER
-               , MESSAGE_RECEPIENT
-               , MESSAGE_RECEIVE_TIME
-            FROM MESSAGE M
-            JOIN MEMBER ON (MESSAGE_RECEIVER=USER_ID)
-           WHERE M.STATUS = 'Y'
-             AND USER_ID=?
-           ORDER 
-              BY MESSAGE_NO DESC
-              
-       
+         SELECT *
+          FROM (
+    	SELECT 
+   	    ROWNUM RNUM
+             , A.*
+          FROM (
+               SELECT 
+                   MESSAGE_NO
+                 , MESSAGE_TITLE
+                 , MESSAGE_RECEIVER
+                 , MESSAGE_RECEPIENT
+                 , MESSAGE_RECEIVE_TIME
+              FROM MESSAGE M
+              JOIN MEMBER ON (MESSAGE_RECEIVER=USER_ID)
+             WHERE M.STATUS = 'Y'
+               AND USER_ID=?
+             ORDER 
+                BY MESSAGE_NO DESC
+            ) A
+   		 )
+	 WHERE RNUM BETWEEN ? AND ?
+   
 	</entry>
 	
 	<entry key="messageReceiver">
