@@ -40,4 +40,32 @@
           JOIN MEMBER M ON (M.USER_ID =MS.MESSAGE_RECEIVER)
           WHERE USER_ID = ?
 	</entry>
+	
+	<entry key="insertMessage">
+	 INSERT
+	         INTO MESSAGE
+	       (
+		      MESSAGE_NO
+		    , MESSAGE_TITLE
+		    , MESSAGE_CONTENT
+		    , MESSAGE_RECEIVER
+            , MESSAGE_RECEPIENT
+		    , MESSAGE_SEND_TIME
+	  		)
+	   VALUES
+	  		(
+		      SEQ_MESSAGE.NEXTVAL
+		    , ?
+		    , ?
+		    , ?
+		    , ?
+		    , SYSDATE
+		    )
+	</entry>
+	<entry key="messageRecepient">
+	    SELECT MS.*
+          FROM MESSAGE MS
+          JOIN MEMBER M ON (M.USER_ID =MS.MESSAGE_RECEPIENT)
+          WHERE USER_ID = ?
+	</entry>
 </properties>

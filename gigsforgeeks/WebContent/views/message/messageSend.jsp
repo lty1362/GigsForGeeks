@@ -36,9 +36,13 @@
         <!-- 메세지작성 -->
 		 <div id="messageSend">
 		 <form action="${contextPath}/insert.ms" method="POST" id="sendForm">
-		 <input type="hidden" name="userId" value=<%=loginUser.getUserId() %>>
+		 
 	        <h1>메세지 보내기</h1>
 	        <br>
+	        
+	        <b>보내는 사람 : </b>
+	        <input type="text" name="userId" value=<%=loginUser.getUserId() %> disabled>
+	        <br><br>
 	        
 	        <b>받는사람 : </b>
 	        <input type="text" id="meUserId" name="meUserId" placeholder="회원의 아이디를 입력해주세요." required>

@@ -1,7 +1,6 @@
 package com.gigsforgeeks.message.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,20 +13,18 @@ import javax.servlet.http.HttpSession;
 import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.message.model.service.MessageService;
 import com.gigsforgeeks.message.model.vo.Message;
-import com.gigsforgeeks.project.model.vo.PageInfo;
-
 
 /**
- * Servlet implementation class MessageListServlet
+ * Servlet implementation class MessageInsertServlet
  */
-@WebServlet("/list.ms")
-public class MessageListServlet extends HttpServlet {
+@WebServlet("/insert.ms")
+public class MessageInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MessageListServlet() {
+    public MessageInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,53 +33,39 @@ public class MessageListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int listCount;		
-		int currentPage;	
-		int pageLimit;		
-		int boardLimit;		
-		
-		int maxPage;		
-		int startPage;		
-		int endPage;		
-		
-		currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		
-		pageLimit =10;
-		
-		boardLimit = 10;
-		
 		request.setCharacterEncoding("utf-8");
-
 		HttpSession session = request.getSession();
 
+		String meUserId = request.getParameter("meUserId");
+		String meTitle = request.getParameter("meTitle");
+		String meContent = request.getParameter("meContent");
+		
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		String userId = loginUser.getUserId();
-		Message messageReceiver = new MessageService().messageReceiver(userId);
 		
-        listCount = new MessageService().selectListCount(userId);
+		Message messageRecepient = new MessageService().messageRecepient(userId);
 		
-		maxPage = (int)Math.ceil((double)listCount / boardLimit); 
-	
-		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		Message m = new Message();
+		m.setMessageReceiver(meUserId);
+		m.setMessageTitle(meTitle);
+		m.setMessageContent(meContent);
 		
+		int result = new MessageService().insertMessage(m,userId);
 		
-		endPage = startPage + pageLimit - 1;
-		
-		if(maxPage < endPage) {
-			endPage = maxPage;
-		}
-
-		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		
-		ArrayList<Message> list = new MessageService().selectMessageList(pi,userId);
-		
-		request.setAttribute("messageReceiver", messageReceiver);
-		request.setAttribute("pi", pi);
-		request.setAttribute("list", list);
-	
-		RequestDispatcher view = request.getRequestDispatcher("views/message/message.jsp");
-		view.forward(request, response);
+		if(result > 0) { 
+			request.setAttribute("messageRecepient", messageRecepient);
+			request.getSession().setAttribute("alertMsg", "성공적으로 메세지를 전송하였습니다.");
 			
+			response.sendRedirect(request.getContextPath() + "/list.ms?currentPage=1");
+			
+		}else {
+			
+			request.setAttribute("errorMsg", "메세지 전송 실패");
+			
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view.forward(request, response);
+		}
+		
 	}
 
 	/**
