@@ -60,9 +60,13 @@
         </div>
         
         <br><br>
-        
+        <% if(loginUser == null) { %>
+        <h4>문의를 원하시면 회원가입을 해주시기 바랍니다.</h4>
+       	<br>
+        <a id="buttonENQ" href="${contextPath}/views/member/login.jsp">회원가입</a>
+        <% } else {%>
         <a id="buttonENQ" href="${contextPath}/enquiryEnrollForm">문 의 하 기</a>
-        
+        <% } %>
     </div>
 
     <script>
