@@ -1,71 +1,72 @@
 @charset "UTF-8";
 <style>
-        /* 전체 */
-        .wrap {
-            width: 1000px;
-        }
+    /* 전체 */
+    .wrap {
+        width: 1000px;
+    }
 
-        div{
-            /* border: 1px solid black; */
-        }
+    div{
+        /* border: 1px solid black; */
+    }
 
-        /* 상단 질문 바 */
-        #question{text-align: center;}
-        #question1{
-            width: 500px; 
-            height: 40px; 
-            border-radius: 5px;
-        }
-        #question2{
-            width: 100px;
-            height: 40px;
-            border-radius: 5px;
-        }
-        
-        /* 고용주/프리랜서 버튼 */
-        #jobType{
-            margin-left: 70%;
-            background:rgb(12, 76, 140);
-            border-radius: 10px;
-            width: 300px;
-        }
-        #jobType > button{
-            color: white;
-            font-weight: 900;
-        }
+    /* 상단 질문 바 */
+    #question{text-align: center;}
+    #question1{
+        width: 500px; 
+        height: 40px; 
+        border-radius: 5px;
+    }
+    #question2{
+        width: 100px;
+        height: 40px;
+        border-radius: 5px;
+    }
+    
+    /* 고용주/프리랜서 버튼 */
+    #jobType{
+        margin-left: 70%;
+        background:#0f4c75;
+        border-radius: 10px;
+        width: 300px;
+    }
+    #jobType > button{
+        color: white;
+        font-weight: 900;
+    }
 
-        /* 하단 질문 바 */
-        .detailMenu{
-            width: 45%;
-            height:40px;
-            border-radius:10px;
-            cursor:pointer;
+    /* 하단 질문 바 */
+    .detailMenu{
+        width: 45%;
+        height:40px;
+        border-radius:10px;
+        cursor:pointer;
+        border:2px solid #0f4c75;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+    p{
+        /* border:1px solid #0f4c75; */
+        width:59%;
+        height:50px;
+        border-radius:10px;
+        margin-top:5px;
+        display:none;
+    }
+    
+    /* 문의하기 버튼 */
+    #buttonENQ{
+        padding: 10px;
+        padding-left: 60px;
+        padding-right: 60px;
+        background:rgb(3, 128, 64);
+        color: white;
+        border-radius: 10px;
+        font-weight: 900;
+        font-size: 50px;
+        border: 2px solid green;
+        box-shadow: black 2px 2px 2px;
+        text-shadow: gray 3px 3px 3px;
+    }
 
-            /* line-height: 20px; */
-            border:5px solid #0f4c75;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        
-        p{
-            /* border:1px solid #0f4c75; */
-            width:59%;
-            height:50px;
-            border-radius:10px;
-            margin-top:5px;
-            display:none;
-        }
-        
-        /* 문의하기 버튼 */
-        #buttonENQ{
-            padding: 10px;
-            padding-left: 60px;
-            padding-right: 60px;
-            background:rgb(3, 128, 64);
-            color: white;
-            border-radius: 10px;
-            font-weight: 900;
-            font-size: 50px;
-        }
-
-    </style>
+</style>
