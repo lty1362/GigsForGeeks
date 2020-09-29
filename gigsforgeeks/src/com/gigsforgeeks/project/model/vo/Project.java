@@ -21,7 +21,7 @@ public class Project {
 	private int countBid;
 	private int averageBid;
 	private String winnerId;
-	private String winningBid;
+	private int winningBid;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	
@@ -29,7 +29,7 @@ public class Project {
 	public Project() {}
 	public Project(String projectId, String clientId, String requiredSkill, String projectName, String description,
 			String projectStatus, LocalDate expectStart, LocalDate expectEnd, String meansOfPayment, int minBid, int maxBid,
-			LocalDate startBid, LocalDate endBid, int countBid, int averageBid, String winnerId, String winningBid,
+			LocalDate startBid, LocalDate endBid, int countBid, int averageBid, String winnerId, int winningBid,
 			LocalDate startDate, LocalDate endDate) {
 		super();
 		this.projectId = projectId;
@@ -69,7 +69,6 @@ public class Project {
 		this.endBid = endBid;
 	}
 	
-	
 	// searcListProject
 	public Project(String projectId, String projectName, String projectStatus, String description, LocalDate endBid,
 			int minBid, int maxBid,  int countBid) {
@@ -83,7 +82,6 @@ public class Project {
 		this.endBid = endBid;
 		this.countBid = countBid;
 	}
-	
 	
 	// Getters and Setters
 	public String getProjectId() {
@@ -182,10 +180,10 @@ public class Project {
 	public void setWinnerId(String winnerId) {
 		this.winnerId = winnerId;
 	}
-	public String getWinningBid() {
+	public int getWinningBid() {
 		return winningBid;
 	}
-	public void setWinningBid(String winningBid) {
+	public void setWinningBid(int winningBid) {
 		this.winningBid = winningBid;
 	}
 	public LocalDate getStartDate() {
