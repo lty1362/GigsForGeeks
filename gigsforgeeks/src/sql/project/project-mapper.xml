@@ -78,4 +78,25 @@
 		  ORDER
 		     BY PROJECT_NO DESC
 	</entry>
+	
+	
+	<entry key="searchListProject">
+		SELECT
+		       PROJECT_ID
+		     , PROJECT_NAME
+		     , PROJECT_STATUS
+		     , DESCRIPTION
+		     , END_BID
+		     , MIN_BID
+		     , MAX_BID
+		     , COUNT_BID
+		  FROM PROJECT
+		 WHERE PROJECT_STATUS='OPEN'
+		   AND MIN_BID BETWEEN 200000 AND ?
+		   AND MAX_BID BETWEEN ? AND 5000000
+		 ORDER 
+		    BY PROJECT_ID DESC
+	</entry>
+	
+	
 </properties>
