@@ -51,6 +51,7 @@
                     <nav id="headerMainNav">
                         <a href="${contextPath}/views/project/search.jsp">탐색</a>
                         <a href="${contextPath}/views/project/post.jsp">프로젝트 등록</a>
+                        <a href="${contextPath}/views/service/detailService.jsp">문의하기</a>
                     </nav>
                     <aside id="headerAside">
                         <a href="${contextPath}/views/member/login.jsp">로그인</a>
@@ -67,6 +68,7 @@
                         <a href="${contextPath}/views/project/myProject.jsp">내 프로젝트</a>
                         <a href="${contextPath}/list.ms">메시지</a>
                         <a href="">업데이트</a>
+                        <a href="${contextPath}/views/service/detailService.jsp">문의하기</a>
                     </nav>
                     <aside id="headerAside">
                         <a href="${contextPath}/views/project/post.jsp">프로젝트 게시하기</a>
