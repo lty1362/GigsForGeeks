@@ -24,7 +24,7 @@
     #content_r{width: 80%;}
 
     /* 세부 틀 잡기 */
-    #content_l_high{height: 10%; text-align: center; padding-top: 30px; font-size: 35px; font-weight: 700;}
+    #content_l_high{height: 10%; text-align: center; padding-top: 30px; font-size: 25px; font-weight: 700;}
     #content_l_mid{height: 15%; padding: 20px;}
     #content_l_navi{height: 75%;}
 
@@ -35,8 +35,7 @@
 
     #content_r_center{height: 90%;}
     #content_r_center_h{height: 10%;}
-    #content_r_center_m{height: 25%;}
-    #content_r_center_l{height: 65%;}
+    #content_r_center_m{height: 90%;}
 
     #navi_main{
         width: 100%;
@@ -66,6 +65,7 @@
         font-size: 15px;
         font-weight: 900;
     }
+    
 
     #content_r_header,#content_r_center_h{
         color: rgb(23, 34, 59);
