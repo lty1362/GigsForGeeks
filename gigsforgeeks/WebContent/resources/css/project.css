@@ -203,7 +203,7 @@ form #feelter_sub{font-weight: bold}
   }
   form input{height:35px}
   #project,#freelancer{
-      border: 1px solid black;
+      background: #f0f1f3;
       padding: 25px;
       width: 1000px;
   }

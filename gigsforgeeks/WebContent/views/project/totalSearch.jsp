@@ -25,7 +25,7 @@
 	        <br>
 	        <form action="" method="GET">
 	            <div id="project">
-	                <span class="search">프로젝트 검색 : &nbsp;
+	                <span class="search">프로젝트 찾기 : &nbsp;
 	                    <input type="text" name="proejctSearch">
 	                </span>
 	                <button type="submit" class="btn btn-outline-info">검색</button>
@@ -43,7 +43,7 @@
 	        <br>
 	        <form action="" method="GET">
 	            <div id="freelancer">
-	                <span class="search">프리랜서 검색 : &nbsp;
+	                <span class="search">프리랜서 찾기 : &nbsp;
 	                    <input type="text" name="freelancer">
 	                </span>
 	                <button type="submit" class="btn btn-outline-info">검색</button>
@@ -60,7 +60,7 @@
 	    </div>
     </main>	
     
-   <br style="clear:both"><br><br><br><br><br><br><br><br>
+   <br style="clear:both"><br><br><br><br><br><br><br><br><br><br><br>
     
     <%-- Footer --%>
     <jsp:include page="/views/common/footer.jsp" flush="true"></jsp:include>

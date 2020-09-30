@@ -82,15 +82,15 @@
                             </div>
                                 <!-- 레이어 안의 내용 -->
                                 <form action="" method="GET">
-                                    <input type="text" name="totalSearch" id="search" placeholder="통합검색">
-                                    <a href="${contextPath}/views/project/totalSearch.jsp" type="submit" class="btn btn-outline-info">검색</a>
+                                    <input type="text" name="totalSearch" id="searchInput" placeholder="통합검색">
+                                    <button type="submit" onclick="window.open('${contextPath}/views/project/totalSearch.jsp')" class="btn btn-info">검색</button>
                                 </form>
                                 <br>
-                                <a href="${contextPath}/views/project/searchListProject.jsp" id="projectform">
+                                <a href="${contextPath}/views/project/searchListProject.jsp">
                                 <img src="${contextPath}/resources/images/project.png">프로젝트</a>
                                 <label><small>일할만한 프로젝트 탐색</small></label>
                                 <br><br>
-                                <a href="${contextPath}/views/project/searchListFreelancer.jsp" id="freelancerform">
+                                <a href="${contextPath}/views/project/searchListFreelancer.jsp">
                                 <img src="${contextPath}/resources/images/freelancer.png">프리랜서</a>
                                 <label><small>프리랜서 탐색</small></label>
                                 <br><br>
@@ -118,7 +118,6 @@
                         		var oWidth = $('#popupLayer').width();
                         		var oHeight = $('#popupLayer').height();
 
-                        		// 레이어가 나타날 위치를 셋팅한다.
                         		var divLeft = e.clientX + 10;
                         		var divTop = e.clientY + 5;
 
@@ -173,19 +172,19 @@
                             </div>
                                 <!-- 레이어 안의 내용 -->
                                 <form action="" method="GET">
-                                    <input type="text" name="totalSearch" id="search" placeholder="통합검색">
-                                    <a href="${contextPath}/views/project/totalSearch.jsp" type="submit" class="btn btn-outline-info">검색</a>
+                                    <input type="text" name="totalSearch" id="searchInput" placeholder="통합검색">
+                                    <button type="submit" onclick="window.open('${contextPath}/views/project/totalSearch.jsp')" class="btn btn-info">검색</button>
                                 </form>
                                 <br>
-                                <a href="${contextPath}/views/project/searchListProject.jsp" id="projectform">
+                                <a href="${contextPath}/views/project/searchListProject.jsp">
                                 <img src="${contextPath}/resources/images/project.png">프로젝트</a>
                                 <label><small>일할만한 프로젝트 탐색</small></label>
                                 <br><br>
-                                <a href="${contextPath}/views/project/searchListFreelancer.jsp" id="freelancerform">
+                                <a href="${contextPath}/views/project/searchListFreelancer.jsp">
                                 <img src="${contextPath}/resources/images/freelancer.png">프리랜서</a>
                                 <label><small>프리랜서 탐색</small></label>
                                 <br><br>
-                                <a href="${contextPath}/views/project/searchListFreelancer.jsp" id="greatFreelancerform">
+                                <a href="${contextPath}/views/project/searchListFreelancer.jsp">
                                 <img src="${contextPath}/resources/images/greatFreelancer.png">우수 프리랜서</a>
                                 <label><small>평점이 높은 프리랜서 탐색</small></label>
                                 <br><br>
@@ -209,7 +208,6 @@
                         		var oWidth = $('#popupLayer').width();
                         		var oHeight = $('#popupLayer').height();
 
-                        		// 레이어가 나타날 위치를 셋팅한다.
                         		var divLeft = e.clientX + 10;
                         		var divTop = e.clientY + 5;
 
