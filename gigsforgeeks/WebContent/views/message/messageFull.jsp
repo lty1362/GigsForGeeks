@@ -47,7 +47,7 @@
             <table class="messageFull">
 		        <thead>
 		            <tr>
-		            	<th id="msNo"></th>
+		            	<th style="display:none;"></th>
 		                <th width="30">번호</th>
 		                <th width="15"><input type="checkbox"></th>
 		                <th width="200">제목</th>
@@ -66,7 +66,7 @@
 		        		<%int count = 1; %>
 		        		  <%for(Message m : list){%>
 				        	<tr>
-				        		<td id="msNo"><%=m.getMessageNo() %></td>
+				        		<td style="display:none;"><%=m.getMessageNo() %></td>
 				                <td><%=count++%></td>
 				                <td><input type="checkbox"></td>
 				                <td><%= m.getMessageReceiver()%></td>
