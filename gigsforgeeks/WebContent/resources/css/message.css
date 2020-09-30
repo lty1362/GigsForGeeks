@@ -103,7 +103,7 @@ box-sizing: border-box;
    background:gray;
 }
 .modal-body #btn4{margin-right: 30px;}
-.messageFull #msNo{display:none;}
+#msNo{display:none;}
 
 /*읽지않은메세지*/
 .messageNotRead{

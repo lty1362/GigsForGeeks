@@ -65,7 +65,6 @@ public class MessageListServlet extends HttpServlet {
 	
 		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
 		
-		
 		endPage = startPage + pageLimit - 1;
 		
 		if(maxPage < endPage) {

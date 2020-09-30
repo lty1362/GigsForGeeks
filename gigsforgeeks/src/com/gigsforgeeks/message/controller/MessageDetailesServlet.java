@@ -34,7 +34,6 @@ public class MessageDetailesServlet extends HttpServlet {
 		
 		int messageNo = Integer.parseInt(request.getParameter("nno"));
 
-		
 		if(messageNo > 0) { 
 			Message m = new MessageService().selectMessage(messageNo);
 			request.setAttribute("m", m);
@@ -43,7 +42,7 @@ public class MessageDetailesServlet extends HttpServlet {
 			
 		}else { 
 			
-			request.setAttribute("errorMsg", "공지사항 상세조회 실패");
+			request.setAttribute("errorMsg", "메세지 상세조회 실패");
 			
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
