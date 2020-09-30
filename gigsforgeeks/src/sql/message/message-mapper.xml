@@ -50,7 +50,6 @@
 		    , MESSAGE_CONTENT
 		    , MESSAGE_RECEIVER
             , MESSAGE_RECEPIENT
-		    , MESSAGE_SEND_TIME
 	  		)
 	   VALUES
 	  		(
@@ -59,7 +58,6 @@
 		    , ?
 		    , ?
 		    , ?
-		    , SYSDATE
 		    )
 	</entry>
 	<entry key="messageRecepient">
@@ -68,4 +66,19 @@
           JOIN MEMBER M ON (M.USER_ID =MS.MESSAGE_RECEPIENT)
           WHERE USER_ID = ?
 	</entry>
+
+	<entry key="selectMessage">
+	 	SELECT 
+		       MESSAGE_NO
+		     , MESSAGE_RECEIVER
+             , MESSAGE_RECEPIENT
+             , MESSAGE_TITLE
+             , MESSAGE_CONTENT
+             , MESSAGE_RECEIVE_TIME
+		  FROM MESSAGE M
+		 WHERE MESSAGE_NO = ?
+		   AND M.STATUS = 'Y'
+	</entry>
+	
+	
 </properties>

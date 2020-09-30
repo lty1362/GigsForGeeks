@@ -51,6 +51,19 @@ public class Message {
 		this.messageReceiveTime = messageReceiveTime;
 	}
 
+	public Message(int messageNo, String messageReceiver, String messageRecepient, String messageTitle,
+			String messageContent, Date messageReceiveTime) {
+		super();
+		this.messageNo = messageNo;
+		this.messageReceiver = messageReceiver;
+		this.messageRecepient = messageRecepient;
+		this.messageTitle = messageTitle;
+		this.messageContent = messageContent;
+		this.messageReceiveTime = messageReceiveTime;
+	}
+
+	
+	
 	public int getMessageNo() {
 		return messageNo;
 	}

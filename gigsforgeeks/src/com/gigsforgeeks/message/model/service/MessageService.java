@@ -93,6 +93,23 @@ public class MessageService {
 
 		return messageReceiver;
 	}
+	
+	/**
+	 *메세지 상세보기 
+	 * @param messageNo
+	 * @return
+	 */
+	public Message selectMessage(int messageNo) {
+		Connection conn = getConnection();
+		
+		Message ms = new MessageDAO().selectMessage(conn,messageNo);
+		
+		close(conn);
+		
+		return ms;
+	}
+
+
 
 
 	

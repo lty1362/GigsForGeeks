@@ -95,11 +95,15 @@ box-sizing: border-box;
    width: 100%;
    height: 70%;
 }
+.messageFull>tbody>tr>td{
+	text-align:center;
+}
 .messageFull>tbody>tr:hover{
    cursor:pointer;
    background:gray;
 }
 .modal-body #btn4{margin-right: 30px;}
+.messageFull #msNo{display:none;}
 
 /*읽지않은메세지*/
 .messageNotRead{
@@ -148,4 +152,24 @@ box-sizing: border-box;
 #meUserId{
 	width:200px; 
 	height:30px;
+}
+
+/*메세지 상세보기*/
+#t2{font-size:20px;}
+#t1{padding-left: 900px;}
+#messageDetailes{
+    margin:auto;
+    margin-top:50px;
+    width: 100%;
+   height: 80%;
+}
+#detailMe p{
+    border-top:1px solid black;
+    padding-top: 10px;
+    }
+#detailMe p{height:auto}
+#detailMe th{text-align:center;}
+#detailMe td{text-align:center;}
+#t3>th, #t3>td{
+    padding-top: 10px;
 }

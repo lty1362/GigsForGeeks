@@ -47,12 +47,12 @@
             <table class="messageFull">
 		        <thead>
 		            <tr>
-		                <th width="10">번호</th>
-		                <th width="10"><input type="checkbox"></th>
-		                <th width="240">제목</th>
-		              <!--  <th width="70"></th>  --> 
-		                <th width="30">보낸회원</th>
-		                <th width="30">받은날짜</th>
+		            	<th id="msNo"></th>
+		                <th width="30">번호</th>
+		                <th width="15"><input type="checkbox"></th>
+		                <th width="200">제목</th>
+		                <th width="10">보낸회원</th>
+		                <th width="20">받은날짜</th>
 		            </tr>
 		            <tr><td colspan="5"><div class="modal-footer"></div></td></tr>            
 		        </thead>
@@ -66,18 +66,28 @@
 		        		<%int count = 1; %>
 		        		  <%for(Message m : list){%>
 				        	<tr>
+				        		<td id="msNo"><%=m.getMessageNo() %></td>
 				                <td><%=count++%></td>
 				                <td><input type="checkbox"></td>
 				                <td><%= m.getMessageReceiver()%></td>
 				                <td><%= m.getMessageTitle()%></td>
-				               <!--<td><%= m.getMessageRecepient()%></td>-->
 				                <td><%= m.getMessageReceiveTime()%></td>
 				            </tr>
 				           <% } %>
 		        	  <% } %>	  
 		        </tbody>
 		    </table>
-			
+			 <script>
+    			$(function(){
+	    		
+		    		$(".messageFull>tbody>tr").click(function(){
+		    			var nno = $(this).children().eq(0).text();
+		    			location.href = "${contextPath}/detail.ms?nno=" + nno;
+		    		});
+		    		
+		    	});
+   		 </script>
+    
 		    <br><br>
 		    
 		    <div align="right" style="width:98%;">

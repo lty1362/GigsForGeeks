@@ -219,6 +219,48 @@ public class MessageDAO {
 		
 		return m;
 	}
+	
+	/**
+	 * 메세지 상세보기
+	 * @param conn
+	 * @param messageNo
+	 * @return
+	 */
+	public Message selectMessage(Connection conn,int messageNo) {
+		Message ms = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMessage");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, messageNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				ms = new Message(rset.getInt("MESSAGE_NO"),	
+			   		     rset.getString("MESSAGE_RECEIVER"),
+					     rset.getString("MESSAGE_RECEPIENT"),
+					     rset.getString("MESSAGE_TITLE"),
+					     rset.getString("MESSAGE_CONTENT"),
+					     rset.getDate("MESSAGE_RECEIVE_TIME"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return ms;
+	}
+
+
 
 	
 	
