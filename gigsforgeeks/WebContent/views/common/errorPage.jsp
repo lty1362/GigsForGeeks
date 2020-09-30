@@ -31,7 +31,7 @@
     	 	<table>
     			<tr>
     				<td><a href="${contextPath}/views/project/post.jsp" class="btn btn-outline-info">프로젝트 등록</a>&nbsp;&nbsp;<td>
-    				<td><a href="${contextPath}/views/project/search.jsp" class="btn btn-outline-info">탐색</a></td>
+    				<td><a href="${contextPath}/views/project/totalSearch.jsp" class="btn btn-outline-info">통합검색</a></td>
     			</tr>
     		</table>
     		<br>

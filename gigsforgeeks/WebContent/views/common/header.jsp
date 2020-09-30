@@ -181,11 +181,11 @@
                                 <img src="${contextPath}/resources/images/project.png">프로젝트</a>
                                 <label><small>일할만한 프로젝트 탐색</small></label>
                                 <br><br>
-                                <a href="" id="freelancerform">
+                                <a href="${contextPath}/views/project/searchListFreelancer.jsp" id="freelancerform">
                                 <img src="${contextPath}/resources/images/freelancer.png">프리랜서</a>
                                 <label><small>프리랜서 탐색</small></label>
                                 <br><br>
-                                <a href="" id="greatFreelancerform">
+                                <a href="${contextPath}/views/project/searchListFreelancer.jsp" id="greatFreelancerform">
                                 <img src="${contextPath}/resources/images/greatFreelancer.png">우수 프리랜서</a>
                                 <label><small>평점이 높은 프리랜서 탐색</small></label>
                                 <br><br>

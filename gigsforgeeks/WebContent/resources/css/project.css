@@ -107,7 +107,7 @@ form #feelter_sub p{font-weight: bold}
     font-size: 18px;
     margin: 5px;
 }
-.feelter_main:hover{
+.feelter_main:visited{
     font-size: 20px;
     height: 40px;
     font-weight: bold;
@@ -118,6 +118,7 @@ form #feelter_sub p{font-weight: bold}
     padding: 30px;
     width: 880px;
     float: right;
+    cursor:pointer;
 }
 #projectTitle{
     font-size: 20px;
@@ -128,7 +129,56 @@ form #feelter_sub p{font-weight: bold}
     font-weight: bold;
     float: right;
 }
-#searchprojectList:hover{box-shadow: 6px 6px 6px 6px gray}
+#searchprojectList:hover{box-shadow: 4px 4px 4px 4px gray}
+
+
+/* searcListFreelancer 시작 */
+
+#searchContent2{
+    padding: 25px;
+    margin:auto;
+    width:1300px;
+}
+#freelancerCategory{
+    background: #f0f1f3;
+    padding: 18px;
+    width:340px;
+    float:left;
+}
+form #feelter_sub{font-weight: bold}
+.feelter_main{
+    font-size: 18px;
+    margin: 5px;
+}
+.feelter_main:active{
+    font-size: 20px;
+    height: 40px;
+    font-weight: bold;
+    background: #cfd1d8;
+}
+#searchFreelancer{
+    background: #f0f1f3;
+    padding: 30px;
+    width: 880px;
+    float: right;
+    cursor:pointer;
+}
+#searchFreelancerList button{
+    float: right;
+    width: 120px;
+    height: 60px;
+}
+#freelancerTitle{
+    font-size: 20px;
+    font-weight: bold;
+}
+#price{
+    font-size: 20px;
+    font-weight: bold;
+    float: right;
+}
+#searchFreelancerList:hover{box-shadow: 4px 4px 4px 4px gray}
+
 
 
 /* totalSearch 시작 */
@@ -165,6 +215,7 @@ form #feelter_sub p{font-weight: bold}
   }
   #project input{width: 300px}
   #freelancer input{width: 300px}
+
 
 
 

@@ -16,16 +16,16 @@
 	<link rel= "stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
 	<%-- End Of Header --%>
 	<!-- 페이지의 타이틀을 작성하세요 -->
-	<title>searchListProject</title>
+	<title>searchListFreelancer</title>
 </head>
 <body>
-    
-    <!--  Content  -->
+
+ <!--  Content  -->
     <main id="contentMain">
-        <div id="searchContent">
+        <div id="searchContent2">
 
             <!-- 좌측 검색필터 카테고리 -->
-            <div id="projectCategory">
+            <div id="freelancerCategory">
                 <form id="feelterbar" action="" method="POST">
                     <div class="feelter_main">프로젝트</div> <br>
                     <div class="feelter_main">프리랜서</div> <br>
@@ -33,6 +33,10 @@
                     <br>
              
                     <div id="feelter_sub">
+                        <p>프리랜서 유형:</p>
+                        <input type="checkbox" name="freelancerType" id="online">
+                        <label for="online">온라인 프리랜서만</label>
+                        <br><br>
                         <p>기술 :</p>
                         <input type="checkbox" name="requiredSkill" id="JAVA">
                         <label for="Java">JAVA</label>
@@ -59,16 +63,21 @@
                         <input type="checkbox" name="requiredSkill" id="etc">
                         <label for="etc">기타</label>
                         
-                    <br><br>
-                        <p>프로젝트 가격대</p>
-                        <select name="payProject">
-	                        <option value="2000000-5000000">대형 프로젝트 (2,000,000₩~5,000,000₩)</option>
-							<option value="1000000-2000000">중형 프로젝트 (1,000,000₩~2,000,000₩)</option>
-							<option value="500000-1000000">소형 프로젝트 (500,000₩~1,000,000₩)</option>
-							<option value="200000-500000">초소형 프로젝트 (200,000₩~500,000₩)</option>
-                        </select>
-                        
                         <br><br><br>
+                        <label>희망가격 : </label>&nbsp;
+                        <input type="text" name="freelancerPay" placeholder="가격을 입력하세요.">&nbsp;￦
+                       
+                        <br><br>
+                        <label>평점 :</label>&nbsp;
+                        <select name="payProject">
+	                        <option value="excellent">5.0 ~ 4.0</option>
+							<option value="great">4.0 ~ 3.0</option>
+							<option value="good">3.0 ~ 2.0</option>
+                            <option value="notgood">2.0 ~ 1.0</option>
+                            <option value="bad">1.0 ~ 0.0</option>
+                        </select>
+
+                        <br><br>
                         <label><b>지역 : </b></label>&nbsp;
                         <select name="location">
                             <option value="selectNo">선택안함</option>
@@ -84,32 +93,29 @@
                     <br>
                     <button type="submit" style="float: right;" class="btn btn-outline-info">필터검색</button>
                 </form>
-			<script>
-			$('.feelter_main').on('click', function() {
-			     $(this).addClass('active');
-			});
-			</script>
+
             </div>
 
             <!-- 검색필터 적용시 보이는 프로젝트 목록 -->
-            <div id="searchProjectList">
+            <div id="searchFreelancer">
                 <form action="" method="POST">
-                    <input type="text" name="search" placeholder="프로젝트 검색" style="width:500px; height:40px;">
+                    <input type="text" name="search" placeholder="프리랜서 찾기" style="width:500px; height:40px;">
                     <button type="button" class="btn btn-outline-info">검색</button><br><hr>
                 </form>
 
                 <br>
-                <div onclick="location.href='${contextPath}/views/project/detailProject.jsp'" id="searchprojectList">
-                    <label id="projectTitle">프로젝트명1</label> 
-                    <label id="price">700,000￦ - 2,000,000￦</label><br>
+                <div onclick="location.href='${contextPath}/views/member/myAccount.jsp'" id="searchFreelancerList">
+                    <label id="freelancerTitle">프리랜서 클라이언트 이름</label> 
+                    <label id="price">500,000￦ - 1,000,000￦</label><br>
                     <p>
 			                        내 웹사이트에 두 가지 기능을 추가해야 하는데, 
 			                        하나는 고객이 체육관을 위한 평면도를 만들 수 있는 페이지를 만드는 것이다.
                     </p>
                     <br>
-                    <li>마감 5일 전 - 85건의 입찰</li>
-                    <li>100건의 리뷰(5.0)</li>
+                    <li>평점 5.0(100건의 리뷰)</li>
+                    <li>서울</li>
                     <li>JAVA, PHP, HTML, WebsiteDesign</li>
+                    <!-- <button class="btn btn-outline-info">고용해주세요!</button>-->
                 </div>
             </div>
         </div>
@@ -124,8 +130,6 @@
     <%-- Footer --%>
     <jsp:include page="/views/common/footer.jsp" flush="true"></jsp:include>
     <%-- End Of Footer --%>
-    
-    
     
 </body>
 </html>
