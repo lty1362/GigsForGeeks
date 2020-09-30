@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/service.css">
 	<%-- End Of Header --%>
 	<!-- 페이지의 타이틀을 작성하세요 -->
-	<title>Insert title here</title>
+	<title>문의하기 상세 페이지</title>
 </head>
 <body>
     <%-- Content --%>
@@ -61,11 +61,11 @@
         
         <br><br>
         <% if(loginUser == null) { %>
-        <h4>문의를 원하시면 회원가입을 해주시기 바랍니다.</h4>
-       	<br>
-        <a id="buttonENQ" href="${contextPath}/views/member/login.jsp">회원가입</a>
+        <h4>문의를 원하시면 <a href="${contextPath}/views/member/login.jsp">회원가입</a>을 해주시기 바랍니다. </h4>
+       
         <% } else {%>
-        <a id="buttonENQ" href="${contextPath}/enquiryEnrollForm">문 의 하 기</a>
+        <h4>문의를 원하시면 아래 버튼을 클릭해주시기 바랍니다.</h4>
+        <a class="btn btn-success" href="${contextPath}/enquiryEnrollForm">문의하기</a>
         <% } %>
     </div>
 
