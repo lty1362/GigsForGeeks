@@ -53,7 +53,7 @@
 	        <button type="submit" class="btn btn-outline-info">메세지 보내기</button>
 	        <br><br>
 	        
-	        <textarea id="meContent" name="meContent" placeholder="내용을 입력해주세요." required  cols="210" rows="30" ></textarea>
+	        <textarea id="meContent" name="meContent" placeholder="내용을 입력해주세요." required  cols="190" rows="30" ></textarea>
    		   </form>
    		 </div>
        </div>
