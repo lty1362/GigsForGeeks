@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class adminEnquiryServlet
+ *  문의 페이지 넘기는 역할
  */
 @WebServlet("/adminEnquiry")
 public class adminEnquiryServlet extends HttpServlet {

@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.service.model.vo.Enquiry" %>
+<%	ArrayList<Enquiry> list = (ArrayList<Enquiry>)session.getAttribute("list"); %>
     
 <!DOCTYPE html>
 <html>
@@ -48,24 +51,31 @@
                         <thead>
                             <tr>
                                 <td style="width: 50px;">No</td>
+                                <td style="width: 100px;">문의자 ID</td>
                                 <td style="width: 200px;">문의 제목</td>
-                                <td style="width: 300px;">답변 여부</td>
-                                <td style="width: 200px;">문의 일자</td>
-                                <td style="width: 200px;">상세 조회</td>
+                                <td style="width: 200px;">문의 날짜</td>
+                                <td style="width: 150px;">답변 여부</td>
+                                <td style="width: 150px;">답변 날짜</td>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>5</td>
-                                <td>문의제목입니닷</td>
-                                <td>응?</td>
-                                <td>2020-20-20</td>
-                                <td>상세조회</td>
-                            </tr>
+                        	<% if(list.isEmpty()) { %>
                             <tr>
                                 <td colspan="7">조회된 리스트가 없습니다.</td>
                             </tr>
+                        	<% } else {%>
+                        		<% for(Enquiry enq : list) { %>
+	                            <tr>
+	                                <td><%= enq.getEnquiryNo() %></td>
+	                                <td><%= enq.getUserId() %></td>
+	                                <td><%= enq.getEnquiryTitle() %></td>
+	                                <td><%= enq.getEnquiryState() %></td>
+	                                <td><%= enq.getEnquiryDate() %></td>
+	                                <td><%= enq.getAnswerDate() %></td>
+	                            </tr>
+                            	<% } %>
+                            <% } %>
                         </tbody>
 
                     </table>
