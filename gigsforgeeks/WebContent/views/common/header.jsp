@@ -61,7 +61,84 @@
             <% if(loginUser == null) { %>
                 <main id="headerMain">
                     <nav id="headerMainNav">
-                        <a href="${contextPath}/views/project/search.jsp">탐색</a>
+                        <a style="cursor:pointer" id="searchSelect">탐색</a>
+                        
+                        <script>
+                        $(document).ready(function(){
+                    	    $("#searchSelect").mouseenter(function(){
+                    	        $("#popupLayer").modal();
+                    	    });
+                    	 
+                    	  $(document).ready(function(){
+                    		    $("#searchSelect").mouseleave(function(){
+                    		        $("#popupLayer").modal();
+                    		});
+                        </script>
+                        
+                        <!-- 탐색 팝업폼 레이어  -->
+                        <div id="popupLayer">
+                            <div>
+                                <span onClick="closeLayer(this)" style="cursor:pointer;font-size:1.5em" title="닫기">X</span>
+                            </div>
+                                <!-- 레이어 안의 내용 -->
+                                <form action="" method="GET">
+                                    <input type="text" name="totalSearch" id="search" placeholder="통합검색">
+                                    <a href="${contextPath}/views/project/totalSearch.jsp" type="submit" class="btn btn-outline-info">검색</a>
+                                </form>
+                                <br>
+                                <a href="${contextPath}/views/project/searchListProject.jsp" id="projectform">
+                                <img src="${contextPath}/resources/images/project.png">프로젝트</a>
+                                <label><small>일할만한 프로젝트 탐색</small></label>
+                                <br><br>
+                                <a href="${contextPath}/views/project/searchListFreelancer.jsp" id="freelancerform">
+                                <img src="${contextPath}/resources/images/freelancer.png">프리랜서</a>
+                                <label><small>프리랜서 탐색</small></label>
+                                <br><br>
+                                <a href="" id="greatFreelancerform">
+                                <img src="${contextPath}/resources/images/greatFreelancer.png">우수 프리랜서</a>
+                                <label><small>평점이 높은 프리랜서 탐색</small></label>
+                                <br><br>
+                                <a href="" id="favoriteform">
+                                <img src="${contextPath}/resources/images/favorite.png">즐겨찾기</a>
+                                <label><small>내가 즐겨찾기한 프로젝트 탐색</small></label>
+                        </div>
+                        
+                        <script>
+                        function closeLayer( obj ) {
+                        	$(obj).parent().parent().hide();
+                        }
+
+                        $(function(){
+
+                        	$('#searchSelect').click(function(e)
+                        	{
+                        		var sWidth = window.innerWidth;
+                        		var sHeight = window.innerHeight;
+
+                        		var oWidth = $('#popupLayer').width();
+                        		var oHeight = $('#popupLayer').height();
+
+                        		// 레이어가 나타날 위치를 셋팅한다.
+                        		var divLeft = e.clientX + 10;
+                        		var divTop = e.clientY + 5;
+
+                        		if( divLeft + oWidth > sWidth ) divLeft -= oWidth;
+                        		if( divTop + oHeight > sHeight ) divTop -= oHeight;
+
+                        		if( divLeft < 0 ) divLeft = 0;
+                        		if( divTop < 0 ) divTop = 0;
+
+                        		$('#popupLayer').css({
+                        			"top": divTop,
+                        			"left": divLeft,
+                        			"position": "absolute"
+                        		}).show();
+                        	});
+                        });
+
+                        </script>
+                        <!-- 탐색 팝업폼 레이어 끝  -->
+
                         <a href="${contextPath}/views/project/post.jsp">프로젝트 등록</a>
                         <a href="${contextPath}/views/service/detailService.jsp">문의하기</a>
                     </nav>
@@ -76,7 +153,83 @@
             <%-- 로그인 후에 보여지는 main 시작 --%>
 	            <main id="headerMain">
                     <nav id="headerMainNav">
-                        <a href="${contextPath}/views/project/search.jsp">탐색</a>
+                        <a style="cursor:pointer" id="searchSelect">탐색</a>
+                        <script>
+                        $(document).ready(function(){
+                    	    $("#searchSelect").mouseenter(function(){
+                    	        $("#popupLayer").modal();
+                    	    });
+                    	 
+                    	  $(document).ready(function(){
+                    		    $("#searchSelect").mouseleave(function(){
+                    		        $("#popupLayer").modal();
+                    		});
+                        </script>
+                        
+                        <!-- 탐색 팝업폼 레이어  -->
+                        <div id="popupLayer">
+                            <div>
+                                <span onClick="closeLayer(this)" style="cursor:pointer;font-size:1.5em" title="닫기">X</span>
+                            </div>
+                                <!-- 레이어 안의 내용 -->
+                                <form action="" method="GET">
+                                    <input type="text" name="totalSearch" id="search" placeholder="통합검색">
+                                    <a href="${contextPath}/views/project/totalSearch.jsp" type="submit" class="btn btn-outline-info">검색</a>
+                                </form>
+                                <br>
+                                <a href="${contextPath}/views/project/searchListProject.jsp" id="projectform">
+                                <img src="${contextPath}/resources/images/project.png">프로젝트</a>
+                                <label><small>일할만한 프로젝트 탐색</small></label>
+                                <br><br>
+                                <a href="" id="freelancerform">
+                                <img src="${contextPath}/resources/images/freelancer.png">프리랜서</a>
+                                <label><small>프리랜서 탐색</small></label>
+                                <br><br>
+                                <a href="" id="greatFreelancerform">
+                                <img src="${contextPath}/resources/images/greatFreelancer.png">우수 프리랜서</a>
+                                <label><small>평점이 높은 프리랜서 탐색</small></label>
+                                <br><br>
+                                <a href="" id="favoriteform">
+                                <img src="${contextPath}/resources/images/favorite.png">즐겨찾기</a>
+                                <label><small>내가 즐겨찾기한 프로젝트 탐색</small></label>
+                        </div>
+                        
+                        <script>
+                        function closeLayer( obj ) {
+                        	$(obj).parent().parent().hide();
+                        }
+
+                        $(function(){
+
+                        	$('#searchSelect').click(function(e)
+                        	{
+                        		var sWidth = window.innerWidth;
+                        		var sHeight = window.innerHeight;
+
+                        		var oWidth = $('#popupLayer').width();
+                        		var oHeight = $('#popupLayer').height();
+
+                        		// 레이어가 나타날 위치를 셋팅한다.
+                        		var divLeft = e.clientX + 10;
+                        		var divTop = e.clientY + 5;
+
+                        		if( divLeft + oWidth > sWidth ) divLeft -= oWidth;
+                        		if( divTop + oHeight > sHeight ) divTop -= oHeight;
+
+                        		if( divLeft < 0 ) divLeft = 0;
+                        		if( divTop < 0 ) divTop = 0;
+
+                        		$('#popupLayer').css({
+                        			"top": divTop,
+                        			"left": divLeft,
+                        			"position": "absolute"
+                        		}).show();
+                        	});
+                        });
+
+                        </script>
+                        <!-- 탐색 팝업폼 레이어 끝  -->
+                        
                         <a href="${contextPath}/myProject.do">내 프로젝트</a>
                         <a href="${contextPath}/list.ms?currentPage=1">메시지</a>
                         <a href="">업데이트</a>
