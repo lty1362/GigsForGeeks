@@ -4,17 +4,39 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page import="java.util.ArrayList, com.gigsforgeeks.service.model.vo.Enquiry" %>
-<%	ArrayList<Enquiry> list = (ArrayList<Enquiry>)session.getAttribute("list"); %>
-    
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*" %>
+<%@ page import="com.gigsforgeeks.member.model.vo.Member" %>
+<%
+	ArrayList<Enquiry> list = (ArrayList<Enquiry>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	String contextPath = request.getContextPath();
+	
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>    
+
 <!DOCTYPE html>
 <html>
 <head>
     <%@ include file="../../views/common/header2.jsp" %>
-
 	<meta charset="UTF-8">
    	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/adminCommon.css">
-	<title>관리자 메인페이지 = 회원전체조회 페이지</title>
+   	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/adminTableList.css">
 
+	<title>관리자 메인페이지 = 회원전체조회 페이지</title>
+	
+	<style>
+		#content_r_center_m{
+			padding: 30px;
+			font-size: 20px;
+		}
+		
+	</style>
+	
+	
 </head>
 <body>
     <div class="wrap">
@@ -40,22 +62,23 @@
 
                 <div id="content_r_center_m">
 
-                    <div class="btn-group" id="jobType" role="group" style="float: right;">
+                    <!-- <div class="btn-group" id="jobType" role="group" style="float: right;">
                         <button type="button" class="btn btn-default">고용주</button>
                         <button type="button" class="btn btn-default">프리랜서</button>
-                    </div>
+                    </div> -->
 
-                    <br><br><br>
+                    <br>
 
+					<!-- 테이블 리스트 -->
                     <table class="table table-hover, listArea">
                         <thead>
                             <tr>
-                                <td style="width: 50px;">No</td>
-                                <td style="width: 100px;">문의자 ID</td>
-                                <td style="width: 200px;">문의 제목</td>
-                                <td style="width: 200px;">문의 날짜</td>
-                                <td style="width: 150px;">답변 여부</td>
-                                <td style="width: 150px;">답변 날짜</td>
+                                <th width="50">No</th>
+                                <th width="100">문의자 ID</th>
+                                <th width="100">문의유형</th>
+                                <th width="250">문의 제목</th>
+                                <th width="100">문의 날짜</th>
+                                <th width="100">답변 여부</th>
                             </tr>
                         </thead>
 
@@ -67,22 +90,56 @@
                         	<% } else {%>
                         		<% for(Enquiry enq : list) { %>
 	                            <tr>
-	                                <td><%= enq.getEnquiryNo() %></td>
+	                             	<td><%= enq.getEnquiryNo() %></td>
 	                                <td><%= enq.getUserId() %></td>
+	                                <td><%= enq.getEnquiryType() %></td>
 	                                <td><%= enq.getEnquiryTitle() %></td>
-	                                <td><%= enq.getEnquiryState() %></td>
 	                                <td><%= enq.getEnquiryDate() %></td>
-	                                <td><%= enq.getAnswerDate() %></td>
+	                                <td><%= enq.getEnquiryState() %></td>
 	                            </tr>
                             	<% } %>
-                            <% } %>
+                           <% } %>
                         </tbody>
 
                     </table>
-               	</div>
+                    
+                    <script>
+			        	$(function(){
+			        		$(".listArea>tbody>tr").click(function(){
+			        			
+			        			location.href = "<%=contextPath%>/detail.bo?bno=" + $(this).children().eq(0).text();
+			        		});
+			        	});
+			        </script>
+			
+			        <br><br>
+			
+			        <div class="pagingArea" align="center">
+						<% if(currentPage != 1){ %>
+				            <!-- 맨 처음으로 (<<) -->
+				            <button onclick="location.href='<%=contextPath%>/enqlist.bo?currentPage=1';"> &lt;&lt; </button>
+				            <!-- 이전페이지로 (<) -->
+				            <button onclick="location.href='<%=contextPath%>/enqlist.bo?currentPage=<%=currentPage-1%>';"> &lt; </button>
+						<% } %>
+						
+						<% for(int p=startPage; p<=endPage; p++){ %>
+							<% if(p != currentPage){ %>
+			            	<button onclick="location.href='<%=contextPath%>/enqlist.bo?currentPage=<%=p%>';"><%= p %></button>
+			            	<% }else{ %>
+			            	<button disabled><%= p %></button>
+			            	<% } %>
+			            <% } %>
+						
+						<% if(currentPage != maxPage){ %>
+				            <!-- 다음페이지로 (>) -->
+				            <button onclick="location.href='<%=contextPath%>/enqlist.bo?currentPage=<%=currentPage+1%>';"> &gt; </button>
+				            <!-- 맨 끝으로 (>>) -->
+				            <button onclick="location.href='<%=contextPath%>/enqlist.bo?currentPage=<%=maxPage%>';"> &gt;&gt; </button>
+						<% } %>
+              	 	</div>
+				</div>
                 <!-- 복사 여기까지 끝 -->
-
-
+	
 			<!-- ****************	여기까지!! 	***************** -->
         	</div>
 			

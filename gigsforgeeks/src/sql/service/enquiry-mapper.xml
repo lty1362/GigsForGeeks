@@ -2,6 +2,38 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
+	<entry key="selectListCount">
+		SELECT 
+			   COUNT(*) LISTCOUNT
+		  FROM ENQUIRY
+         WHERE ANSWER_STATE = 'Y'
+	</entry>
+	
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT 
+		               ROWNUM RNUM
+		             , A.*
+		          FROM (
+		                SELECT 
+		                       ENQ_NO
+		                     , USER_ID
+		                     , ENQUIRY_TYPE
+		                     , ENQUIRY_TITLE
+		                     , ENQUIRY_DATE
+		                     , ANSWER_STATE
+		                  FROM ENQUIRY E
+		                  JOIN MEMBER USING(USER_ID)
+		                 WHERE E.ANSWER_STATE = 'Y'
+		                 ORDER 
+		                    BY ENQ_NO DESC
+		               ) A
+		       )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	
 	<entry key="insertEnquiry">
 		INSERT
 	    INTO ENQUIRY
@@ -27,57 +59,6 @@
 
 
 
-
-	<entry key="selectNoticeList">
-		SELECT /* com.kh.notice.model.dao.NoticeDao#selectNoticeList() */
-		       NOTICE_NO
-		     , NOTICE_TITLE
-		     , USER_ID
-		     , COUNT
-		     , CREATE_DATE
-		  FROM NOTICE N
-		  JOIN MEMBER ON(NOTICE_WRITER=USER_NO)
-		 WHERE N.STATUS='Y'
-		 ORDER 
-		    BY NOTICE_NO DESC
-	</entry>
-	
-	
-	<entry key="increaseCount">
-		UPDATE /* com.kh.notice.model.dao.NoticeDao#increaseCount() */
-		       NOTICE
-		   SET COUNT = COUNT+1
-		 WHERE NOTICE_NO = ?
-		   AND STATUS = 'Y'
-	</entry>
-	
-	<entry key="selectNotice">
-		SELECT /* com.kh.notice.model.dao.NoticeDao#selectNotice() */
-		       NOTICE_NO
-		     , NOTICE_TITLE
-		     , NOTICE_CONTENT
-		     , USER_ID
-		     , CREATE_DATE
-		  FROM NOTICE N
-		  JOIN MEMBER ON(NOTICE_WRITER=USER_NO)
-		 WHERE NOTICE_NO = ?
-		   AND N.STATUS = 'Y'
-	</entry>
-	
-	<entry key="updateNotice">
-		UPDATE
-		       NOTICE
-		   SET NOTICE_TITLE=?
-		     , NOTICE_CONTENT=?
-		 WHERE NOTICE_NO=?
-	</entry>
-	
-	<entry key="deleteNotice">
-		UPDATE
-		       NOTICE
-		   SET STATUS = 'N'
-		 WHERE NOTICE_NO = ?
-	</entry>
 	
 </properties>
 

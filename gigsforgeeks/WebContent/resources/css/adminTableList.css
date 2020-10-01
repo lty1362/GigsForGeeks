@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+<style>
+	
+    .listArea{
+        text-align:center;
+    }
+    .listArea>tbody>tr:hover{
+        background:rgb(23, 34, 59, 0.2);
+        cursor:pointer;
+    }
+
+    #content_r_center_filter{
+        font-size: 17px;
+        padding-left: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin:30px;
+        border: 1px solid black;;
+    }
+
+    #searchList, #enrollDate, #outrollDate, #searchContent{
+        width: 200px;
+    }
+
+    #content_r_center_m>tr{
+        height: 100px;
+    }
+
+    #content_r_center_m>table{
+        height: 50px;
+    }
+</style>

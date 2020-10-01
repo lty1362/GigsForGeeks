@@ -18,6 +18,20 @@ public class Enquiry {
 		
 	}
 	
+	// 관리자 문의조회
+	public Enquiry(int enquiryNo, String userId, String enquiryType, String enquiryTitle, Date enquiryDate,
+			String enquiryState) {
+		super();
+		this.enquiryNo = enquiryNo;
+		this.userId = userId;
+		this.enquiryType = enquiryType;
+		this.enquiryTitle = enquiryTitle;
+		this.enquiryDate = enquiryDate;
+		this.enquiryState = enquiryState;
+	}
+
+
+
 	// insertEnquiry
 	public Enquiry(int enquiryNo, String userId, String enquiryType, String enquiryTitle, String enquiryContent, Date enquiryDate) {
 		super();

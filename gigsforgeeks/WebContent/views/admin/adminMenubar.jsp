@@ -52,7 +52,7 @@
         <div id="navi_sub" OnClick="location.href ='${contextPath}/views/admin/endProject.jsp'">마감된 프로젝트</div>
         <div id="navi_main">고객지원 관리</div>
         <div id="navi_sub" OnClick="location.href ='${contextPath}/views/admin/faqManage.jsp'">FAQ 관리</div>
-        <div id="navi_sub" OnClick="location.href ='${contextPath}/adminEnquiry'">1:1 문의</div>
+        <div id="navi_sub" OnClick="location.href ='${contextPath}/enqlist.bo?currentPage=1'">1:1 문의</div>
     </div>
 </body>
 </html>
