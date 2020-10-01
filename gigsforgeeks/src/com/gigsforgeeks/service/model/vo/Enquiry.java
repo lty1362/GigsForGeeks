@@ -32,7 +32,7 @@ public class Enquiry {
 
 
 
-	// insertEnquiry
+	// 회원 문의등록 : insertEnquiry
 	public Enquiry(int enquiryNo, String userId, String enquiryType, String enquiryTitle, String enquiryContent, Date enquiryDate) {
 		super();
 		this.enquiryType = enquiryType;

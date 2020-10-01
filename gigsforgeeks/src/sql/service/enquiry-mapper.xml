@@ -6,7 +6,7 @@
 		SELECT 
 			   COUNT(*) LISTCOUNT
 		  FROM ENQUIRY
-         WHERE ANSWER_STATE = 'Y'
+         <!-- WHERE ANSWER_STATE = 'Y' -->
 	</entry>
 	
 	<entry key="selectList">
@@ -25,7 +25,7 @@
 		                     , ANSWER_STATE
 		                  FROM ENQUIRY E
 		                  JOIN MEMBER USING(USER_ID)
-		                 WHERE E.ANSWER_STATE = 'Y'
+		                 <!-- WHERE E.ANSWER_STATE = 'Y' -->
 		                 ORDER 
 		                    BY ENQ_NO DESC
 		               ) A
@@ -44,6 +44,7 @@
 	      , ENQUIRY_TITLE
 	      , ENQUIRY_CONTENT
 	      , ENQUIRY_DATE
+	      , ANSWER_STATE
 	    )
 	    VALUES
 	    (
@@ -53,6 +54,7 @@
 	      , ?
 	      , ?
 	      , SYSDATE
+	      , 'N'
 	    )
 	</entry>
 

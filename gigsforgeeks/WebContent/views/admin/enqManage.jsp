@@ -79,6 +79,7 @@
                                 <th width="250">문의 제목</th>
                                 <th width="100">문의 날짜</th>
                                 <th width="100">답변 여부</th>
+                                <th width="100">답장하기</th>
                             </tr>
                         </thead>
 
@@ -96,6 +97,7 @@
 	                                <td><%= enq.getEnquiryTitle() %></td>
 	                                <td><%= enq.getEnquiryDate() %></td>
 	                                <td><%= enq.getEnquiryState() %></td>
+	                                <td><button class="btn btn-success">상세보기</button></td>
 	                            </tr>
                             	<% } %>
                            <% } %>
