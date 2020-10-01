@@ -23,6 +23,7 @@
 		                     , ENQUIRY_TITLE
 		                     , ENQUIRY_DATE
 		                     , ANSWER_STATE
+		                     , ANSWER_DATE
 		                  FROM ENQUIRY E
 		                  JOIN MEMBER USING(USER_ID)
 		                 <!-- WHERE E.ANSWER_STATE = 'Y' -->
@@ -45,6 +46,7 @@
 	      , ENQUIRY_CONTENT
 	      , ENQUIRY_DATE
 	      , ANSWER_STATE
+	      , ANSWER_DATE
 	    )
 	    VALUES
 	    (
@@ -55,12 +57,20 @@
 	      , ?
 	      , SYSDATE
 	      , 'N'
+	      , null
 	    )
 	</entry>
 
-
-
-
+		<entry key="selectEnquiry">
+		SELECT 
+		       USER_ID
+		     , ENQUIRY_TYPE
+		     , ENQUIRY_TITLE
+		     , ENQUIRY_CONTENT
+		  FROM ENQUIRY
+         WHERE ENQ_NO = ?
+	</entry>
+	
 	
 </properties>
 

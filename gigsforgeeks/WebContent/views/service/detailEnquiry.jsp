@@ -32,12 +32,12 @@
                 <div class="form-group">
                     <label for="enqType">문의 유형</label><br>
                     <select name="enqType" id="enqType">
-                        <option value="10">일반</option>
-                        <option value="20">프로젝트</option>
-                        <option value="30">지불</option>
-                        <option value="40">멤버십</option>
-                        <option value="50">프로필</option>
-                        <option value="60">기타</option>
+                        <option value="일반">일반</option>
+                        <option value="프로젝트">프로젝트</option>
+                        <option value="지불">지불</option>
+                        <option value="멤버쉽">멤버쉽</option>
+                        <option value="프로필">프로필</option>
+                        <option value="기타">기타</option>
                     </select>
                 </div>
                 <div class="form-group">

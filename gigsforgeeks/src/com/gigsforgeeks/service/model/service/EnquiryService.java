@@ -1,6 +1,9 @@
 package com.gigsforgeeks.service.model.service;
 
-import static com.gigsforgeeks.common.JDBCTemplate.*;
+import static com.gigsforgeeks.common.JDBCTemplate.close;
+import static com.gigsforgeeks.common.JDBCTemplate.commit;
+import static com.gigsforgeeks.common.JDBCTemplate.getConnection;
+import static com.gigsforgeeks.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -67,6 +70,26 @@ public class EnquiryService {
 		return result;
 		
 	}
+	
+	
+	/**
+	 * 문의 상세조회
+	 * @param noticeNo	 클릭한 공지사항 번호
+	 * @return			 조회된 데이터가 담겨있는 Notice객체
+	 */
+	public Enquiry selectEnquiry(int enquiryNo) {
+		
+		Connection conn = getConnection();
+		
+		Enquiry enqNo = new EnquiryDao().selectEnquiry(conn, enquiryNo);
+		
+		close(conn);
+		
+		return enqNo;
+		
+	}
+	
+	
 	
 	
 }

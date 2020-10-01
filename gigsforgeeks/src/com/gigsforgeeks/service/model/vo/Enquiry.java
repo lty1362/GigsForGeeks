@@ -18,9 +18,21 @@ public class Enquiry {
 		
 	}
 	
+	
+	// 1행 조회
+	public Enquiry(String userId, String enquiryType, String enquiryTitle, String enquiryContent) {
+		super();
+		this.userId = userId;
+		this.enquiryType = enquiryType;
+		this.enquiryTitle = enquiryTitle;
+		this.enquiryContent = enquiryContent;
+	}
+
+
+
 	// 관리자 문의조회
 	public Enquiry(int enquiryNo, String userId, String enquiryType, String enquiryTitle, Date enquiryDate,
-			String enquiryState) {
+			String enquiryState, Date answerDate) {
 		super();
 		this.enquiryNo = enquiryNo;
 		this.userId = userId;
@@ -28,6 +40,7 @@ public class Enquiry {
 		this.enquiryTitle = enquiryTitle;
 		this.enquiryDate = enquiryDate;
 		this.enquiryState = enquiryState;
+		this.answerDate = answerDate;
 	}
 
 

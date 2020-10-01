@@ -30,8 +30,8 @@
 	
 	<style>
 		#content_r_center_m{
-			padding: 30px;
-			font-size: 20px;
+			padding: 40px;
+			font-size: 15px;
 		}
 		
 	</style>
@@ -79,7 +79,7 @@
                                 <th width="250">문의 제목</th>
                                 <th width="100">문의 날짜</th>
                                 <th width="100">답변 여부</th>
-                                <th width="100">답장하기</th>
+                                <th width="100">답장 날짜</th>
                             </tr>
                         </thead>
 
@@ -97,20 +97,25 @@
 	                                <td><%= enq.getEnquiryTitle() %></td>
 	                                <td><%= enq.getEnquiryDate() %></td>
 	                                <td><%= enq.getEnquiryState() %></td>
-	                                <td><button class="btn btn-success">상세보기</button></td>
+	                                <% if(enq.getAnswerDate() == null) { %>
+	                                	<td>답장안함!</td>
+	                                <% } else { %>
+	                                	<td><%= enq.getAnswerDate() %></td>
+	                                <% } %>
 	                            </tr>
                             	<% } %>
                            <% } %>
                         </tbody>
-
                     </table>
                     
                     <script>
 			        	$(function(){
 			        		$(".listArea>tbody>tr").click(function(){
+			        			location.href = "<%=contextPath%>/detail.enq?nno=" + $(this).children().eq(0).text();
 			        			
-			        			location.href = "<%=contextPath%>/detail.bo?bno=" + $(this).children().eq(0).text();
-			        		});
+			        			/* var nno = $(this).children().eq(0).text();
+				    			location.href = "${contextPath}/detail.enq?nno=" + nno; */
+			        		});									
 			        	});
 			        </script>
 			

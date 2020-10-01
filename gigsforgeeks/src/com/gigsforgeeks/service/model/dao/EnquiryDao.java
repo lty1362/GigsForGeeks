@@ -97,7 +97,8 @@ public class EnquiryDao {
 								     rset.getString("ENQUIRY_TYPE"),
 								     rset.getString("ENQUIRY_TITLE"),
 								     rset.getDate("ENQUIRY_DATE"),
-								     rset.getString("ANSWER_STATE")
+								     rset.getString("ANSWER_STATE"),
+								     rset.getDate("ANSWER_DATE")
 								     )
 						);
 			}
@@ -149,5 +150,45 @@ public class EnquiryDao {
 		
 	}
 	
+	
+	/**
+	 * 문의 조회-답장기능
+	 * @param conn
+	 * @param noticeNo
+	 * @return
+	 */
+	public Enquiry selectEnquiry(Connection conn, int enquiryNo) {
+		// select문 => 한 행
+		Enquiry enqNo = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectEnquiry");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, enquiryNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				enqNo = new Enquiry(rset.getString("USER_ID"), 
+								  rset.getString("ENQUIRY_TYPE"),
+								  rset.getString("ENQUIRY_TITLE"), 
+								  rset.getString("ENQUIRY_CONTENT")
+								 );
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return enqNo;
+	}
 		
 }
