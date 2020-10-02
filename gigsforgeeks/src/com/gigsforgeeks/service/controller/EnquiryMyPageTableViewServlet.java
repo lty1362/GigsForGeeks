@@ -1,15 +1,16 @@
-package com.gigsforgeeks.admin.controller;
+package com.gigsforgeeks.service.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.project.model.vo.PageInfo;
 import com.gigsforgeeks.service.model.service.EnquiryService;
 import com.gigsforgeeks.service.model.vo.Enquiry;
@@ -17,14 +18,14 @@ import com.gigsforgeeks.service.model.vo.Enquiry;
 /**
  *  문의 페이지 넘기는 역할
  */
-@WebServlet("/enqlist.bo")
-public class adminEnquiryServlet extends HttpServlet {
+@WebServlet("/enquiryMyPage")
+public class EnquiryMyPageTableViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminEnquiryServlet() {
+    public EnquiryMyPageTableViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,11 +41,15 @@ public class adminEnquiryServlet extends HttpServlet {
 		int maxPage;		// 전체 페이지들 중에서의 가장 마지막 페이지
 		int startPage;		// 현재 페이지에 하단에 보여질 페이징 바의 시작 수
 		int endPage;		// 현재 페이지에 하단에 보여질 페이징 바의 끝 수
+
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		String userId = loginUser.getUserId();
 		
-		listCount = new EnquiryService().selectListCount();
+		listCount = new EnquiryService().enqSelectListCount(userId);
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		pageLimit = 10;
-		boardLimit = 10;
+		pageLimit = 5;
+		boardLimit = 5;
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
@@ -60,15 +65,12 @@ public class adminEnquiryServlet extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		// 2. 현재 요청한 페이지(currentPage)에 보여질 게시글 리스트 조회해오기
-		ArrayList<Enquiry> list = new EnquiryService().selectList(pi);
+		ArrayList<Enquiry> list = new EnquiryService().enqSelectList(pi,userId);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/admin/enqManage.jsp");
-		view.forward(request, response);
-		
-		System.out.println(currentPage);
+		request.getRequestDispatcher("views/service/enquiryMyPage.jsp").forward(request, response);
 		
 	}
 

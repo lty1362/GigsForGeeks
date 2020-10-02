@@ -228,5 +228,95 @@ public class EnquiryDao {
 		return result;
 		
 	}
+	
+	
+	/**
+	 * 회원 내 문의보기 Count
+	 * @param conn
+	 * @return
+	 */
+	public int enqSelectListCount(Connection conn, String userId) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("enqSelectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("LISTCOUNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
+		
+	}
+	
+	
+	/**
+	 * 회원 내 문의내역 조회
+	 * @param conn
+	 * @param pi
+	 * @return
+	 */
+	public ArrayList<Enquiry> enqSelectList(Connection conn, PageInfo pi, String userId){
+		// select 문 => 여러행 조회
+		ArrayList<Enquiry> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("enqSelectList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Enquiry(rset.getInt("ENQ_NO"),
+								     rset.getString("USER_ID"),
+								     rset.getString("ENQUIRY_TYPE"),
+								     rset.getString("ENQUIRY_TITLE"),
+								     rset.getDate("ENQUIRY_DATE"),
+								     rset.getString("ENQUIRY_CONTENT"),
+								     rset.getString("ANSWER_CONTENT"),
+								     rset.getString("ANSWER_STATE"),
+								     rset.getDate("ANSWER_DATE")
+								     )
+						);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println(list);
+		
+		return list;
+		
+	}
+	
 		
 }

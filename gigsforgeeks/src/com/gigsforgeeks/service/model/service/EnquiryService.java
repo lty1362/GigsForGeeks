@@ -113,6 +113,36 @@ public class EnquiryService {
 	}
 	
 	
+	/**
+	 * 회원 내 문의내역 조회
+	 * @return		총 갯수
+	 */
+	public int enqSelectListCount(String userId) {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new EnquiryDao().enqSelectListCount(conn, userId);
+		
+		close(conn);
+		
+		return listCount;
+		
+	}
+	
+	/**
+	 * 회원 내 문의내역 조회 리스트
+	 * @param pi		현재요청한페이지, 게시글최대갯수가 담겨있는 PageInfo 객체
+	 * @return			조회된 결과가 담겨있는 list
+	 */
+	public ArrayList<Enquiry> enqSelectList(PageInfo pi, String userId){
+		Connection conn = getConnection();
+		
+		ArrayList<Enquiry> list = new EnquiryDao().enqSelectList(conn, pi, userId);
+		
+		close(conn);
+		
+		return list;		
+	}
 	
 	
 }

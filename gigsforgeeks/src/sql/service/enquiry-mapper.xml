@@ -85,6 +85,33 @@
 		 WHERE ENQ_NO=?
 	</entry>
 	
+	<entry key="enqSelectListCount">
+		SELECT 
+			   COUNT(*) LISTCOUNT
+		  FROM ENQUIRY
+		 WHERE USER_ID=?
+         <!-- WHERE ANSWER_STATE = 'Y' -->
+	</entry>
+	
+	
+	<entry key="enqSelectList">
+		SELECT *
+		  FROM (
+		        SELECT 
+		               ROWNUM RNUM
+		             , A.*
+		          FROM (
+		                SELECT *
+		                  FROM ENQUIRY E
+		                  JOIN MEMBER USING(USER_ID)
+		            	 WHERE USER_ID =?
+		                 ORDER 
+		                    BY ENQ_NO DESC
+		               ) A
+		       )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
 </properties>
 
 
