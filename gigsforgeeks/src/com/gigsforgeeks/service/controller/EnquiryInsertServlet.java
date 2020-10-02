@@ -54,8 +54,6 @@ public class EnquiryInsertServlet extends HttpServlet {
 		
 		int result = new EnquiryService().insertEnquiry(enq);
 		
-		System.out.println(result);
-		
 		if(result > 0) { // 성공 => 공지사항리스트 페이지
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "문의가 접수되었습니다.");

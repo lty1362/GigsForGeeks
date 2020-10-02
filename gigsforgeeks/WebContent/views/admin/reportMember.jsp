@@ -23,7 +23,6 @@
         	
         	<!-- 우측 회원조회 -->
         	<div id="content_r">
-			    <jsp:include page="/views/admin/selectMember.jsp" flush="true"></jsp:include>
         	</div>
         </div>
     </div>

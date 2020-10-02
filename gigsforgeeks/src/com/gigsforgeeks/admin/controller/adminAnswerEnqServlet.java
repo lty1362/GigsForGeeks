@@ -2,7 +2,6 @@ package com.gigsforgeeks.admin.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +12,17 @@ import com.gigsforgeeks.service.model.service.EnquiryService;
 import com.gigsforgeeks.service.model.vo.Enquiry;
 
 /**
- * Servlet implementation class adminEnquiryDetailView
+ *  문의 페이지 넘기는 역할
  */
-@WebServlet("/detail.enq")
-public class adminEnquiryDetailView extends HttpServlet {
+@WebServlet("/answer.enq")
+public class adminAnswerEnqServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminEnquiryDetailView() {
+    public adminAnswerEnqServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,23 +31,33 @@ public class adminEnquiryDetailView extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		request.setCharacterEncoding("utf-8");
 		
-		int enquiryNo = Integer.parseInt(request.getParameter("nno"));
+		String ansContent = request.getParameter("ansContent");
+		int enqNo = Integer.parseInt(request.getParameter("enqNo"));
 		
-		if(enquiryNo > 0) { 
-			Enquiry enq = new EnquiryService().selectEnquiry(enquiryNo);
+		Enquiry enq = new Enquiry();
+		
+		enq.setEnquiryNo(enqNo);
+		enq.setEnquiryContent(ansContent);
+		
+		int result = new EnquiryService().updateAnswer(enq);
+		
+		if(result > 0) { // 성공 => 공지사항리스트 페이지
 			
-			request.setAttribute("enq", enq);
+			request.getSession().setAttribute("alertMsg", "회원 문의에 답장하였습니다.");
 			
-			RequestDispatcher view = request.getRequestDispatcher("views/admin/enqDetailView.jsp");
-			view.forward(request, response);
+			response.sendRedirect(request.getContextPath() + "/enqlist.bo?currentPage=1");
 			
-		} else {
-			request.setAttribute("errorMsg", "메세지 상세조회 실패");
+		}else { // 실패 => 에러페이지
 			
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
+			request.setAttribute("errorMsg", "문의 등록에 실패하였습니다.");
+			
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			
 		}
+		
 	}
 
 	/**

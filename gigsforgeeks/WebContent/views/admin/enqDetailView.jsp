@@ -41,6 +41,20 @@
             border-radius: 10px;
             box-shadow: rgba(0, 112, 211, 0.619) 0px 0px 40px 0px;
         }
+        
+        #enqContent{
+            width: 100%; 
+        	height: 150px; 
+        	border-radius: 5px;
+        	border: 2px solid rgb(23, 34, 59, 0.2);
+        }
+        
+        #ansContent{
+        	width: 100%; 
+        	height: 150px; 
+        	border-radius: 5px;
+        	border: 2px solid rgba(0, 112, 211, 0.619);
+        }
 	</style>
 	
 </head>
@@ -68,22 +82,27 @@
 
                 <div id="content_r_center_m">
 	
-                    <form action="insert.ans" method="POST">
+                    <form action="answer.enq" method="POST">
                         <div id="enquiryView">
-                            <p>문의자 ID : <input type="text" disabled value="<%= enq.getUserId() %>" style="width: 130px; text-align: center;"></p>
-                            <p>문의 유형 : <input type="text" disabled value="<%= enq.getEnquiryType() %>" style="width: 130px; text-align: center;"></p>
-                            <p>문의 제목 : <input type="text" disabled value="<%= enq.getEnquiryTitle() %>" style="width: 500px; text-align: center;"></p>
+                        	<h3><b>문의내용</b></h3>
+                        	<hr>
+                        	<label>문의 번호 : <input type="text" disabled value="<%= enq.getEnquiryNo() %>" style="width: 50px; text-align: center;"></label>
+                            <label>문의자 ID : <input type="text" disabled value="<%= enq.getUserId() %>" style="width: 100px; text-align: center;"></label>
+                            <label>문의 유형 : <input type="text" disabled value="<%= enq.getEnquiryType() %>" style="width: 130px; text-align: center;"></label>
+                            <p>문의 제목 : <input type="text" disabled value="<%= enq.getEnquiryTitle() %>" style="width: 100%;"></p>
                             <p>문의 내용</p>
-                            <input type="text" value="<%= enq.getEnquiryContent() %>" disabled style="width: 600px; height: 100px; border-radius: 10px;">
+                            <textarea name="enqContent" id="enqContent" disabled><%= enq.getEnquiryContent() %></textarea>
                             <br>
                         </div>
 
                         <br>
 
                         <div id="answerView">
-                            <p>답장 제목 : <input type="text" required style="width: 400px;" placeholder="최대 1000글자 까지 가능합니다."></p>
+                        	<h3><b>답장하기</b></h3>
+                        	<hr>
+                        	<input type="hidden" name="enqNo" value="<%= enq.getEnquiryNo() %>">
                             <p>답장 내용</p>
-                            <textarea name="content" id="content" cols="67" rows="7" required maxlength="1000" placeholder="최대 1000글자까지 작성 가능합니다." style="border-radius: 10px;"></textarea>
+                            <textarea name="ansContent" id="ansContent" required maxlength="1000" placeholder="최대 1000글자까지 작성 가능합니다." ></textarea>
                             <br>
                         </div>
 

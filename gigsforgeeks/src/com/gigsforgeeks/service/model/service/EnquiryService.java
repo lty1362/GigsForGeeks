@@ -71,6 +71,29 @@ public class EnquiryService {
 		
 	}
 	
+	/**
+	 * 문의 답장하기
+	 * @param enq
+	 * @return
+	 */
+	public int updateAnswer(Enquiry enq) {
+		
+		Connection conn = getConnection();
+		
+		int result = new EnquiryDao().updateAnswer(conn, enq);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+		
+	}
+	
 	
 	/**
 	 * 문의 상세조회

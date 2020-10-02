@@ -98,7 +98,7 @@
 	                                <td><%= enq.getEnquiryDate() %></td>
 	                                <td><%= enq.getEnquiryState() %></td>
 	                                <% if(enq.getAnswerDate() == null) { %>
-	                                	<td>답장안함!</td>
+	                                	<td>-</td>
 	                                <% } else { %>
 	                                	<td><%= enq.getAnswerDate() %></td>
 	                                <% } %>

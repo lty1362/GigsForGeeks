@@ -117,6 +117,7 @@ public class EnquiryDao {
 	
 	
 	/**
+	 * 회원 문의등록
 	 * @param conn
 	 * @param enq
 	 * @return
@@ -145,14 +146,13 @@ public class EnquiryDao {
 			close(pstmt);
 		}
 		
-		System.out.println(result);
 		return result;
 		
 	}
 	
 	
 	/**
-	 * 문의 조회-답장기능
+	 * 문의 조회-답장조회
 	 * @param conn
 	 * @param noticeNo
 	 * @return
@@ -174,11 +174,16 @@ public class EnquiryDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				enqNo = new Enquiry(rset.getString("USER_ID"), 
-								  rset.getString("ENQUIRY_TYPE"),
-								  rset.getString("ENQUIRY_TITLE"), 
-								  rset.getString("ENQUIRY_CONTENT")
-								 );
+				enqNo = new Enquiry(rset.getInt("ENQ_NO"),
+									rset.getString("USER_ID"),
+									rset.getString("ENQUIRY_TYPE"),
+									rset.getString("ENQUIRY_TITLE"),
+									rset.getDate("ENQUIRY_DATE"),
+									rset.getString("ENQUIRY_CONTENT"),
+									rset.getString("ANSWER_CONTENT"), 
+									rset.getString("ANSWER_STATE"),
+									rset.getDate("ANSWER_DATE")
+								 	);
 			}
 			
 		} catch (SQLException e) {
@@ -189,6 +194,39 @@ public class EnquiryDao {
 		}
 		
 		return enqNo;
+	}
+	
+	
+	/**
+	 * 관리자 문의 답장하기
+	 * @param conn
+	 * @param enq
+	 * @return
+	 */
+	public int updateAnswer(Connection conn, Enquiry enq) {
+
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateAnswer");
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
+			
+			pstmt.setString(1, enq.getAnswerContent());
+			pstmt.setInt(2, enq.getEnquiryNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
 	}
 		
 }

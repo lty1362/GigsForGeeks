@@ -63,14 +63,27 @@
 
 		<entry key="selectEnquiry">
 		SELECT 
-		       USER_ID
+		       ENQ_NO
+		     , USER_ID
 		     , ENQUIRY_TYPE
 		     , ENQUIRY_TITLE
+		     , ENQUIRY_DATE
 		     , ENQUIRY_CONTENT
+		     , ANSWER_CONTENT
+		     , ANSWER_STATE
+		     , ANSWER_DATE
 		  FROM ENQUIRY
          WHERE ENQ_NO = ?
 	</entry>
 	
+	<entry key="updateAnswer">
+		UPDATE
+		       ENQUIRY
+		   SET ANSWER_CONTENT=?
+		     , ANSWER_STATE='Y'
+		     , ANSWER_DATE=SYSDATE
+		 WHERE ENQ_NO=?
+	</entry>
 	
 </properties>
 
