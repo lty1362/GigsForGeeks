@@ -110,7 +110,8 @@
                         
                        	<div align="center">
 	                        <button type="submit" class="btn btn-info">답장하기</button>
-	                        <button type="reset" class="btn btn-secondary">초기화</button>
+	                        <button type="reset" class="btn btn-danger">초기화</button>
+	                        <button class="btn btn-secondary" type="button" onclick="history.back();">뒤로가기</button>
                        	</div>
                         
                     </form>

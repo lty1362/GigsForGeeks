@@ -77,7 +77,7 @@
                     </tr>
 					<% } else {%>
                    	<% for(Enquiry enq : list) { %>
-	                <tr>
+	                <tr id="myEnqDetailView">
                      	<td><%= enq.getEnquiryNo() %></td>
                         <td><%= enq.getEnquiryType() %></td>
                         <td><%= enq.getEnquiryTitle() %></td>
@@ -96,13 +96,6 @@
 	        </table>
 	    </div>
 	    
-	    <br>
-	    
-        <h4>문의를 원하시면 아래 버튼을 클릭해주시기 바랍니다.</h4>
-        <a class="btn btn-success" href="${contextPath}/enquiryEnrollForm">문의하기</a>
-        
-        <br><br>
-        
       	<div class="pagingArea" align="center">
  			<% if(currentPage != 1){ %>
 	           <!-- 맨 처음으로 (<<) -->
@@ -125,10 +118,12 @@
 	           <!-- 맨 끝으로 (>>) -->
 	           <button class="btn btn-info" onclick="location.href='<%=contextPath%>/enquiryMyPage?currentPage=<%=maxPage%>';"> &gt;&gt; </button>
 			<% } %>
-			
-			
         </div>
         
+        <br><br>
+        <h4>문의를 원하시면 아래 버튼을 클릭해주시기 바랍니다.</h4>
+        <a class="btn btn-success btn-lg" href="${contextPath}/enquiryEnrollForm">문의하기</a>
+        <button class="btn btn-secondary btn-lg" type="button" onclick="history.back();">뒤로가기</button>
         
      <%--    <script>
         	$(function(){
@@ -140,20 +135,10 @@
         		});									
         	});
         </script> --%>
-     
-        
-       	
 
-
-
-
-
-
-
-
-<!--     <script>
+	<!-- 	<script>
         $(function(){
-            $(".detailMenu").click(function(){
+            $(".myEnqDetailView").click(function(){
 
                 var $p = $(this).next();
 

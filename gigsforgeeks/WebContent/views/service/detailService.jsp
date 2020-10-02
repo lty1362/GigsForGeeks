@@ -65,8 +65,8 @@
        
         <% } else {%>
         <h4>문의를 원하시면 아래 버튼을 클릭해주시기 바랍니다.</h4>
-        <a class="btn btn-success" href="${contextPath}/enquiryEnrollForm">문의하기</a>
-        <a class="btn btn-info" href="${contextPath}/enquiryMyPage?currentPage=1">내 문의내역</a>
+        <a class="btn btn-success btn-lg" href="${contextPath}/enquiryEnrollForm">문의하기</a>
+        <a class="btn btn-info btn-lg" href="${contextPath}/enquiryMyPage?currentPage=1">내 문의내역</a>
         <% } %>
     </div>
 
