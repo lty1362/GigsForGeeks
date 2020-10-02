@@ -118,11 +118,126 @@
              )
 	</entry>
 	
+	<entry key="createPortfolio">
+	INSERT
+	  INTO PORTFOLIO
+	  	   (
+	  	   PORTFOLIO_NO
+	  	 , USER_ID
+	  	 , PORTFOLIO_TITLE
+	  	 , PORTFOLIO_CONTENTS
+	  	 , PORTFOLIO_LINK
+	  	 , PORTFOLIO_SKILL
+	  	 , PORTFOLIO_START
+	  	 , PORTFOLIO_END
+	  	 , PORTFOLIO_FILE
+	  	 )
+	VALUES 
+		   (
+		   SEQ_PORTFOLIO_NO.NEXTVAL
+	 	 , ?
+	 	 , NULL
+	 	 , NULL
+	 	 , NULL
+	 	 , NULL
+	 	 , TO_DATE('2220-01-01','YYYY-MM-DD')
+	 	 , TO_DATE('2220-12-31','YYYY-MM-DD')
+	 	 , NULL
+		 )	  	   
+	</entry>
+	<entry key="createCareer">
+	INSERT
+	  INTO CAREER
+	       (
+	       CAREER_NO
+	     , USER_ID
+	     , COMPANY_INFO
+	     , CAREER_TITLE
+	     , CAREER_INFO
+	     , HIRE_DATE
+	     , RETIRE_DATE
+	     , CAREER_STATUS 
+	     )
+	VALUES (
+	       SEQ_CAREER_NO.NEXTVAL
+	     , ?
+	     , NULL
+	     , NULL
+	     , NULL
+	     , TO_DATE('2220-01-01','YYYY-MM-DD')
+	     , TO_DATE('2220-12-31','YYYY-MM-DD')
+	     , DEFAULT
+	     )
+	</entry>
+	<entry key="createCertificate">
+	INSERT
+	  INTO CERTIFICATION
+	  	   (
+	  	   CERTIFICATE_NO
+	  	 , USER_ID
+	  	 , CERTIFICATE_NAME
+	  	 , CERTIFICATE_AUTH
+	  	 , CERTIFICATE_DATE
+	  	 )
+	VALUES (
+	       SEQ_CERTIFICATION_NO.NEXTVAL
+	     , ?
+	     , NULL
+	     , NULL
+	     , NULL
+	     )
+	</entry>
+	<entry key="createEducation">
+	INSERT
+	  INTO EDUCATION
+	       (
+	       EDUCATION_NO
+	     , USER_ID
+	     , UNIVERSITY
+	     , MAJOR
+	     , DEGREE
+	     , ENROLL_DATE
+	     , GRAUATED_DATE
+	     )
+	VALUES (
+		   SEQ_EDUCATION_NO.NEXTVAL
+	     , ?
+	     , NULL
+	     , NULL
+	     , NULL
+	     , TO_DATE('2220-01-01','YYYY-MM-DD')
+	     , TO_DATE('2220-12-31','YYYY-MM-DD')
+	     )
+	</entry>
+	<entry key="createPublication">
+	INSERT
+	  INTO PUBLICATION
+	       (
+	       BOOk_NO
+	     , USER_ID
+	     , BOOK_NAME
+	     , BOOK_INFO
+	     , PUBLISHER
+	     , BOOK_DATE
+	     )
+	VALUES (
+	       SEQ_PUBLICATION_NO.NEXTVAL
+	     , ?
+	     , NULL
+	     , NULL
+	     , NULL
+	     , NULL
+	     )
+	</entry>
+	
+	
 	<entry key="idCheck">
 	  SELECT
 		     COUNT(*)
 		FROM MEMBER
 	   WHERE USER_ID=?
 	</entry>
+	
+	
 	
 </properties>

@@ -88,53 +88,7 @@ public class MemberDAO {
 
 
 	
-	/**
-	 * 경력부분 데이터 db에서 뽑아와서 Career 객체에 담기
-	 * @param userId 로그인한 유저아이디
-	 * @param conn
-	 * @return c career 객체
-	 */
-	public Career seachCareer(String userId, Connection conn) {
-		
-		Career c = null;
-		
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("userCareer");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
-			
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				c= new Career(rset.getInt("CAREER_NO"),
-							  rset.getString("USER_ID"),
-							  rset.getString("COMPANY_INFO"),
-							  rset.getString("CAREER_TITLE"),
-							  rset.getDate("RETIRE_DATE"),
-							  rset.getDate("HIRE_DATE"),
-							  rset.getString("CAREER_INFO"),
-							  rset.getString("CAREER_STATUS")
-						);
-			}
-				
-			
 
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		
-		
-		return c;
-	}
 
 	/**
 	 * 2. 회원가입
@@ -206,7 +160,7 @@ public class MemberDAO {
 	}
 
 	/**
-	 * 경력부분 데이터 db에서 뽑아와서 Publication 객체에 담기
+	 * 출판물부분 데이터 db에서 뽑아와서 Publication 객체에 담기
 	 * @param  userId 로그인한 유저아이디
 	 * @param  conn
 	 * @return Publication p 객체
@@ -243,10 +197,58 @@ public class MemberDAO {
 		
 		return p;
 	}
+	
+	/**
+	 * 경력부분 데이터 db에서 뽑아와서 Career 객체에 담기
+	 * @param userId 로그인한 유저아이디
+	 * @param conn
+	 * @return c career 객체
+	 */
+	public Career seachCareer(String userId, Connection conn) {
+		
+		Career c = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("userCareer");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				c= new Career(rset.getInt("CAREER_NO"),
+							  rset.getString("USER_ID"),
+							  rset.getString("COMPANY_INFO"),
+							  rset.getString("CAREER_TITLE"),
+							  rset.getDate("RETIRE_DATE"),
+							  rset.getDate("HIRE_DATE"),
+							  rset.getString("CAREER_INFO"),
+							  rset.getString("CAREER_STATUS")
+						);
+			}
+				
+			
+
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		
+		return c;
+	}
 
 	
 	/**
-	 * 경력부분 데이터 db에서 뽑아와서 Portfolio 객체에 담기
+	 * 포트폴리오부분 데이터 db에서 뽑아와서 Portfolio 객체에 담기
 	 * @param  userId 로그인한 유저아이디
 	 * @param  conn
 	 * @return Portfolio port 객체
@@ -289,7 +291,7 @@ public class MemberDAO {
 
 
 	/**
-	 * 경력부분 데이터 db에서 뽑아와서  Certificate 객체에 담기
+	 * 자격증부분 데이터 db에서 뽑아와서  Certificate 객체에 담기
 	 * @param userId 로그인한 유저아이디
 	 * @param conn
 	 * @return Certificate certificate 객체
@@ -329,7 +331,7 @@ public class MemberDAO {
 
 
 	/**
-	 * 경력부분 데이터 db에서 뽑아와서 Education 객체에 담기
+	 * 교육부분 데이터 db에서 뽑아와서 Education 객체에 담기
 	 * @param  userId 로그인한 유저아이디
 	 * @param  conn
 	 * @return Education edu 객체
@@ -368,6 +370,158 @@ public class MemberDAO {
 		}
 		
 		return edu;
+	}
+
+
+	
+	/**
+	 * 
+	 * @param conn
+	 * @param m
+	 * @return
+	 */
+	public int insertCareer(Connection conn, Member m) {
+		 int result =  0;
+		   
+		   PreparedStatement pstmt = null;
+		   
+		   String sql = prop.getProperty("createCareer");
+		   
+		   try {
+			pstmt = conn.prepareStatement(sql); 
+			
+			pstmt.setString(1, m.getUserId());
+	        
+	        result = pstmt.executeUpdate();
+	        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+				
+			close(pstmt);
+		}
+		   
+		return result;
+	}
+
+	/**
+	 * 
+	 * @param conn
+	 * @param m
+	 * @return
+	 */
+	public int insertCertificate(Connection conn, Member m) {
+		 int result =  0;
+		   
+		   PreparedStatement pstmt = null;
+		   
+		   String sql = prop.getProperty("createCertificate");
+		   
+		   try {
+			pstmt = conn.prepareStatement(sql); 
+			
+			pstmt.setString(1, m.getUserId());
+	        
+	        result = pstmt.executeUpdate();
+	        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+				
+			close(pstmt);
+		}
+		   
+		return result;
+	}
+
+	/**
+	 * 
+	 * @param conn
+	 * @param m
+	 * @return
+	 */
+	public int insertEducation(Connection conn, Member m) {
+		 int result =  0;
+		   
+		   PreparedStatement pstmt = null;
+		   
+		   String sql = prop.getProperty("createEducation");
+		   
+		   try {
+			pstmt = conn.prepareStatement(sql); 
+			
+			pstmt.setString(1, m.getUserId());
+	        
+	        result = pstmt.executeUpdate();
+	        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+				
+			close(pstmt);
+		}
+		   
+		return result;
+	}
+
+	/**
+	 * 
+	 * @param conn
+	 * @param m
+	 * @return
+	 */
+	public int insertPortfolio(Connection conn, Member m) {
+		 int result =  0;
+		   
+		   PreparedStatement pstmt = null;
+		   
+		   String sql = prop.getProperty("createPortfolio");
+		   
+		   try {
+			pstmt = conn.prepareStatement(sql); 
+			
+			pstmt.setString(1, m.getUserId());
+	        
+	        result = pstmt.executeUpdate();
+	        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+				
+			close(pstmt);
+		}
+		   
+		return result;
+	}
+
+	/**
+	 * 
+	 * @param conn
+	 * @param m
+	 * @return
+	 */
+	public int insertPublication(Connection conn, Member m) {
+		 int result =  0;
+		   
+		   PreparedStatement pstmt = null;
+		   
+		   String sql = prop.getProperty("createPublication");
+		   
+		   try {
+			pstmt = conn.prepareStatement(sql); 
+			
+			pstmt.setString(1, m.getUserId());
+	        
+	        result = pstmt.executeUpdate();
+	        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+				
+			close(pstmt);
+		}
+		   
+		return result;
 	}
 	
 }

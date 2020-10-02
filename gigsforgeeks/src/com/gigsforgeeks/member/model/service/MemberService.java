@@ -45,11 +45,20 @@ public class MemberService {
 		Connection conn = getConnection();
 
 		int result = new MemberDAO().insertMember(conn, m);
+		
+		int result2 = new MemberDAO().insertCareer(conn, m);
+		int result3 = new MemberDAO().insertCertificate(conn, m);
+		int result4 = new MemberDAO().insertEducation(conn, m);
+		int result5 = new MemberDAO().insertPortfolio(conn, m);
+		int result6 = new MemberDAO().insertPublication(conn, m);
 
-		if (result > 0) {
+		if (result > 0 && result2 > 0 && result3 > 0 && result4 > 0 && result5 > 0 && result6 > 0) {
 			commit(conn);
+			
+			result = 1;
 		} else {
 			rollback(conn);
+			result = 0;
 		}
 
 		close(conn);
