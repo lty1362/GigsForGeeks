@@ -13,6 +13,15 @@
 	margin-bottom: 1em;
 }
 
+/* My Project */
+.projectTable {
+	width: 100%;
+}
+
+.projectTable th, .projectTable td {
+	text-align: left;
+}
+
 /* detailProject 시작 */
 
 #deatail_Category{
