@@ -76,11 +76,11 @@ public class EnquiryService {
 	 * @param enq
 	 * @return
 	 */
-	public int updateAnswer(Enquiry enq) {
+	public int updateAnswer(Enquiry enq, String ansContent) {
 		
 		Connection conn = getConnection();
 		
-		int result = new EnquiryDao().updateAnswer(conn, enq);
+		int result = new EnquiryDao().updateAnswer(conn, enq, ansContent);
 		
 		if(result > 0) {
 			commit(conn);

@@ -42,7 +42,7 @@ public class adminAnswerEnqServlet extends HttpServlet {
 		enq.setEnquiryNo(enqNo);
 		enq.setEnquiryContent(ansContent);
 		
-		int result = new EnquiryService().updateAnswer(enq);
+		int result = new EnquiryService().updateAnswer(enq, ansContent);
 		
 		if(result > 0) { // 성공 => 공지사항리스트 페이지
 			

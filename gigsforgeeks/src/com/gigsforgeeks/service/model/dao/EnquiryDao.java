@@ -203,7 +203,7 @@ public class EnquiryDao {
 	 * @param enq
 	 * @return
 	 */
-	public int updateAnswer(Connection conn, Enquiry enq) {
+	public int updateAnswer(Connection conn, Enquiry enq, String ansContent) {
 
 		int result = 0;
 		
@@ -214,7 +214,7 @@ public class EnquiryDao {
 		try {
 			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
 			
-			pstmt.setString(1, enq.getAnswerContent());
+			pstmt.setString(1, ansContent);
 			pstmt.setInt(2, enq.getEnquiryNo());
 			
 			result = pstmt.executeUpdate();
