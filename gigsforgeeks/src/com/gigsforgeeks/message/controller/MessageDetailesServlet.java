@@ -33,10 +33,15 @@ public class MessageDetailesServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int messageNo = Integer.parseInt(request.getParameter("nno"));
+		
+		int result = new MessageService().updateMessage(messageNo);
+		Message m = new MessageService().selectMessage(messageNo);
 
-		if(messageNo > 0) { 
-			Message m = new MessageService().selectMessage(messageNo);
-			request.setAttribute("m", m);
+		request.setAttribute("result", result);
+		request.setAttribute("m", m);
+		
+		
+		if(messageNo > 0 && result > 0) { 
 			RequestDispatcher view = request.getRequestDispatcher("views/message/MessageDetailes.jsp");
 			view.forward(request, response);
 			
