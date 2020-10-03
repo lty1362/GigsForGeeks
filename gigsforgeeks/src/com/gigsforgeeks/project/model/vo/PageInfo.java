@@ -10,9 +10,13 @@ public class PageInfo {
 	private int startPage;		// 페이징 바의 시작 수
 	private int endPage;		// 페이징 바의 끝 수
 	
+	private int notReadCount;		// 읽지않은 메세지 갯수
+	
+
 	public PageInfo() {
 		
 	}
+	
 	public PageInfo(int listCount, int currentPage, int pageLimit, int boardLimit, int maxPage, int startPage,
 			int endPage) {
 		super();
@@ -24,8 +28,20 @@ public class PageInfo {
 		this.startPage = startPage;
 		this.endPage = endPage;
 	}
-	
-	
+
+	public PageInfo(int listCount, int currentPage, int pageLimit, int boardLimit, int maxPage, int startPage,
+			int endPage, int notReadCount) {
+		super();
+		this.listCount = listCount;
+		this.currentPage = currentPage;
+		this.pageLimit = pageLimit;
+		this.boardLimit = boardLimit;
+		this.maxPage = maxPage;
+		this.startPage = startPage;
+		this.endPage = endPage;
+		this.notReadCount = notReadCount;
+	}
+
 	public int getListCount() {
 		return listCount;
 	}
@@ -68,14 +84,21 @@ public class PageInfo {
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
-	
+	public int getNotReadCount() {
+		return notReadCount;
+	}
+	public void setNotReadCount(int notReadCount) {
+		this.notReadCount = notReadCount;
+	}
 	
 	@Override
 	public String toString() {
 		return "PageInfo [listCount=" + listCount + ", currentPage=" + currentPage + ", pageLimit=" + pageLimit
 				+ ", boardLimit=" + boardLimit + ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage="
-				+ endPage + "]";
+				+ endPage + ", notReadCount=" + notReadCount + "]";
 	}
+	
+	
 	
 	
 	
