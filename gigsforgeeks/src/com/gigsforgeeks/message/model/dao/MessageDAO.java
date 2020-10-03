@@ -116,7 +116,7 @@ public class MessageDAO {
 
 	
 	/**
-	 * 전체조회
+	 * 전체메세지조회
 	 * @param conn
 	 * @param userId
 	 * @return
@@ -258,6 +258,104 @@ public class MessageDAO {
 		}
 		
 		return ms;
+	}
+
+	/**
+	 * 메세지 읽음 표시
+	 * @param conn
+	 * @param ms
+	 * @return
+	 */
+	public int updateMessage(Connection conn, int messageNo) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("messageUpdate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql); 
+			
+			pstmt.setInt(1, messageNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public ArrayList<Message> selectMessageNotRead(Connection conn, PageInfo pi, String userId) {
+		ArrayList<Message> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMessageNotRead"); 
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Message(rset.getInt("MESSAGE_NO"),
+			   		     rset.getString("MESSAGE_TITLE"),
+			   		     rset.getString("MESSAGE_RECEIVER"),
+					     rset.getString("MESSAGE_RECEPIENT"),
+					     rset.getDate("MESSAGE_RECEIVE_TIME")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	/**
+	 * 읽지않은 메세지 갯수
+	 * @param conn
+	 * @param userId
+	 * @return
+	 */
+	public int selectNotReadCount(Connection conn, String userId) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectNotReadCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("LISTCOUNT"); 
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
 	}
 
 

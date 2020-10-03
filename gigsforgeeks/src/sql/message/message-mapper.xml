@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<entry key="selectListCount">
-	 SELECT 
-           COUNT(*) LISTCOUNT
-      FROM MESSAGE
-	 WHERE MESSAGE_RECEIVER=?
-	   AND STATUS = 'Y'
-	</entry>
 
+	<entry key="messageReceiver">
+	    SELECT MS.*
+          FROM MESSAGE MS
+          JOIN MEMBER M ON (M.USER_ID =MS.MESSAGE_RECEIVER)
+          WHERE USER_ID = ?
+	</entry>
+	
 	<entry key="selectMessageList">
          SELECT *
           FROM (
@@ -34,13 +34,15 @@
    
 	</entry>
 	
-	<entry key="messageReceiver">
-	    SELECT MS.*
-          FROM MESSAGE MS
-          JOIN MEMBER M ON (M.USER_ID =MS.MESSAGE_RECEIVER)
-          WHERE USER_ID = ?
+	<entry key="selectListCount">
+	 SELECT 
+           COUNT(*) LISTCOUNT
+      FROM MESSAGE
+	 WHERE MESSAGE_RECEIVER=?
+	   AND STATUS = 'Y'
 	</entry>
 	
+
 	<entry key="insertMessage">
 	 INSERT
 	         INTO MESSAGE
@@ -80,5 +82,45 @@
 		   AND M.STATUS = 'Y'
 	</entry>
 	
+	<entry key="messageUpdate">
+	 UPDATE
+           MESSAGE
+       SET MESSAGE_READ= 'Y'
+     WHERE MESSAGE_NO=?
+	</entry>
+	
+	<entry key="selectMessageNotRead">
+	  SELECT *
+          FROM (
+    	SELECT 
+   	    ROWNUM RNUM
+             , A.*
+          FROM (
+               SELECT 
+                   MESSAGE_NO
+                 , MESSAGE_TITLE
+                 , MESSAGE_RECEIVER
+                 , MESSAGE_RECEPIENT
+                 , MESSAGE_RECEIVE_TIME
+              FROM MESSAGE M
+              JOIN MEMBER ON (MESSAGE_RECEIVER=USER_ID)
+             WHERE M.STATUS = 'Y'
+               AND  MESSAGE_READ= 'N'
+               AND USER_ID=?
+             ORDER 
+                BY MESSAGE_NO DESC
+            ) A
+   		 )
+	 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectNotReadCount">
+	SELECT 
+           COUNT(*) LISTCOUNT
+      FROM MESSAGE
+	 WHERE MESSAGE_RECEIVER=?
+	   AND STATUS = 'Y'
+       AND MESSAGE_READ = 'N'
+	</entry>
 	
 </properties>

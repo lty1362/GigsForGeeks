@@ -109,6 +109,59 @@ public class MessageService {
 		return ms;
 	}
 
+	/**
+	 *  메세지 읽음 표시
+	 * @param ms
+	 * @return
+	 */
+	public int updateMessage(int messageNo) {
+		Connection conn = getConnection();
+		
+		int result  = new MessageDAO().updateMessage(conn, messageNo);
+		
+		if(result  > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	
+	/**
+	 * 읽지않은 메세지 보기
+	 * @param pi
+	 * @param userId
+	 * @return
+	 */
+	public ArrayList<Message> selectMessageNotRead(PageInfo pi, String userId) {
+		Connection conn = getConnection();
+		
+		ArrayList<Message> list = new MessageDAO().selectMessageNotRead(conn,pi,userId);
+		
+		close(conn);
+		
+		return list;	
+	}
+	
+	/**
+	 * 읽지않은 메세지 갯수
+	 * @param userId
+	 * @return
+	 */
+	public int selectNotReadCount(String userId) {
+		Connection conn = getConnection();
+		
+		int NotReadCount = new MessageDAO().selectNotReadCount(conn,userId);
+		
+		close(conn);
+		
+		return NotReadCount;
+	}
+
 
 
 
