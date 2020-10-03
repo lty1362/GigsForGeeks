@@ -312,8 +312,6 @@ public class EnquiryDao {
 			close(pstmt);
 		}
 		
-		System.out.println(list);
-		
 		return list;
 		
 	}

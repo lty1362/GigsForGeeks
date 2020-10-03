@@ -27,26 +27,10 @@
 	<!-- 필요한 외부 파일은 여기서 불러오세요 -->
 	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
 	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/service.css">
+	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/myEnquieyPage.css">
 	<%-- End Of Header --%>
 	<!-- 페이지의 타이틀을 작성하세요 -->
 	<title>내 문의내역 페이지</title>
-
-	<style type="text/css">
-	
-		.tableView{
-			padding: 30px;
-			font-size: 15px;
-		}
-		
-		th {text-align: center;}
-
-		div.modal-content>table>tfoot, tbody {
- 	   	text-align: center;
-		}
-		
-	</style>
-	
-	
 </head>
 <body>
     <%-- Content --%>
@@ -54,11 +38,12 @@
     <main id="contentMain" align="center">
     
         <h1 align="center">'<%= loginUser.getUserId() %>' 님의 문의내역</h1>
+        <hr>
         <div class="tableView">
         
 	        <br>
 	        
-	        <table class="table table-hover, listArea">
+	        <table class="table table-hover, listArea" id="myEnqList">
 	            <thead>
 	                <tr>
 	                    <th width="50">No</th>
@@ -76,20 +61,47 @@
                     	<td colspan="7">조회된 리스트가 없습니다.</td>
                     </tr>
 					<% } else {%>
-                   	<% for(Enquiry enq : list) { %>
-	                <tr id="myEnqDetailView">
-                     	<td><%= enq.getEnquiryNo() %></td>
-                        <td><%= enq.getEnquiryType() %></td>
-                        <td><%= enq.getEnquiryTitle() %></td>
-                        <td><%= enq.getEnquiryDate() %></td>
-                        <td><%= enq.getEnquiryState() %></td>
-						<% if(enq.getAnswerDate() == null) { %>
-                       	<td>-</td>
-	   					<% } else { %>
-                       	<td><%= enq.getAnswerDate() %></td>
-                        <% } %>
-					</tr>
+					
+	                   	<% for(Enquiry enq : list) { %>
+		                <tr>
+	                     	<td><%= enq.getEnquiryNo() %></td>
+	                        <td><%= enq.getEnquiryType() %></td>
+	                        <td><%= enq.getEnquiryTitle() %></td>
+	                        <td><%= enq.getEnquiryDate() %></td>
+	                        <td><%= enq.getEnquiryState() %></td>
+	                        
+							<% if(enq.getAnswerDate() == null) { %>
+	                       		<td>-</td>
+		   					<% } else { %>
+	                       		<td><%= enq.getAnswerDate() %></td>
+	                        <% } %>
+	                        
+						</tr>
+						<tr>
+				            <td colspan="6">
+				            	<div class="detailView">
+					            	<div class="myEnqDetailView">
+					                <h4><b>문의내용</b></h4>
+					                	<div class="myEnqDetailContent">
+							                <b><%= enq.getEnquiryContent() %></b>
+					                	</div>
+					            	</div>
+					            	
+					            	<div class="myAnsDetailView">
+					            	<h4><b>답장내용</b></h4>
+					            		<div class="myEnqDetailContent">
+						            	<% if(enq.getAnswerContent() == null) { %>
+				                       		<b>아직 답장이 안왔습니다.</b>
+					   					<% } else { %>
+						                	<b><%= enq.getAnswerContent() %></b>
+				                        <% } %>
+			                        	</div>
+			                        </div>
+		                        </div>
+				            </td>
+				        </tr>
                     	<% } %>
+                    	
 					<% } %>
                     </tbody>
                     
@@ -125,36 +137,21 @@
         <a class="btn btn-success btn-lg" href="${contextPath}/enquiryEnrollForm">문의하기</a>
         <button class="btn btn-secondary btn-lg" type="button" onclick="history.back();">뒤로가기</button>
         
-     <%--    <script>
-        	$(function(){
-        		$(".listArea>tbody>tr").click(function(){
-        			location.href = "<%=contextPath%>/detail.enq?nno=" + $(this).children().eq(0).text();
-        			
-        			/* var nno = $(this).children().eq(0).text();
-	    			location.href = "${contextPath}/detail.enq?nno=" + nno; */
-        		});									
-        	});
-        </script> --%>
-
-	<!-- 	<script>
-        $(function(){
-            $(".myEnqDetailView").click(function(){
-
-                var $p = $(this).next();
-
-                if($p.css("display") == "none"){
-
-                    $(this).siblings("p").slideUp();
-                    $p.slideDown(); 
-
-                }else{
-                    $p.slideUp();
-
-                }
-
-            });
-        });
-    </script> -->
+        
+        <!-- 테이블 클릭시 조회 -->
+        <script>
+    		$(document).ready(function () {
+	            $("#myEnqList tr:odd").addClass("odd");
+	            
+	            $("#myEnqList tr:not(.odd)").hide();	// 처음화면 숨기기 기능
+	            $("#myEnqList tr:first-child").show(); 	// 열머리글 보여주기
+	
+	            $("#myEnqList tr.odd").click(function () {
+	                $(this).next("tr").toggle(300);
+	                $(this).find(".arrow").toggleClass("up");
+	            });
+	        });
+	    </script>
     
     </main>
     <%-- End Of Content --%>
