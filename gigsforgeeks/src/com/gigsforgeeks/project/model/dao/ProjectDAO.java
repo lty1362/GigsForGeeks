@@ -81,9 +81,47 @@ public class ProjectDAO {
 	 */
 	public ArrayList<Project> selectMyProject(Connection con, String userId) {
 		
-		ArrayList<Project> myProject = null;
+		ArrayList<Project> myProject = new ArrayList<>();
 		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
+		String sql = properties.getProperty("selectMyProject");
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				myProject.add(new Project(rs.getString("project_id"),
+						                  rs.getString("client_id"),
+						                  rs.getString("required_skill"),
+						                  rs.getString("project_name"),
+						                  rs.getString("description"),
+						                  rs.getString("project_status"),
+						                  rs.getDate("expect_start").toLocalDate(),
+						                  rs.getDate("expect_end").toLocalDate(),
+						                  rs.getString("means_of_payment"),
+						                  rs.getInt("min_bid"),
+						                  rs.getInt("max_bid"),
+						                  rs.getDate("start_bid").toLocalDate(),
+						                  rs.getDate("end_bid").toLocalDate(),
+						                  rs.getInt("count_bid"),
+						                  rs.getInt("average_bid"),
+						                  rs.getString("winner_id"),
+						                  rs.getInt("winning_bid"),
+						                  (rs.getDate("start_date") == null ? null : rs.getDate("start_date").toLocalDate()),
+						                  (rs.getDate("end_date") == null ? null : rs.getDate("start_date").toLocalDate())));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
 		
 		return myProject;
 		
@@ -91,6 +129,7 @@ public class ProjectDAO {
 	
 	
 	public ArrayList<Project> searchListProject(Connection conn, Project project) {
+		
 		// select문 => 여러행조회
 		ArrayList<Project> list = new ArrayList<>();
 		
@@ -109,13 +148,13 @@ public class ProjectDAO {
 			
 			while(rset.next()) {
 				list.add(new Project(rset.getString("project_id"),
-									rset.getString("project_name"),
-									rset.getString("project_status"),
-									rset.getString("description"),
-									rset.getDate("end_bid").toLocalDate(),
-									rset.getInt("min_bid"),
-									rset.getInt("max_bid"),
-									rset.getInt("count_bid")));
+									 rset.getString("project_name"),
+									 rset.getString("project_status"),
+									 rset.getString("description"),
+									 rset.getDate("end_bid").toLocalDate(),
+									 rset.getInt("min_bid"),
+									 rset.getInt("max_bid"),
+									 rset.getInt("count_bid")));
 			}
 			
 		} catch (SQLException e) {
@@ -129,7 +168,4 @@ public class ProjectDAO {
 	
 	}
 	
-	
 }
-
-
