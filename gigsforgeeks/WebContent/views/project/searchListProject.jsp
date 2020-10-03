@@ -92,8 +92,8 @@
             </div>
 
             <!-- 검색필터 적용시 보이는 프로젝트 목록 -->
-            <div id="searchProjectList">
-                <form action="" method="POST">
+            <div id="searchProject">
+                <form action="${contextPath}/searchList.do" method="POST">
                     <input type="text" name="search" placeholder="프로젝트 검색" style="width:500px; height:40px;">
                     <button type="button" class="btn btn-outline-info">검색</button><br><hr>
                 </form>

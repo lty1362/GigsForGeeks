@@ -86,7 +86,7 @@
                                     <button type="submit" onclick="window.open('${contextPath}/views/project/totalSearch.jsp')" class="btn btn-info">검색</button>
                                 </form>
                                 <br>
-                                <a href="${contextPath}/views/project/searchListProject.jsp">
+                                <a href="${contextPath}//views/project/searchListProject.jsp">
                                 <img src="${contextPath}/resources/images/project.png">프로젝트</a>
                                 <label><small>일할만한 프로젝트 탐색</small></label>
                                 <br><br>

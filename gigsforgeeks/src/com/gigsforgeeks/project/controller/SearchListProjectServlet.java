@@ -47,7 +47,8 @@ public class SearchListProjectServlet extends HttpServlet {
 		Project minBid = (Project)session.getAttribute("minBid");
 		Project maxBid = (Project)session.getAttribute("maxBid");
 		Project countBid = (Project)session.getAttribute("countBid");
-		
+		System.out.println(projectId);
+		System.out.println(projectName);
 		
 		// 프로젝트의 목록조회 요청하기
 		String pId = projectId.getProjectId();				// 프로젝트 아이디
