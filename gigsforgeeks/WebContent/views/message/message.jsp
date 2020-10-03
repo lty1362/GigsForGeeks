@@ -2,6 +2,12 @@
     pageEncoding="UTF-8"
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*" %>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int NotReadCount = pi.getNotReadCount();
+%>
 <%-- Template HTML 1 : 일반 화면용 --%>
 <!DOCTYPE html>
 <html>
@@ -24,8 +30,8 @@
         <!-- 메뉴바 -->
         <div id="con">           
             <div id="content_1">
-                <div id="naviMain"><a href="${contextPath}/list.ms">전체메세지</a></div>
-                <div id="naviNotRead"><a href="${contextPath}/views/message/messageNotRead.jsp">읽지않음(갯수)</a></div>
+                <div id="naviMain"><a href="${contextPath}/list.ms?currentPage=1">전체메세지</a></div>
+                <div id="naviNotRead"><a href="${contextPath}/notRead.ms?currentPage=1">읽지않음<%=NotReadCount%></a></div>
                 <div id="naviKeep"><a href="${contextPath}/views/message/messageKeep.jsp">보관 메세지</a></div>
                 <div id="naviAdmin"><a href="${contextPath}/views/message/messageAdmin.jsp">고객 지원팀</a></div>
             </div>

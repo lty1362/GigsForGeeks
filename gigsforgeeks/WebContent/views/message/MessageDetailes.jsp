@@ -29,7 +29,7 @@
         <div id="con">           
             <div id="content_1">
                 <div id="naviMain"><a href="${contextPath}/list.ms?currentPage=1">전체메세지</a></div>
-                <div id="naviNotRead"><a href="${contextPath}/views/message/messageNotRead.jsp">읽지않음(갯수)</a></div>
+                <div id="naviNotRead"><a href="${contextPath}/notRead.ms?currentPage=1">읽지않음</a></div>
                 <div id="naviKeep"><a href="${contextPath}/views/message/messageKeep.jsp">보관 메세지</a></div>
                 <div id="naviAdmin"><a href="${contextPath}/views/message/messageAdmin.jsp">고객 지원팀</a></div>
             </div>
@@ -58,9 +58,12 @@
                 </td>
             </tr>
         </table>
+        <div align="center">
+            <a onclick="history.back();" class="btn btn-secondary">확인</a>
+        </div>
+        </div>
     </div>
-    	</div>
-       </div>
+ </div>
 
     <%-- End Of Content --%>
     
