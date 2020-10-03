@@ -48,8 +48,8 @@
 		        <thead>
 		            <tr>
 		            	<th style="display:none;"></th>
+		            	<th width="15"><input type="checkbox"></th>
 		                <th width="30">번호</th>
-		                <th width="15"><input type="checkbox"></th>
 		                <th width="200">제목</th>
 		                <th width="10">보낸회원</th>
 		                <th width="20">받은날짜</th>
@@ -67,8 +67,8 @@
 		        		  <%for(Message m : list){%>
 				        	<tr>
 				        		<td style="display:none;"><%=m.getMessageNo() %></td>
+				        		<td><input type="checkbox"></td>
 				                <td><%=count++%></td>
-				                <td><input type="checkbox"></td>
 				                <td><%= m.getMessageReceiver()%></td>
 				                <td><%= m.getMessageTitle()%></td>
 				                <td><%= m.getMessageReceiveTime()%></td>
@@ -79,10 +79,12 @@
 		    </table>
 			 <script>
     			$(function(){
-	    		
-		    		$(".messageFull>tbody>tr").click(function(){
-		    			var nno = $(this).children().eq(0).text();
+
+		    		$(".messageFull>tbody>tr").click(function(){	
+
+	    				var nno = $(this).children().eq(0).text();
 		    			location.href = "${contextPath}/detail.ms?nno=" + nno;
+
 		    		});
 		    		
 		    	});
@@ -119,10 +121,7 @@
 
        <!-- The Modal -->
         <div class="modal" id="message_delete">
-          <div class="modal-dialog">
             <div class="modal-content">
-              
-              <!-- Modal body -->
               <div class="modal-body" align="center">
              	<button type="button" class="close" data-dismiss="modal" style="font-family:sans-serif;">&times;</button> <br>
                 <p>메세지를 정말로 삭제하시겠습니까?</p>
@@ -130,7 +129,6 @@
                 <button class="btn btn-outline-info">Cancel</button>
               </div>
             </div>
-          </div>
         </div>
 </body>
 </html>

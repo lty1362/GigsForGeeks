@@ -111,6 +111,9 @@ box-sizing: border-box;
    width: 100%;
    height: 80%;
 }
+.messageNotRead>tbody>tr>td{
+	text-align:center;
+}
 .messageNotRead>tbody>tr:hover{
    cursor:pointer;
    background:gray;

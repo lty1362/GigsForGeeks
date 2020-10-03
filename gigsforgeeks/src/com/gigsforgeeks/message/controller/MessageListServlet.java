@@ -45,6 +45,7 @@ public class MessageListServlet extends HttpServlet {
 		int startPage;		
 		int endPage;		
 		
+		int notReadCount;
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
 		pageLimit =10;
@@ -60,7 +61,8 @@ public class MessageListServlet extends HttpServlet {
 		Message messageReceiver = new MessageService().messageReceiver(userId);
 		
         listCount = new MessageService().selectListCount(userId);
-		
+        notReadCount = new MessageService().selectNotReadCount(userId);
+        
 		maxPage = (int)Math.ceil((double)listCount / boardLimit); 
 	
 		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
@@ -71,7 +73,7 @@ public class MessageListServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 
-		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage,notReadCount);
 		
 		ArrayList<Message> list = new MessageService().selectMessageList(pi,userId);
 		
