@@ -58,7 +58,7 @@ public class EnquiryInsertServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "문의가 접수되었습니다.");
 			
-			response.sendRedirect(request.getContextPath() + "/views/service/detailService.jsp");
+			response.sendRedirect(request.getContextPath() + "/views/service/faq?currentPage=1.jsp");
 			
 		}else { // 실패 => 에러페이지
 			
