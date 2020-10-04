@@ -14,18 +14,6 @@
 }
 
 /* My Project */
-.projectTable {
-	width: 100%;
-}
-
-.projectTable > tbody > tr > td:first-child {
-	cursor: pointer;
-}
-
-.projectTable th, .projectTable td {
-	text-align: left;
-}
-
 .myProjectHeader {
 	margin-bottom: 1em;
 }
@@ -55,6 +43,24 @@
 
 .myProjectNav a:hover {
 	text-decoration: none;
+}
+
+.projectTable {
+	width: 100%;
+	margin: 1em 0;
+}
+
+.projectTable > tbody > tr a {
+	color: black;
+	text-decoration: none;
+}
+
+.projectTable > tbody > tr a:hover {
+	font-weight: bolder;
+}
+
+.projectTable th, .projectTable td {
+	text-align: left;
 }
 
 /* detailProject 시작 */
