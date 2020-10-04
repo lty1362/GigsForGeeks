@@ -21,18 +21,6 @@
         height: 40px;
         border-radius: 5px;
     }
-    
-    /* 고용주/프리랜서 버튼 */
-    #jobType{
-        margin-left: 70%;
-        background:#0f4c75;
-        border-radius: 10px;
-        width: 300px;
-    }
-    #jobType > button{
-        color: white;
-        font-weight: 900;
-    }
 
     /* 하단 질문 바 */
     .detailMenu{

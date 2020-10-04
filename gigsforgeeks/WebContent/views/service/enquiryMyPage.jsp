@@ -25,7 +25,6 @@
 	<%-- Header --%>
 	<%@ include file="../../views/common/header.jsp" %>
 	<!-- 필요한 외부 파일은 여기서 불러오세요 -->
-	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
 	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/service.css">
 	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/myEnquieyPage.css">
 	<%-- End Of Header --%>
@@ -47,7 +46,7 @@
 	            <thead>
 	                <tr>
 	                    <th width="50">No</th>
-	                    <th width="100">문의유형</th>
+	                    <th width="100">문의 유형</th>
 	                    <th width="250">문의 제목</th>
 	                    <th width="100">문의 날짜</th>
 	                    <th width="100">답변 여부</th>
@@ -108,6 +107,7 @@
 	        </table>
 	    </div>
 	    
+	    <!-- 페이징 -->
       	<div class="pagingArea" align="center">
  			<% if(currentPage != 1){ %>
 	           <!-- 맨 처음으로 (<<) -->
