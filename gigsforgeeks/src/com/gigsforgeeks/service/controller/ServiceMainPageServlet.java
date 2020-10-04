@@ -44,10 +44,10 @@ public class ServiceMainPageServlet extends HttpServlet {
 		int startPage;		// 현재 페이지에 하단에 보여질 페이징 바의 시작 수
 		int endPage;		// 현재 페이지에 하단에 보여질 페이징 바의 끝 수
 		
-		listCount = new EnquiryService().selectListCount();
+		listCount = new FaqService().selectListCount();
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		pageLimit = 10;
-		boardLimit = 10;
+		pageLimit = 5;
+		boardLimit = 5;
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
@@ -58,6 +58,7 @@ public class ServiceMainPageServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 		
+		System.out.println(listCount);
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		ArrayList<FAQ> list = new FaqService().selectList(pi);

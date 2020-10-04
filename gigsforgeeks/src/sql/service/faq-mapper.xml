@@ -6,7 +6,7 @@
 		SELECT 
 			   COUNT(*) LISTCOUNT
 		  FROM FAQ
-		 WHERE FAQ_STATE=?
+<!-- 		 WHERE FAQ_STATE=? -->
 	</entry>
 	
 	<entry key="selectList">
