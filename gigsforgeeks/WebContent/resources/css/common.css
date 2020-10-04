@@ -27,6 +27,10 @@ input::placeholder {
 	border-color: #0f4c75;
 }
 
+#contentMain .btn-default {
+	border-color: grey;
+}
+
 /* Header */
 #header {
 	background-color: #1b262c;
