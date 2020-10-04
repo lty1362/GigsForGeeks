@@ -2,11 +2,16 @@
     pageEncoding="UTF-8"
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- Template HTML 1 : 일반 화면용 --%>
-<%@ page import="com.gigsforgeeks.message.model.vo.*"%>
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.message.model.vo.*" %>
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*" %>
 <%
 	Message m = (Message)request.getAttribute("m");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int NotReadCount = pi.getNotReadCount();
 %>
+<%-- Template HTML 1 : 일반 화면용 --%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,9 +34,9 @@
         <div id="con">           
             <div id="content_1">
                 <div id="naviMain"><a href="${contextPath}/list.ms?currentPage=1">전체메세지</a></div>
-                <div id="naviNotRead"><a href="${contextPath}/notRead.ms?currentPage=1">읽지않음</a></div>
+                <div id="naviNotRead"><a href="${contextPath}/notRead.ms?currentPage=1">읽지않음<%=NotReadCount%></a></div>
                 <div id="naviKeep"><a href="${contextPath}/views/message/messageKeep.jsp">보관 메세지</a></div>
-                <div id="naviAdmin"><a href="${contextPath}/views/message/messageAdmin.jsp">고객 지원팀</a></div>
+                <div id="naviAdmin"><a href="${contextPath}/admin.ms?currentPage=1">고객 지원팀</a></div>
             </div>
         </div>
             
