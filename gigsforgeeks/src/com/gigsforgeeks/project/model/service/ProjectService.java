@@ -33,7 +33,7 @@ public class ProjectService {
 	}
 	
 	/**
-	 * 2. 내 프로젝트 조회 서비스
+	 * 2. 내 프로젝트 목록 조회 서비스
 	 * 
 	 * @param userId    현재 로그인한 사용자 아이디
 	 * @return          해당 사용자의 등록/진행 프로젝트 목록
@@ -47,6 +47,21 @@ public class ProjectService {
 		
 	}
 	
+	/**
+	 * 3. 내 프로젝트 상세조회 서비스
+	 * 
+	 * @param projectId    상세조회 요청한 프로젝트 아이디
+	 * @param userId       해당 프로젝트의 고용주 / 낙찰자 아이디
+	 * @return             해당 프로젝트 아이디와 일치하는 조회된 Project 객체
+	 */
+	public Project selectProject(String projectId, String userId) {
+		
+		Connection con = getConnection();
+		Project myProject = new ProjectDAO().selectProject(con, projectId, userId);
+		close(con);
+		return myProject;
+		
+	}
 	
 	/**
 	 * 프로젝트 검색목록을 조회해오는 메소드
