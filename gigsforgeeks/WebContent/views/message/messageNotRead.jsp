@@ -36,7 +36,7 @@
         <div id="con">           
             <div id="content_1">
                 <div id="naviMain"><a href="${contextPath}/list.ms?currentPage=1">전체메세지</a></div>
-                <div id="naviNotRead"><a href="${contextPath}/notRead.ms?currentPage=1">읽지않음<%=NotReadCount%></a></div>
+                <div id="naviNotRead"><a href="${contextPath}/notRead.ms?currentPage=1">읽지않음 (<%=NotReadCount%>)</a></div>
                 <div id="naviKeep"><a href="${contextPath}/views/message/messageKeep.jsp">보관 메세지</a></div>
                 <div id="naviAdmin"><a href="${contextPath}/admin.ms?currentPage=1">고객 지원팀</a></div>
             </div>
@@ -47,6 +47,8 @@
         <!-- 읽지않은 메세지 -->
 		<!--검색창-->
         <div id="cont">
+       	<br>
+        	<h3>읽지않은 메세지 (<%=NotReadCount%>)</h3>
             <div id="content_2" align="right">
                 <form action="" id="search_form">
 	                    <div id="search_text">
@@ -54,14 +56,13 @@
 	                    </div>
 	                    
 	                    <div id="search_btn1">
-	                        <a href="${contextPath}/views/message/messageSend.jsp" id="btn1" class="btn btn-outline-info" type="submit">메세지 보내기</a>
+	                        <a href="${contextPath}/send.ms" id="btn1" class="btn btn-outline-info" type="submit">메세지 보내기</a>
 	                	</div>
 	                	<div id="search_btn2">
 	                    	<a href="" id="btn2" class="btn btn-outline-info" type="submit">보관하기</a>
 	                	</div>
                 </form>
             </div>
-
             <div id="content_3">
             
             <table align="center" class="messageNotRead">
@@ -74,6 +75,7 @@
 		                <th width="10">보낸회원</th>
 		                <th width="20">받은날짜</th>
 		            </tr>
+		            <tr><td colspan="5"><div class="modal-footer"></div></td></tr>  
 		        </thead>
 		        <tbody>
 		            <%if(notRead.isEmpty()){ %>
@@ -107,9 +109,7 @@
 		    		
 		    	});
    		 	</script>
-		
-		    <br><br>
-		    
+				    
 		    <div align="right" style="width:98%;">
        		 <button class="btn btn-outline-info" data-toggle="modal" data-target="#message_delete">메세지 삭제</button>
         	 <br><br>

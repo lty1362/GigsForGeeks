@@ -8,9 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.message.model.service.MessageService;
 import com.gigsforgeeks.message.model.vo.Message;
+import com.gigsforgeeks.project.model.vo.PageInfo;
 
 /**
  * Servlet implementation class MessageDetailesServlet
@@ -33,12 +36,24 @@ public class MessageDetailesServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int messageNo = Integer.parseInt(request.getParameter("nno"));
+		int notReadCount;
+		
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		String userId = loginUser.getUserId();
+		
+		Message messageReceiver = new MessageService().messageReceiver(userId);
+		notReadCount = new MessageService().selectNotReadCount(userId);
+		PageInfo pi = new PageInfo(notReadCount);
 		
 		int result = new MessageService().updateMessage(messageNo);
 		Message m = new MessageService().selectMessage(messageNo);
 
+		request.setAttribute("pi", pi);
 		request.setAttribute("result", result);
 		request.setAttribute("m", m);
+		
 		
 		
 		if(messageNo > 0 && result > 0) { 

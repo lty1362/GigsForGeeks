@@ -6,6 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.gigsforgeeks.member.model.vo.Member;
+import com.gigsforgeeks.message.model.service.MessageService;
+import com.gigsforgeeks.message.model.vo.Message;
+import com.gigsforgeeks.project.model.vo.PageInfo;
 
 /**
  * Servlet implementation class MessageSendServlet
@@ -26,6 +32,19 @@ public class MessageSendServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		
+		int notReadCount;
+		
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		String userId = loginUser.getUserId();
+		
+		Message messageReceiver = new MessageService().messageReceiver(userId);
+		notReadCount = new MessageService().selectNotReadCount(userId);
+		PageInfo pi = new PageInfo(notReadCount);
+		
+		request.setAttribute("pi", pi);
 		request.getRequestDispatcher("views/message/messageSend.jsp").forward(request, response);
 	}
 
