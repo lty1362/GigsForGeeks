@@ -161,6 +161,37 @@ public class MessageService {
 		
 		return NotReadCount;
 	}
+	
+	/**
+	 * 고객지원 메세지 갯수
+	 * @param userId
+	 * @return
+	 */
+	public int selectAdminCount(String userId) {
+		Connection conn = getConnection();
+		
+		int listCount = new MessageDAO().selectAdminCount(conn,userId);
+		
+		close(conn);
+		
+		return listCount;
+	}
+	
+	/**
+	 * 고객지원메세지 조회
+	 * @param pi
+	 * @param userId
+	 * @return
+	 */
+	public ArrayList<Message> selectMessageAdmin(PageInfo pi, String userId) {
+		Connection conn = getConnection();
+		
+		ArrayList<Message> list = new MessageDAO().selectMessageAdmin(conn,pi,userId);
+		
+		close(conn);
+		
+		return list;
+	}
 
 
 

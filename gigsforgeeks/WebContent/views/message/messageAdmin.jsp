@@ -1,7 +1,21 @@
+<%-- EL 활성화 및 JSTL 설정  --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.message.model.vo.*" %>
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*" %>
+<%
+	ArrayList<Message> adminMs = (ArrayList<Message>)request.getAttribute("adminMs");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+	int NotReadCount = pi.getNotReadCount();
+%>
 <%-- Template HTML 1 : 일반 화면용 --%>
 <!DOCTYPE html>
 <html>
@@ -25,9 +39,9 @@
         <div id="con">           
             <div id="content_1">
                 <div id="naviMain"><a href="${contextPath}/list.ms?currentPage=1">전체메세지</a></div>
-                <div id="naviNotRead"><a href="${contextPath}/notRead.ms?currentPage=1">읽지않음(갯수)</a></div>
+                <div id="naviNotRead"><a href="${contextPath}/notRead.ms?currentPage=1">읽지않음<%=NotReadCount%></a></div>
                 <div id="naviKeep"><a href="${contextPath}/views/message/messageKeep.jsp">보관 메세지</a></div>
-                <div id="naviAdmin"><a href="${contextPath}/views/message/messageAdmin.jsp">고객 지원팀</a></div>
+                <div id="naviAdmin"><a href="${contextPath}/admin.ms?currentPage=1">고객 지원팀</a></div>
             </div>
         </div>  
         <div id="main">
@@ -39,99 +53,76 @@
             <table align="center" class="messageAdmin">
 		        <thead>
 		            <tr>
-		                <th width="70"></th>
-		                <th width="70"></th>
-		                <th width="70"></th>
-		                <th width="300"></th>
-		                <th width="100"></th>
-		                <th width="100"></th>
+		                <th style="display:none;"></th>
+		            	<th width="15"><input type="checkbox"></th>
+		                <th width="30">번호</th>
+		                <th width="200">제목</th>
+		                <th width="10">보낸회원</th>
+		                <th width="20">받은날짜</th>
 		            </tr>
 		        </thead>
 		        <tbody>
-		            <tr>
-		                <td>6</td>
-		                <td><input type="checkbox"></td>
-		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt="프로필"></td>
-		                <td>고객지원메세지 제목자리</td>
-		                <td>admin</td>
-		                <td>2020-09-02</td>
-		            </tr>
-		            <tr>
-		                <td>5</td>
-		                <td><input type="checkbox"></td>
-		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt="프로필"></td>
-		                <td>고객지원메세지 제목자리</td>
-		                <td>admin</td>
-		                <td>2020-08-30</td>
-		            </tr>
-		            <tr>
-		                <td>4</td>
-		                <td><input type="checkbox"></td>
-		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt="프로필"></td>
-		                <td>고객지원메세지 제목자리</td>
-		                <td>admin</td>
-		                <td>2020-08-22</td>
-		            </tr>
-		            <tr>
-		                <td>3</td>
-		                <td><input type="checkbox"></td>
-		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt="프로필"></td>
-		                <td>고객지원메세지 제목자리</td>
-		                <td>admin</td>
-		                <td>2020-08-12</td>
-		            </tr>
-		            <tr>
-		                <td>2</td>
-		                <td><input type="checkbox"></td>
-		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt="프로필"></td>
-		                <td>고객지원메세지 제목자리</td>
-		                <td>admin</td>
-		                <td>2020-09-25</td>
-		            </tr>
-		            <tr>
-		                <td>1</td>
-		                <td><input type="checkbox"></td>
-		                <td><img src="${contextPath}/resources/images/gigsforgeeks_usertype_1.png" alt="프로필"></td>
-		                <td>고객지원메세지 제목자리</td>
-		                <td>admin</td>
-		                <td>2020-09-02</td>
-		            </tr>
-		       
+		             <%if(adminMs.isEmpty()){ %>
+		        		<tr>
+		        			<td colspan="5">조회된 메세지가 없습니다.</td>
+		        		</tr>
+		        	<%} else{ %>
+		        		<%int count = 1; %>
+		        		  <%for(Message m : adminMs){%>
+				        	<tr style="text-align:center;">
+				        		<td style="display:none;"><%=m.getMessageNo() %></td>
+				        		<td><input type="checkbox"></td>
+				                <td><%=count++%></td>
+				                <td><%= m.getMessageReceiver()%></td>
+				                <td><%= m.getMessageTitle()%></td>
+				                <td><%= m.getMessageReceiveTime()%></td>
+				            </tr>
+				           <% } %>
+		        	  <% } %>	  
 		        </tbody>
 		    </table>
+		     <script>
+    			$(function(){
+
+		    		$(".messageAdmin>tbody>tr").click(function(){	
+
+	    				var nno = $(this).children().eq(0).text();
+		    			location.href = "${contextPath}/detail.ms?nno=" + nno;
+
+		    		});
+		    		
+		    	});
+   		 	</script>
 		
 		    <br><br>
 		    
 		    <div align="right" style="width:98%;">
        		 <button class="btn btn-outline-info" data-toggle="modal" data-target="#message_delete">메세지 삭제</button>
         	 <br><br>
-   			</div>  
-		
-		    <div class="pagingArea" align="center">
+   			</div>
+   			 <div class="pagingArea" align="center">
 		
 		        <!-- 맨 처음으로 (<<) -->
-		        <button class="btn btn-outline-info"> &lt;&lt; </button>
+		        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/admin.ms?currentPage=1';"> &lt;&lt; </button>
 		        <!-- 이전페이지로 (<) -->
-		        <button class="btn btn-outline-info"> &lt; </button>
-		
-		        <button class="btn btn-outline-info">1</button>
-		        <button class="btn btn-outline-info">2</button>
-		        <button class="btn btn-outline-info">3</button>
-		        <button class="btn btn-outline-info">4</button>
-		        <button class="btn btn-outline-info">5</button>
-		        <button class="btn btn-outline-info">6</button>
-		        <button class="btn btn-outline-info">7</button>
-		        <button class="btn btn-outline-info">8</button>
-		        <button class="btn btn-outline-info">9</button>
-		        <button class="btn btn-outline-info">10</button>
+		        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/admin.ms?currentPage=<%=currentPage-1%>';"> &lt; </button>
+		        
+			<% for(int p=startPage; p<=endPage; p++) {%>
+				<%if(p != currentPage){ %>
+          			<button class="btn btn-outline-info" onclick="location.href='${contextPath}/admin.ms?currentPage=<%=p%>';"><%= p %></button>
+          		<%}else{ %>
+          			<button class="btn btn-outline-info" disabled><%= p %></button>
+          		<%} %>
+          <%} %>
 		
 		        <!-- 다음페이지로 (>) -->
-		        <button class="btn btn-outline-info"> &gt; </button>
+		        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/admin.ms?currentPage=<%=currentPage+1%>';"> &gt; </button>
 		        <!-- 맨 끝으로 (>>) -->
-		        <button class="btn btn-outline-info"> &gt;&gt; </button>
-		    </div>
-        </div> 
-   </div>   
+		        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/admin.ms?currentPage=<%=maxPage%>';"> &gt;&gt; </button>
+		    </div>  
+		 </div>
+      </div>
+      
        <!-- The Modal -->
         <div class="modal" id="message_delete">
           <div class="modal-dialog">
