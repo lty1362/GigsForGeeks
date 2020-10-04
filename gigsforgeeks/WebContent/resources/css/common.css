@@ -21,6 +21,12 @@ input::placeholder {
 	font-family: "Cafe24Simplehae"; 
 }
 
+/* Buttons */
+#contentMain .btn-primary {
+	background-color: #0f4c75;
+	border-color: #0f4c75;
+}
+
 /* Header */
 #header {
 	background-color: #1b262c;

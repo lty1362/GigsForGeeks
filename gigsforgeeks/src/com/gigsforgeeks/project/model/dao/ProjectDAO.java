@@ -79,14 +79,14 @@ public class ProjectDAO {
 	 * @param userId    현재 로그인한 사용자 아이디
 	 * @return          해당 사용자의 등록/진행 프로젝트 목록
 	 */
-	public ArrayList<Project> selectMyProject(Connection con, String userId) {
+	public ArrayList<Project> selectMyProjectList(Connection con, String userId) {
 		
-		ArrayList<Project> myProject = new ArrayList<>();
+		ArrayList<Project> myProjectList = new ArrayList<>();
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = properties.getProperty("selectMyProject");
+		String sql = properties.getProperty("selectMyProjectList");
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -94,26 +94,27 @@ public class ProjectDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				myProject.add(new Project(rs.getString("project_id"),
-						                  rs.getString("client_id"),
-						                  rs.getString("required_skill"),
-						                  rs.getString("project_name"),
-						                  rs.getString("description"),
-						                  rs.getString("project_status"),
-						                  rs.getDate("expect_start").toLocalDate(),
-						                  rs.getDate("expect_end").toLocalDate(),
-						                  rs.getString("means_of_payment"),
-						                  rs.getInt("min_bid"),
-						                  rs.getInt("max_bid"),
-						                  rs.getDate("start_bid").toLocalDate(),
-						                  rs.getDate("end_bid").toLocalDate(),
-						                  rs.getInt("count_bid"),
-						                  rs.getInt("average_bid"),
-						                  rs.getString("winner_id"),
-						                  rs.getInt("winning_bid"),
-						                  (rs.getDate("start_date") == null ? null : rs.getDate("start_date").toLocalDate()),
-						                  (rs.getDate("end_date") == null ? null : rs.getDate("start_date").toLocalDate())));
+				myProjectList.add(new Project(rs.getString("project_id"),
+						                      rs.getString("client_id"),
+						                      rs.getString("required_skill"),
+						                      rs.getString("project_name"),
+						                      rs.getString("description"),
+						                      rs.getString("project_status"),
+						                      rs.getDate("expect_start").toLocalDate(),
+						                      rs.getDate("expect_end").toLocalDate(),
+						                      rs.getString("means_of_payment"),
+						                      rs.getInt("min_bid"),
+						                      rs.getInt("max_bid"),
+						                      rs.getDate("start_bid").toLocalDate(),
+						                      rs.getDate("end_bid").toLocalDate(),
+						                      rs.getInt("count_bid"),
+						                      rs.getInt("average_bid"),
+						                      rs.getString("winner_id"),
+						                      rs.getInt("winning_bid"),
+						                      (rs.getDate("start_date") == null ? null : rs.getDate("start_date").toLocalDate()),
+						                      (rs.getDate("end_date") == null ? null : rs.getDate("start_date").toLocalDate())));
 			}
+			// System.out.println(myProjectList.size()); // test code
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -123,7 +124,7 @@ public class ProjectDAO {
 			close(pstmt);
 		}
 		
-		return myProject;
+		return myProjectList;
 		
 	}
 	

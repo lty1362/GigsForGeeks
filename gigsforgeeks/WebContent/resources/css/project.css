@@ -18,8 +18,43 @@
 	width: 100%;
 }
 
+.projectTable > tbody > tr > td:first-child {
+	cursor: pointer;
+}
+
 .projectTable th, .projectTable td {
 	text-align: left;
+}
+
+.myProjectHeader {
+	margin-bottom: 1em;
+}
+
+.myProjectHeader:after {
+	display: block;
+	content: '';
+	clear: both;
+}
+
+.myProjectHeader #contentTitle {
+	float: left;
+	margin: 0;
+}
+
+.myProjectHeader .bs-example {
+	float: right;
+}
+
+.myProjectNav {
+	margin-bottom: 1em;
+}
+
+.myProjectNav a {
+	color: black;
+}
+
+.myProjectNav a:hover {
+	text-decoration: none;
 }
 
 /* detailProject 시작 */
