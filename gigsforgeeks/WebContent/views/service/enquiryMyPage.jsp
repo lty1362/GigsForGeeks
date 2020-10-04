@@ -45,9 +45,9 @@
 	        <table class="table table-hover, listArea" id="myEnqList">
 	            <thead>
 	                <tr>
-	                    <th width="50">No</th>
+	                    <th width="100">문의 번호</th>
 	                    <th width="100">문의 유형</th>
-	                    <th width="250">문의 제목</th>
+	                    <th width="300">문의 제목</th>
 	                    <th width="100">문의 날짜</th>
 	                    <th width="100">답변 여부</th>
 	                    <th width="100">답장 날짜</th>

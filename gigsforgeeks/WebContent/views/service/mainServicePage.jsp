@@ -82,15 +82,14 @@
 	
 	.detailView{
 		width: 100%;
-		padding: 10px;
-		height: 300px;
+		height: 150px;
 	}
 	
 	/* 문의내역 내 스타일 */
 	.faqDetailContent{
 		text-align:left;
 		width: 100%;
-		height: 90%;
+		height: 100%;
 		border-radius: 3px;
 		border: 2px solid rgb(23, 34, 59, 0.2);
 	}
@@ -99,7 +98,7 @@
 		width: 100%;
 		height: 100%;
 		float:left; 
-		padding: 30px;
+		padding: 10px;
 		margin:10px;
 		color: rgb(23, 34, 59);
 		border: 3px solid rgb(23, 34, 59, 0.4);
@@ -116,145 +115,125 @@
     
         <div class="wrap">
         
-        <h1 align="center">무엇을 도와드릴까요?</h1>
-        <br>
-
-        <div id="question">
-	        <form action="${contextPath}/notYet.enq" method="POST">
-	            <input id="question1" type="text" placeholder="무엇을 도와드릴까요?">
-	            <button id="question2">검색</button>
-            </form>
-        </div>
-
-        <hr>
+	        <h1 align="center">무엇을 도와드릴까요?</h1>
+	        <br>
+	
+	        <div id="question">
+		        <form action="${contextPath}/notYet.enq" method="POST">
+		            <input id="question1" type="text" placeholder="무엇을 도와드릴까요?">
+		            <button id="question2">검색</button>
+	            </form>
+	        </div>
+	
+	        <hr>
         
-        <!-- 상단 메뉴바 -->
-        <div id="faqCategory" role="group">
-	        <ul id="faqCategory">
-	            <li><a href="">일반</a></li>
-	            <li><a href="">프로젝트</a></li>
-	            <li><a href="">지불관련</a></li>
-	            <li><a href="">멤버십</a></li>
-	            <li><a href="">프로필</a></li>
-	        </ul>
-        </div>
+	        <!-- 상단 메뉴바 -->
+	        <div id="faqCategory" role="group">
+		        <ul id="faqCategory">
+		            <li><a href="">일반</a></li>
+		            <li><a href="">프로젝트</a></li>
+		            <li><a href="">지불관련</a></li>
+		            <li><a href="">멤버십</a></li>
+		            <li><a href="">프로필</a></li>
+		        </ul>
+	        </div>
         
-        <br><br>
+	        <br><br>
+	
+	        <table class="table table-hover, listArea" id="faqList">
+	        	<thead>
+		            <tr>
+		                <th width="100">문의 유형</th>
+		                <th width="600">문의 제목</th>
+		                <!-- <th width="100">조회수</th> -->
+		                <th width="100">등록일</th>
+		            </tr>
+				</thead>
 
-        <table class="table table-hover, listArea" id="faqList">
-        	<thead>
-	            <tr>
-	                <th width="100">문의 유형</th>
-	                <th width="600">문의 제목</th>
-	                <!-- <th width="100">조회수</th> -->
-	                <th width="100">등록일</th>
-	            </tr>
-			</thead>
-
-        	<tbody>
-	            <% if(list.isEmpty()) { %>
-                <tr>
-                	<td colspan="4">조회된 리스트가 없습니다.</td>
-				</tr>
-				<% } else {%>
-					
-	            	<% for(FAQ faq : list) { %>
+       		 	<tbody>
+		            <% if(list.isEmpty()) { %>
 	                <tr>
-                     	<td><%= faq.getFaqCategory() %></td>
-                        <td><%= faq.getFaqTitle() %></td>
-                        <%-- <td><%= faq.getFaqCount() %></td> --%>
-	                        
-						<% if(faq.getFaqRegister() == null) { %>
-                       		<td>-</td>
-	   					<% } else { %>
-                       		<td><%= faq.getFaqRegister() %></td>
-                        <% } %>
-	                        
+	                	<td colspan="4">조회된 리스트가 없습니다.</td>
 					</tr>
-					<tr>
-			            <td colspan="3">
-			            	<div class="detailView">
-				            	<div class="faqDetailView">
-				            	<h4><b>답장내용</b></h4>
-				            		<div class="faqDetailContent">
-					            	<% if(faq.getFaqContent() == null) { %>
-			                       		<b>아직 답장이 안왔습니다.</b>
-				   					<% } else { %>
-					                	<b><%= faq.getFaqContent() %></b>
-			                        <% } %>
-		                        	</div>
+					<% } else {%>
+					
+		            	<% for(FAQ faq : list) { %>
+		                <tr>
+	                     	<td><%= faq.getFaqCategory() %></td>
+	                        <td><%= faq.getFaqTitle() %></td>
+	                        <%-- <td><%= faq.getFaqCount() %></td> --%>
+		                        
+							<% if(faq.getFaqRegister() == null) { %>
+	                       		<td>-</td>
+		   					<% } else { %>
+	                       		<td><%= faq.getFaqRegister() %></td>
+	                        <% } %>
+		                        
+						</tr>
+						<tr>
+				            <td colspan="3">
+				            	<div class="detailView">
+					            	<div class="faqDetailView">
+					            		<div class="faqDetailContent">
+						            	<% if(faq.getFaqContent() == null) { %>
+				                       		<b>아직 답장이 안왔습니다.</b>
+					   					<% } else { %>
+						                	<b><%= faq.getFaqContent() %></b>
+				                        <% } %>
+			                        	</div>
+			                        </div>
 		                        </div>
-	                        </div>
-			            </td>
-			        </tr>
-                   	<% } %>
-                    	
-				<% } %>
+				            </td>
+				        </tr>
+	                   	<% } %>
+	                    	
+					<% } %>
                 </tbody>	
-
-        </table>
+	        </table>
         
-   	    <!-- 페이징 -->
-      	<div class="pagingArea" align="center">
- 			<% if(currentPage != 1){ %>
-	           <!-- 맨 처음으로 (<<) -->
-	           <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=1';"> &lt;&lt; </button>
-	           <!-- 이전페이지로 (<) -->
-	           <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=currentPage-1%>';"> &lt; </button>
-			<% } %>
-			
-			<% for(int p=startPage; p<=endPage; p++){ %>
-				<% if(p != currentPage){ %>
-	          	<button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=p%>';"><%= p %></button>
-	          	<% }else{ %>
-	          	<button class="btn btn-info" disabled><%= p %></button>
+        
+        
+	   	    <!-- 페이징 -->
+	      	<div class="pagingArea" align="center">
+	 			<% if(currentPage != 1){ %>
+		           <!-- 맨 처음으로 (<<) -->
+		           <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=1';"> &lt;&lt; </button>
+		           <!-- 이전페이지로 (<) -->
+		           <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=currentPage-1%>';"> &lt; </button>
+				<% } %>
+				
+				<% for(int p=startPage; p<=endPage; p++){ %>
+					<% if(p != currentPage){ %>
+		          	<button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=p%>';"><%= p %></button>
+		          	<% }else{ %>
+		          	<button class="btn btn-info" disabled><%= p %></button>
+		          	<% } %>
 	          	<% } %>
-          	<% } %>
-			
-			<% if(currentPage != maxPage){ %>
-	           <!-- 다음페이지로 (>) -->
-	           <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=currentPage+1%>';"> &gt; </button>
-	           <!-- 맨 끝으로 (>>) -->
-	           <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=maxPage%>';"> &gt;&gt; </button>
-			<% } %>
-        </div>
+				
+				<% if(currentPage != maxPage){ %>
+		           <!-- 다음페이지로 (>) -->
+		           <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=currentPage+1%>';"> &gt; </button>
+		           <!-- 맨 끝으로 (>>) -->
+		           <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=maxPage%>';"> &gt;&gt; </button>
+				<% } %>
+	        </div>
         
         
-        <br><br>
+        	<br><br>
         
-        <div class="footerMenu" align="center">
-	        <% if(loginUser == null) { %>
-	        <h4>문의를 원하시면 <a href="${contextPath}/views/member/login.jsp">회원가입</a>을 해주시기 바랍니다. </h4>
-	       
-	        <% } else {%>
-	        <h4>문의를 원하시면 아래 버튼을 클릭해주시기 바랍니다.</h4>
-	        <a class="btn btn-success btn-lg" href="${contextPath}/enquiryEnrollForm">문의하기</a>
-	        <a class="btn btn-info btn-lg" href="${contextPath}/enquiryMyPage?currentPage=1">내 문의내역</a>
-        <% } %>
-        </div>
-    </div>
+	        <div class="footerMenu" align="center">
+		        <% if(loginUser == null) { %>
+		        <h4>문의를 원하시면 <a href="${contextPath}/views/member/login.jsp">회원가입</a>을 해주시기 바랍니다. </h4>
+		       
+		        <% } else {%>
+		        <h4>문의를 원하시면 아래 버튼을 클릭해주시기 바랍니다.</h4>
+		        <a class="btn btn-success btn-lg" href="${contextPath}/enquiryEnrollForm">문의하기</a>
+		        <a class="btn btn-info btn-lg" href="${contextPath}/enquiryMyPage?currentPage=1">내 문의내역</a>
+	        <% } %>
+	        </div>
+	 	</div>
 
-    <script>
-        $(function(){
-            $(".detailMenu").click(function(){
-
-                var $p = $(this).next();
-
-                if($p.css("display") == "none"){
-
-                    $(this).siblings("p").slideUp();
-                    $p.slideDown(); 
-
-                }else{
-                    $p.slideUp();
-
-                }
-
-            });
-        });
-    </script>
-    
-            <!-- 테이블 클릭시 조회 -->
+        <!-- 테이블 클릭시 조회 -->
         <script>
     		$(document).ready(function () {
 	            $("#faqList tr:odd").addClass("odd");
@@ -267,6 +246,42 @@
 	                $(this).find(".arrow").toggleClass("up");
 	            });
 	        });
+	    </script>
+	    
+	    
+	    <!-- 테이블 ajaxPage -->
+	    <script>
+	    	function faqCategory(){
+	    		
+	    		$.ajax({
+	    				url:"",
+	    				type:"get",
+	    				success:function(list){
+	    					
+	    					console.log(list); // 테스트
+	    					
+	    					var result = "";
+	    					
+	    					for(var i=0; i<list.length; i++){
+	    						
+	    						result += "<tr>" +
+	    									"<td>" + list[i].getFaqCategory() + "</td>" +
+	    									"<td>" + list[i].getFaqTitle() + "</td>" +
+	    									"<td>" + list[i].getFaqRegister() + "</td>" +
+	    									"<td>" + list[i].getFaqCategory() + "</td>" +
+	    								  "</tr>"; 
+	    					}
+	    					
+	    					console.log(result);
+	    					
+	    					$("#faqCategory tbody").html(result);
+	    		
+	    				}, error:function(){
+	    					console.log("ajax 통신 실패");
+	    				}
+	    		
+	    		});
+	    	}
 	    </script>
 	    
     </main>	
