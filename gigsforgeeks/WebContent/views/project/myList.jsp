@@ -21,19 +21,20 @@
     <main id="contentMain" class="project">
     	<%-- Project Header --%>
         <section class="myProjectHeader">
-	        <h2 id="contentTitle" class="project">프로젝트</h2>
+	        <h2 id="contentTitle" class="project">내 프로젝트</h2>
 			<div class="bs-example" data-example-id="simple-button-group">
 			    <div class="btn-group" role="group" aria-label="Basic example">
-			        <button type="button" class="btn btn-primary active">고용주</button>
-			        <button type="button" class="btn btn-default">프리랜서</button>
+			        <a href="/list.proj?reqType=E" class="btn btn-primary">고용주</a>
+			        <a href="/list.proj?reqType=F" class="btn btn-default">프리랜서</a>
 			    </div>
 			</div>
         </section>
         
         <%-- Project Navigator --%>
         <nav class="myProjectNav">
-        	<a href="">열린 작업</a> | 
+        	<a style="font-weight: bolder">열린 작업</a> | 
         	<a href="">진행중인 작업</a> | 
+        	<a href="">피드백</a> | 
         	<a href="">과거 프로젝트</a>
         </nav>
         
