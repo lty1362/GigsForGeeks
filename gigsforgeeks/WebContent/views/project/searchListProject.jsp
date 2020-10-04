@@ -1,10 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
-<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*" %>
-<%@ page import="com.gigsforgeeks.member.model.vo.Member" %>
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*"%>
+
 <%
 	ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	Project project = (Project)request.getAttribute("project");
+	
+	String projectId = project.getProjectId();
+	String projectName = project.getProjectName();
+	String projectStatus = project.getProjectStatus();
+	String description = project.getDescription();
+	
+
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -59,17 +73,27 @@
                         <input type="checkbox" name="requiredSkill" id="etc">
                         <label for="etc">기타</label>
                         
-                    <br><br>
-                        <p>프로젝트 가격대</p>
+                    <br><br><br>
+                        <label>프로젝트 최소가격대 </label>&nbsp;
                         <select name="payProject">
-	                        <option value="2000000-5000000">대형 프로젝트 (2,000,000₩~5,000,000₩)</option>
-							<option value="1000000-2000000">중형 프로젝트 (1,000,000₩~2,000,000₩)</option>
-							<option value="500000-1000000">소형 프로젝트 (500,000₩~1,000,000₩)</option>
-							<option value="200000-500000">초소형 프로젝트 (200,000₩~500,000₩)</option>
+	                        <option value="200000">200,000₩</option>
+							<option value="300000">300,000₩</option>
+							<option value="400000">400,000₩</option>
+							<option value="500000">500,000₩</option>
+							<option value="600000">600,000₩</option>
+							<option value="700000">700,000₩</option>
+                        </select><br><br>
+                        <label>프로젝트 최대가격대</label>&nbsp;
+                        <select name="payProject">
+	                        <option value="1000000">1,000,000₩</option>
+							<option value="2000000">2,000,000₩</option>
+							<option value="3000000">3,000,000₩</option>
+							<option value="4000000">4,000,000₩</option>
+							<option value="5000000">5,000,000₩</option>
                         </select>
                         
-                        <br><br><br>
-                        <label><b>지역 : </b></label>&nbsp;
+                        <br><br>
+                        <label><b>지역 </b></label>&nbsp;
                         <select name="location">
                             <option value="selectNo">선택안함</option>
                             <option value="seoul">서울특별시</option>
@@ -81,8 +105,7 @@
                             <option value="gwangju">광주광역시</option>
                         </select>
                     </div>
-                    <br>
-                    <button type="submit" style="float: right;" class="btn btn-outline-info">필터검색</button>
+                    <!-- <button type="submit" style="float: right;" class="btn btn-outline-info">필터검색</button> -->
                 </form>
 			<script>
 			$('.feelter_main').on('click', function() {
@@ -112,10 +135,33 @@
                     <li>JAVA, PHP, HTML, WebsiteDesign</li>
                 </div>
             </div>
+            	<div class="pagingArea" align="center">
+	            <!-- 페이징 바(paging bar) 만들기! -->
+	            <% if(currentPage != 1){ %>
+		            <!-- 맨 처음으로 (<<) 1번페이지 요청-->
+		            <button onclick="location.href='${ContextPath}/list.bo?currentPage=1';"> &lt;&lt;</button>
+		            <!-- 이전페이지로 (<) 현재페이지의 -1 페이지 요청 -->
+		            <button onclick="location.href='${ContextPath}/list.bo?currentPage=<%=currentPage-1%>';"> &lt; </button>
+				<% } %>
+				
+				<% for(int p=startPage; p<=endPage; p++) { %>
+					<% if(p != currentPage){ %>
+	            	<button onclick="loaction.href='${ContextPath}/list.bo?currentPage=<%= p%>';"><%= p %></button>
+	            	<% }else { %>
+	            	<button disabled><%= p %></button>
+	            	<% } %>
+	     		<% } %>
+	     	
+	     		<%if(currentPage != maxPage){ %>
+		            <!-- 다음 페이지로 (>) 현재페이지의 +1페이지 요청-->
+		            <button onclick="location.href='${ContextPath}/list.bo?currentPage=<%=currentPage+1%>';"> &gt; </button>
+		            <!-- 맨 끝으로 (>>) 제일마지막 페이지 요청-->
+		            <button onclick="location.href='${ContextPath}/list.bo?currentPage=<%=maxPage%>';"> &gt;&gt;</button>
+				<% } %>
+
+        		</div>
         </div>
 
-        <!-- 검색필터 적용시 일치하는 프로젝트를 못찾을때 보이는 화면(조건문)-->
-        <!-- <p align="center">일치하는 프로젝트를 찾을 수 없습니다.</p> -->
     </main>	
     
     
