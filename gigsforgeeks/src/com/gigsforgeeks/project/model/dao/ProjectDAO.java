@@ -79,14 +79,19 @@ public class ProjectDAO {
 	 * @param userId    현재 로그인한 사용자 아이디
 	 * @return          해당 사용자의 등록/진행 프로젝트 목록
 	 */
-	public ArrayList<Project> selectMyProjectList(Connection con, String userId) {
+	public ArrayList<Project> selectMyProjectList(Connection con, String userId, String userType) {
 		
 		ArrayList<Project> myProjectList = new ArrayList<>();
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = properties.getProperty("selectMyProjectList");
+		String sql = "";
+		if(userType.equals("F")) { // 프리랜서의 경우
+			sql = properties.getProperty("selectMyBidProjectList");
+		}else { // 고용주의 경우
+			sql = properties.getProperty("selectMyProjectList");
+		}
 		
 		try {
 			pstmt = con.prepareStatement(sql);

@@ -37,7 +37,7 @@ public class MyProjectListServlet extends HttpServlet {
 			String userId = loginUser.getUserId();
 			String userType = loginUser.getUserType();
 			
-			ArrayList<Project> myProjectList = new ProjectService().selectMyProjectList(userId);
+			ArrayList<Project> myProjectList = new ProjectService().selectMyProjectList(userId, userType);
 			request.setAttribute("myProjectList", myProjectList);
 			
 			if(userType.equals("F")) { // 현재 로그인한 사용자가 프리랜서인 경우
@@ -50,11 +50,9 @@ public class MyProjectListServlet extends HttpServlet {
 			}
 			
 		}else { // 비회원인 경우
-			
 			request.getSession().setAttribute("alertMsg", "로그인 후에 이용하세요.");
 			RequestDispatcher view = request.getRequestDispatcher("views/member/login.jsp");
 			view.forward(request, response);
-			
 		}
 		
 	}

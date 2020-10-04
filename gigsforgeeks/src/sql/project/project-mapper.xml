@@ -49,6 +49,36 @@
 		  )
 	</entry>
 	
+	<entry key="selectMyBidProjectList">
+		SELECT
+		       PROJECT_ID
+		     , CLIENT_ID
+		     , REQUIRED_SKILL
+		     , PROJECT_NAME
+		     , DESCRIPTION
+		     , PROJECT_STATUS
+		     , EXPECT_START
+		     , EXPECT_END
+		     , MEANS_OF_PAYMENT
+		     , MIN_BID
+		     , MAX_BID
+		     , START_BID
+		     , END_BID
+		     , COUNT_BID
+		     , AVERAGE_BID
+		     , WINNER_ID
+		     , WINNING_BID
+		     , START_DATE
+		     , END_DATE
+		  FROM PROJECT
+		  JOIN MEMBER ON (CLIENT_ID = USER_ID)
+		  WHERE WINNER_ID = ?
+		    AND
+		    NOT PROJECT_STATUS = 'DELETE'
+		  ORDER
+		     BY PROJECT_ID DESC
+	</entry>
+
 	<entry key="selectMyProjectList">
 		SELECT
 		       PROJECT_ID
@@ -77,8 +107,7 @@
 		    NOT PROJECT_STATUS = 'DELETE'
 		  ORDER
 		     BY PROJECT_ID DESC
-	</entry>
-	
+	</entry>	
 	
 	<entry key="searchListProject">
 		SELECT
@@ -97,6 +126,4 @@
 		 ORDER 
 		    BY PROJECT_ID DESC
 	</entry>
-	
-	
 </properties>

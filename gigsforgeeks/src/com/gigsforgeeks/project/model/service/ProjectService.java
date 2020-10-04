@@ -38,10 +38,10 @@ public class ProjectService {
 	 * @param userId    현재 로그인한 사용자 아이디
 	 * @return          해당 사용자의 등록/진행 프로젝트 목록
 	 */
-	public ArrayList<Project> selectMyProjectList(String userId) {
+	public ArrayList<Project> selectMyProjectList(String userId, String userType) {
 		
 		Connection con = getConnection();
-		ArrayList<Project> myProjectList = new ProjectDAO().selectMyProjectList(con, userId);
+		ArrayList<Project> myProjectList = new ProjectDAO().selectMyProjectList(con, userId, userType);
 		close(con);
 		return myProjectList;
 		
