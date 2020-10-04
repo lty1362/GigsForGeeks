@@ -36,7 +36,7 @@ public class ProjectInsertServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		if(loginUser != null) { // 프로젝트 등록 요청한 사용자가 로그인한 회원일 때
+		if(loginUser != null) { // 현재 사용자가 회원인 경우
 			
 			String clientId = loginUser.getUserId();
 			String[] requriedSkills = request.getParameterValues("requriedSkill");
@@ -82,7 +82,7 @@ public class ProjectInsertServlet extends HttpServlet {
 				view.forward(request, response);
 			}
 			
-		}else { // 로그인 안 한 비회원일 때
+		}else { // 비회원인 경우
 			request.getSession().setAttribute("alertMsg", "로그인 후에 이용하세요.");
 			RequestDispatcher view = request.getRequestDispatcher("views/member/login.jsp");
 			view.forward(request, response);

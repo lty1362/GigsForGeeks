@@ -35,7 +35,12 @@ public class MyProjectListServlet extends HttpServlet {
 		if(loginUser != null) { // 현재 사용자가 회원인 경우
 			
 			String userId = loginUser.getUserId();
-			String userType = loginUser.getUserType();
+			String userType = loginUser.getUserType(); // 유저 타입("F"/"E")
+			
+			String reqType = request.getParameter("reqType");
+			if(reqType != null) { // 유저 타입과 별도로 리퀘스트 유형("F"/"E")이 따로 존재하는 경우
+				userType = reqType;
+			}
 			
 			ArrayList<Project> myProjectList = new ProjectService().selectMyProjectList(userId, userType);
 			request.setAttribute("myProjectList", myProjectList);
