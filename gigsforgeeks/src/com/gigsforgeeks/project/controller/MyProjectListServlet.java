@@ -16,11 +16,11 @@ import com.gigsforgeeks.project.model.service.ProjectService;
 import com.gigsforgeeks.project.model.vo.Project;
 
 /**
- * Servlet implementation class ListProjectServlet
+ * Servlet implementation class MyProjectListServlet
  */
 @SuppressWarnings("serial")
-@WebServlet("/myProject.do")
-public class MyProjectServlet extends HttpServlet {
+@WebServlet("/list.proj")
+public class MyProjectListServlet extends HttpServlet {
        
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,18 +32,28 @@ public class MyProjectServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		if(loginUser != null) {
+		if(loginUser != null) { // 현재 사용자가 회원인 경우
 			
 			String userId = loginUser.getUserId();
-			ArrayList<Project> myProject = new ProjectService().selectMyProject(userId);
+			String userType = loginUser.getUserType();
 			
-			request.setAttribute("myProject", myProject);
-			RequestDispatcher view = request.getRequestDispatcher("views/project/myProject.jsp");
+			ArrayList<Project> myProjectList = new ProjectService().selectMyProjectList(userId);
+			request.setAttribute("myProjectList", myProjectList);
+			
+			if(userType.equals("F")) { // 현재 로그인한 사용자가 프리랜서인 경우
+				RequestDispatcher view = request.getRequestDispatcher("views/project/myBidList.jsp");
+				view.forward(request, response);
+				
+			}else if(userType.equals("E")) { // 현재 로그인한 사용자가 고용주인 경우
+				RequestDispatcher view = request.getRequestDispatcher("views/project/myList.jsp");
+				view.forward(request, response);
+			}
+			
+		}else { // 비회원인 경우
+			
+			request.getSession().setAttribute("alertMsg", "로그인 후에 이용하세요.");
+			RequestDispatcher view = request.getRequestDispatcher("views/member/login.jsp");
 			view.forward(request, response);
-			
-		}else {
-			
-			
 			
 		}
 		

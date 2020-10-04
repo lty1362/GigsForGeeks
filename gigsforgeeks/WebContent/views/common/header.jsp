@@ -138,7 +138,7 @@
                         </script>
                         <!-- 탐색 팝업폼 레이어 끝  -->
 
-                        <a href="${contextPath}/views/project/post.jsp">프로젝트 등록</a>
+                        <a href="${contextPath}/post.proj">프로젝트 등록</a>
                         <a href="${contextPath}/faq?currentPage=1">문의하기</a>
                     </nav>
                     <aside id="headerAside">
@@ -228,13 +228,13 @@
                         </script>
                         <!-- 탐색 팝업폼 레이어 끝  -->
                         
-                        <a href="${contextPath}/myProject.do">내 프로젝트</a>
+                        <a href="${contextPath}/list.proj">내 프로젝트</a>
                         <a href="${contextPath}/list.ms?currentPage=1">메시지</a>
                         <a href="">업데이트</a>
                         <a href="${contextPath}/faq?currentPage=1">문의하기</a>
                     </nav>
                     <aside id="headerAside">
-                        <a href="${contextPath}/views/project/post.jsp">프로젝트 게시하기</a>
+                        <a href="${contextPath}/post.proj">프로젝트 게시하기</a>
                         <div id="trigger" align="center">
                             <img src="${contextPath}/resources/images/avatar.png" id="test2"  data-toggle="modal" data-target="#myModal" ></img>
                             

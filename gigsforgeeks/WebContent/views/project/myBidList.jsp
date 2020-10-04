@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"
     import="java.util.ArrayList, 
             com.gigsforgeeks.project.model.vo.Project" %>
-<% ArrayList<Project> myProject = (ArrayList<Project>)request.getAttribute("myProject"); %>
+<% ArrayList<Project> myProjectList = (ArrayList<Project>)request.getAttribute("myProjectList"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +18,25 @@
 <body>
     <%-- Content --%>
     <!-- 여기서부터 내용 작성하면 됩니다. -->
-    <main id="contentMain">
-        <h2 id="contentTitle">프로젝트</h2>
+    <main id="contentMain" class="project">
+    	<%-- Project Header --%>
+        <section class="myProjectHeader">
+	        <h2 id="contentTitle" class="project">프로젝트</h2>
+			<div class="bs-example" data-example-id="simple-button-group">
+			    <div class="btn-group" role="group" aria-label="Basic example">
+			        <button type="button" class="btn btn-primary active">고용주</button>
+			        <button type="button" class="btn btn-default">프리랜서</button>
+			    </div>
+			</div>
+        </section>
+        
+        <%-- Project Navigator --%>
+        <nav class="myProjectNav">
+        	<a href="">열린 작업</a> | 
+        	<a href="">진행중인 작업</a> | 
+        	<a href="">과거 프로젝트</a>
+        </nav>
+        
         <section>
             <table class="projectTable">
                 <thead>
@@ -32,20 +49,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                	<% if(myProject.isEmpty()) { %>
+                	<% if(myProjectList.isEmpty()) { %>
                 	<tr>
                 		<td colspan="5">입찰 중인 프로젝트가 없습니다.</td>
                 	</tr>
                 	<% }else { %>
-                		<% for(Project project : myProject) { %>
+                		<% for(Project myProject : myProjectList) { %>
 	                    <tr>
-	                        <td><%= project.getProjectName() %></td>
-	                        <td><%= project.getWinnerId() %></td>
-	                        <td><%= project.getWinningBid() %></td>
-	                        <td><%= project.getEndDate() %></td>
+	                        <td><%= myProject.getProjectName() %></td>
+	                        <td><%= myProject.getWinnerId() %></td>
+	                        <td><%= myProject.getWinningBid() %></td>
+	                        <td><%= myProject.getEndDate() %></td>
 	                        <td>
 	                            <select name="projectStatus">
-	                                <option value="process"><%= project.getProjectStatus() %></option>
+	                                <option value="process"><%= myProject.getProjectStatus() %></option>
 	                            </select>
 	                        </td>
 	                    </tr>

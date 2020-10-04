@@ -17,13 +17,13 @@ import com.gigsforgeeks.project.model.service.ProjectService;
 import com.gigsforgeeks.project.model.vo.Project;
 
 /**
- * Servlet implementation class PostProject
+ * Servlet implementation class ProjectInsertServlet
  * 
  * 프로젝트 등록 서블릿
  */
-@WebServlet("/postProject.do")
+@WebServlet("/insert.proj")
 @SuppressWarnings("serial")
-public class PostProjectServlet extends HttpServlet {
+public class ProjectInsertServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,7 +36,7 @@ public class PostProjectServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		if(loginUser != null) {
+		if(loginUser != null) { // 프로젝트 등록 요청한 사용자가 로그인한 회원일 때
 			
 			String clientId = loginUser.getUserId();
 			String[] requriedSkills = request.getParameterValues("requriedSkill");
@@ -72,17 +72,17 @@ public class PostProjectServlet extends HttpServlet {
 			}
 			
 			int result = new ProjectService().insertProject(project);
-			if(result > 0) {
+			if(result > 0) { // 프로젝트 등록 요청 성공 시
 				session.setAttribute("alertMsg", "프로젝트가 성공적으로 등록되었습니다.");
 				response.sendRedirect(request.getContextPath());
 				
-			}else {
+			}else { // 실패 시
 				request.getSession().setAttribute("errorMsg", "프로젝트 등록에 실패했습니다.");
 				RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 				view.forward(request, response);
 			}
 			
-		}else {
+		}else { // 로그인 안 한 비회원일 때
 			request.getSession().setAttribute("alertMsg", "로그인 후에 이용하세요.");
 			RequestDispatcher view = request.getRequestDispatcher("views/member/login.jsp");
 			view.forward(request, response);

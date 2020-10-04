@@ -20,7 +20,7 @@
     <main id="contentMain">
 		<h2 id="contentTitle">프로젝트를 등록해주세요</h2>
 		<section>
-			<form action="${contextPath}/postProject.do" method="post" class="projectForm">
+			<form action="${contextPath}/insert.proj" method="post" class="projectForm">
 				<section>
 					<p>프로젝트에 대한 이름을 선택해주세요.</p>
 					<input type="text" name="projectName" required>
@@ -41,7 +41,7 @@
 					</p>
 					<input type="checkbox" name="requriedSkill" id="java" value="Java">
 					<label for="java">JAVA</label>
-					<input type="checkbox" name="requriedSkill" id="python" value="PYTHON">
+					<input type="checkbox" name="requriedSkill" id="python" value="Python">
 					<label for="python">PYTHON</label>
 					<input type="checkbox" name="requriedSkill" id="php" value="PHP">
 					<label for="php">PHP</label>
