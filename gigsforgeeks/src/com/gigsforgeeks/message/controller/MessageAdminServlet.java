@@ -1,6 +1,9 @@
 package com.gigsforgeeks.message.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,16 +17,16 @@ import com.gigsforgeeks.message.model.vo.Message;
 import com.gigsforgeeks.project.model.vo.PageInfo;
 
 /**
- * Servlet implementation class MessageSendServlet
+ * Servlet implementation class MessageAdminServlet
  */
-@WebServlet("/send.ms")
-public class MessageSendServlet extends HttpServlet {
+@WebServlet("/admin.ms")
+public class MessageAdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MessageSendServlet() {
+    public MessageAdminServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,20 +35,54 @@ public class MessageSendServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
+		int listCount;		
+		int currentPage;	
+		int pageLimit;		
+		int boardLimit;		
+		
+		int maxPage;		
+		int startPage;		
+		int endPage;		
 		
 		int notReadCount;
+		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
+		pageLimit =10;
+		
+		boardLimit = 10;
+		
+		request.setCharacterEncoding("utf-8");
+
+		HttpSession session = request.getSession();
+
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		String userId = loginUser.getUserId();
 		
 		Message messageReceiver = new MessageService().messageReceiver(userId);
-		notReadCount = new MessageService().selectNotReadCount(userId);
-		PageInfo pi = new PageInfo(notReadCount);
 		
+        listCount = new MessageService().selectAdminCount(userId);
+        notReadCount = new MessageService().selectNotReadCount(userId);
+        
+		maxPage = (int)Math.ceil((double)listCount / boardLimit); 
+	
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		
+		endPage = startPage + pageLimit - 1;
+		
+		if(maxPage < endPage) {
+			endPage = maxPage;
+		}
+
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage ,notReadCount);
+		
+		ArrayList<Message> adminMs = new MessageService().selectMessageAdmin(pi,userId);
+		
+		request.setAttribute("messageReceiver", messageReceiver);
 		request.setAttribute("pi", pi);
-		request.getRequestDispatcher("views/message/messageSend.jsp").forward(request, response);
+		request.setAttribute("adminMs", adminMs);
+	
+		RequestDispatcher view = request.getRequestDispatcher("views/message/messageAdmin.jsp");
+		view.forward(request, response);
 	}
 
 	/**

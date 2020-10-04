@@ -358,6 +358,85 @@ public class MessageDAO {
 		return listCount;
 	}
 
+	
+	/**
+	 * 고객지원 메세지 갯수
+	 * @param conn
+	 * @param userId
+	 * @return
+	 */
+	public int selectAdminCount(Connection conn, String userId) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAdminCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("LISTCOUNT"); 
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+	/**
+	 * 고객지원메세지 조회
+	 * @param conn
+	 * @param pi
+	 * @param userId
+	 * @return
+	 */
+	public ArrayList<Message> selectMessageAdmin(Connection conn, PageInfo pi, String userId) {
+		ArrayList<Message> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMessageAdmin"); 
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Message(rset.getInt("MESSAGE_NO"),
+			   		     rset.getString("MESSAGE_TITLE"),
+			   		     rset.getString("MESSAGE_RECEIVER"),
+					     rset.getString("MESSAGE_RECEPIENT"),
+					     rset.getDate("MESSAGE_RECEIVE_TIME")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+
+
 
 
 	

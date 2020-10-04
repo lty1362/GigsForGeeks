@@ -26,7 +26,7 @@
                 <div id="naviMain"><a href="${contextPath}/list.ms?currentPage=1">전체메세지</a></div>
                 <div id="naviNotRead"><a href="${contextPath}/notRead.ms?currentPage=1">읽지않음(갯수)</a></div>
                 <div id="naviKeep"><a href="${contextPath}/views/message/messageKeep.jsp">보관 메세지</a></div>
-                <div id="naviAdmin"><a href="${contextPath}/views/message/messageAdmin.jsp">고객 지원팀</a></div>
+                 <div id="naviAdmin"><a href="${contextPath}/admin.ms?currentPage=1">고객 지원팀</a></div>
             </div>
         </div>
             
@@ -35,6 +35,8 @@
         <!-- 보관 메세지 -->
 		<!--검색창-->
         <div id="cont">
+        <br>
+        <h3>보관 메세지</h3>
             <div id="content_2" align="right">
                 <form action="" id="search_form">
 	                    <div id="search_text">

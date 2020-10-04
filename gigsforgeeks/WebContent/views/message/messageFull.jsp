@@ -27,6 +27,8 @@
 <body>
 		<!--검색창-->
         <div id="cont">
+        <br>
+        <h3>전체 메세지</h3>
             <div id="content_2" align="right">
                 <form action="" id="search_form">
                 <input type="hidden" name="messageReceiver" id="messageReceiver" value="">
@@ -89,9 +91,7 @@
 		    		
 		    	});
    		 </script>
-    
-		    <br><br>
-		    
+
 		    <div align="right" style="width:98%;">
        		 <button class="btn btn-outline-info" data-toggle="modal" data-target="#message_delete">메세지 삭제</button>
         	 <br><br>

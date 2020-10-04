@@ -2,17 +2,17 @@ package com.gigsforgeeks.project.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.gigsforgeeks.project.model.service.ProjectService;
+import com.gigsforgeeks.project.model.vo.PageInfo;
 import com.gigsforgeeks.project.model.vo.Project;
 
 /**
@@ -35,45 +35,81 @@ public class SearchListProjectServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
-		HttpSession session = request.getSession();
+		String projectId = request.getParameter("projectId");							// 프로젝트 아이디
+		String projectName = request.getParameter("projectName");						// 프로젝트 제목
+		String projectStatus = request.getParameter("projectStatus");					// 프로젝트 상태
+		String description = request.getParameter("description");  						// 프로젝트 내용
+		LocalDate endBid = LocalDate.parse(request.getParameter("endBid"), formatter);	// 프로젝트 입찰마감일
+		int countBid = Integer.parseInt(request.getParameter("countBid"));				// 입찰수
+
+		// 검색조건 뽑기
+		int minBid = 0;
+		if(request.getParameter("minBid") == null || Integer.parseInt(request.getParameter("minBid")) == 0) {
+			minBid = 200000;
+		}else {
+			minBid = Integer.parseInt(request.getParameter("minBid"));
+		}
 		
-		// session영역에 있는거 갖고오기 
-		Project projectId = (Project)session.getAttribute("projectId");
-		Project projectName = (Project)session.getAttribute("projectName");
-		Project projectStatus = (Project)session.getAttribute("projectStatus");
-		Project description = (Project)session.getAttribute("description");
-		Project endBid = (Project)session.getAttribute("endBid");
-		Project minBid = (Project)session.getAttribute("minBid");
-		Project maxBid = (Project)session.getAttribute("maxBid");
-		Project countBid = (Project)session.getAttribute("countBid");
-		System.out.println(projectId);
-		System.out.println(projectName);
+		int maxBid = 0;
+		if(request.getParameter("maxBid") == null || Integer.parseInt(request.getParameter("maxBid")) == 0) {
+			maxBid = 5000000;
+		}else {
+			maxBid = Integer.parseInt(request.getParameter("MaxBid"));
+		}
+
+		//String location = "";
+		//if(request.getParameter("location") != null) {
+			//location = request.getParameter("location");			
+		//}
 		
-		// 프로젝트의 목록조회 요청하기
-		String pId = projectId.getProjectId();				// 프로젝트 아이디
-		String pTitle = projectName.getProjectName();		// 프로젝트 제목
-		String pStatus = projectStatus.getProjectStatus();	// 프로젝트 상태
-		String pInfo = description.getDescription();  		// 프로젝트 내용
-		LocalDate pEndBid = endBid.getEndBid();				// 프로젝트 입찰마감일
-		int pMinBid = minBid.getMinBid();					// 프로젝트 최소가격
-		int pMaxBid= maxBid.getMaxBid();					// 프로젝트 최대가격
-		int pCount = countBid.getCountBid();				// 입찰수
-			
+		//String [] skill = request.getParameterValues("requiredSkill");
 		
-		// Project에 다시 담기
-		Project project = null;
-		project = new Project(pId, pTitle, pStatus, pInfo, pEndBid, pMinBid, pMaxBid, pCount);
+		Project project = new Project(projectId, projectName, description, projectStatus, minBid, maxBid, endBid, countBid);
 		
-		// Projectservice로 값보내기
-		ArrayList<Project> list = new ProjectService().searchListProject(project);
+		// 페이징 조건
+		int listCount;	
+		int currentPage;
+		int pageLimit;	
+		int boardLimit;		
 		
-		// searchListProject.jsp로 보내기
+		int maxPage;		
+		int startPage;		
+		int endPage;		
+		
+		listCount = new ProjectService().selectListCount(project);
+		
+		// 페이징조회
+		currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		pageLimit = 10;
+		boardLimit = 5;
+		
+		// 조회된 수가 0일 경우 페이징오류 해결 위해서 (처리안하면 > >>가 보임) 
+		if(listCount != 0) {
+			maxPage = (int)Math.ceil((double)listCount/boardLimit);
+		}else {
+			maxPage=1;
+		}
+		
+		startPage = (currentPage-1)/pageLimit * pageLimit + 1;
+		
+		endPage = startPage + pageLimit - 1;
+		
+		if(maxPage<endPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		ArrayList<Project> list = new ProjectService().searchListProject(pi, project);
+		
 		request.setAttribute("list", list);
-		
-		// 사용자가 보게될 응답페이지
-		RequestDispatcher view = request.getRequestDispatcher("views/project/searchListProject.jsp");
-		view.forward(request, response);
+		request.setAttribute("pi", pi);
+		request.setAttribute("filter", project);
+		request.getRequestDispatcher("views/search/searchListProject.jsp").forward(request, response);
+	
+	
 		
 	}
 
