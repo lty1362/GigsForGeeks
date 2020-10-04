@@ -31,6 +31,14 @@ input::placeholder {
 	border-color: grey;
 }
 
+#contentMain .btn-default.e {
+	border-right: 0;
+}
+
+#contentMain .btn-default.f {
+	border-left: 0;
+}
+
 /* Header */
 #header {
 	background-color: #1b262c;

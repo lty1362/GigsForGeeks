@@ -24,8 +24,8 @@
 	        <h2 id="contentTitle" class="project">내 프로젝트</h2>
 			<div class="bs-example" data-example-id="simple-button-group">
 			    <div class="btn-group" role="group" aria-label="Basic example">
-			        <a href="${contextPath}/list.proj?reqType=E" class="btn btn-default">고용주</a>
-			        <a href="${contextPath}/list.proj?reqType=F" class="btn btn-primary">프리랜서</a>
+			        <a href="${contextPath}/list.proj?reqType=E" class="btn btn-default e">고용주</a>
+			        <a href="${contextPath}/list.proj?reqType=F" class="btn btn-primary f">프리랜서</a>
 			    </div>
 			</div>
         </section>
