@@ -8,14 +8,23 @@
     font-style: normal;
 }
 
-/* Post Project */
+/* Project Form */
+.projectForm input[type='text'], .projectForm textarea {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.projectForm textarea {
+	resize: none;
+}
+
 .projectForm section {
 	margin-bottom: 1em;
 }
 
 /* My Project */
 .myProjectHeader {
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
 }
 
 .myProjectHeader:after {
@@ -34,7 +43,8 @@
 }
 
 .myProjectNav {
-	margin-bottom: 1em;
+	text-align: right;
+	margin-bottom: 1.75em;
 }
 
 .myProjectNav a {
