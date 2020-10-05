@@ -45,36 +45,36 @@
         <table class="projectTable">
             <thead>
                 <tr>
-                	<th>프로젝트ID</th>
                     <th>프로젝트명</th>
-                    <th>프리랜서</th>
-                    <th>낙찰가</th>
-                    <th>종료일</th>
+                    <th>입찰</th>
+                    <th>평균입찰가</th>
+                    <th>입찰마감일</th>
                     <th>실행옵션</th>
                 </tr>
             </thead>
             <tbody>
             	<% if(myProjectList.isEmpty()) { %>
             	<tr>
-            		<td colspan="6">입찰 중인 프로젝트가 없습니다.</td>
+            		<td colspan="5">입찰 중인 프로젝트가 없습니다.</td>
             	</tr>
             	<% }else { %>
             		<% for(Project myProject : myProjectList) { %>
-		                <tr>
-		                	<td><%= myProject.getProjectId() %></td>
-		                    <td>
-		                    	<a href=""><%= myProject.getProjectName() %></a>
-		                    	<span style="visibility: hidden;"><%= myProject.getProjectId() %></span>
-		                    </td>
-		                    <td><%= myProject.getWinnerId() %></td>
-		                    <td><%= myProject.getWinningBid() %></td>
-		                    <td><%= myProject.getEndDate() %></td>
-		                    <td>
-		                        <select name="projectStatus">
-		                            <option value="process"><%= myProject.getProjectStatus() %></option>
-		                        </select>
-		                    </td>
-		                </tr>
+            			<% if(myProject.getProjectStatus().equals("OPEN")) { %>
+			                <tr>
+			                    <td>
+			                    	<a href=""><%= myProject.getProjectName() %></a>
+			                    	<span style="visibility: hidden;"><%= myProject.getProjectId() %></span>
+			                    </td>
+			                    <td><%= myProject.getCountBid() %></td>
+			                    <td><%= myProject.getAverageBid() %></td>
+			                    <td><%= myProject.getExpectEnd() %></td>
+			                    <td>
+			                        <select name="projectStatus">
+			                            <option value="process"><%= myProject.getProjectStatus() %></option>
+			                        </select>
+			                    </td>
+			                </tr>
+			            <% } %>
 	                <% } %>
                 <% } %>
             </tbody>

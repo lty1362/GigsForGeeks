@@ -30,42 +30,44 @@ $(function(){
 				
 					if($reqType == "E"){ // 유형이 E(고용주)일 때
 						for(var i in myProjectList){
-							result += "<tr>" +
-											   "<td>" + myProjectList[i].projectId + "</td>" +
-											   "<td>" + 
-											       "<a href=''>" + myProjectList[i].projectName + "</a>" + 
-											       "<span style='visibility: hidden;'>" + myProjectList[i].projectId + "</span>" + 
-											   "</td>" +
-											   "<td>" + myProjectList[i].winnerId + "</td>" +
-											   "<td>" + myProjectList[i].winningBid + "</td>" +
-											   "<td>" + myProjectList[i].endDate + "</td>" +
-											   "<td>" + 
-											   "<select name='projectStatus'>" + 
-											       "<option value='" + myProjectList[i].projectStatus + "'>" + myProjectList[i].projectStatus + "</option>"
-											   "</select>" + 
-											   "</td>" + 
-									  "</tr>";
+							if(myProjectList[i].projectStatus == "OPEN"){
+								result += "<tr>" +
+												    "<td>" + 
+												        "<a href=''>" + myProjectList[i].projectName + "</a>" + 
+												        "<span style='visibility: hidden;'>" + myProjectList[i].projectId + "</span>" + 
+												    "</td>" +
+												    "<td>" + myProjectList[i].countBid + "</td>" +
+												    "<td>" + myProjectList[i].averageBid + "</td>" +
+												    "<td>" + myProjectList[i].expectEnd + "</td>" +
+												    "<td>" + 
+												    "<select name='projectStatus'>" + 
+												        "<option value='" + myProjectList[i].projectStatus + "'>" + myProjectList[i].projectStatus + "</option>"
+												    "</select>" + 
+												    "</td>" + 
+											"</tr>";
+								}
 							}
 					
-					}else{ // 유형이 F(프리랜서)일 때
-						for(var i in myProjectList){
-							result += "<tr>" +
-											   "<td>" + myProjectList[i].projectId + "</td>" +
-											   "<td>" + 
-											       "<a href=''>" + myProjectList[i].projectName + "</a>" + 
-											       "<span style='visibility: hidden;'>" + myProjectList[i].projectId + "</span>" +
-											   "</td>" +
-											   "<td>" + myProjectList[i].winnerId + "</td>" +
-											   "<td>" + myProjectList[i].winningBid + "</td>" +
-											   "<td>" + myProjectList[i].endDate + "</td>" +
-											   "<td>" + 
-											   "<select name='projectStatus'>" + 
-											       "<option value='" + myProjectList[i].projectStatus + "'>" + myProjectList[i].projectStatus + "</option>"
-											   "</select>" + 
-											   "</td>" + 
-									  "</tr>";
+						}else{ // 유형이 F(프리랜서)일 때
+							for(var i in myProjectList){
+								if(myProjectList[i].projectStatus == "START"){
+									result += "<tr>" +
+												        "<td>" + 
+												            "<a href=''>" + myProjectList[i].projectName + "</a>" + 
+												            "<span style='visibility: hidden;'>" + myProjectList[i].projectId + "</span>" +
+												        "</td>" +
+												        "<td>" + myProjectList[i].clientId + "</td>" +
+												        "<td>" + myProjectList[i].winningBid + "</td>" +
+												        "<td>" + myProjectList[i].endDate + "</td>" +
+												        "<td>" + 
+												            "<select name='projectStatus'>" + 
+												                "<option value='" + myProjectList[i].projectStatus + "'>" + myProjectList[i].projectStatus + "</option>"
+												            "</select>" + 
+												        "</td>" + 
+											     "</tr>";
+								}
 							}
-					}
+						}
 					
 				}else{ // 내 프로젝트 목록이 존재하지 않을 때
 					result = ("<td colspan='" + colSize + "'>입찰 중인 프로젝트가 없습니다.</td>");

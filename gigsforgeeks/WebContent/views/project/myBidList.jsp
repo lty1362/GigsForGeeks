@@ -36,8 +36,8 @@
         <%-- End of Project Header --%>
         <%-- Project Navigator --%>
         <nav class="myProjectNav">
-        	<a style="font-weight: bolder">입찰 작업</a> | 
-        	<a href="">현재 작업</a> | 
+        	<a href="">입찰 작업</a> | 
+        	<a href="" style="font-weight: bolder">현재 작업</a> | 
         	<a href="">과거 작업</a>
         </nav>
         <%-- End of Project Navigator --%>
@@ -45,36 +45,36 @@
         <table class="projectTable">
             <thead>
                 <tr>
-                	<th>프로젝트ID</th>
                     <th>프로젝트명</th>
-                    <th>프리랜서</th>
+                    <th>고용주</th>
                     <th>낙찰가</th>
                     <th>종료일</th>
-                    <th>실행옵션</th>
+                    <th>실행 옵션</th>
                 </tr>
             </thead>
             <tbody>
             	<% if(myProjectList.isEmpty()) { %>
             	<tr>
-            		<td colspan="6">입찰 중인 프로젝트가 없습니다.</td>
+            		<td colspan="5">현재 진행하는 작업이 없습니다.</td>
             	</tr>
             	<% }else { %>
             		<% for(Project myProject : myProjectList) { %>
-		                <tr>
-		                	<td><%= myProject.getProjectId() %></td>
-		                    <td>
-		                    	<a href=""><%= myProject.getProjectName() %></a>
-		                    	<span style="visibility: hidden;"><%= myProject.getProjectId() %></span>
-		                    </td>
-		                    <td><%= myProject.getWinnerId() %></td>
-		                    <td><%= myProject.getWinningBid() %></td>
-		                    <td><%= myProject.getEndDate() %></td>
-		                    <td>
-		                        <select name="projectStatus">
-		                            <option value="process"><%= myProject.getProjectStatus() %></option>
-		                        </select>
-		                    </td>
-		                 </tr>
+            			<% if(myProject.getProjectStatus().equals("START")) { %>
+			                <tr>
+			                    <td>
+			                    	<a href=""><%= myProject.getProjectName() %></a>
+			                    	<span style="visibility: hidden;"><%= myProject.getProjectId() %></span>
+			                    </td>
+			                    <td><%= myProject.getClientId() %></td>
+			                    <td><%= myProject.getWinningBid() %></td>
+			                    <td><%= myProject.getEndDate() %></td>
+			                    <td>
+			                        <select name="projectStatus">
+			                            <option value="process"><%= myProject.getProjectStatus() %></option>
+			                        </select>
+			                    </td>
+			                 </tr>
+			             <% } %>
 	                 <% } %>
                 <% } %>
             </tbody>
