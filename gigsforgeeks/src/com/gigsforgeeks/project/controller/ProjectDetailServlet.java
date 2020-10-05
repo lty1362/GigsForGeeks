@@ -36,12 +36,12 @@ public class ProjectDetailServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
-		
-
+		String location = loginUser.getLocation();
+		String enrollDate  = loginUser.getEnrollDate();
 		String userId= loginUser.getUserId();
 		int projectId = Integer.parseInt(request.getParameter("projectId"));
 		
-		Project project = new ProjectService().projectSelectDetail(projectId, userId); 
+		Project project = new ProjectService().projectSelectDetail(projectId, userId, location, enrollDate); 
 		
 		if(project != null) { // 프로젝트 상세조회 요청성공시
 			request.setAttribute("project", project);

@@ -132,11 +132,11 @@ public class ProjectService {
 	 * @param userId
 	 * @return
 	 */
-	public Project projectSelectDetail(int projectId, String userId) {
+	public Project projectSelectDetail(int projectId, String userId, String location, String enrollDate) {
 		
 		Connection conn = getConnection();
 		
-		Project myProject = new ProjectDAO().projectSelectDetail(conn, projectId, userId);
+		Project myProject = new ProjectDAO().projectSelectDetail(conn, projectId, userId, location, enrollDate);
 		
 		close(conn);
 		

@@ -101,20 +101,20 @@
                 </form>
                 <!-- 리스트가 비어있을 경우 -->
                 <% if(list.isEmpty()) { %>
-					<p align="center">일치하는 프리랜서를 찾을 수 없습니다.</p>
+						<p align="center">일치하는 프리랜서를 찾을 수 없습니다.</p>
 	          		<% }else { %>
 	          		<!-- 리스트가 비어있지 않을 경우 -->
 	                <% for(Member m : list) { %>
-                	<div onclick="location.href='${contextPath}/views/member/myAccount.jsp'" id="searchFreelancerList">
-                    <label><img alt="" src="${contextPath}/resources/images/avatar.png" style="width: 50px; height: 50px;"><%= m.getProfileImage() %></label>
-                    <label id="freelancerTitle"><%= m.getUserId() %></label> 
-                    <label id="price">희망시급 : <%= m.getPayRate() %>￦</label><br>
-                    <p><%= m.getSelfIntroduction() %></p>
-                    <br>
-                    <li>우수 프리랜서 : <%= m.getExcellentFreelance() %></li>
-                    <li>지역 : <%= m.getLocation() %></li>
-                    <li>기술 : <%= m.getSkill() %></li>
-                    <!-- <button class="btn btn-outline-info">고용해주세요!</button>-->
+	                	<div onclick="location.href='${contextPath}/views/member/myAccount.jsp'" id="searchFreelancerList">
+	                    <label><img alt="" src="${contextPath}/resources/images/avatar.png" style="width: 50px; height: 50px;"><%= m.getProfileImage() %></label>
+	                    <label id="freelancerTitle"><%= m.getUserId() %></label> 
+	                    <label id="price">희망시급 : <%= m.getPayRate() %>￦</label><br>
+	                    <p><%= m.getSelfIntroduction() %></p>
+	                    <br>
+	                    <li>우수 프리랜서 : <%= m.getExcellentFreelance() %></li>
+	                    <li>지역 : <%= m.getLocation() %></li>
+	                    <li>기술 : <%= m.getSkill() %></li>
+	                    <!-- <button class="btn btn-outline-info">고용해주세요!</button>-->
 	                </div>
 	                <hr>
                 	<% } %>

@@ -228,7 +228,11 @@ public class ProjectDAO {
 	}
 	
 	
-	
+	/**
+	 * 프로젝트 전체리스트 조회용 서비스
+	 * 
+	 * @return
+	 */
 	public ArrayList<Project> searchListProject(Connection conn){
 		
 		ArrayList<Project> list = new ArrayList<>();
@@ -266,6 +270,12 @@ public class ProjectDAO {
 		return list;
 	}
 	
+	
+	/**
+	 * 프리랜서 전체리스트 조회용 서비스
+	 * 
+	 * @return
+	 */
 	public ArrayList<Member> freelancerSelectList(Connection conn){
 		
 		ArrayList<Member> list = new ArrayList<>();
@@ -304,7 +314,14 @@ public class ProjectDAO {
 	}
 	
 	
-	public Project projectSelectDetail(Connection conn, int projectId, String userId) {
+	/**
+	 * 탐색 클릭시 프로젝트 상세보기 서비스
+	 * 
+	 * @param projectId
+	 * @param userId
+	 * @return
+	 */
+	public Project projectSelectDetail(Connection conn, int projectId, String userId, String location, String enrollDate) {
 		
 		Project project = null;
 		
