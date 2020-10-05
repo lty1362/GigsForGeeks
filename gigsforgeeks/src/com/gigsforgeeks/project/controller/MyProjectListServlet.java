@@ -1,6 +1,7 @@
 package com.gigsforgeeks.project.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -14,6 +15,10 @@ import javax.servlet.http.HttpSession;
 import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.project.model.service.ProjectService;
 import com.gigsforgeeks.project.model.vo.Project;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.gigsforgeeks.common.LocalDateDeserializer;
+import com.gigsforgeeks.common.LocalDateSerializer;
 
 /**
  * Servlet implementation class MyProjectListServlet
@@ -35,23 +40,36 @@ public class MyProjectListServlet extends HttpServlet {
 		if(loginUser != null) { // 현재 사용자가 회원인 경우
 			
 			String userId = loginUser.getUserId();
-			String userType = loginUser.getUserType(); // 유저 타입("F"/"E")
+			String userType = loginUser.getUserType(); // 유저 타입 (프리랜서 "F" / 고용주 "E")
+			String reqType = request.getParameter("reqType"); // 리퀘스트 타입 (유저 타입과 같음)
 			
-			String reqType = request.getParameter("reqType");
-			if(reqType != null) { // 유저 타입과 별도로 리퀘스트 유형("F"/"E")이 따로 존재하는 경우
-				userType = reqType;
-			}
-			
-			ArrayList<Project> myProjectList = new ProjectService().selectMyProjectList(userId, userType);
-			request.setAttribute("myProjectList", myProjectList);
-			
-			if(userType.equals("F")) { // 현재 로그인한 사용자가 프리랜서인 경우
-				RequestDispatcher view = request.getRequestDispatcher("views/project/myBidList.jsp");
-				view.forward(request, response);
+			if(reqType == null) { // 사용자 유저 타입으로 요청한 경우
 				
-			}else if(userType.equals("E")) { // 현재 로그인한 사용자가 고용주인 경우
-				RequestDispatcher view = request.getRequestDispatcher("views/project/myList.jsp");
-				view.forward(request, response);
+				ArrayList<Project> myProjectList = new ProjectService().selectMyProjectList(userId, userType);
+				request.setAttribute("myProjectList", myProjectList);
+				
+				if(userType.equals("F")) { // 현재 로그인한 사용자가 프리랜서인 경우
+					RequestDispatcher view = request.getRequestDispatcher("views/project/myBidList.jsp");
+					view.forward(request, response);
+					
+				}else if(userType.equals("E")) { // 현재 로그인한 사용자가 고용주인 경우
+					RequestDispatcher view = request.getRequestDispatcher("views/project/myList.jsp");
+					view.forward(request, response);
+				}
+				
+			}else { // 별도의 리퀘스트 타입으로 요청한 경우
+				
+				ArrayList<Project> myProjectList = new ProjectService().selectMyProjectList(userId, reqType);
+				
+				response.setContentType("application/json; charset=utf-8");
+				
+				GsonBuilder gsonBuilder = new GsonBuilder();
+		        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
+		        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+		        
+		        Gson gson = gsonBuilder.setPrettyPrinting().create();
+				gson.toJson(myProjectList, response.getWriter());
+				
 			}
 			
 		}else { // 비회원인 경우

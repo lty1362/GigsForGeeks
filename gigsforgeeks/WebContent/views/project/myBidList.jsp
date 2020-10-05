@@ -12,6 +12,10 @@
 	<!-- 필요한 외부 파일은 여기서 불러오세요 -->
 	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
 	<%-- End Of Header --%>
+    <script>
+   	    // 세션 비우기
+   	    sessionStorage.clear();
+    </script>
 	<!-- 페이지의 타이틀을 작성하세요 -->
 	<title>내 프로젝트</title>
 </head>
@@ -24,8 +28,8 @@
 	        <h2 id="contentTitle" class="project">내 프로젝트</h2>
 			<div class="bs-example" data-example-id="simple-button-group">
 			    <div class="btn-group" role="group" aria-label="Basic example">
-			        <a href="${contextPath}/list.proj?reqType=E" class="btn btn-default e">고용주</a>
-			        <a href="${contextPath}/list.proj?reqType=F" class="btn btn-primary f">프리랜서</a>
+			        <button class="btn btn-default setReqType e">고용주</button>
+			        <button class="btn btn-primary setReqType f">프리랜서</button>
 			    </div>
 			</div>
         </section>

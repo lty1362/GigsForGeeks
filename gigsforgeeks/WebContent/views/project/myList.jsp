@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, 
-            com.gigsforgeeks.project.model.vo.Project" %>
+    import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.Project" %>
 <% ArrayList<Project> myProjectList = (ArrayList<Project>)request.getAttribute("myProjectList"); %>
 <!DOCTYPE html>
 <html>
@@ -13,6 +12,10 @@
 	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
 	<%-- End Of Header --%>
 	<!-- 페이지의 타이틀을 작성하세요 -->
+	<script>
+   	    // 세션 비우기
+   	    sessionStorage.clear();
+    </script>
 	<title>내 프로젝트</title>
 </head>
 <body>
@@ -24,8 +27,8 @@
 	        <h2 id="contentTitle" class="project">내 프로젝트</h2>
 			<div class="bs-example" data-example-id="simple-button-group">
 			    <div class="btn-group" role="group" aria-label="Basic example">
-			        <a href="${contextPath}/list.proj?reqType=E" class="btn btn-primary e">고용주</a>
-			        <a href="${contextPath}/list.proj?reqType=F" class="btn btn-default f">프리랜서</a>
+			        <button class="btn btn-primary setReqType e">고용주</button>
+			        <button class="btn btn-default setReqType f">프리랜서</button>
 			    </div>
 			</div>
         </section>
