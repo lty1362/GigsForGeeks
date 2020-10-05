@@ -161,5 +161,10 @@
 	 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="messageKeep">
+      UPDATE MESSAGE
+	     SET MESSAGE_KEEP='Y'
+	   WHERE MESSAGE_NO=?
+	</entry>
 	
 </properties>

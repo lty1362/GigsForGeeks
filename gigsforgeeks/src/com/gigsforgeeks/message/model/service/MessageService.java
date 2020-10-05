@@ -193,6 +193,23 @@ public class MessageService {
 		return list;
 	}
 
+	
+	public int updateKeep(int messageNo) {
+		Connection conn = getConnection();
+		
+		int result  = new MessageDAO().updateKeep(conn, messageNo);
+		
+		if(result  > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
 
 
 

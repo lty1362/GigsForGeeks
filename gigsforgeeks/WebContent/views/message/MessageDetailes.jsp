@@ -44,6 +44,7 @@
         <!-- 내용변경할곳 -->
         <!-- 메세지 상세보기 -->
 		<div id="messageDetailes" align="center">
+        <a href="${contextPath}/keep.ms?nno=<%= m.getMessageNo()%>" class="btn btn-outline-info" style="margin-left:1400px;">보관하기</a>
         <br><br>
         <table id="detailMe">
             <tr>

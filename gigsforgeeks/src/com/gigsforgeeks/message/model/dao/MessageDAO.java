@@ -441,6 +441,29 @@ public class MessageDAO {
 		return list;
 	}
 
+	public int updateKeep(Connection conn, int messageNo) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("messageKeep");
+		
+		try {
+			pstmt = conn.prepareStatement(sql); 
+			
+			pstmt.setInt(1, messageNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 
 
 
