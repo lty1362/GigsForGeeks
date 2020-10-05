@@ -1,6 +1,7 @@
 package com.gigsforgeeks.message.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,16 +17,16 @@ import com.gigsforgeeks.message.model.vo.Message;
 import com.gigsforgeeks.project.model.vo.PageInfo;
 
 /**
- * Servlet implementation class MessageDetailesServlet
+ * Servlet implementation class MessageKeepListServlet
  */
-@WebServlet("/detail.ms")
-public class MessageDetailesServlet extends HttpServlet {
+@WebServlet("/keepList.ms")
+public class MessageKeepListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MessageDetailesServlet() {
+    public MessageKeepListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,44 +35,55 @@ public class MessageDetailesServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int listCount;		
+		int currentPage;	
+		int pageLimit;		
+		int boardLimit;		
 		
-		int messageNo = Integer.parseInt(request.getParameter("nno"));
+		int maxPage;		
+		int startPage;		
+		int endPage;		
+		
 		int notReadCount;
-		int keepCount;
+		currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		
+		pageLimit =10;
+		
+		boardLimit = 10;
 		
 		request.setCharacterEncoding("utf-8");
+
 		HttpSession session = request.getSession();
+
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		String userId = loginUser.getUserId();
 		
 		Message messageReceiver = new MessageService().messageReceiver(userId);
-		notReadCount = new MessageService().selectNotReadCount(userId);
-		keepCount = new MessageService().selectKeepCount(userId); 
 		
-		PageInfo pi = new PageInfo(notReadCount,keepCount);
+        listCount = new MessageService().selectKeepCount(userId);
+        notReadCount = new MessageService().selectNotReadCount(userId);
+        
+        
+		maxPage = (int)Math.ceil((double)listCount / boardLimit); 
+	
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
 		
-		int result = new MessageService().updateMessage(messageNo);
-		Message m = new MessageService().selectMessage(messageNo);
+		endPage = startPage + pageLimit - 1;
+		
+		if(maxPage < endPage) {
+			endPage = maxPage;
+		}
 
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage ,notReadCount);
+		
+		ArrayList<Message> keepMs = new MessageService().selectMessageKeep(pi,userId);
+		
 		request.setAttribute("messageReceiver", messageReceiver);
 		request.setAttribute("pi", pi);
-		request.setAttribute("result", result);
-		request.setAttribute("m", m);
-		
-		
-		
-		if(messageNo > 0 && result > 0) { 
-			RequestDispatcher view = request.getRequestDispatcher("views/message/MessageDetailes.jsp");
-			view.forward(request, response);
-			
-		}else { 
-			
-			request.setAttribute("errorMsg", "메세지 상세조회 실패");
-			
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
-		}
-		
+		request.setAttribute("keepMs", keepMs);
+	
+		RequestDispatcher view = request.getRequestDispatcher("views/message/messageKeep.jsp");
+		view.forward(request, response);
 	}
 
 	/**
