@@ -26,8 +26,8 @@
                <h1>프로젝트명1 </h1> 
                <label align="center">입찰중</label>
                <br>
-               <a href="">프로젝트 상세보기</a> |
-               <a href="">이 프로젝트에 대한 제안들</a>
+               <a href="">프로젝트 상세보기</a> 
+               <!-- <a href="">이 프로젝트에 대한 제안들</a> -->
                <!-- <a href="">파일등록</a> | -->
                <!-- <a href="">프로젝트 재등록</a> | -->
                <!-- <a href="">프로젝트 삭제</a> -->
@@ -58,12 +58,8 @@
                        <label class="projectSkill">HTML</label>
                        <label class="projectSkill">CSS</label>
    
-                       <br><br><br>
+                       <br><br>
                        <p style="font-size: small;">프로젝트 고유번호(ID) : 27155438</p>
-                       
-                       <hr>
-                       <h4>첨부자료</h4>
-                       <input type="file" name="attachment">
                    </div>
    
                    <!-- 프로젝트 입찰견적서 -->

@@ -220,4 +220,36 @@
 		  ORDER 
 		     BY USER_ID DESC
 	</entry>
+	
+	<entry key="projectSelectDetail">
+		SELECT
+	       PROJECT_ID
+	     , CLIENT_ID
+	     , REQUIRED_SKILL
+	     , PROJECT_NAME
+	     , DESCRIPTION
+	     , PROJECT_STATUS
+	     , EXPECT_START
+	     , EXPECT_END
+	     , MEANS_OF_PAYMENT
+	     , MIN_BID
+	     , MAX_BID
+	     , START_BID
+	     , END_BID
+	     , COUNT_BID
+	     , AVERAGE_BID
+	     , WINNER_ID
+	     , WINNING_BID
+	     , START_DATE
+	     , END_DATE
+	     , ENROLL_DATE
+	     , LOCATION
+	  FROM PROJECT
+	  JOIN MEMBER ON (CLIENT_ID = USER_ID)
+	  WHERE PROJECT_ID = ?
+	    AND (CLIENT_ID = ?
+	     OR WINNER_ID = ?)
+	    AND
+	    NOT PROJECT_STATUS = 'DELETE'
+	</entry>
 </properties>
