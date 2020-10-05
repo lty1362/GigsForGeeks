@@ -79,7 +79,7 @@
 				                	<a><%= m.getMessageTitle()%></a>
 				               		<span style="display:none;"><%=m.getMessageNo() %></span>
 				                </td>
-				                <td><%= m.getMessageReceiver()%></td>
+				                <td><%= m.getMessageRecepient()%></td>
 				                <td><%= m.getMessageReceiveTime()%></td>
 				            </tr>
 				           <% } %>

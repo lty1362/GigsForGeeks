@@ -40,7 +40,7 @@
 	                        <a href="${contextPath}/send.ms" id="btn1" class="btn btn-outline-info" type="submit">메세지 보내기</a>
 	                	</div>
 	                	<div id="search_btn2">
-	                    	<button type="button" id="btn2" class="btn btn-outline-info" type="submit">보관하기</button>
+	                    	<button type="submit" id="btn2" class="btn btn-outline-info">보관하기</button>
 	                	</div>
                 </form>
             </div>
@@ -75,7 +75,7 @@
 				               	 	<a><%= m.getMessageTitle()%></a>
 				                	<span style="display:none;"><%=m.getMessageNo() %></span>
 				                </td>
-				                <td><%= m.getMessageReceiver()%></td>				            
+				                <td><%= m.getMessageRecepient()%></td>				            
 				                <td><%= m.getMessageReceiveTime()%></td>
 				            </tr>
 				           <% } %>

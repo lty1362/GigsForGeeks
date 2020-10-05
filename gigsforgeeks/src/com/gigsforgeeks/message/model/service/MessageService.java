@@ -87,11 +87,11 @@ public class MessageService {
 	public Message messageRecepient(String userId) {
 		Connection conn = getConnection();
 
-		Message messageReceiver = new MessageDAO().messageRecepient(userId, conn);
+		Message messageRecepient = new MessageDAO().messageRecepient(userId, conn);
 
 		close(conn);
 
-		return messageReceiver;
+		return messageRecepient;
 	}
 	
 	/**

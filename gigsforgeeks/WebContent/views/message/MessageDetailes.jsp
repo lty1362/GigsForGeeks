@@ -47,12 +47,12 @@
         <br><br>
         <table id="detailMe">
             <tr>
-                <th id="t2" width="500"><%=m.getMessageTitle() %></th>
+                <th id="t2" width="500"><%=m.getMessageTitle()%></th>
                 <td id="t1" colspan="3"><%=m.getMessageReceiveTime()%></td>
             </tr>
             <tr id="t3">
                 <th>받는 사람</th>
-                <td><%=m.getMessageReceiver() %></td>
+                <td><%=m.getMessageReceiver()%></td>
                 <th>보낸 사람</th>
                 <td><%=m.getMessageRecepient() %></td>
             </tr>

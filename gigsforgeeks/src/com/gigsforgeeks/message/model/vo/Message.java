@@ -24,14 +24,14 @@ public class Message {
 		
 	}
 
-	public Message(int messageNo, String messageReceiver, String messageRecepient, String messageTitle,
+	public Message(int messageNo, String messageTitle, String messageReceiver, String messageRecepient, 
 			String messageContent, Date messageReceiveTime, Date messageSendTime, String messageRead,
 			String messageKeep, String messageAdmin, String status) {
 		super();
 		this.messageNo = messageNo;
+		this.messageTitle = messageTitle;
 		this.messageReceiver = messageReceiver;
 		this.messageRecepient = messageRecepient;
-		this.messageTitle = messageTitle;
 		this.messageContent = messageContent;
 		this.messageReceiveTime = messageReceiveTime;
 		this.messageSendTime = messageSendTime;
@@ -45,9 +45,9 @@ public class Message {
 			Date messageReceiveTime) {
 		super();
 		this.messageNo = messageNo;
+		this.messageTitle = messageTitle;
 		this.messageReceiver = messageReceiver;
 		this.messageRecepient = messageRecepient;
-		this.messageTitle = messageTitle;
 		this.messageReceiveTime = messageReceiveTime;
 	}
 
@@ -55,9 +55,9 @@ public class Message {
 			String messageContent, Date messageReceiveTime) {
 		super();
 		this.messageNo = messageNo;
+		this.messageTitle = messageTitle;
 		this.messageReceiver = messageReceiver;
 		this.messageRecepient = messageRecepient;
-		this.messageTitle = messageTitle;
 		this.messageContent = messageContent;
 		this.messageReceiveTime = messageReceiveTime;
 	}

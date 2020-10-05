@@ -167,7 +167,6 @@ public class MessageDAO {
 			pstmt.setString(3, m.getMessageReceiver());
 			pstmt.setString(4, userId);
 			
-			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			
@@ -201,10 +200,10 @@ public class MessageDAO {
 			
 
 			if(rset.next()) {
-				m = new Message(rset.getInt("MESSAGE_NO"),			   		     
+				m = new Message(rset.getInt("MESSAGE_NO"),
+					     rset.getString("MESSAGE_TITLE"),		   		     
 			   		     rset.getString("MESSAGE_RECEIVER"),
 					     rset.getString("MESSAGE_RECEPIENT"),
-					     rset.getString("MESSAGE_TITLE"),
 					     rset.getString("MESSAGE_CONTENT"),
 					     rset.getDate("MESSAGE_RECEIVE_TIME"),
 					     rset.getDate("MESSAGE_SEND_TIME"),
@@ -243,9 +242,9 @@ public class MessageDAO {
 			
 			if(rset.next()) {
 				ms = new Message(rset.getInt("MESSAGE_NO"),	
+					     rset.getString("MESSAGE_TITLE"),
 			   		     rset.getString("MESSAGE_RECEIVER"),
 					     rset.getString("MESSAGE_RECEPIENT"),
-					     rset.getString("MESSAGE_TITLE"),
 					     rset.getString("MESSAGE_CONTENT"),
 					     rset.getDate("MESSAGE_RECEIVE_TIME"));
 			}
@@ -289,6 +288,13 @@ public class MessageDAO {
 		return result;
 	}
 
+	/**
+	 * 읽지않은 메세지 조회
+	 * @param conn
+	 * @param pi
+	 * @param userId
+	 * @return
+	 */
 	public ArrayList<Message> selectMessageNotRead(Connection conn, PageInfo pi, String userId) {
 		ArrayList<Message> list = new ArrayList<>();
 		
