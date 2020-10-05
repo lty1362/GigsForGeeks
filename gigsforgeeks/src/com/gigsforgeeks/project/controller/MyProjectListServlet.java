@@ -40,10 +40,13 @@ public class MyProjectListServlet extends HttpServlet {
 		if(loginUser != null) { // 현재 사용자가 회원인 경우
 			
 			String userId = loginUser.getUserId();
-			String userType = loginUser.getUserType(); // 유저 타입 (프리랜서 "F" / 고용주 "E")
-			String reqType = request.getParameter("reqType"); // 리퀘스트 타입 (유저 타입과 같음)
+			String userType = loginUser.getUserType(); // 유저 타입: 프리랜서 "F" / 고용주 "E"
+			String reqType = request.getParameter("reqType"); // 리퀘스트 타입: 목록보기에서 사용자가 요청한 리퀘스트 타입
+			if(request.getParameter("listType") != null) { // 목록 타입: 상세보기에서 메뉴 요청시 선택되어 있던 목록 타입
+				userType = request.getParameter("listType");
+			}
 			
-			if(reqType == null) { // 사용자 유저 타입으로 요청한 경우
+			if(reqType == null) { // 유저 타입 or 목록 타입으로 요청한 경우 -> 동기 처리
 				
 				ArrayList<Project> myProjectList = new ProjectService().selectMyProjectList(userId, userType);
 				request.setAttribute("myProjectList", myProjectList);
@@ -57,7 +60,7 @@ public class MyProjectListServlet extends HttpServlet {
 					view.forward(request, response);
 				}
 				
-			}else { // 별도의 리퀘스트 타입으로 요청한 경우
+			}else { // 별도의 리퀘스트 타입으로 요청한 경우 -> 비동기 처리
 				
 				ArrayList<Project> myProjectList = new ProjectService().selectMyProjectList(userId, reqType);
 				

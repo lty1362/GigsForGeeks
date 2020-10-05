@@ -36,8 +36,8 @@
         <%-- End of Project Header --%>
         <%-- Project Navigator --%>
         <nav class="myProjectNav">
-        	<a href="">입찰 작업</a> | 
-        	<a href="" style="font-weight: bolder">현재 작업</a> | 
+        	<a href="">제안 작업</a> | 
+        	<a href="" style="font-weight: bolder">진행 작업</a> | 
         	<a href="">과거 작업</a>
         </nav>
         <%-- End of Project Navigator --%>

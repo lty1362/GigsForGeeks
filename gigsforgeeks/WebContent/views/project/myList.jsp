@@ -35,8 +35,8 @@
         <%-- End of Project Header --%>
         <%-- Project Navigator --%>
         <nav class="myProjectNav">
-        	<a style="font-weight: bolder;">열린 작업</a> | 
-        	<a href="">진행중인 작업</a> | 
+        	<a style="font-weight: bolder;">열린 프로젝트</a> | 
+        	<a href="">시작 프로젝트</a> | 
         	<a href="">피드백</a> | 
         	<a href="">과거 프로젝트</a>
         </nav>

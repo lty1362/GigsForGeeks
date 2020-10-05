@@ -36,9 +36,10 @@ public class ProjectDeleteServlet extends HttpServlet {
 			Project project = new ProjectService().selectMyProject(projectId, userId);
 			
 			int result = new ProjectService().deleteMyProject(project, userId);
-			if(result > 0) { // 프로젝트 삭제 요청 성공 시
+			if(result > 0) { // 프로젝트 삭제 요청 성공 시 -> 목록으로 돌아가기
+				String listType = request.getParameter("listType");
 				session.setAttribute("alertMsg", "프로젝트가 성공적으로 삭제되었습니다.");
-				response.sendRedirect(request.getContextPath() + "/list.proj");
+				response.sendRedirect(request.getContextPath() + "/list.proj?listType=" + listType);
 				
 			}else { // 프로젝트 삭제 요청 실패 시
 				request.getSession().setAttribute("errorMsg", "프로젝트 삭제에 실패했습니다.");

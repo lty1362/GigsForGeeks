@@ -11,6 +11,7 @@ $(function(){
 		if($(this).hasClass("e")){ // "E(고용주)" 유형으로 요청 시
 			$reqType = "E";
 			
+			
 		}else{ // "F(프리랜서)" 유형으로 요청 시
 			$reqType = "F";
 		}
@@ -23,48 +24,62 @@ $(function(){
 			success: function(myProjectList){ // 요청한 유형의 내 프로젝트 목록 조회 성공 시
 				
 				var colSize = $(".projectTable>thead>tr>th").length;
-				$(".projectTable>tbody").empty();
+				$(".projectTable>tbody, .myProjectNav").empty();
 				
 				var result = "";
+				
 				if(myProjectList != null){ // 내 프로젝트 목록이 존재하고
 				
 					if($reqType == "E"){ // 유형이 E(고용주)일 때
+					
+						$(".myProjectNav").empty();
+						$(".myProjectNav").append("<a href='' style='font-weight: bolder'>열린 프로젝트</a> | ");
+						$(".myProjectNav").append("<a href=''>시작 프로젝트</a> | ");
+						$(".myProjectNav").append("<a href=''>피드백</a> | ");
+						$(".myProjectNav").append("<a href=''>과거 프로젝트</a>");
+						
 						for(var i in myProjectList){
 							if(myProjectList[i].projectStatus == "OPEN"){
 								result += "<tr>" +
-												    "<td>" + 
-												        "<a href=''>" + myProjectList[i].projectName + "</a>" + 
-												        "<span style='visibility: hidden;'>" + myProjectList[i].projectId + "</span>" + 
-												    "</td>" +
-												    "<td>" + myProjectList[i].countBid + "</td>" +
-												    "<td>" + myProjectList[i].averageBid + "</td>" +
-												    "<td>" + myProjectList[i].expectEnd + "</td>" +
-												    "<td>" + 
-												    "<select name='projectStatus'>" + 
-												        "<option value='" + myProjectList[i].projectStatus + "'>" + myProjectList[i].projectStatus + "</option>"
-												    "</select>" + 
-												    "</td>" + 
-											"</tr>";
+												"<td>" + 
+												    "<a href=''>" + myProjectList[i].projectName + "</a>" + 
+												    "<span style='visibility: hidden;'>" + myProjectList[i].projectId + "</span>" + 
+												"</td>" +
+												"<td>" + myProjectList[i].countBid + "</td>" +
+												"<td>" + myProjectList[i].averageBid + "</td>" +
+												"<td>" + myProjectList[i].expectEnd + "</td>" +
+												"<td>" + 
+												"<select name='projectStatus'>" + 
+												    "<option value='" + myProjectList[i].projectStatus + "'>" + myProjectList[i].projectStatus + "</option>"
+												"</select>" + 
+												"</td>" + 
+										  "</tr>";
 								}
 							}
 					
 						}else{ // 유형이 F(프리랜서)일 때
+							
+							$(".myProjectNav").empty();
+							$(".myProjectNav").append("<a href=''>제안 작업</a> | ");
+							$(".myProjectNav").append("<a href='' style='font-weight: bolder'>현재 작업</a> | ");
+							$(".myProjectNav").append("<a href=''>과거 작업</a> | ");
+							
 							for(var i in myProjectList){
 								if(myProjectList[i].projectStatus == "START"){
 									result += "<tr>" +
-												        "<td>" + 
-												            "<a href=''>" + myProjectList[i].projectName + "</a>" + 
-												            "<span style='visibility: hidden;'>" + myProjectList[i].projectId + "</span>" +
-												        "</td>" +
-												        "<td>" + myProjectList[i].clientId + "</td>" +
-												        "<td>" + myProjectList[i].winningBid + "</td>" +
-												        "<td>" + myProjectList[i].endDate + "</td>" +
-												        "<td>" + 
-												            "<select name='projectStatus'>" + 
-												                "<option value='" + myProjectList[i].projectStatus + "'>" + myProjectList[i].projectStatus + "</option>"
-												            "</select>" + 
-												        "</td>" + 
-											     "</tr>";
+													"<td>" + 
+													    "<a href=''>" + myProjectList[i].projectName + "</a>" + 
+													    "<span style='visibility: hidden;'>" + myProjectList[i].projectId + "</span>" +
+													"</td>" +
+													"<td>" + myProjectList[i].clientId + "</td>" +
+													"<td>" + myProjectList[i].winningBid + "</td>" +
+													"<td>" + myProjectList[i].endDate + "</td>" +
+													"<td>" + 
+													    "<select name='projectStatus'>" + 
+													        "<option value='" + myProjectList[i].projectStatus + "'>" + myProjectList[i].projectStatus + "</option>"
+													    "</select>" + 
+													"</td>" + 
+											  "</tr>";
 								}
 							}
 						}
@@ -94,8 +109,14 @@ $(function(){
 	
 	// 프로젝트 삭제하기 시 쿼리 스트링 (projectId값)
 	$(document).on('click', ".deleteProject", function(){
-		var $projectId = sessionStorage.getItem("projectId");
-		$(this).attr("href", $contextPath + "/delete.proj?projectId=" + $projectId);
+		
+		var result = confirm("정말로 삭제하겠습니까?");
+		
+		if(result){ // yes
+			var $projectId = sessionStorage.getItem("projectId");
+			var $listType = sessionStorage.getItem("reqType");
+			$(this).attr("href", $contextPath + "/delete.proj?projectId=" + $projectId + "&listType=" + $listType);
+		}
 		
 	});
 	
