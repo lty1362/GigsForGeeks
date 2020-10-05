@@ -54,7 +54,7 @@ public class ProjectService {
 	 * @param userId       해당 프로젝트의 고용주 / 낙찰자 아이디
 	 * @return             해당 프로젝트 아이디와 일치하는 조회된 Project 객체
 	 */
-	public Project selectProject(String projectId, String userId) {
+	public Project selectProject(int projectId, String userId) {
 		
 		Connection con = getConnection();
 		Project myProject = new ProjectDAO().selectProject(con, projectId, userId);

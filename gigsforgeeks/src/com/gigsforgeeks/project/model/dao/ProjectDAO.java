@@ -99,7 +99,7 @@ public class ProjectDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				myProjectList.add(new Project(rs.getString("project_id"),
+				myProjectList.add(new Project(rs.getInt("project_id"),
 						                      rs.getString("client_id"),
 						                      rs.getString("required_skill"),
 						                      rs.getString("project_name"),
@@ -141,7 +141,7 @@ public class ProjectDAO {
 	 * @param userId       해당 프로젝트의 고용주 / 낙찰자 아이디
 	 * @return             해당 프로젝트 아이디와 일치하는 조회된 내 Project 객체
 	 */
-	public Project selectProject(Connection con, String projectId, String userId) {
+	public Project selectProject(Connection con, int projectId, String userId) {
 		
 		Project myProject = null;
 		
@@ -152,13 +152,13 @@ public class ProjectDAO {
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, projectId);
+			pstmt.setInt(1, projectId);
 			pstmt.setString(2, userId);
 			pstmt.setString(3, userId);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				myProject = new Project(rs.getString("project_id"),
+				myProject = new Project(rs.getInt("project_id"),
 										rs.getString("client_id"),
 										rs.getString("required_skill"),
 										rs.getString("project_name"),
@@ -210,7 +210,7 @@ public class ProjectDAO {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Project(rset.getString("project_id"),
+				list.add(new Project(rset.getInt("project_id"),
 									 rset.getString("project_name"),
 									 rset.getString("project_status"),
 									 rset.getString("description"),
