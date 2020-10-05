@@ -122,5 +122,17 @@ public class ProjectService {
 		
 	}
 	
+	public Project projectSelectDetail(int projectId, String userId) {
+		
+		Connection conn = getConnection();
+		
+		Project myProject = new ProjectDAO().projectSelectDetail(conn, projectId, userId);
+		
+		close(conn);
+		
+		return myProject;
+		
+	}
+	
 	
 }

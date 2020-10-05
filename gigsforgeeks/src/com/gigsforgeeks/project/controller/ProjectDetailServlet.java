@@ -1,7 +1,6 @@
 package com.gigsforgeeks.project.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,21 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.project.model.service.ProjectService;
+import com.gigsforgeeks.project.model.vo.Project;
 
 /**
- * Servlet implementation class FreelancerListServlet
+ * Servlet implementation class DetailSelectProject
  */
-@WebServlet("/freelancerList.do")
-public class FreelancerListServlet extends HttpServlet {
+@WebServlet("/detailSelect.do")
+public class ProjectDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FreelancerListServlet() {
+    public ProjectDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,12 +34,29 @@ public class FreelancerListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Member> list = new ProjectService().freelancerSelectList();
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		request.setAttribute("list", list);
+
+		String userId= loginUser.getUserId();
+		int projectId = Integer.parseInt(request.getParameter("projectId"));
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/project/searchListFreelancer.jsp");
-		view.forward(request, response);
+		Project project = new ProjectService().projectSelectDetail(projectId, userId); 
+		
+		if(project != null) { // 프로젝트 상세조회 요청성공시
+			request.setAttribute("project", project);
+			RequestDispatcher view = request.getRequestDispatcher("views/project/detailProject.jsp");
+			view.forward(request, response);
+		
+		}else { // 실패시
+			request.getSession().setAttribute("errorMsg", "프로젝트 상세조회에 실패했습니다.");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view.forward(request, response);
+			
+		}
+
+		
+		
 	}
 
 	/**

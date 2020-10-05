@@ -303,4 +303,55 @@ public class ProjectDAO {
 		
 	}
 	
+	
+	public Project projectSelectDetail(Connection conn, int projectId, String userId) {
+		
+		Project project = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("projectSelectDetail");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectId);
+			pstmt.setString(2, userId);
+			pstmt.setString(3, userId);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				project = new Project(rset.getInt("project_id"),
+										rset.getString("client_id"),
+										rset.getString("required_skill"),
+										rset.getString("project_name"),
+										rset.getString("description"),
+										rset.getString("project_status"),
+										rset.getDate("expect_start").toLocalDate(),
+										rset.getDate("expect_end").toLocalDate(),
+										rset.getString("means_of_payment"),
+										rset.getInt("min_bid"),
+										rset.getInt("max_bid"),
+										rset.getDate("start_bid").toLocalDate(),
+										rset.getDate("end_bid").toLocalDate(),
+										rset.getInt("count_bid"),
+										rset.getInt("average_bid"),
+										rset.getString("winner_id"),
+										rset.getInt("winning_bid"),
+										(rset.getDate("start_date") == null ? null : rset.getDate("start_date").toLocalDate()),
+										(rset.getDate("end_date") == null ? null : rset.getDate("start_date").toLocalDate()));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return project;
+		
+	}
+	
 }
