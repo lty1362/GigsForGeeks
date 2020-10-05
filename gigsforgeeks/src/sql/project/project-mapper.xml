@@ -213,6 +213,7 @@
 		      , PAY_RATE
 		      , LOCATION
 		      , SELF_INTRODUCTION
+		      , PROFILE_IMAGE
 		   FROM MEMBER
 		  WHERE STATUS = 'Y'
 		    AND ADMIN = 'N'
