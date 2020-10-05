@@ -4,7 +4,7 @@
 <%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*" %>
 <%@ page import="com.gigsforgeeks.member.model.vo.Member" %>
 <%
-	ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("list");
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,6 @@
  <!--  Content  -->
     <main id="contentMain">
         <div id="searchContent2">
-
             <!-- 좌측 검색필터 카테고리 -->
             <div id="freelancerCategory">
                 <form id="feelterbar" action="" method="POST">
@@ -90,38 +89,38 @@
                             <option value="gwangju">광주광역시</option>
                         </select>
                     </div>
-                    <br>
-                    <button type="submit" style="float: right;" class="btn btn-outline-info">필터검색</button>
                 </form>
 
             </div>
 
             <!-- 검색필터 적용시 보이는 프로젝트 목록 -->
             <div id="searchFreelancer">
-                <form action="" method="POST">
+                <form action="${contextPath}/freelancerList.do" method="get">
                     <input type="text" name="search" placeholder="프리랜서 찾기" style="width:500px; height:40px;">
                     <button type="button" class="btn btn-outline-info">검색</button><br><hr>
                 </form>
-
-                <br>
-                <div onclick="location.href='${contextPath}/views/member/myAccount.jsp'" id="searchFreelancerList">
-                    <label id="freelancerTitle">프리랜서 클라이언트 이름</label> 
-                    <label id="price">500,000￦ - 1,000,000￦</label><br>
-                    <p>
-			                        내 웹사이트에 두 가지 기능을 추가해야 하는데, 
-			                        하나는 고객이 체육관을 위한 평면도를 만들 수 있는 페이지를 만드는 것이다.
-                    </p>
+                <!-- 리스트가 비어있을 경우 -->
+                <% if(list.isEmpty()) { %>
+					<p align="center">일치하는 프리랜서를 찾을 수 없습니다.</p>
+	          		<% }else { %>
+	          		<!-- 리스트가 비어있지 않을 경우 -->
+	                <% for(Member m : list) { %>
+                	<div onclick="location.href='${contextPath}/views/member/myAccount.jsp'" id="searchFreelancerList">
+                    <label><%= m.get %></label>
+                    <label id="freelancerTitle"><%= m.getUserId() %></label> 
+                    <label id="price">희망시급 : <%= m.getPayRate() %>￦</label><br>
+                    <p><%= m.getSelfIntroduction() %></p>
                     <br>
-                    <li>평점 5.0(100건의 리뷰)</li>
-                    <li>서울</li>
-                    <li>JAVA, PHP, HTML, WebsiteDesign</li>
+                    <li>우수 프리랜서 : <%= m.getExcellentFreelance() %></li>
+                    <li>지역 : <%= m.getLocation() %></li>
+                    <li>기술 : <%= m.getSkill() %></li>
                     <!-- <button class="btn btn-outline-info">고용해주세요!</button>-->
-                </div>
+	                </div>
+	                <hr>
+                	<% } %>
+	       		 <% } %> 
             </div>
         </div>
-
-        <!-- 검색필터 적용시 일치하는 프로젝트를 못찾을때 보이는 화면(조건문)-->
-        <!-- <p align="center">일치하는 프로젝트를 찾을 수 없습니다.</p> -->
     </main>	
     
     

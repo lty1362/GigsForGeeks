@@ -186,4 +186,35 @@
 		 ORDER 
 		    BY PROJECT_ID DESC
 	</entry>
+	
+	<entry key="projectSelectList">
+			SELECT
+		       PROJECT_ID
+		     , PROJECT_NAME
+		     , PROJECT_STATUS
+		     , DESCRIPTION
+		     , END_BID
+		     , MIN_BID
+		     , MAX_BID
+		     , COUNT_BID
+		  FROM PROJECT
+		 WHERE PROJECT_STATUS='OPEN'
+		 ORDER 
+		    BY PROJECT_ID DESC
+	</entry>
+	
+	<entry key="freelancerSelectList">
+		SELECT
+		        USER_ID
+		      , EXCELLENT_FREELANCE
+		      , SKILL
+		      , PAY_RATE
+		      , LOCATION
+		      , SELF_INTRODUCTION
+		   FROM MEMBER
+		  WHERE STATUS = 'Y'
+		    AND ADMIN = 'N'
+		  ORDER 
+		     BY USER_ID DESC
+	</entry>
 </properties>

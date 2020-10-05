@@ -5,20 +5,7 @@
 
 <%
 	ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("list");
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	Project project = (Project)request.getAttribute("project");
-	
-	String projectId = project.getProjectId();
-	String projectName = project.getProjectName();
-	String projectStatus = project.getProjectStatus();
-	String description = project.getDescription();
-	
 
-	int listCount = pi.getListCount();
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -116,58 +103,29 @@
 
             <!-- 검색필터 적용시 보이는 프로젝트 목록 -->
             <div id="searchProject">
-                <form action="${contextPath}/searchList.do" method="POST">
+                <form action="${contextPath}/projectList.do" method="get">
                     <input type="text" name="search" placeholder="프로젝트 검색" style="width:500px; height:40px;">
                     <button type="button" class="btn btn-outline-info">검색</button><br><hr>
                 </form>
-
-                <br>
-                
                 <!-- 리스트가 비어있을 경우 -->
                 <% if(list.isEmpty()) { %>
 					<p align="center">일치하는 프로젝트를 찾을 수 없습니다.</p>
-          		<% }else { %>
-          		<!-- 리스트가 비어있지 않을 경우 -->
-                <% for(Project p : list) { %>
-                <div onclick="location.href='${contextPath}/views/project/detailProject.jsp'" id="searchprojectList">
-                    <input type="hidden" value=<%= p.getProjectId() %>>
-                    <label id="projectTitle">프로젝트명1</label> 
-                    <label id="price">700,000￦ - 2,000,000￦</label><br>
-                    <p>
-			                        내 웹사이트에 두 가지 기능을 추가해야 하는데, 
-			                        하나는 고객이 체육관을 위한 평면도를 만들 수 있는 페이지를 만드는 것이다.
-                    </p>
-                    <br>
-                    <li>마감 5일 전 - 85건의 입찰</li>
-                    <li>100건의 리뷰(5.0)</li>
-                    <li>JAVA, PHP, HTML, WebsiteDesign</li>
-                </div>
+	          		<% }else { %>
+	          		<!-- 리스트가 비어있지 않을 경우 -->
+	                <% for(Project p : list) { %>
+	                <div onclick="location.href='${contextPath}/views/project/detailProject.jsp'" id="searchprojectList">
+	                    <label id="projectTitle"><%= p.getProjectName() %></label> 
+	                    <label id="price"><%= p.getMinBid() %>￦ - <%= p.getMaxBid() %>￦</label><br>
+	                    <p><%= p.getDescription() %></p>
+	                    <br>
+	                    <li>마감일 : <%=p.getEndBid() %></li>
+	                    <li>입찰수 : <%= p.getCountBid() %></li>
+	                </div>
+	        		<hr>
+                	<% } %>
+	       		 <% } %> 
             </div>
-            	<div class="pagingArea" align="center">
-	            <!-- 페이징 바(paging bar) 만들기! -->
-	            <% if(currentPage != 1){ %>
-		            <!-- 맨 처음으로 (<<) 1번페이지 요청-->
-		            <button onclick="location.href='${ContextPath}/list.bo?currentPage=1';"> &lt;&lt;</button>
-		            <!-- 이전페이지로 (<) 현재페이지의 -1 페이지 요청 -->
-		            <button onclick="location.href='${ContextPath}/list.bo?currentPage=<%=currentPage-1%>';"> &lt; </button>
-				<% } %>
-				
-				<% for(int p=startPage; p<=endPage; p++) { %>
-					<% if(p != currentPage){ %>
-	            	<button onclick="loaction.href='${ContextPath}/list.bo?currentPage=<%= p%>';"><%= p %></button>
-	            	<% }else { %>
-	            	<button disabled><%= p %></button>
-	            	<% } %>
-	     		<% } %>
-	     	
-	     		<%if(currentPage != maxPage){ %>
-		            <!-- 다음 페이지로 (>) 현재페이지의 +1페이지 요청-->
-		            <button onclick="location.href='${ContextPath}/list.bo?currentPage=<%=currentPage+1%>';"> &gt; </button>
-		            <!-- 맨 끝으로 (>>) 제일마지막 페이지 요청-->
-		            <button onclick="location.href='${ContextPath}/list.bo?currentPage=<%=maxPage%>';"> &gt;&gt;</button>
-				<% } %>
-
-        		</div>
+     
         </div>
 
     </main>	

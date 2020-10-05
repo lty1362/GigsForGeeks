@@ -78,10 +78,24 @@ public class Member {
 	}
 
 	
+	/*freelancer의 freelancerSelectList*/
+	public Member(String userId, String excellentFreelance, String skill, int payRate, String location,
+			String selfIntroduction) {
+		super();
+		this.userId = userId;
+		this.excellentFreelance = excellentFreelance;
+		this.skill = skill;
+		this.payRate = payRate;
+		this.location = location;
+		this.selfIntroduction = selfIntroduction;
+	}
+	
+	
 	
 	public String getUserId() {
 		return userId;
 	}
+
 
 	public void setUserId(String userId) {
 		this.userId = userId;

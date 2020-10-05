@@ -24,7 +24,7 @@
     <main id="contentMain">
         <div id="favoriteCategory">
             <a href="">내가 즐겨찾는 프로젝트</a>&nbsp;&nbsp;&nbsp;
-            <a href="${contextPath}/views/project/searchListProject.jsp">프로젝트 탐색</a>
+            <a href="${contextPath}/projectList.do">프로젝트 탐색</a>
         </div>
         <br><br>
         

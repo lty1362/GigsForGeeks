@@ -37,7 +37,7 @@ public class SearchListProjectServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
-		int projectId = Integer.parseInt(request.getParameter("projectId"));			// 프로젝트 아이디
+		int projectId = Integer.parseInt(request.getParameter("projectId"));							// 프로젝트 아이디
 		String projectName = request.getParameter("projectName");						// 프로젝트 제목
 		String projectStatus = request.getParameter("projectStatus");					// 프로젝트 상태
 		String description = request.getParameter("description");  						// 프로젝트 내용
