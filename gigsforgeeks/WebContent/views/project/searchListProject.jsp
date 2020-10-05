@@ -118,7 +118,7 @@
 	                    <label id="price"><%= p.getMinBid() %>￦ - <%= p.getMaxBid() %>￦</label><br>
 	                    <p><%= p.getDescription() %></p>
 	                    <br>
-	                    <li>마감일 : <%=p.getEndBid() %></li>
+	                    <li>입찰 마감일 : <%=p.getEndBid() %></li>
 	                    <li>입찰수 : <%= p.getCountBid() %></li>
 	                </div>
 	        		<hr>

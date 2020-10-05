@@ -80,7 +80,7 @@ public class Member {
 	
 	/*freelancer의 freelancerSelectList*/
 	public Member(String userId, String excellentFreelance, String skill, int payRate, String location,
-			String selfIntroduction) {
+			String selfIntroduction, String profileImage) {
 		super();
 		this.userId = userId;
 		this.excellentFreelance = excellentFreelance;
@@ -88,6 +88,7 @@ public class Member {
 		this.payRate = payRate;
 		this.location = location;
 		this.selfIntroduction = selfIntroduction;
+		this.profileImage = profileImage;
 	}
 	
 	
