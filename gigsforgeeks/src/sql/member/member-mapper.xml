@@ -140,8 +140,8 @@
 	 	 , NULL
 	 	 , NULL
 	 	 , NULL
-	 	 , TO_DATE('2220-01-01','YYYY-MM-DD')
-	 	 , TO_DATE('2220-12-31','YYYY-MM-DD')
+	 	 , NULL
+	 	 , NULL
 	 	 , NULL
 		 )	  	   
 	</entry>
@@ -164,8 +164,8 @@
 	     , NULL
 	     , NULL
 	     , NULL
-	     , TO_DATE('2220-01-01','YYYY-MM-DD')
-	     , TO_DATE('2220-12-31','YYYY-MM-DD')
+	     , NULL
+	     , NULL
 	     , DEFAULT
 	     )
 	</entry>
@@ -205,8 +205,8 @@
 	     , NULL
 	     , NULL
 	     , NULL
-	     , TO_DATE('2220-01-01','YYYY-MM-DD')
-	     , TO_DATE('2220-12-31','YYYY-MM-DD')
+	     , NULL
+	     , NULL
 	     )
 	</entry>
 	<entry key="createPublication">
