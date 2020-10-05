@@ -34,7 +34,7 @@ public class ProjectDetailServlet extends HttpServlet {
 			String userId = loginUser.getUserId();
 			int projectId = Integer.parseInt(request.getParameter("projectId"));
 			
-			Project myProject = new ProjectService().selectProject(projectId, userId);
+			Project myProject = new ProjectService().selectMyProject(projectId, userId);
 			
 			if(myProject != null) { // 프로젝트 상세조회 요청 성공 시
 				request.setAttribute("myProject", myProject);
