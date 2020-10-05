@@ -40,7 +40,7 @@
                         <input type="checkbox" name="requiredSkill" id="JAVA">
                         <label for="Java">JAVA</label>
                         <input type="checkbox" name="requiredSkill" id="PHP">
-                        <label for="PHP">PHP</label>
+                        <label for="PHP">SPRING</label>
                         <br>
                         <input type="checkbox" name="requiredSkill" id="HTML">
                         <label for="html">HTML</label>

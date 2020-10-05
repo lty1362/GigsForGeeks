@@ -248,7 +248,7 @@
 	  JOIN MEMBER ON (CLIENT_ID = USER_ID)
 	  WHERE PROJECT_ID = ?
 	    AND (CLIENT_ID = ?
-	     OR WINNER_ID = ?)
+	     OR WINNER_ID = ?) 
 	    AND
 	    NOT PROJECT_STATUS = 'DELETE'
 	</entry>

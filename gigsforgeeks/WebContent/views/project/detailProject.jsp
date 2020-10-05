@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import ="com.gigsforgeeks.project.model.vo.Project,java.text.NumberFormat, java.util.Locale" %>
+<%
+	Project project = (Project)request.getAttribute("project");
+%>
 <%-- Template HTML 1 : 일반 화면용 --%>
 <!DOCTYPE html>
 <html>
@@ -23,10 +26,10 @@
    
            <!-- 프로젝트내의 카테고리 -->
            <div id="deatail_Category">
-               <h1>프로젝트명1 </h1> 
-               <label align="center">입찰중</label>
+               <h1><%= project.getProjectName() %></h1> 
+               <label align="center"><%= project.getProjectStatus() %></label>
                <br>
-               <a href="">프로젝트 상세보기</a> 
+               <a href="${contextPath}/views/project/detailProject.jsp">프로젝트 상세보기</a> 
                <!-- <a href="">이 프로젝트에 대한 제안들</a> -->
                <!-- <a href="">파일등록</a> | -->
                <!-- <a href="">프로젝트 재등록</a> | -->
@@ -39,27 +42,23 @@
                    <div id="detail_Content">
 
                        <label id="detail_Title">프로젝트 관련 세부사항</label>  
-                       <label id="price">700,000￦ - 1,500,000￦</label>
+                       <label id="price"><%= project.getMinBid() %>￦ - <%= project.getMaxBid() %>￦</label>
                        
                        <br><br><hr>
-                       <p>
-				                        작고 때까지 노년에게서 불어 내는 아름다우냐. 산야에 청춘의 하였으며, 착목한는 간에 뛰노는 소리다.
-				                        이것은 용감하고 있으랴? 풀이 것이 그들의 그와 꾸며 길지 청춘은 있는 것이다. 
-                       </p>
+                       <p><%= project.getDescription() %></p>
                         
                        <br> 
                        <h4>작업기간</h4>
-			                         예상 작업기간 : <span>2020-09-14 ~ 2020-09-19</span><br>
-			                         총 예상 작업일수 : <span>총 5일</span>
+			                         예상 작업기간 : <span><%= project.getExpectStart() %> ~ <%= project.getExpectEnd() %></span>
                        <br><br>
                        
                        <h4>요구 기술</h4>
-                       <label class="projectSkill">JavaScript</label>
+                       <label class="projectSkill"><%= project.getRequiredSkill() %></label>
                        <label class="projectSkill">HTML</label>
                        <label class="projectSkill">CSS</label>
    
                        <br><br>
-                       <p style="font-size: small;">프로젝트 고유번호(ID) : 27155438</p>
+                       <p style="font-size: small;">프로젝트 고유번호(ID) : <%= project.getProjectId() %></p>
                    </div>
    
                    <!-- 프로젝트 입찰견적서 -->

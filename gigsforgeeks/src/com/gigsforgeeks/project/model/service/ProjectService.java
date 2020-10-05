@@ -93,6 +93,7 @@ public class ProjectService {
 	/**
 	 * 프로젝트 전체리스트 조회용 서비스
 	 * 
+	 * @return
 	 */
 	public ArrayList<Project> projectSelectList(){
 		
@@ -109,6 +110,7 @@ public class ProjectService {
 	/**
 	 * 프리랜서 전체리스트 조회용 서비스
 	 * 
+	 * @return
 	 */
 	public ArrayList<Member> freelancerSelectList(){
 		
@@ -122,6 +124,14 @@ public class ProjectService {
 		
 	}
 	
+	
+	/**
+	 * 탐색 클릭시 프로젝트 상세보기 서비스
+	 * 
+	 * @param projectId
+	 * @param userId
+	 * @return
+	 */
 	public Project projectSelectDetail(int projectId, String userId) {
 		
 		Connection conn = getConnection();
