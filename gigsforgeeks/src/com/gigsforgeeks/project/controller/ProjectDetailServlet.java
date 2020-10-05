@@ -32,7 +32,7 @@ public class ProjectDetailServlet extends HttpServlet {
 		if(loginUser != null) { // 현재 사용자가 회원인 경우
 			
 			String userId = loginUser.getUserId();
-			String projectId = request.getParameter("projectId");
+			int projectId = Integer.parseInt(request.getParameter("projectId"));
 			
 			Project myProject = new ProjectService().selectProject(projectId, userId);
 			

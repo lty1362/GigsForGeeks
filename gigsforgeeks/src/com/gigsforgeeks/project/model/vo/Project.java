@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Project {
 	
 	// Fields
-	private String projectId;
+	private int projectId;
 	private String clientId;
 	private String requiredSkill;
 	private String projectName;
@@ -27,7 +27,7 @@ public class Project {
 	
 	// Constructors
 	public Project() {}
-	public Project(String projectId, String clientId, String requiredSkill, String projectName, String description,
+	public Project(int projectId, String clientId, String requiredSkill, String projectName, String description,
 			String projectStatus, LocalDate expectStart, LocalDate expectEnd, String meansOfPayment, int minBid, int maxBid,
 			LocalDate startBid, LocalDate endBid, int countBid, int averageBid, String winnerId, int winningBid,
 			LocalDate startDate, LocalDate endDate) {
@@ -70,7 +70,7 @@ public class Project {
 	}
 	
 	// searcListProject
-	public Project(String projectId, String projectName, String projectStatus, String description, LocalDate endBid,
+	public Project(int projectId, String projectName, String projectStatus, String description, LocalDate endBid,
 			int minBid, int maxBid,  int countBid) {
 		super();
 		this.projectId = projectId;
@@ -84,10 +84,10 @@ public class Project {
 	}
 	
 	// Getters and Setters
-	public String getProjectId() {
+	public int getProjectId() {
 		return projectId;
 	}
-	public void setProjectId(String projectId) {
+	public void setProjectId(int projectId) {
 		this.projectId = projectId;
 	}
 	public String getRequiredSkill() {
