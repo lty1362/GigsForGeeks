@@ -78,12 +78,14 @@ input::placeholder {font-size: 90%;}
 	border: 1px solid;
 }
 
+
 #profilePhoto{
 	width: 250px;
 	height: 250px;
 	position: absolute;
 	margin: 10px;
 }
+
 
 #location{
 	width: 250px;
@@ -133,18 +135,18 @@ input::placeholder {font-size: 90%;}
 /*프로필 끝 포트폴리오 시작*/
 #portpolyo{
     width: 1100px;
-    height: 300px;
+    height: 350px;
 	margin: 25px;
 	position: relative;
 	padding: 20px;
 	text-align: left;
 }
 
-#portpolyoModifiy{
+#portpolioModifiy{
 	width: 100px;
 	height: 30px;
 	position: absolute;
-	right: 1px;
+	right: 2px;
 	top: 20px;
 	
 }
@@ -155,7 +157,7 @@ input::placeholder {font-size: 90%;}
 
 #review{
     width: 1100px;
-    height: 250px;
+    height: 350px;
 	margin: 25px;
 	position: relative;
 	padding: 20px;
@@ -177,7 +179,7 @@ input::placeholder {font-size: 90%;}
 /*리뷰끝 경력 시작*/
 #career{
     width: 1100px;
-    height: 235px;
+    height: 350px;
 	margin: 25px;
 	position: relative;
 	padding: 20px;
@@ -197,7 +199,7 @@ input::placeholder {font-size: 90%;}
 
 #education{    
     width: 1100px;
-    height: 235px;
+    height: 350px;
 	margin: 25px;
 	position: relative;
 	padding: 20px;
@@ -217,7 +219,7 @@ input::placeholder {font-size: 90%;}
 
 #cartification{    
 	width: 1100px;
-    height: 235px;
+    height: 350px;
 	margin: 25px;
 	position: relative;
 	padding: 20px;
@@ -237,7 +239,7 @@ input::placeholder {font-size: 90%;}
 
 #publication{    
     width: 1100px;
-    height: 235px;
+    height: 350px;
 	margin: 25px;
 	position: relative;
 	padding: 20px;

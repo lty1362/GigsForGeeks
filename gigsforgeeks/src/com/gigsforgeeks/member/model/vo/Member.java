@@ -64,6 +64,18 @@ public class Member {
 		this.userPwd = userPwd;
 		this.userType = userType;
 	}
+	
+	/*updateUser에서의 Member updateMember*/
+	public Member(String location, String company, String selfIntroduction, String userId, int payRate) {
+		super();
+		this.location =location;
+		this.company= company;
+		this.selfIntroduction =selfIntroduction;
+		this.userId =userId;
+		this.payRate =payRate;
+		
+		
+	}
 
 	
 	

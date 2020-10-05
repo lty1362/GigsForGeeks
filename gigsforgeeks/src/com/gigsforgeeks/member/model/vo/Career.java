@@ -6,12 +6,12 @@ public class Career {
 
 	private int careerNumber;     // 경력 번호
 	private String userId;        // 회원 아이디
-	private String companyInfo;   // 회사정보
+	private String companyInfo;   // 회사
 	private String careerTitle;   // 직급
 	private Date retireDate;      // 퇴직날짜
 	private Date hireDate;        // 고용날짜
 	private String careerInfo;    // 회사 설명
-	private String careerStatus; // 재직여부
+	private String careerStatus;  // 재직여부
 	
 	
 	public Career() {}
@@ -30,6 +30,17 @@ public class Career {
 		this.hireDate = hireDate;
 		this.careerInfo = careerInfo;
 		this.careerStatus = careerStatus;
+	}
+	
+	/*updateUser에서의 Career updateCareer*/
+	public Career(String companyInfo,String CareerTitle, String CareerContent, Date CareerHire, Date CareerRetire) {
+		super();
+		this.companyInfo=companyInfo;
+		this.careerTitle=CareerTitle;
+		this.companyInfo=CareerContent;
+		this.hireDate=CareerHire;
+		this.retireDate=CareerRetire;
+		
 	}
 
 

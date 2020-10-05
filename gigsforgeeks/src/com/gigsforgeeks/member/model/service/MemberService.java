@@ -171,4 +171,90 @@ public class MemberService {
 
 		return userCareer;
 	}
+
+
+
+	public int updateProfile(String userId, Member updateMember) {
+		Connection conn = getConnection();
+		
+		int result  =0;
+		
+		result = new MemberDAO().updateUser(userId, updateMember, conn);
+		
+		if(result <0) {
+			result = 0;
+		}
+		
+		return result;
+	}
+
+	public int updatePortfolio(String userId, Portfolio updatePortfolio) {
+		Connection conn = getConnection();
+		
+		int result  =0;
+		
+		result = new MemberDAO().updatePortfolio(userId, updatePortfolio, conn);
+		
+		if(result <0) {
+			result = 0;
+		}
+		
+		return result;
+	}
+
+	public int updateCareer(String userId, Career updateCareer) {
+		Connection conn = getConnection();
+		
+		int result  =0;
+		
+		result = new MemberDAO().updateCareer(userId, updateCareer, conn);
+		
+		if(result <0) {
+			result = 0;
+		}
+		
+		return result;
+	}
+
+	public int updateEducation(String userId, Education updateEducation) {
+		Connection conn = getConnection();
+		
+		int result  =0;
+		
+		result = new MemberDAO().updateEducation(userId, updateEducation, conn);
+		
+		if(result <0) {
+			result = 0;
+		}
+		
+		return result;
+	}
+
+	public int updateCertificate(String userId, Certificate updateCertificate) {
+		Connection conn = getConnection();
+		
+		int result  =0;
+		
+		result = new MemberDAO().updateCertificate(userId, updateCertificate, conn);
+		
+		if(result <0) {
+			result = 0;
+		}
+		
+		return result;
+	}
+
+	public int updatePublication(String userId, Publication updatePublication) {
+		Connection conn = getConnection();
+		
+		int result  =0;
+		
+		result = new MemberDAO().updatePublication(userId, updatePublication, conn);
+		
+		if(result <0) {
+			result = 0;
+		}
+		
+		return result;
+	}
 }

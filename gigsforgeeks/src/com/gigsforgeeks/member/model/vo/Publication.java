@@ -22,6 +22,16 @@ public class Publication {
 		this.bookDate = bookDate;
 		this.userId = userId;
 	}
+	
+
+	/*updateUser에서의 Publication updatePublication*/
+	public Publication(String BookTitle, String BookContent, String Publisher, String BookDate) {
+		super();
+		this.bookName=BookTitle;
+		this.bookInfo=BookContent;
+		this.publisher=Publisher;
+		this.bookDate=BookDate;
+	}
 
 
 	public int getBookNumber() {

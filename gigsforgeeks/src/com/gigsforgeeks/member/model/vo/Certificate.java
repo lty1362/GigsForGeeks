@@ -18,6 +18,15 @@ public class Certificate {
 		this.cetificateDate = cetificateDate;
 		this.userId = userId;
 	}
+	
+
+	/*updateUser에서의 Certificate updateCertificate*/
+	public Certificate(String CertifiTitle, String CertifiAuth, String CertifiDate) {
+		super();
+		this.cetificateName=CertifiTitle;
+		this.cetificateAuth=CertifiAuth;
+		this.cetificateDate=CertifiDate;
+	}
 
 	public int getcetificateNumber() {
 		return cetificateNumber;

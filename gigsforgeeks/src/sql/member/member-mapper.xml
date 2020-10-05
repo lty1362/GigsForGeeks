@@ -239,5 +239,76 @@
 	</entry>
 	
 	
+	<entry key="updateMember">
+	UPDATE
+           MEMBER
+       SET LOCATION = ?
+         , COMPANY = ?
+         , SELF_INTRODUCTION = ?
+         , PAY_RATE = ? 
+     WHERE USER_ID= ? 
+	</entry>
+	
+	
+	<entry key="updatePortfolio">
+	 UPDATE
+            PORTFOLIO
+        SET PORTFOLIO_TITLE = ?
+          , PORTFOLIO_LINK = ?
+          , PORTFOLIO_CONTENTS = ?
+          , PORTFOLIO_START = ?
+          , PORTFOLIO_END = ?
+          , PORTFOLIO_SKILL = ?
+      WHERE USER_ID = ?
+	</entry>
+	
+	
+	<entry key="updateCareer">
+	  UPDATE
+             CAREER
+         SET COMPANY_INFO = ?
+           , CAREER_TITLE = ?
+           , CAREER_INFO = ?
+           , HIRE_DATE = ?
+           , RETIRE_DATE =?
+       WHERE USER_ID =?
+	</entry>
+	
+	
+	<entry key="updateEducation">
+	   UPDATE
+              EDUCATION
+          SET UNIVERSITY = ?
+            , MAJOR = ?
+            , DEGREE = ?
+            , ENROLL_DATE = ?
+            , GRAUATED_DATE = ?
+        WHERE USER_ID = ?
+	</entry>
+	
+	
+	<entry key="updateCertificate">
+	    UPDATE
+               CERTIFICATION
+           SET CERTIFICATE_NAME = ?
+             , CERTIFICATE_AUTH = ?
+             , CERTIFICATE_DATE = ?
+         WHERE USER_ID = ?
+	
+	</entry>
+	
+	
+	<entry key="updatePublication">
+	    UPDATE 
+               PUBLICATION
+           SET BOOK_NAME = ?
+             , BOOK_INFO = ?
+             , PUBLISHER = ?
+             , BOOK_DATE = ?
+         WHERE USER_ID = ?
+	</entry>
+	
+	
+	
 	
 </properties>

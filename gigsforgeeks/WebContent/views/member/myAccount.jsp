@@ -20,12 +20,12 @@
 	href="${contextPath}/resources/css/member.css">
 <%-- End Of Header --%>
 <!-- 페이지의 타이틀을 작성하세요 -->
-<title>Insert title here</title>
+<title>마이페이지</title>
 </head>
 <body onload="showClock()">
 
 	<%
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 hh시");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String userId = loginUser.getUserId();
 		int payRate = (loginUser.getPayRate() == 0) ? 0 : loginUser.getPayRate();
 		String location = (loginUser.getLocation() == null) ? "입력하지 않으셨습니다." : loginUser.getLocation();
@@ -107,7 +107,7 @@
 
 				<div id="profile" name="profile">
 					<div id="profilePhoto" name="profilePhoto">
-						<img alt="" src="">
+						<img alt="" src="${contextPath}/resources/images/avatar.png" style="width: 100%; height: 100%;">
 					</div>
 					<div id="location" name="location">
 						<%=payRate%>원
@@ -122,7 +122,9 @@
 					<div id="workship" name="workship">워크쉽(리뷰기반)</div>
 					<div id="userContent" name="userContent"><%=selfIntroduction%></div>
 					<div id="hirePositionButton" name="hireButton">
-						<button>고용주측의 프로필 확인</button>
+						<input type="button" value="임시" id="profileButton"></input>
+						<button >정보 수정</button>
+						
 					</div>
 					<script language="javascript">
 						function showClock() {
@@ -135,16 +137,26 @@
 
 							divClock.innerText = msg;
 							setTimeout(showClock, 1000);
-						}
+
+						};
 					</script>
+					<script>
+						$("#profileButton").click(function(){
+							$("#profile").load("views/member/profile.jsp")
 
-
-
+						});
+							
+					</script>
 
 				</div>
 
+						
+					
 
-				<div id="portpolyo" name="portpolyo">
+				
+
+
+				<div id="portpolyo" name="portpolyo"> 
 					<h1 align="left">포트폴리오 항목</h1>
 					<span id="portpolioTitle" name="portpolioTitle"><h2><%=PortfolioTilte%></h2></span>
 					<span id="portpolioLink" name="portpolioLink"><a><%=PortfolioLink%></a></span>
@@ -156,10 +168,18 @@
 
 
 					<div id="portpolioModifiy" name="portpolioModifiy">
-						<button>관리</button>
+						<input type="button" value="정보수정" id="portfolioButton"></input>
 					</div>
 
 				</div>
+			
+			<script>
+					$("#portfolioButton").click(function(){
+						$("#portpolyo").load("views/member/portfolio.jsp")
+
+					});
+						
+				</script>
 
 
 				<div id="review" name="review">
@@ -185,13 +205,22 @@
 
 					<div id="careerContent" name="careerContent"><%=CareerTitle%></div>
 					<br> <span id="careerTime" name="careerTime">입사일 :
-						&nbsp; / &nbsp;퇴사일 ></span>
+						&nbsp; / &nbsp;퇴사일 : &nbsp; </span>
 
 					<div id="careerModifiy" name="careerModifiy">
-						<button>관리</button>
+						<input type="button" id="careerButton" value="정보 수정">
 					</div>
 
 				</div>
+				<script>
+					$("#careerButton").click(function(){
+						$("#career").load("views/member/career.jsp")
+
+					});
+						
+				</script>
+
+
 
 				<div id="education" name="education">
 					<h1 align="left">교육 항목</h1>
@@ -202,10 +231,17 @@
 						/&nbsp; 졸업년도 </span>
 
 					<div id="educationModifiy" name="educationModifiy">
-						<button>관리</button>
+						<input type="button" id="educationButton" value="정보 수정">
 					</div>
 
 				</div>
+				<script>
+					$("#educationButton").click(function(){
+						$("#education").load("views/member/education.jsp")
+
+					});
+						
+				</script>
 
 				<div id="cartification" name="cartification">
 					<h1 align="left">자격증 항목</h1>
@@ -219,9 +255,16 @@
 					</span>
 
 					<div id="cartificationModifiy" name="cartificationModifiy">
-						<button>관리</button>
+						<input type="button" id="certificationButton" value="정보 수정">
 					</div>
 				</div>
+				<script>
+					$("#certificationButton").click(function(){
+						$("#cartification").load("views/member/certification.jsp")
+
+					});
+						
+				</script>
 
 				<div id="publication" name="publication">
 					<h1 align="left">출판물 항목</h1>
@@ -241,9 +284,16 @@
 
 
 					<div id="publicationModifiy" name="cartificationModifiy">
-						<button>관리</button>
+						<input type="button" id="publicationButton" value="정보수정">
 					</div>
 				</div>
+				<script>
+					$("#publicationButton").click(function(){
+						$("#publication").load("views/member/publication.jsp")
+
+					});
+						
+				</script>
 			</div>
 
 

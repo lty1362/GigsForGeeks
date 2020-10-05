@@ -523,5 +523,185 @@ public class MemberDAO {
 		   
 		return result;
 	}
-	
+
+
+	public int updateUser(String userId, Member updateMember, Connection conn) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updateMember.getLocation());
+			pstmt.setString(2, updateMember.getCompany());
+			pstmt.setString(3, updateMember.getSelfIntroduction());
+			pstmt.setInt(4, updateMember.getPayRate());
+			pstmt.setString(5, userId);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+
+	public int updatePortfolio(String userId, Portfolio updatePortfolio, Connection conn) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updatePortfolio");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updatePortfolio.getPortfolioTitle());
+			pstmt.setString(2, updatePortfolio.getPortfolioLink());
+			pstmt.setString(3, updatePortfolio.getPortfolioContent());
+			pstmt.setDate(4, updatePortfolio.getPortfolioStart());
+			pstmt.setDate(5, updatePortfolio.getPortfolioEnd());
+			pstmt.setString(6, updatePortfolio.getPortfolioSkill());
+			pstmt.setString(7, userId);
+			
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+
+	public int updateCareer(String userId, Career updateCareer, Connection conn) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateCareer");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updateCareer.getCompanyInfo());
+			pstmt.setString(2, updateCareer.getCareerTitle());
+			pstmt.setString(3, updateCareer.getCareerInfo());
+			pstmt.setDate(4, updateCareer.getHireDate());
+			pstmt.setDate(5, updateCareer.getRetireDate());
+			pstmt.setString(6, userId);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+
+	public int updateEducation(String userId, Education updateEducation, Connection conn) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateEducation");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updateEducation.getUniversity());
+			pstmt.setString(2, updateEducation.getMajor());
+			pstmt.setString(3, updateEducation.getDegree());
+			pstmt.setString(4, updateEducation.getEnrollDate());
+			pstmt.setString(5, updateEducation.getGrauatedDate());
+			pstmt.setString(6, userId);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+
+	public int updateCertificate(String userId, Certificate updateCertificate, Connection conn) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateCertificate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updateCertificate.getcetificateName());
+			pstmt.setString(2, updateCertificate.getcetificateAuth());
+			pstmt.setString(3, updateCertificate.getcetificateDate());
+			pstmt.setString(4, userId);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+
+	public int updatePublication(String userId, Publication updatePublication, Connection conn) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updatePublication");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updatePublication.getBookName());
+			pstmt.setString(2, updatePublication.getBookInfo());
+			pstmt.setString(3, updatePublication.getPublisher());
+			pstmt.setString(4, updatePublication.getBookDate());
+			pstmt.setString(5, userId);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+
+
 }

@@ -31,6 +31,18 @@ public class Portfolio {
 		this.portfolioFile = portfolioFile;
 	}
 
+	/*updateUser에서의 Portfolio updatePortfolio*/
+	public Portfolio(String PortTitle,String PortLink, String portConent, Date PortStart, Date PortEnd, String portpolyoSkill) {
+		super();
+		this.portfolioTitle=PortTitle;
+		this.portfolioLink=PortLink;
+		this.portfolioContent=portConent;
+		this.portfolioStart=PortStart;
+		this.portfolioEnd=PortEnd;
+		this.portfolioSkill=portpolyoSkill;
+		
+	}
+
 
 	public int getPortfolioNumber() {
 		return portfolioNumber;
