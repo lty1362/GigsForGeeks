@@ -42,6 +42,12 @@ public class PageInfo {
 		this.notReadCount = notReadCount;
 	}
 
+	public PageInfo(int notReadCount) {
+		super();
+		this.notReadCount = notReadCount;
+	}
+	
+
 	public int getListCount() {
 		return listCount;
 	}
