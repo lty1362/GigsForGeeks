@@ -58,7 +58,7 @@
 				
 				
 	
-				<div id="careerModifiy" name="careerModifiy"><button type="submit">저장</button></div>
+				<div id="careerModifiy" name="careerModifiy"><button type="submit">저장</button><button type="reset">리셋</button></div>
 	
 		
 	</form>

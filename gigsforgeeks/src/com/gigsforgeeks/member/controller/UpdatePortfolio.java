@@ -46,7 +46,7 @@ public class UpdatePortfolio extends HttpServlet {
 		String portConent = request.getParameter("portConent");
 		String PortStart = request.getParameter("PortStart");
 		String PortEnd = request.getParameter("PortEnd");
-		String portpolyoSkill  = String.valueOf(request.getParameterValues("Skill"));
+		String portpolyoSkill  = String.join(",", request.getParameterValues("portSkill"));
 		
 		Portfolio updatePortfolio = new Portfolio(PortTitle, PortLink, portConent, PortStart, PortEnd, portpolyoSkill);
 		

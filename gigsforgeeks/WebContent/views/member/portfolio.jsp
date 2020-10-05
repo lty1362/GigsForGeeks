@@ -46,7 +46,7 @@
 					포트폴리오 링크 : <input type="link" placeholder="https://"
 					name="PortLink">
 				</span> <br>
-				<br>
+				
 				<div id="portpolyoContent" name="portpolyoContent">
 					포트폴리오 내용 :
 					<textarea cols="40" rows="3"></textarea>
@@ -58,13 +58,20 @@
 
 				<fieldset id="portpolyoSkill" name="portpolyoSkill"
 					style="border: none;">
-					요구 기술 : <input type="checkbox" value="css">css <input
-						type="checkbox" value="java">java
+					요구 기술 : <input type="checkbox" name="portSkill" value="SQL">SQL 
+					    <input type="checkbox" name="portSkill" value="java">JAVA
+						<input type="checkbox" name="portSkill" value="PYTHON">PYTHON 
+						<input type="checkbox" name="portSkill" value="JavaSciropt">JavaScript
+						<input type="checkbox" name="portSkill" value="HTML">HTML
+						<input type="checkbox" name="portSkill" value="CSS">CSS
+						<input type="checkbox" name="portSkill" value="AJAX">AJAX
+						<input type="checkbox" name="portSkill" value="WordPress">WordPress 
+						
 				</fieldset>
 
 
-				<div id="portpolyoModifiy" name="portpolyoModifiy" style="top: 5px; right: 1px;">
-					<button type="submit">저장</button>
+				<div id="portpolyoModifiy" name="portpolyoModifiy">
+					<button type="submit">저장</button><button type="reset">리셋</button>
 				</div>
 
 			

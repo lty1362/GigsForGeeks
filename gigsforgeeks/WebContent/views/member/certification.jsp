@@ -51,7 +51,7 @@
 		<br><br>
 		<span id="cartificationTime" name="cartificationTime">취득년도: <input type="month" name="CertifiDate"></span>
 
-		<div id="cartificationModifiy" name="cartificationModifiy"><button type="submit">저장</button></div>
+		<div id="cartificationModifiy" name="cartificationModifiy"><button type="submit">저장</button><button type="reset">리셋</button></div>
 	</form>
 
 

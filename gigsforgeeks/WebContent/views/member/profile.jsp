@@ -40,7 +40,7 @@
     	}
     </script>
 <body onload="showClock()">
-	<form action="updateProfile.up" method="POST">
+	<form action="updateProfile.up" method="POST" id="profileform" enctype="multipart/form-data">
 		<div class="wrap" align="center">
 
 			
@@ -49,19 +49,20 @@
 						style="width: 100%; height: 100%;">
 				</div>
 				<div id="location" name="location">
-					<input type="range" min="8590" max="20000" name="pay-rate">
+					희망 시급 : <input type="range" min="0" max="20000" step="100" name="pay-rate" 
+					oninput="document.getElementById('value1').innerHTML=this.value;"> <span id="value1"></span>원
 
 					<br> <select name="location">
 						<option value="서울">서울</option>
-						<option value="경기">경기</option>
-						<option value="충청">충청</option>
-						<option value="강원">강원</option>
-						<option value="경상">경상</option>
-						<option value="전라">전라</option>
+						<option value="경기도">경기도</option>
+						<option value="충청도">충청도</option>
+						<option value="강원도">강원도</option>
+						<option value="경상도">경상도</option>
+						<option value="전라도">전라도</option>
 						<option value="해외거주">해외거주</option>
 					</select>
 					<div id="divClock"></div>
-					/가입일
+					가입일 : 20<%= loginUser.getEnrollDate() %>
 				</div>
 
 
@@ -77,7 +78,7 @@
                             </textarea>
 				</div>
 				<div id="hirePositionButton" name="hireButton">
-					<button type="submit">수정</button>
+					<button type="submit">수정</button><button type="reset">리셋</button>
 				</div>
 
 

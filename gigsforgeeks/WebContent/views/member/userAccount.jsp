@@ -122,9 +122,7 @@
 						</span></div>
 					<div id="workship" name="workship">워크쉽(리뷰기반)</div>
 					<div id="userContent" name="userContent"><%=selfIntroduction%></div>
-					<div id="hirePositionButton" name="hireButton">
-						<input type="button" value="정보 수정" id="profileButton">
-					</div>
+
 					<script language="javascript">
 						function showClock() {
 							var currentDate = new Date();
@@ -138,12 +136,7 @@
 
 						};
 					</script>
-					<script>
-						$("#profileButton").click(function() {
-							$("#profile").load("views/member/profile.jsp")
-
-						});
-					</script>
+	
 
 				</div>
 
@@ -166,9 +159,7 @@
 						기술 : <%=PortfolioSkill%></span>
 
 
-					<div id="portpolioModifiy" name="portpolioModifiy">
-						<input type="button" value="정보수정" id="portfolioButton"></input>
-					</div>
+				
 
 				</div>
 
@@ -205,17 +196,10 @@
 					<br> <span id="careerTime" name="careerTime">입사일 : <%= Hire %>
 						&nbsp; / &nbsp;퇴사일 : <%= Retire %> &nbsp; </span>
 
-					<div id="careerModifiy" name="careerModifiy">
-						<input type="button" id="careerButton" value="정보 수정">
-					</div>
+	
 
 				</div>
-				<script>
-					$("#careerButton").click(function() {
-						$("#career").load("views/member/career.jsp")
-
-					});
-				</script>
+	
 
 
 
@@ -227,17 +211,10 @@
 					<br> <span id="educationTime" name="educationTime">입학년도&nbsp; : <%= EduEnrollDate %> 
 						/&nbsp; 졸업년도  : <%= EduGrauatedDate %></span>
 
-					<div id="educationModifiy" name="educationModifiy">
-						<input type="button" id="educationButton" value="정보 수정">
-					</div>
+			
 
 				</div>
-				<script>
-					$("#educationButton").click(function() {
-						$("#education").load("views/member/education.jsp")
-
-					});
-				</script>
+		
 
 				<div id="cartification" name="cartification">
 					<h1 align="left">자격증 항목</h1>
@@ -250,18 +227,9 @@
 						<%=CetificateDate%>
 					</span>
 
-					<div id="cartificationModifiy" name="cartificationModifiy">
-						<input type="button" id="certificationButton" value="정보 수정">
-					</div>
-				</div>
-				<script>
-					$("#certificationButton").click(
-							function() {
-								$("#cartification").load(
-										"views/member/certification.jsp")
 
-							});
-				</script>
+				</div>
+
 
 				<div id="publication" name="publication">
 					<h1 align="left">출판물 항목</h1>
@@ -280,16 +248,8 @@
 
 
 
-					<div id="publicationModifiy" name="cartificationModifiy">
-						<input type="button" id="publicationButton" value="정보수정">
-					</div>
 				</div>
-				<script>
-					$("#publicationButton").click(function() {
-						$("#publication").load("views/member/publication.jsp")
 
-					});
-				</script>
 			</div>
 
 
