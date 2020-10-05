@@ -1,12 +1,15 @@
 package com.gigsforgeeks.project.model.service;
 
-import static com.gigsforgeeks.common.JDBCTemplate.*;
+import static com.gigsforgeeks.common.JDBCTemplate.close;
+import static com.gigsforgeeks.common.JDBCTemplate.commit;
+import static com.gigsforgeeks.common.JDBCTemplate.getConnection;
+import static com.gigsforgeeks.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.project.model.dao.ProjectDAO;
-import com.gigsforgeeks.project.model.vo.PageInfo;
 import com.gigsforgeeks.project.model.vo.Project;
 
 public class ProjectService {
@@ -88,42 +91,36 @@ public class ProjectService {
 	}
 	
 	/**
-	 * 프로젝트 상세검색시 한행 조회해오는 메소드
-	 */
-	public int selectListCount(Project project) {
-		
-		Connection conn = getConnection();
-		
-		int listCount = new ProjectDAO().selectListCount(conn, project);
-		
-		if(listCount > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		close(conn);
-		
-		return listCount;
-		
-	}
-	
-	
-	/**
-	 * 프로젝트 상세검색시 여러행 조회해오는 메소드
+	 * 프로젝트 전체리스트 조회용 서비스
 	 * 
-	 * @param project	프로젝트의 목록객체
-	 * @return
 	 */
-	public ArrayList<Project> searchListProject(PageInfo pi, Project project) {
+	public ArrayList<Project> projectSelectList(){
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Project> list = new ProjectDAO().searchListProject(conn, pi, project);
+		ArrayList<Project> list = new ProjectDAO().searchListProject(conn);
 		
 		close(conn);
 		
 		return list;
 		
 	}
+	
+	/**
+	 * 프리랜서 전체리스트 조회용 서비스
+	 * 
+	 */
+	public ArrayList<Member> freelancerSelectList(){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Member> list = new ProjectDAO().freelancerSelectList(conn);
+		
+		close(conn);
+		
+		return list;
+		
+	}
+	
 	
 }

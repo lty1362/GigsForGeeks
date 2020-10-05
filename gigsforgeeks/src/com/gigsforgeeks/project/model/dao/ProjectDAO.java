@@ -8,10 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.gigsforgeeks.project.model.vo.PageInfo;
+import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.project.model.vo.Project;
 
 public class ProjectDAO {
@@ -226,84 +227,78 @@ public class ProjectDAO {
 		
 	}
 	
-	public int selectListCount(Connection conn, Project project) {
-		// select=> 한행조회
-		int listCount = 0;
+	
+	
+	public ArrayList<Project> searchListProject(Connection conn){
 		
-		PreparedStatement pstmt = null;
+		ArrayList<Project> list = new ArrayList<>();
+		
+		Statement stmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectListCount");
+		String sql = prop.getProperty("projectSelectList");
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
+			stmt = conn.createStatement();
 			
-			pstmt.setInt(1, project.getMinBid());
-			pstmt.setInt(2, project.getMaxBid());
+			rset = stmt.executeQuery(sql);
 			
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				listCount = rset.getInt(1);
+			while(rset.next()) {
+				list.add(new Project(rset.getInt("PROJECT_ID"),
+									 rset.getString("PROJECT_NAME"),
+									 rset.getString("DESCRIPTION"),
+									 rset.getString("PROJECT_STATUS"),
+									 rset.getInt("MIN_BID"),
+									 rset.getInt("MAX_BID"),
+									 rset.getDate("END_BID").toLocalDate(),
+									 rset.getInt("COUNT_BID")));
+				
+				
 			}
-		
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rset);
-			close(pstmt);
+			close(stmt);
 		}
-		return listCount;
 		
-		
+		return list;
 	}
 	
-	
-	public ArrayList<Project> searchListProject(Connection conn, PageInfo pi, Project project) {
-		// select문 => 여러행조회
-		ArrayList<Project> list = new ArrayList<>();
+	public ArrayList<Member> freelancerSelectList(Connection conn){
 		
-		PreparedStatement pstmt = null;
+		ArrayList<Member> list = new ArrayList<>();
+		
+		Statement stmt = null;
 		ResultSet rset = null;
 		
-		
-		String sql = "SELECT * FROM(SELECT ROWNUM RNUM, A.* FROM (";
-		sql += prop.getProperty("searchListProject");
-		
-		int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
-		int endRow = startRow + pi.getBoardLimit() - 1;
-		
-		sql += " ORDER BY PLAN_NO DESC) A) WHERE RNUM BETWEEN " + startRow + " AND " + endRow;
+		String sql = prop.getProperty("freelancerSelectList");
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
+			stmt = conn.createStatement();
 			
-			pstmt.setInt(1, project.getMinBid());
-			pstmt.setInt(2, project.getMaxBid());
-			
-			rset = pstmt.executeQuery();
+			rset = stmt.executeQuery(sql);
 			
 			while(rset.next()) {
-						Project p = new Project();
-						p.setProjectId(rset.getInt("project_id"));
-						p.setProjectName(rset.getString("project_name"));
-						p.setProjectStatus(rset.getString("project_status"));
-						p.setDescription(rset.getString("description"));
-						p.setEndBid(rset.getDate("end_bid").toLocalDate());
-						p.setMinBid(rset.getInt("min_bid"));
-						p.setMaxBid(rset.getInt("max_bid"));
-						p.setCountBid(rset.getInt("count_bid"));
-						
-						list.add(p);
+				list.add(new Member(rset.getString("USER_ID"),
+									 rset.getString("EXCELLENT_FREELANCE"),
+									 rset.getString("SKILL"),
+									 rset.getInt("PAY_RATE"),
+									 rset.getString("LOCATION"),
+									 rset.getString("SELF_INTRODUCTION"),
+									 rset.getString("PROFILE_IMAGE")));
+				
+				
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally{
+		} finally {
 			close(rset);
-			close(pstmt);
+			close(stmt);
 		}
-			
+		
 		return list;
 		
 	}
