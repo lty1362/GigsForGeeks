@@ -82,18 +82,18 @@ $(function(){
 	});
 	
 	// 프로젝트 상세보기 시 쿼리 스트링 (ProjectId 값)
-	$(document).on('click',".projectTable>tbody>tr>td>a", function(){
+	$(document).on('click', ".projectTable>tbody>tr>td>a", function(){
 	
 		var $projectId = $(this).next().text();
+		sessionStorage.setItem("projectId", $projectId);
 		$(this).attr("href", $contextPath + "/detail.proj?projectId=" + $projectId);
 		
 	});
 	
-	// 프로젝트 삭제 시 쿼리 스트링 (reqType)
-	$(".btn.deleteProject").click(function(){
-		
-		var $reqType = sessionStorage.getItem("reqType");
-		$(this).attr("href", $contextPath + "/delete.proj?reqType=" + $reqType);
+	// 프로젝트 삭제하기 시 쿼리 스트링 (projectId값)
+	$(document).on('click', ".deleteProject", function(){
+		var $projectId = sessionStorage.getItem("projectId");
+		$(this).attr("href", $contextPath + "/delete.proj?projectId=" + $projectId);
 		
 	});
 	
