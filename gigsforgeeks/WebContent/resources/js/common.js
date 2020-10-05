@@ -1,13 +1,5 @@
 /* Project Table */
-$(document).ready(function(){
-	
-	// 프로젝트 상세보기 시 쿼리 스트링 (ProjectId 값)
-	$(".projectTable>tbody>tr>td>a").click(function(){
-	
-		var $projectId = $(this).next().text();
-		$(this).attr("href", $contextPath + "/detail.proj?projectId=" + $projectId);
-		
-	});
+$(function(){
 	
 	// 내 프로젝트 보기 유형(reqType) 버튼 클릭 시 Ajax로 내 프로젝트 목록 조회하는 함수
 	$(".myProjectHeader .btn.setReqType").click(function(){
@@ -27,7 +19,7 @@ $(document).ready(function(){
 		$.ajax({
 			url: $contextPath + "/list.proj",
 			data: {reqType:$reqType},
-			type: "get",
+			type: "post",
 			success: function(myProjectList){ // 요청한 유형의 내 프로젝트 목록 조회 성공 시
 				
 				var colSize = $(".projectTable>thead>tr>th").length;
@@ -40,7 +32,10 @@ $(document).ready(function(){
 						for(var i in myProjectList){
 							result += "<tr>" +
 											   "<td>" + myProjectList[i].projectId + "</td>" +
-											   "<td>" + myProjectList[i].projectName + "</td>" +
+											   "<td>" + 
+											       "<a href=''>" + myProjectList[i].projectName + "</a>" + 
+											       "<span style='visibility: hidden;'>" + myProjectList[i].projectId + "</span>" + 
+											   "</td>" +
 											   "<td>" + myProjectList[i].winnerId + "</td>" +
 											   "<td>" + myProjectList[i].winningBid + "</td>" +
 											   "<td>" + myProjectList[i].endDate + "</td>" +
@@ -56,7 +51,10 @@ $(document).ready(function(){
 						for(var i in myProjectList){
 							result += "<tr>" +
 											   "<td>" + myProjectList[i].projectId + "</td>" +
-											   "<td>" + myProjectList[i].projectName + "</td>" +
+											   "<td>" + 
+											       "<a href=''>" + myProjectList[i].projectName + "</a>" + 
+											       "<span style='visibility: hidden;'>" + myProjectList[i].projectId + "</span>" +
+											   "</td>" +
 											   "<td>" + myProjectList[i].winnerId + "</td>" +
 											   "<td>" + myProjectList[i].winningBid + "</td>" +
 											   "<td>" + myProjectList[i].endDate + "</td>" +
@@ -83,10 +81,20 @@ $(document).ready(function(){
 			
 	});
 	
+	// 프로젝트 상세보기 시 쿼리 스트링 (ProjectId 값)
+	$(document).on('click',".projectTable>tbody>tr>td>a", function(){
+	
+		var $projectId = $(this).next().text();
+		$(this).attr("href", $contextPath + "/detail.proj?projectId=" + $projectId);
+		
+	});
+	
 	// 프로젝트 삭제 시 쿼리 스트링 (reqType)
 	$(".btn.deleteProject").click(function(){
+		
 		var $reqType = sessionStorage.getItem("reqType");
 		$(this).attr("href", $contextPath + "/delete.proj?reqType=" + $reqType);
+		
 	});
 	
 });
