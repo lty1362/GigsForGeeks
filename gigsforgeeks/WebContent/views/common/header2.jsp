@@ -31,7 +31,7 @@
     <script src="${contextPath}/resources/js/common.js"></script>
     <script>
 		/* jQuery에서 사용할 contextPath 변수 선언 및 초기화 */
-		var contextPath = "${contextPath}";
+		var $contextPath = "${contextPath}";
     	
     	/* 사용자 요청 성공시 alert 메시지 띄워주는 script */
     	window.onload = function() {
