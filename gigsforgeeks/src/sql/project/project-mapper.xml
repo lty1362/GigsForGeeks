@@ -153,11 +153,13 @@
 	<entry key="deleteMyBid">
 		UPDATE 
 		       PROJECT
-		   SET PROJECT_STATUS = 'DELETE'
+		   SET WINNER_ID = NULL
+		   AND PROJECT_STATUS = 'HOLD'
 		 WHERE PROJECT_ID = ?
 		   AND WINNER_ID = ?
 		   AND 
-		   NOT PROJECT_STATUS = 'DELETE'
+		   NOT PROJECT_STATUS
+		    IN ('DELETE', 'OPEN')
 	</entry>
 	
 	<!-- 탐색 관련 SQL문 -->
