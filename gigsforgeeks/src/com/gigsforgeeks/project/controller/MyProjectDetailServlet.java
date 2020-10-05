@@ -19,7 +19,7 @@ import com.gigsforgeeks.project.model.vo.Project;
  */
 @SuppressWarnings("serial")
 @WebServlet("/detail.proj")
-public class ProjectDetailServlet extends HttpServlet {
+public class MyProjectDetailServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
