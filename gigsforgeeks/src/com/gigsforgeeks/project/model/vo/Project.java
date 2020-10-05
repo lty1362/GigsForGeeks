@@ -53,7 +53,7 @@ public class Project {
 		this.endDate = endDate;
 	}
 	
-	// to call insertProject method
+	// to use in insertProject method
 	public Project(String clientId, String requiredSkill, String projectName, String description, 
 			LocalDate expectStart, LocalDate expectEnd, String meansOfPayment, int minBid, int maxBid, LocalDate endBid) {
 		super();
@@ -69,21 +69,7 @@ public class Project {
 		this.endBid = endBid;
 	}
 	
-	// searcListProject
-	public Project(int projectId, String projectName, String projectStatus, String description, LocalDate endBid,
-			int minBid, int maxBid,  int countBid) {
-		super();
-		this.projectId = projectId;
-		this.projectName = projectName;
-		this.description = description;
-		this.projectStatus = projectStatus;
-		this.minBid = minBid;
-		this.MaxBid = maxBid;
-		this.endBid = endBid;
-		this.countBid = countBid;
-	}
-	
-	
+	// to use in searcListProject method
 	public Project(int projectId, String projectName, String description, String projectStatus, int minBid, int maxBid,
 			LocalDate endBid, int countBid) {
 		super();
