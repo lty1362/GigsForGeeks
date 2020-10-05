@@ -10,7 +10,7 @@
 	</entry>
 	
 	<entry key="selectMessageList">
-         SELECT *
+        SELECT *
           FROM (
     	SELECT 
    	    ROWNUM RNUM

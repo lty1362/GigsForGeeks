@@ -89,8 +89,11 @@
 				        		<td style="display:none;"><%=m.getMessageNo() %></td>
 				        		<td><input type="checkbox"></td>
 				                <td><%=count++%></td>
+				                <td class="title">
+				               	 	<a><%= m.getMessageTitle()%></a>
+				               	 	<span style="display:none;"><%=m.getMessageNo() %></span>
+				                </td>
 				                <td><%= m.getMessageReceiver()%></td>
-				                <td><%= m.getMessageTitle()%></td>
 				                <td><%= m.getMessageReceiveTime()%></td>
 				            </tr>
 				           <% } %>

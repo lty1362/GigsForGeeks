@@ -73,11 +73,13 @@
 		        		<%int count = 1; %>
 		        		  <%for(Message m : adminMs){%>
 				        	<tr style="text-align:center;">
-				        		<td style="display:none;"><%=m.getMessageNo() %></td>
 				        		<td><input type="checkbox"></td>
 				                <td><%=count++%></td>
+				                <td class="title">
+				                	<a><%= m.getMessageTitle()%></a>
+				               		<span style="display:none;"><%=m.getMessageNo() %></span>
+				                </td>
 				                <td><%= m.getMessageReceiver()%></td>
-				                <td><%= m.getMessageTitle()%></td>
 				                <td><%= m.getMessageReceiveTime()%></td>
 				            </tr>
 				           <% } %>
@@ -86,14 +88,12 @@
 		    </table>
 		     <script>
     			$(function(){
+		    		$(".messageAdmin>tbody>tr>td>a").click(function(){	
 
-		    		$(".messageAdmin>tbody>tr").click(function(){	
-
-	    				var nno = $(this).children().eq(0).text();
-		    			location.href = "${contextPath}/detail.ms?nno=" + nno;
+	    				var nno = $(this).next().text();
+	    				$(this).attr("href","${contextPath}/detail.ms?nno="  + nno);
 
 		    		});
-		    		
 		    	});
    		 	</script>
 		
