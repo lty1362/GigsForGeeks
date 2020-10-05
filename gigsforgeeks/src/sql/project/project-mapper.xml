@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+	<!-- 내 프로젝트 관련 SQL문 -->
 	<entry key="insertProject">
 		INSERT
 		  INTO PROJECT
@@ -139,6 +140,27 @@
 		    NOT PROJECT_STATUS = 'DELETE'
 	</entry>
 	
+	<entry key="deleteMyProject">
+		UPDATE 
+		       PROJECT
+		   SET PROJECT_STATUS = 'DELETE'
+		 WHERE PROJECT_ID = ?
+		   AND CLIENT_ID = ?
+		   AND 
+		   NOT PROJECT_STATUS = 'DELETE'
+	</entry>
+	
+	<entry key="deleteMyBid">
+		UPDATE 
+		       PROJECT
+		   SET PROJECT_STATUS = 'DELETE'
+		 WHERE PROJECT_ID = ?
+		   AND WINNER_ID = ?
+		   AND 
+		   NOT PROJECT_STATUS = 'DELETE'
+	</entry>
+	
+	<!-- 탐색 관련 SQL문 -->
 	<entry key="selectListCount">
 		SELECT COUNT(*)
 		  FROM PROJECT
@@ -146,7 +168,6 @@
 		   AND MIN_BID BETWEEN 200000 AND ?
 		   AND MAX_BID BETWEEN ? AND 5000000;
 	</entry>
-	
 	
 	<entry key="searchListProject">
 		SELECT
