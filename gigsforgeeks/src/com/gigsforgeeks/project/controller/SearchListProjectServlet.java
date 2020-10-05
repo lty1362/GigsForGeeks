@@ -37,12 +37,11 @@ public class SearchListProjectServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
-		String projectId = request.getParameter("projectId");							// 프로젝트 아이디
+		int projectId = Integer.parseInt(request.getParameter("projectId"));			// 프로젝트 아이디
 		String projectName = request.getParameter("projectName");						// 프로젝트 제목
 		String projectStatus = request.getParameter("projectStatus");					// 프로젝트 상태
 		String description = request.getParameter("description");  						// 프로젝트 내용
 		LocalDate endBid = LocalDate.parse(request.getParameter("endBid"), formatter);	// 프로젝트 입찰마감일
-		int countBid = Integer.parseInt(request.getParameter("countBid"));				// 입찰수
 
 		// 검색조건 뽑기
 		int minBid = 0;
@@ -59,12 +58,12 @@ public class SearchListProjectServlet extends HttpServlet {
 			maxBid = Integer.parseInt(request.getParameter("MaxBid"));
 		}
 
-		//String location = "";
-		//if(request.getParameter("location") != null) {
-			//location = request.getParameter("location");			
-		//}
-		
-		//String [] skill = request.getParameterValues("requiredSkill");
+		int countBid = 0;
+		if(request.getParameter("countBid") == null) {
+			countBid = 0;
+		}else {
+			countBid = Integer.parseInt(request.getParameter("countBid"));
+		}
 		
 		Project project = new Project(projectId, projectName, description, projectStatus, minBid, maxBid, endBid, countBid);
 		
@@ -80,12 +79,10 @@ public class SearchListProjectServlet extends HttpServlet {
 		
 		listCount = new ProjectService().selectListCount(project);
 		
-		// 페이징조회
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		pageLimit = 10;
 		boardLimit = 5;
 		
-		// 조회된 수가 0일 경우 페이징오류 해결 위해서 (처리안하면 > >>가 보임) 
 		if(listCount != 0) {
 			maxPage = (int)Math.ceil((double)listCount/boardLimit);
 		}else {

@@ -47,7 +47,7 @@ public class ProposalInsertServlet extends HttpServlet {
 		String inputPrice = (String)request.getParameter("proposalPrice");
 		System.out.println("가격" + (String)request.getParameter("proposalPrice"));
 		
-		String proposalProjectId = "1";/*project.getProjectId()*/										// 프로젝트 아이디를 불러옴		
+		int proposalProjectId = 1;/*project.getProjectId()*/										// 프로젝트 아이디를 불러옴		
 		String proposalUserId = loginUser.getUserId();														// 사용자 아이디
 		String proposalInfo = request.getParameter("proposalInfo");											// 사용자가 입력한 제안내용
 		int proposalPrice = Integer.parseInt(inputPrice);													// 사용자가 입력한 제안가격
