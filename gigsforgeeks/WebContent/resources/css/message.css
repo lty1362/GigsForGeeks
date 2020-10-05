@@ -29,7 +29,6 @@ box-sizing: border-box;
 /*검색창*/
 #content_2 #search_text{margin:55px 0px 5px 200px;}
 #content_2 #search_btn1{margin-top:50px;}
-#content_2 #search_btn2{margin-top:50px;margin-left:180px;}
 
 #search_form{
     width: 100%;
@@ -44,7 +43,6 @@ box-sizing: border-box;
 }
 #search_text{width: 40%;}
 #search_btn1{width: 8%;padding: 5px 5px 15px 5px;}
-#search_btn2{width: 25%;padding: 5px 5px 15px 5px;}
 
 #search_text input{
 	width: 10%;
@@ -58,12 +56,6 @@ box-sizing: border-box;
     margin: auto;
     font-size: 12px;
     width: 110px;
-    height: 35px;
-}
-#search_btn2 #btn2{
-    margin: auto;
-    font-size: 12px;
-    width: 80px;
     height: 35px;
 }
 
@@ -89,14 +81,31 @@ box-sizing: border-box;
 }
 
 /*전체메세지*/
+#search_btn2 #btn2{
+    margin: auto;
+    font-size: 12px;
+    width: 80px;
+    height: 35px;
+}
+#keepbutton>#btn2{
+	margin-left:1400px
+}
+#search_btn2{
+   border:1px solid white;
+   text-align:center;
+   width: 100%;
+   height: 75%;
+}
 .messageFull{
    border:1px solid white;
    text-align:center;
    width: 100%;
-   height: 70%;
+   height: 100%;
+   font-size:17px
 }
 .messageFull>tbody>tr>td{
 	text-align:center;
+	padding-top:20px
 }
 .messageFull>tbody>tr>.title :hover{
    font-weight: 900;

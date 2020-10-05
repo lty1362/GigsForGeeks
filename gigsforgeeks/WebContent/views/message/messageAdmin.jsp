@@ -15,6 +15,7 @@
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
 	int NotReadCount = pi.getNotReadCount();
+	int KeepCount = pi.getKeepCount();
 %>
 <%-- Template HTML 1 : 일반 화면용 --%>
 <!DOCTYPE html>
@@ -40,7 +41,7 @@
             <div id="content_1">
                 <div id="naviMain"><a href="${contextPath}/list.ms?currentPage=1">전체메세지</a></div>
                 <div id="naviNotRead"><a href="${contextPath}/notRead.ms?currentPage=1">읽지않음 (<%=NotReadCount%>)</a></div>
-                <div id="naviKeep"><a href="${contextPath}/views/message/messageKeep.jsp">보관 메세지</a></div>
+                <div id="naviKeep"><a href="${contextPath}/keepList.ms?currentPage=1">보관 메세지 (<%=KeepCount%>)</a></div>
                 <div id="naviAdmin"><a href="${contextPath}/admin.ms?currentPage=1">고객 지원팀</a></div>
             </div>
         </div>  
@@ -51,8 +52,8 @@
         <div id="cont">
         <h2>고객지원팀</h2>
         <br>
-            <div id="content_3"> 
-            <table align="center" class="messageAdmin">
+            <div id="content_3" align="center"> 
+            <table class="messageAdmin">
 		        <thead>
 		            <tr>
 		                <th style="display:none;"></th>

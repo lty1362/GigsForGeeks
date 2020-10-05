@@ -27,71 +27,75 @@
 <body>
 		<!--검색창-->
         <div id="cont">
-        <br>
-        <h3>전체 메세지</h3>
-            <div id="content_2" align="right">
-                <form action="" id="search_form">
-                <input type="hidden" name="messageReceiver" id="messageReceiver" value="">
+        	<br>
+        	<h3>전체 메세지</h3>
+            	<div id="content_2" align="right">
+                	<div id="search_form">
+                		<input type="hidden" name="messageReceiver" id="messageReceiver" value="">
 	                    <div id="search_text">
 	                        <input class="form-control mr-sm-2" type="text" placeholder="회원ID">
 	                    </div>
 	                    
-	                    <div id="search_btn1">
+                   	 	<div id="search_btn1">
 	                        <a href="${contextPath}/send.ms" id="btn1" class="btn btn-outline-info">메세지 보내기</a>
 	                	</div>
-	                	<div id="search_btn2">
-	                    	<button type="submit" id="btn2" class="btn btn-outline-info">보관하기</button>
-	                	</div>
-                </form>
-            </div>
+                   </div>
+               </div>
 
             <div id="content_3" align="center">
-            <table class="messageFull">
-		        <thead>
-		            <tr>
-		            	<th style="display:none;"></th>
-		            	<th width="15"><input type="checkbox"></th>
-		                <th width="30">번호</th>
-		                <th width="200">제목</th>
-		                <th width="10">보낸회원</th>
-		                <th width="20">받은날짜</th>
-		            </tr>
-		            <tr><td colspan="5"><div class="modal-footer"></div></td></tr>            
-		        </thead>
-		        
-		        <tbody>
-		        	<%if(list.isEmpty()){ %>
-		        		<tr>
-		        			<td colspan="5">조회된 메세지가 없습니다.</td>
-		        		</tr>
-		        	<%} else{ %>
-		        		<%int count = 1; %>
-		        		  <%for(Message m : list){%>
-				        	<tr>
-				        		<td style="display:none;"><%=m.getMessageNo() %></td>
-				        		<td><input type="checkbox"></td>
-				                <td><%=count++%></td>
-				                <td class="title">
-				               	 	<a><%= m.getMessageTitle()%></a>
-				                	<span style="display:none;"><%=m.getMessageNo() %></span>
-				                </td>
-				                <td><%= m.getMessageRecepient()%></td>				            
-				                <td><%= m.getMessageReceiveTime()%></td>
+            <div id="search_btn2">
+		   	 <form id="keepbutton" action="<%= request.getContextPath()%>/keep.ms" method="post">
+				<button type="submit" id="btn2" class="btn btn-outline-info">보관하기</button>
+					<br>
+	            	<table class="messageFull">
+			        	<thead>
+				            <tr>
+				            	<th style="display:none;"></th>
+				            	<th width="15"><input type="checkbox"></th>
+				                <th width="30">번호</th>
+				                <th width="200">제목</th>
+				                <th width="10">보낸회원</th>
+				                <th width="20">받은날짜</th>
 				            </tr>
-				           <% } %>
-		        	  <% } %>	  
-		        </tbody>
-		    </table>
+				            <tr><td colspan="5"><div class="modal-footer"></div></td></tr>            
+				        </thead>
+				        
+				        <tbody>
+				        	<%if(list.isEmpty()){ %>
+				        		<tr>
+				        			<td colspan="5">조회된 메세지가 없습니다.</td>
+				        		</tr>
+				        	<%} else{ %>
+				        		<%int count = 1; %>
+				        		  <%for(Message m : list){%>
+						        	<tr>
+						        		<td style="display:none;"><%=m.getMessageNo() %></td>
+						        		<td><input type="checkbox" name="keeps" id="keeps" value="<%=m.getMessageNo()%>"></td>
+						                <td><%=count++%></td>
+						                <td class="title">
+						               	 	<a><%= m.getMessageTitle()%></a>
+						                	<span style="display:none;"><%=m.getMessageNo() %></span>
+						                </td>
+						                <td><%= m.getMessageRecepient()%></td>				            
+						                <td><%= m.getMessageReceiveTime()%></td>
+						            </tr>
+						           <% } %>
+				        	  <% } %> 
+				        </tbody>
+				    </table>
+			  	 </form>
+			</div>
 			<script>
     			$(function(){
-		    		$(".messageFull>tbody>tr>td>a").click(function(){	
+		    		
+    				$(".messageFull>tbody>tr>td>a").click(function(){	
 
 	    				var nno = $(this).next().text();
 	    				$(this).attr("href","${contextPath}/detail.ms?nno="  + nno);
-
-		    		});
-		    	});
-   		 	</script>
+		
+	                		});
+	               		});
+	           </script>
 		    <div align="right" style="width:98%;">
        		 <button class="btn btn-outline-info" data-toggle="modal" data-target="#message_delete">메세지 삭제</button>
         	 <br><br>
