@@ -154,7 +154,7 @@
 		UPDATE 
 		       PROJECT
 		   SET WINNER_ID = NULL
-		   AND PROJECT_STATUS = 'HOLD'
+		     , PROJECT_STATUS = 'HOLD'
 		 WHERE PROJECT_ID = ?
 		   AND WINNER_ID = ?
 		   AND 
