@@ -7,8 +7,8 @@ public class Member {
 	private String userId;				// 회원아이디
 	private String userEmail;			// 회원이메일
 	private String userPwd;				// 회원 비밀번호
-	private Date enrollDate;			// 가입일
-	private Date outrollDate;			// 탈퇴일
+	private String enrollDate;			// 가입일
+	private String outrollDate;			// 탈퇴일
 	private String status;				// 탈퇴여부
 	private String membership;			// 멤버십여부
 	private String excellentFreelance;	// 우수 프리랜서 여부
@@ -29,7 +29,7 @@ public class Member {
 		
 	}
 	
-	public Member(String userId, String userEmail, String userPwd, Date enrollDate, Date outrollDate,
+	public Member(String userId, String userEmail, String userPwd, String enrollDate, String outrollDate,
 			String status, String membership, String excellentFreelance, String blackList, String identifyEmail,
 			String admin, String userType, String jobTitle, String company, String skill, int payRate,
 			String profileImage, String location, String selfIntroduction) {
@@ -103,19 +103,19 @@ public class Member {
 		this.userPwd = userPwd;
 	}
 
-	public Date getEnrollDate() {
+	public String getEnrollDate() {
 		return enrollDate;
 	}
 
-	public void setEnrollDate(Date enrollDate) {
+	public void setEnrollDate(String enrollDate) {
 		this.enrollDate = enrollDate;
 	}
 
-	public Date getOutpllDate() {
+	public String getOutpllDate() {
 		return outrollDate;
 	}
 
-	public void setOutpllDate(Date outrpllDate) {
+	public void setOutpllDate(String outrpllDate) {
 		this.outrollDate = outrpllDate;
 	}
 

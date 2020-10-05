@@ -57,8 +57,8 @@ public class MemberDAO {
 				m = new Member(rset.getString("USER_ID"),
 						       rset.getString("USER_EMAIL"),
 						       rset.getString("USER_PWD"),
-						       rset.getDate("ENROLL_DATE"),
-						       rset.getDate("OUTROLL_DATE"),
+						       rset.getString("ENROLL_DATE"),
+						       rset.getString("OUTROLL_DATE"),
 						       rset.getString("STATUS"),
 						       rset.getString("MEMBERSHIP"),
 						       rset.getString("EXCELLENT_FREELANCE"),
@@ -224,8 +224,8 @@ public class MemberDAO {
 							  rset.getString("USER_ID"),
 							  rset.getString("COMPANY_INFO"),
 							  rset.getString("CAREER_TITLE"),
-							  rset.getDate("RETIRE_DATE"),
-							  rset.getDate("HIRE_DATE"),
+							  rset.getString("RETIRE_DATE"),
+							  rset.getString("HIRE_DATE"),
 							  rset.getString("CAREER_INFO"),
 							  rset.getString("CAREER_STATUS")
 						);
@@ -275,8 +275,8 @@ public class MemberDAO {
 							  rset.getString("PORTFOLIO_CONTENTS"),
 							  rset.getString("PORTFOLIO_LINK"),
 							  rset.getString("PORTFOLIO_SKILL"),
-							  rset.getDate("PORTFOLIO_START"),
-							  rset.getDate("PORTFOLIO_END"),
+							  rset.getString("PORTFOLIO_START"),
+							  rset.getString("PORTFOLIO_END"),
 							  rset.getString("USER_ID"),
 							  rset.getString("PORTFOLIO_FILE")
 						);
@@ -566,8 +566,8 @@ public class MemberDAO {
 			pstmt.setString(1, updatePortfolio.getPortfolioTitle());
 			pstmt.setString(2, updatePortfolio.getPortfolioLink());
 			pstmt.setString(3, updatePortfolio.getPortfolioContent());
-			pstmt.setDate(4, updatePortfolio.getPortfolioStart());
-			pstmt.setDate(5, updatePortfolio.getPortfolioEnd());
+			pstmt.setString(4, updatePortfolio.getPortfolioStart());
+			pstmt.setString(5, updatePortfolio.getPortfolioEnd());
 			pstmt.setString(6, updatePortfolio.getPortfolioSkill());
 			pstmt.setString(7, userId);
 			
@@ -598,8 +598,8 @@ public class MemberDAO {
 			pstmt.setString(1, updateCareer.getCompanyInfo());
 			pstmt.setString(2, updateCareer.getCareerTitle());
 			pstmt.setString(3, updateCareer.getCareerInfo());
-			pstmt.setDate(4, updateCareer.getHireDate());
-			pstmt.setDate(5, updateCareer.getRetireDate());
+			pstmt.setString(4, updateCareer.getHireDate());
+			pstmt.setString(5, updateCareer.getRetireDate());
 			pstmt.setString(6, userId);
 			
 			

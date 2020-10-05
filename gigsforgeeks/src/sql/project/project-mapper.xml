@@ -139,6 +139,15 @@
 		    NOT PROJECT_STATUS = 'DELETE'
 	</entry>
 	
+	<entry key="selectListCount">
+		SELECT COUNT(*)
+		  FROM PROJECT
+		 WHERE PROJECT_STATUS='OPEN'
+		   AND MIN_BID BETWEEN 200000 AND ?
+		   AND MAX_BID BETWEEN ? AND 5000000;
+	</entry>
+	
+	
 	<entry key="searchListProject">
 		SELECT
 		       PROJECT_ID

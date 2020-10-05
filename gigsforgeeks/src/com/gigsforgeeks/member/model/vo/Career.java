@@ -8,8 +8,8 @@ public class Career {
 	private String userId;        // 회원 아이디
 	private String companyInfo;   // 회사
 	private String careerTitle;   // 직급
-	private Date retireDate;      // 퇴직날짜
-	private Date hireDate;        // 고용날짜
+	private String retireDate;      // 퇴직날짜
+	private String hireDate;        // 고용날짜
 	private String careerInfo;    // 회사 설명
 	private String careerStatus;  // 재직여부
 	
@@ -19,8 +19,8 @@ public class Career {
 
 
 
-	public Career(int careerNumber, String userId, String companyInfo, String careerTitle, Date retireDate,
-			Date hireDate, String careerInfo, String careerStatus) {
+	public Career(int careerNumber, String userId, String companyInfo, String careerTitle, String retireDate,
+			String hireDate, String careerInfo, String careerStatus) {
 		super();
 		this.careerNumber = careerNumber;
 		this.userId = userId;
@@ -33,7 +33,7 @@ public class Career {
 	}
 	
 	/*updateUser에서의 Career updateCareer*/
-	public Career(String companyInfo,String CareerTitle, String CareerContent, Date CareerHire, Date CareerRetire) {
+	public Career(String companyInfo,String CareerTitle, String CareerContent, String CareerHire, String CareerRetire) {
 		super();
 		this.companyInfo=companyInfo;
 		this.careerTitle=CareerTitle;
@@ -78,19 +78,19 @@ public class Career {
 		this.careerInfo = careerInfo;
 	}
 
-	public Date getHireDate() {
+	public String getHireDate() {
 		return hireDate;
 	}
 
-	public void setHireDate(Date hireDate) {
+	public void setHireDate(String hireDate) {
 		this.hireDate = hireDate;
 	}
 
-	public Date getRetireDate() {
+	public String getRetireDate() {
 		return retireDate;
 	}
 
-	public void setRetireDate(Date retireDate) {
+	public void setRetireDate(String retireDate) {
 		this.retireDate = retireDate;
 	}
 

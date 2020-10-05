@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.gigsforgeeks.project.model.vo.PageInfo;
 import com.gigsforgeeks.project.model.vo.Project;
 
 public class ProjectDAO {
@@ -191,15 +192,54 @@ public class ProjectDAO {
 		
 	}
 	
-	public ArrayList<Project> searchListProject(Connection conn, Project project) {
+	public int selectListCount(Connection conn, Project project) {
+		// select=> 한행조회
+		int listCount = 0;
 		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, project.getMinBid());
+			pstmt.setInt(2, project.getMaxBid());
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt(1);
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+		
+		
+	}
+	
+	
+	public ArrayList<Project> searchListProject(Connection conn, PageInfo pi, Project project) {
 		// select문 => 여러행조회
 		ArrayList<Project> list = new ArrayList<>();
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("searchListProject");
+		
+		String sql = "SELECT * FROM(SELECT ROWNUM RNUM, A.* FROM (";
+		sql += prop.getProperty("searchListProject");
+		
+		int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+		int endRow = startRow + pi.getBoardLimit() - 1;
+		
+		sql += " ORDER BY PLAN_NO DESC) A) WHERE RNUM BETWEEN " + startRow + " AND " + endRow;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -210,14 +250,17 @@ public class ProjectDAO {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Project(rset.getInt("project_id"),
-									 rset.getString("project_name"),
-									 rset.getString("project_status"),
-									 rset.getString("description"),
-									 rset.getDate("end_bid").toLocalDate(),
-									 rset.getInt("min_bid"),
-									 rset.getInt("max_bid"),
-									 rset.getInt("count_bid")));
+						Project p = new Project();
+						p.setProjectId(rset.getInt("project_id"));
+						p.setProjectName(rset.getString("project_name"));
+						p.setProjectStatus(rset.getString("project_status"));
+						p.setDescription(rset.getString("description"));
+						p.setEndBid(rset.getDate("end_bid").toLocalDate());
+						p.setMinBid(rset.getInt("min_bid"));
+						p.setMaxBid(rset.getInt("max_bid"));
+						p.setCountBid(rset.getInt("count_bid"));
+						
+						list.add(p);
 			}
 			
 		} catch (SQLException e) {
@@ -228,7 +271,7 @@ public class ProjectDAO {
 		}
 			
 		return list;
-	
+		
 	}
 	
 }

@@ -83,6 +83,20 @@ public class Project {
 		this.countBid = countBid;
 	}
 	
+	
+	public Project(int projectId, String projectName, String description, String projectStatus, int minBid, int maxBid,
+			LocalDate endBid, int countBid) {
+		super();
+		this.projectId = projectId;
+		this.projectName = projectName;
+		this.description = description;
+		this.projectStatus = projectStatus;
+		this.minBid = minBid;
+		this.MaxBid = maxBid;
+		this.endBid = endBid;
+		this.countBid = countBid;
+	}
+	
 	// Getters and Setters
 	public int getProjectId() {
 		return projectId;

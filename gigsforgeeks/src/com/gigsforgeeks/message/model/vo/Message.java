@@ -9,9 +9,9 @@ import java.sql.Date;
 public class Message {
 
 	private int messageNo;				//메세지 번호
+	private String messageTitle;		//메세지 제목
 	private String messageReceiver;		//회원아이디
 	private String messageRecepient;	//상대아이디
-	private String messageTitle;		//메세지 제목
 	private String messageContent;		//메세지 내용
 	private Date messageReceiveTime;	//받은 날짜
 	private Date messageSendTime;		//보낸 날짜
@@ -24,14 +24,14 @@ public class Message {
 		
 	}
 
-	public Message(int messageNo, String messageReceiver, String messageRecepient, String messageTitle,
+	public Message(int messageNo, String messageTitle, String messageReceiver, String messageRecepient, 
 			String messageContent, Date messageReceiveTime, Date messageSendTime, String messageRead,
 			String messageKeep, String messageAdmin, String status) {
 		super();
 		this.messageNo = messageNo;
+		this.messageTitle = messageTitle;
 		this.messageReceiver = messageReceiver;
 		this.messageRecepient = messageRecepient;
-		this.messageTitle = messageTitle;
 		this.messageContent = messageContent;
 		this.messageReceiveTime = messageReceiveTime;
 		this.messageSendTime = messageSendTime;
@@ -41,23 +41,23 @@ public class Message {
 		this.status = status;
 	}
 
-	public Message(int messageNo, String messageReceiver, String messageRecepient, String messageTitle,
+	public Message(int messageNo,String messageTitle, String messageReceiver, String messageRecepient, 
 			Date messageReceiveTime) {
 		super();
 		this.messageNo = messageNo;
+		this.messageTitle = messageTitle;
 		this.messageReceiver = messageReceiver;
 		this.messageRecepient = messageRecepient;
-		this.messageTitle = messageTitle;
 		this.messageReceiveTime = messageReceiveTime;
 	}
 
-	public Message(int messageNo, String messageReceiver, String messageRecepient, String messageTitle,
+	public Message(int messageNo,String messageTitle, String messageReceiver, String messageRecepient, 
 			String messageContent, Date messageReceiveTime) {
 		super();
 		this.messageNo = messageNo;
+		this.messageTitle = messageTitle;
 		this.messageReceiver = messageReceiver;
 		this.messageRecepient = messageRecepient;
-		this.messageTitle = messageTitle;
 		this.messageContent = messageContent;
 		this.messageReceiveTime = messageReceiveTime;
 	}

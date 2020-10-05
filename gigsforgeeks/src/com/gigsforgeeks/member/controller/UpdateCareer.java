@@ -44,8 +44,8 @@ public class UpdateCareer extends HttpServlet {
 		String companyInfo = request.getParameter("companyInfo");
 		String CareerTitle = request.getParameter("CareerTitle");
 		String CareerContent = request.getParameter("CareerContent");
-		Date CareerHire = Date.valueOf(request.getParameter("CareerHire"));
-		Date CareerRetire = Date.valueOf(request.getParameter("CareerRetire"));
+		String CareerHire = request.getParameter("CareerHire");
+		String CareerRetire = request.getParameter("CareerRetire");
 		
 		Career updateCareer = new Career(companyInfo, CareerTitle, CareerContent, CareerHire,CareerRetire);
 		

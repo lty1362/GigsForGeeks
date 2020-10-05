@@ -37,10 +37,10 @@
 	                    </div>
 	                    
 	                    <div id="search_btn1">
-	                        <a href="${contextPath}/send.ms" id="btn1" class="btn btn-outline-info" type="submit">메세지 보내기</a>
+	                        <a href="${contextPath}/send.ms" id="btn1" class="btn btn-outline-info">메세지 보내기</a>
 	                	</div>
 	                	<div id="search_btn2">
-	                    	<button type="button" id="btn2" class="btn btn-outline-info" type="submit">보관하기</button>
+	                    	<button type="submit" id="btn2" class="btn btn-outline-info">보관하기</button>
 	                	</div>
                 </form>
             </div>
@@ -71,27 +71,27 @@
 				        		<td style="display:none;"><%=m.getMessageNo() %></td>
 				        		<td><input type="checkbox"></td>
 				                <td><%=count++%></td>
-				                <td><%= m.getMessageReceiver()%></td>
-				                <td><%= m.getMessageTitle()%></td>
+				                <td class="title">
+				               	 	<a><%= m.getMessageTitle()%></a>
+				                	<span style="display:none;"><%=m.getMessageNo() %></span>
+				                </td>
+				                <td><%= m.getMessageRecepient()%></td>				            
 				                <td><%= m.getMessageReceiveTime()%></td>
 				            </tr>
 				           <% } %>
 		        	  <% } %>	  
 		        </tbody>
 		    </table>
-			 <script>
+			<script>
     			$(function(){
+		    		$(".messageFull>tbody>tr>td>a").click(function(){	
 
-		    		$(".messageFull>tbody>tr").click(function(){	
-
-	    				var nno = $(this).children().eq(0).text();
-		    			location.href = "${contextPath}/detail.ms?nno=" + nno;
+	    				var nno = $(this).next().text();
+	    				$(this).attr("href","${contextPath}/detail.ms?nno="  + nno);
 
 		    		});
-		    		
 		    	});
-   		 </script>
-
+   		 	</script>
 		    <div align="right" style="width:98%;">
        		 <button class="btn btn-outline-info" data-toggle="modal" data-target="#message_delete">메세지 삭제</button>
         	 <br><br>

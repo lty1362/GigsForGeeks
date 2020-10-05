@@ -122,7 +122,15 @@
                 </form>
 
                 <br>
+                
+                <!-- 리스트가 비어있을 경우 -->
+                <% if(list.isEmpty()) { %>
+					<p align="center">일치하는 프로젝트를 찾을 수 없습니다.</p>
+          		<% }else { %>
+          		<!-- 리스트가 비어있지 않을 경우 -->
+                <% for(Project p : list) { %>
                 <div onclick="location.href='${contextPath}/views/project/detailProject.jsp'" id="searchprojectList">
+                    <input type="hidden" value=<%= p.getProjectId() %>>
                     <label id="projectTitle">프로젝트명1</label> 
                     <label id="price">700,000￦ - 2,000,000￦</label><br>
                     <p>

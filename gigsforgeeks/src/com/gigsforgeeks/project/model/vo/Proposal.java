@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Proposal {
 	
 	private int proposalNo;					// 작업제안번호
-	private String proposalProjectId;		// 입찰제안한 프로젝트아이디
+	private int proposalProjectId;		// 입찰제안한 프로젝트아이디
 	private String proposalUserId;			// 사용자 회원아이디
 	private String proposalStatus;			// 입찰승락여부(Y/N)
 	private String proposalInfo;			// 작업제안내용
@@ -19,7 +19,7 @@ public class Proposal {
 	}
 
 	
-	public Proposal(int proposalNo, String proposalProjectId, String proposalUserId, String proposalStatus,
+	public Proposal(int proposalNo, int proposalProjectId, String proposalUserId, String proposalStatus,
 			String proposalInfo, int proposalPrice, LocalDate proposalStart, LocalDate proposalEnd) {
 		super();
 		this.proposalNo = proposalNo;
@@ -33,7 +33,7 @@ public class Proposal {
 	}
 
 
-	public Proposal(String proposalProjectId, String proposalUserId, String proposalInfo, int proposalPrice,
+	public Proposal(int proposalProjectId, String proposalUserId, String proposalInfo, int proposalPrice,
 			LocalDate proposalStart, LocalDate proposalEnd) {
 		super();
 		this.proposalProjectId = proposalProjectId;
@@ -55,12 +55,12 @@ public class Proposal {
 	}
 
 
-	public String getProposalProjectId() {
+	public int getProposalProjectId() {
 		return proposalProjectId;
 	}
 
 
-	public void setProposalProjectId(String proposalProjectId) {
+	public void setProposalProjectId(int proposalProjectId) {
 		this.proposalProjectId = proposalProjectId;
 	}
 

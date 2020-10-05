@@ -29,7 +29,7 @@
 		String userId = loginUser.getUserId();
 		int payRate = (loginUser.getPayRate() == 0) ? 0 : loginUser.getPayRate();
 		String location = (loginUser.getLocation() == null) ? "입력하지 않으셨습니다." : loginUser.getLocation();
-		Date enrollDate = loginUser.getEnrollDate();
+		String enrollDate = loginUser.getEnrollDate();
 		String company = (loginUser.getCompany() == null) ? "COMPANY" : loginUser.getCompany();
 		String jobTitle = (loginUser.getJobTitle() == null) ? "입력하지 않으셨습니다." : loginUser.getJobTitle();
 		String selfIntroduction = (loginUser.getSelfIntroduction() == null) ? "" : loginUser.getSelfIntroduction();
@@ -52,28 +52,28 @@
 		String PortfolioSkill = (userPortfolio.getPortfolioSkill() == null)
 				? ""
 				: userPortfolio.getPortfolioSkill();
-		/*String Start = (sdf.format(userPortfolio.getPortfolioStart()) == null) ? ""
-				: sdf.format(userPortfolio.getPortfolioStart());
-		String End = (sdf.format(userPortfolio.getPortfolioEnd()) == null) ? ""
-				: sdf.format(userPortfolio.getPortfolioEnd());*/
+		String Start = (userPortfolio.getPortfolioStart() == null) ? ""
+				: userPortfolio.getPortfolioStart();
+		String End = (userPortfolio.getPortfolioEnd() == null) ? ""
+				: userPortfolio.getPortfolioEnd();
 
 		/*경력정보*/
 		String CompanyInfo = (userCareer.getCompanyInfo() == null) ? "회사정보" : userCareer.getCompanyInfo();
 		String CareerTitle = (userCareer.getCareerTitle() == null) ? "직급명" : userCareer.getCareerTitle();
 		String CareerInfo = (userCareer.getCareerInfo() == null) ? "" : userCareer.getCareerInfo();
-		/*String Hire = (sdf.format(userCareer.getHireDate()) == null) ? "" : sdf.format(userCareer.getHireDate());
-		String Retire = (sdf.format(userCareer.getRetireDate()) == null) ? ""
-				: sdf.format(userCareer.getRetireDate()); */
+		String Hire = (userCareer.getHireDate() == null) ? "" : userCareer.getHireDate();
+		String Retire = (userCareer.getRetireDate() == null) ? ""
+				: userCareer.getRetireDate(); 
 		String CareerStatus = userCareer.isCareerStatus();
 
 		/*교육정보*/
 		String University = (userEducation.getUniversity() == null) ? "대학명" : userEducation.getUniversity();
 		String Major = (userEducation.getMajor() == null) ? "전공명" : userEducation.getMajor();
 		String Degree = (userEducation.getDegree() == null) ? "전공명" : userEducation.getDegree();
-		/*String EduEnrollDate = (sdf.format(userEducation.getEnrollDate()) == null) ? ""
+		String EduEnrollDate = (userEducation.getEnrollDate() == null) ? ""
 				: sdf.format(userEducation.getEnrollDate());
-		String EduGrauatedDate = (sdf.format(userEducation.getGrauatedDate()) == null) ? ""
-				: sdf.format(userEducation.getGrauatedDate());*/
+		String EduGrauatedDate = (userEducation.getGrauatedDate() == null) ? ""
+				: userEducation.getGrauatedDate();
 
 		/*자격증 정보*/
 		String CetificateName = (userCertificate.getcetificateName() == null)
