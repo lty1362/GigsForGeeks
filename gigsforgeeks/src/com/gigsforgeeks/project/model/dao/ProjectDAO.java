@@ -39,34 +39,32 @@ public class ProjectDAO {
 	 * @param project       사용자로부터 전달받은 프로젝트 객체
 	 * @return              사용자가 요청한 프로젝트 객체 등록 성공/실패 여부
 	 */
-	public int insertProject(Connection connection, Project project) {
+	public int insertProject(Connection con, Project project) {
 		
 		int result = 0;
 		
-		PreparedStatement statement = null;
+		PreparedStatement stmt = null;
 		String sql = prop.getProperty("insertProject");
 		
 		try {
-			statement = connection.prepareStatement(sql);
-			statement.setString(1, project.getClientId());
-			statement.setString(2, project.getRequiredSkill());
-			statement.setString(3, project.getProjectName());
-			statement.setString(4, project.getDescription());
-			statement.setDate(5, java.sql.Date.valueOf(project.getExpectStart()));
-			statement.setDate(6, java.sql.Date.valueOf(project.getExpectEnd()));
-			statement.setString(7, project.getMeansOfPayment());
-			statement.setInt(8, project.getMinBid());
-			statement.setInt(9, project.getMaxBid());
-			statement.setDate(10, java.sql.Date.valueOf(project.getEndBid()));
-			// System.out.println(statement); // test code
-			result = statement.executeUpdate();
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, project.getClientId());
+			stmt.setString(2, project.getRequiredSkill());
+			stmt.setString(3, project.getProjectName());
+			stmt.setString(4, project.getDescription());
+			stmt.setDate(5, java.sql.Date.valueOf(project.getExpectStart()));
+			stmt.setDate(6, java.sql.Date.valueOf(project.getExpectEnd()));
+			stmt.setString(7, project.getMeansOfPayment());
+			stmt.setInt(8, project.getMinBid());
+			stmt.setInt(9, project.getMaxBid());
+			stmt.setDate(10, java.sql.Date.valueOf(project.getEndBid()));
+			result = stmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			
 		} finally {
-			close(statement);
-			
+			close(stmt);
 		}
 		
 		return result;
@@ -120,7 +118,6 @@ public class ProjectDAO {
 						                      (rs.getDate("start_date") == null ? null : rs.getDate("start_date").toLocalDate()),
 						                      (rs.getDate("end_date") == null ? null : rs.getDate("start_date").toLocalDate())));
 			}
-			// System.out.println(myProjectList.size()); // test code
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -142,7 +139,7 @@ public class ProjectDAO {
 	 * @param userId       해당 프로젝트의 고용주 / 낙찰자 아이디
 	 * @return             해당 프로젝트 아이디와 일치하는 조회된 내 Project 객체
 	 */
-	public Project selectProject(Connection con, int projectId, String userId) {
+	public Project selectMyProject(Connection con, int projectId, String userId) {
 		
 		Project myProject = null;
 		
@@ -189,6 +186,43 @@ public class ProjectDAO {
 		}
 		
 		return myProject;
+		
+	}
+	
+	/**
+	 * 4. 내 프로젝트 삭제 DAO
+	 * 
+	 * @param con        Service로부터 받은 DB Connection 객체
+	 * @param project    삭제 요청한 프로젝트 객체
+	 * @param userId     해당 프로젝트의 고용주 / 낙찰자 아이디
+	 * @return           해당 프로젝트 삭제 성공/실패 여부
+	 */
+	public int deleteMyProject(Connection con, Project project, String userId) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = "";
+		if(userId.equals(project.getClientId())) {
+			sql = prop.getProperty("deleteMyProject");
+		}else if(userId.equals(project.getWinnerId())) {
+			sql = prop.getProperty("deleteMyBid");
+		}
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, project.getProjectId());
+			pstmt.setString(2, userId);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 		
 	}
 	

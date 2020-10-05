@@ -1,9 +1,6 @@
 package com.gigsforgeeks.project.model.service;
 
-import static com.gigsforgeeks.common.JDBCTemplate.close;
-import static com.gigsforgeeks.common.JDBCTemplate.commit;
-import static com.gigsforgeeks.common.JDBCTemplate.getConnection;
-import static com.gigsforgeeks.common.JDBCTemplate.rollback;
+import static com.gigsforgeeks.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -22,15 +19,15 @@ public class ProjectService {
 	 */
 	public int insertProject(Project project) {
 		
-		Connection connection = getConnection();
-		int result = new ProjectDAO().insertProject(connection, project);
+		Connection con = getConnection();
 		
+		int result = new ProjectDAO().insertProject(con, project);
 		if(result > 0) {
-			commit(connection);
+			commit(con);
 		}else {
-			rollback(connection);
+			rollback(con);
 		}
-		close(connection);
+		close(con);
 		
 		return result;
 		
@@ -58,12 +55,35 @@ public class ProjectService {
 	 * @param userId       해당 프로젝트의 고용주 / 낙찰자 아이디
 	 * @return             해당 프로젝트 아이디와 일치하는 조회된 Project 객체
 	 */
-	public Project selectProject(int projectId, String userId) {
+	public Project selectMyProject(int projectId, String userId) {
 		
 		Connection con = getConnection();
-		Project myProject = new ProjectDAO().selectProject(con, projectId, userId);
+		Project myProject = new ProjectDAO().selectMyProject(con, projectId, userId);
 		close(con);
 		return myProject;
+		
+	}
+	
+	/**
+	 * 4. 내 프로젝트 삭제 DAO
+	 * 
+	 * @param project    삭제 요청한 프로젝트 객체
+	 * @param userId     해당 프로젝트의 고용주 / 낙찰자 아이디
+	 * @return           해당 프로젝트 삭제 성공/실패 여부
+	 */
+	public int deleteMyProject(Project project, String userId) {
+		
+		Connection con = getConnection();
+		
+		int result = new ProjectDAO().deleteMyProject(con, project, userId);
+		if(result > 0) {
+			commit(con);
+		}else {
+			rollback(con);
+		}
+		close(con);
+		
+		return result;
 		
 	}
 	
@@ -103,6 +123,7 @@ public class ProjectService {
 		close(conn);
 		
 		return list;
+		
 	}
 	
 }
