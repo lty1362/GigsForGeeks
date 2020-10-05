@@ -37,7 +37,7 @@
 	                    </div>
 	                    
 	                    <div id="search_btn1">
-	                        <a href="${contextPath}/send.ms" id="btn1" class="btn btn-outline-info" type="submit">메세지 보내기</a>
+	                        <a href="${contextPath}/send.ms" id="btn1" class="btn btn-outline-info">메세지 보내기</a>
 	                	</div>
 	                	<div id="search_btn2">
 	                    	<button type="submit" id="btn2" class="btn btn-outline-info">보관하기</button>

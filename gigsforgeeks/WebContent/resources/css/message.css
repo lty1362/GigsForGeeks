@@ -115,7 +115,7 @@ box-sizing: border-box;
 .messageNotRead>tbody>tr>td{
 	text-align:center;
 }
-.messageNotRead>tbody>tr:hover{
+.messageNotRead>tbody>tr>.title :hover{
    font-weight: 900;
    cursor:pointer;
    text-decoration:underline white;
@@ -129,7 +129,7 @@ box-sizing: border-box;
    width: 100%;
    height: 80%;
 }
-.messageKeep>tbody>tr:hover{
+.messageKeep>tbody>tr>.title :hover{
    font-weight: 900;
    cursor:pointer;
    text-decoration:underline white;
