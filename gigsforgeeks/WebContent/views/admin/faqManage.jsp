@@ -48,7 +48,7 @@
 			    <br>
 
 				<!-- 테이블 리스트 -->
-	            <table class="table table-hover, listArea">
+	            <table class="table table-hover, listArea" id="detailFaq">
 	                <thead align="center">
 	                    <tr>
 	                        <th width="50">No</th>
@@ -68,29 +68,44 @@
 	                	<% } else {%>
 	                		<% for(FAQ faq : list) { %>
 	                     <tr>
-	                      	<td><%= faq.getFaqNo() %></td>
+	                      	 <td><%= faq.getFaqNo() %></td>
 	                         <td><%= faq.getFaqCategory() %></td>
 	                         <td><%= faq.getFaqTitle() %></td>
 	                         <td><%= faq.getFaqRegister() %></td>
 	                         <td><%= faq.getFaqUpdate() %></td>
 	                         <td><%= faq.getFaqState() %></td>
 	                     </tr>
+	                     <tr>
+	                     	<td colspan="6" style="border: 2px solid grey;">
+	                     		<form action="update.faq" method="POST">
+		                     		<h3>세부 내용</h3>
+		                     		<input type="hidden" name="faqNo" value="<%= faq.getFaqNo() %>">
+		                     		<button class="btn btn-primary">등록하기</button>
+		                     		<br><hr>
+					        	    <%= faq.getFaqContent() %>
+	                     		</form>
+	                     	</td>
+	                     </tr>
 	                    	<% } %>
 	                   <% } %>
 	                </tbody>
 	            </table>
-                   
-<%--                	<script>
-	        	$(function(){
-	        		$(".listArea>tbody>tr").click(function(){
-	        			location.href = "<%=contextPath%>/detail.enq?nno=" + $(this).children().eq(0).text();
-	        			
-	        			/* var nno = $(this).children().eq(0).text();
-		    			location.href = "${contextPath}/detail.enq?nno=" + nno; */
-	        		});									
-	        	});
-	        	</script> --%>
-		
+
+				<!-- 테이블 클릭시 조회 -->
+		        <script>
+		    		$(document).ready(function () {
+			            $("#detailFaq tr:odd").addClass("odd");
+			            
+			            $("#detailFaq tr:not(.odd)").hide();	// 처음화면 숨기기 기능
+			            $("#detailFaq tr:first-child").show(); 	// 열머리글 보여주기
+			
+			            $("#detailFaq tr.odd").click(function () {
+			                $(this).next("tr").toggle(300);
+			                $(this).find(".arrow").toggleClass("up");
+			            });
+			        });
+			    </script>
+		                   
 		        <br><br>
 		
 		        <div class="pagingArea" align="center">

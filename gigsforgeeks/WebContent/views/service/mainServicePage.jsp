@@ -104,6 +104,7 @@
 		border: 3px solid rgb(23, 34, 59, 0.4);
 		border-radius: 5px;
 		box-sizing: border-box;
+		text-align: left;
 	}
 	
 </style>
@@ -145,7 +146,7 @@
 	                	<td colspan="4">조회된 리스트가 없습니다.</td>
 					</tr>
 					<% } else {%>
-					
+						
 		            	<% for(FAQ faq : list) { %>
 		                <tr>
 	                     	<td><%= faq.getFaqCategory() %></td>
@@ -160,22 +161,16 @@
 		                        
 						</tr>
 						<tr>
-							<td><br><b>상세내용 : </b></td>
+							<td><br><b>상세내용 :</b></td>
 				            <td colspan="2">
 				            	<div class="detailView">
 					            	<div class="faqDetailView">
-					            		<div class="faqDetailContent">
-						            	<% if(faq.getFaqContent() == null) { %>
-				                       		<b>아직 답장이 안왔습니다.</b>
-					   					<% } else { %>
-						                	<b><%= faq.getFaqContent() %></b>
-				                        <% } %>
-			                        	</div>
+					                	<b><%= faq.getFaqContent() %></b>
 			                        </div>
 		                        </div>
 				            </td>
 				        </tr>
-	                   	<% } %>
+		            	<% } %>
 	                    	
 					<% } %>
                 </tbody>	

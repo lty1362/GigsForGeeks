@@ -44,7 +44,7 @@ public class adminFaqListServlet extends HttpServlet {
 		int startPage;		// 현재 페이지에 하단에 보여질 페이징 바의 시작 수
 		int endPage;		// 현재 페이지에 하단에 보여질 페이징 바의 끝 수
 		
-		listCount = new FaqService().selectListCount();
+		listCount = new FaqService().adminSelectListCount();
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		pageLimit = 10;
 		boardLimit = 10;
@@ -63,7 +63,7 @@ public class adminFaqListServlet extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		// 2. 현재 요청한 페이지(currentPage)에 보여질 게시글 리스트 조회해오기
-		ArrayList<FAQ> list = new FaqService().selectList(pi);
+		ArrayList<FAQ> list = new FaqService().adminSelectList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
