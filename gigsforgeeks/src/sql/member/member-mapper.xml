@@ -309,6 +309,47 @@
 	</entry>
 	
 	
+	<entry key="selectListCount">
+		SELECT 
+			   COUNT(*) LISTCOUNT
+		  FROM MEMBER
+ 		 WHERE ADMIN='N'
+	</entry>	
 	
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT 
+		               ROWNUM RNUM
+		             , A.*
+		          FROM (
+		                SELECT 
+		                       USER_ID
+		                     , USER_EMAIL
+		                     , USER_PWD
+				             , ENROLL_DATE
+				             , OUTROLL_DATE
+				             , STATUS
+				             , MEMBERSHIP
+				             , EXCELLENT_FREELANCE
+				             , BLACKLIST
+				             , IDENTIFY_EMAIL
+				             , ADMIN
+				             , USER_TYPE
+				             , JOB_TITLE
+				             , COMPANY
+				             , SKILL
+				             , PAY_RATE
+				             , PROFILE_IMAGE
+				             , LOCATION
+				             , SELF_INTRODUCTION
+		                  FROM MEMBER
+<!-- 		                 ORDER 
+		                    BY FAQ_NO DESC -->
+		               ) A
+		       )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+		
 	
 </properties>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.message.model.service.MessageService;
 
 /**
@@ -32,26 +33,35 @@ public class MessageKeepNotReadServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		
-		String[] keeps = request.getParameterValues("keeps"); 
-		String keep = "";
-	
-		if(keeps != null) {
-			keep = String.join(",", keeps); 
-		}
-		
 		HttpSession session = request.getSession();
-		int result = new MessageService().updateKeep(keep);
 		
-		if(result > 0) {	
-			session.setAttribute("alertMsg", "보관하였습니다.");
-			response.sendRedirect(request.getContextPath()+"/notRead.ms?currentPage=1");
-		}else {
-			request.setAttribute("errorMsg", "보관처리 실패하였습니다.");
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if(loginUser != null) { // 현재 사용자가 회원인 경우
+		
+			String[] keeps = request.getParameterValues("keeps"); 
+			String keep = "";
+		
+			if(keeps != null) {
+				keep = String.join(",", keeps); 
+			}
 			
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			int result = new MessageService().updateKeep(keep);
+			
+				if(result > 0) {	
+					session.setAttribute("alertMsg", "보관하였습니다.");
+					response.sendRedirect(request.getContextPath()+"/notRead.ms?currentPage=1");
+				}else {
+					request.setAttribute("errorMsg", "보관처리 실패하였습니다.");
+					
+					RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+					view.forward(request, response);
+				}
+		}else { // 비회원인 경우
+			request.getSession().setAttribute("alertMsg", "로그인 후에 이용하세요.");
+			RequestDispatcher view = request.getRequestDispatcher("views/member/login.jsp");
 			view.forward(request, response);
-		}
+			}
 		
 	}
 

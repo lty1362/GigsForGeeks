@@ -162,7 +162,8 @@
 	</entry>
 	
 	<entry key="messageKeep">
-      UPDATE MESSAGE
+      UPDATE 
+            MESSAGE
         SET MESSAGE_KEEP='Y'
 	</entry>
 	
@@ -201,7 +202,16 @@
 	</entry>
 	
 	<entry key="messageKeepOut">
-	 UPDATE MESSAGE
-        SET MESSAGE_KEEP='N'
+	  UPDATE 
+	         MESSAGE
+         SET MESSAGE_KEEP='N'
 	</entry>
+	
+	<entry key="deleteMessage">
+	  UPDATE 
+	         MESSAGE M
+         SET M.STATUS='N'
+       WHERE MESSAGE_NO=?
+	</entry>
+	
 </properties>

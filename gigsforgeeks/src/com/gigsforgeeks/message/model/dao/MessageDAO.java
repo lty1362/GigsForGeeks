@@ -570,6 +570,35 @@ public class MessageDAO {
 		return result;
 	}
 
+	/**
+	 * 메세지 삭제
+	 * @param conn
+	 * @param delete
+	 * @return
+	 */
+	public int deleteMessage(Connection conn, int messageNo) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteMessage");
+		
+		try {
+			pstmt = conn.prepareStatement(sql); 
+			
+			pstmt.setInt(1, messageNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 	
 	
 

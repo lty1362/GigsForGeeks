@@ -44,33 +44,55 @@
         <div id="main">
         <!-- 내용변경할곳 -->
         <!-- 메세지 상세보기 -->
-		<div id="messageDetailes" align="center">
-        <br><br>
-        <table id="detailMe">
-            <tr>
-                <th id="t2" width="500"><%=m.getMessageTitle()%></th>
-                <td id="t1" colspan="3"><%=m.getMessageReceiveTime()%></td>
-            </tr>
-            <tr id="t3">
-                <th>받는 사람</th>
-                <td><%=m.getMessageReceiver()%></td>
-                <th>보낸 사람</th>
-                <td><%=m.getMessageRecepient() %></td>
-            </tr>
-            <tr>
-                
-                <td colspan="4">
-                    <p><%=m.getMessageContent()%></p>
-                </td>
-            </tr>
-        </table>
-        <div align="center">
-            <a onclick="history.back();" class="btn btn-secondary">확인</a>
-        </div>
-        </div>
-    </div>
- </div>
+			<div id="messageDetailes" align="center">
+	        	<br><br>
+	         	<div align="right">
+	        		<button type="button" class="btn btn-outline-info" id="deletems" data-toggle="modal" data-target="#message_delete">삭제하기</button>
+	        	</div>
+	         	<br>
+	         	<div class="detail">
+	         	  <table id="detailMe">
+		            <tr>
+		                <th id="t2" width="500"><%=m.getMessageTitle()%></th>
+		                <td id="t1" colspan="3"><%=m.getMessageReceiveTime()%></td>
+		            </tr>
+		            <tr id="t3">
+		                <th>받는 사람</th>
+		                <td><%=m.getMessageReceiver()%></td>
+		                <th>보낸 사람</th>
+		                <td><%=m.getMessageRecepient() %></td>
+		            </tr>
+		            <tr>
+		                <td colspan="4">
+		                    <p><%=m.getMessageContent()%></p>
+		                </td>
+		            </tr>
+	         	  </table>
+	         	</div>
+		        	<br><br>
+			        <div align="center">
+			            <a onclick="history.back();" class="btn btn-secondary">확인</a>
+			        </div>
+		         </div>
+	        </div>
+	   </div>
 
+	   	<!-- 메세지 삭제하기 -->
+		   <div class="modal" id="message_delete">
+	          <div class="modal-dialog">
+	              <div class="modal-content">
+				      <!-- Modal body -->
+				      <div class="modal-body">
+				         <button type="button" class="close" data-dismiss="modal" style="font-family:sans-serif;">&times;</button> <br>
+				         <h3>메세지 삭제</h3> <br>
+				         	<b>메세지를 정말로 삭제하시겠습니까?</b>
+				         	<br>            
+	                     	<a href="${contextPath}/delete.ms?nno=<%=m.getMessageNo()%>" class="btn btn-info">OK</a>
+		                 	<button type="button" class="btn btn-outline-info">Cancel</button>
+		                 </div>  
+				    </div>
+			    </div>
+			</div>	           
     <%-- End Of Content --%>
     
     <%-- Footer --%>

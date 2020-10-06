@@ -123,16 +123,22 @@
 			 </div>
 	      </div>
 
-	       <!-- The Modal -->
-	        <div class="modal" id="message_delete">
-	            <div class="modal-content">
-	              <div class="modal-body" align="center">
-	             	<button type="button" class="close" data-dismiss="modal" style="font-family:sans-serif;">&times;</button> <br>
-	                <p>메세지를 정말로 삭제하시겠습니까?</p>
-	                <button type="submit" id="btn4" class="btn btn-outline-info">OK</button>
-	                <button type="button" class="btn btn-outline-info" onclick="history.back();">Cancel</button>
-	              </div>
-	            </div>
-	        </div>
+	       <!-- 메세지 삭제하기 -->
+		   <div class="modal" id="message_delete">
+	          <div class="modal-dialog">
+	              <div class="modal-content">
+				      <!-- Modal body -->
+				      <div class="modal-body">
+				         <button type="button" class="close" data-dismiss="modal" style="font-family:sans-serif;">&times;</button> <br>
+				         <h3>메세지 삭제</h3> <br>
+				         <b>메세지를 정말로 삭제하시겠습니까?</b>
+				      </div>
+				      <form id="belete" action="<%= request.getContextPath()%>/delete.ms" method="post" style="margin:10px;margin-left:120px">                                            
+	                     <button type="submit" id="btn4" class="btn btn-outline-info">OK</button>
+		                 <button type="reset" class="btn btn-outline-info">Cancel</button>
+	                  </form>
+				    </div>
+			    </div>
+			</div>	                
 </body>
 </html>

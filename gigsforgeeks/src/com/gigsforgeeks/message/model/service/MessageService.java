@@ -266,5 +266,26 @@ public class MessageService {
 		return result;
 	}
 
+	/**
+	 * 메세지 삭제
+	 * @param delete
+	 * @return
+	 */
+	public int deleteMessage(int messageNo) {
+		Connection conn = getConnection();
+		
+		int result  = new MessageDAO().deleteMessage(conn, messageNo);
+		
+		if(result  > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
 
 }

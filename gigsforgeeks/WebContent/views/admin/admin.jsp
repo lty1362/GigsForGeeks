@@ -2,6 +2,20 @@
     pageEncoding="UTF-8"
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.member.model.vo.Member" %>
+<%@ page import="com.gigsforgeeks.project.model.vo.*" %>
+<%
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	String contextPath = request.getContextPath();
+	
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,61 +99,62 @@
 						
 				   	 	<!-- 회원조회 영역 -->
 				        <table class="table table-hover, listArea">
-				            <thead>
+				            <thead align="center">
 				                <tr>
 				                    <th style="width: 50px;">No</th>
 				                    <th style="width: 200px;">회원 ID</th>
 				                    <th style="width: 300px;">Email</th>
 				                    <th style="width: 200px;">가입일</th>
-				                    <th style="width: 200px;">상세보기</th>
+				                    <th style="width: 200px;">블랙리스트</th>
 				                </tr>
 				            </thead>
-				            <tbody>
-				            	<%-- <% if(list.isEmpty()){ %>
+				            <tbody align="center">
+				            	<% if(list.isEmpty()){ %>
 				            	<tr>
 				            		<td colspan="6">조회된 리스트가 없습니다.</td>
 				            	</tr>
 				            	<% }else { %>
-			            			<% for(Member m : list) { %> --%>
+				            		<%int count = 1; %>
+			            			<% for(Member m : list) { %>
 				                <tr>
-				                    <td>1</td> <!-- 회원No 컬럼없어서 자바문으로 만들어줘야할듯! -->
-				                    <td><%= loginUser.getUserId() %></td>
-				                    <td><%= loginUser.getUserEmail() %></td>
-				                    <td><%= loginUser.getEnrollDate() %></td>
-				                    <td><button type="button" class="btn btn-success">상세보기</button></td>
+				                    <td><%= count++ %></td>
+				                    <td><%= m.getUserId() %></td>
+				                    <td><%= m.getUserEmail() %></td>
+				                    <td><%= m.getEnrollDate() %></td>
+				                    <td><%= m.getBlackList() %></td>
 				                </tr>
-					               <%--  <% } %>
-				            	<% } %> --%>
+					               <% } %>
+				            	<% } %>
 				            </tbody>
 				        </table>
 				        <!-- 테이블 리스트 끝 -->
 				
-				        <br><br>
-				
-				        <div class="container" style="width: max-content;">
-				            <div class="row">
-				                <div class="col">
-				                    <ul class="pagination">
-				                        <li class="page-item"><a class="page-link" href="#">맨처음</a></li>
-				                        <li class="page-item"><a class="page-link" href="#">이전</a></li>
-				                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-				                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-				                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-				                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-				                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-				                        <li class="page-item"><a class="page-link" href="#">다음</a></li>
-				                        <li class="page-item"><a class="page-link" href="#">맨마지막</a></li>
-				                    </ul>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
-				
-				    </div>
-				
+				        <div class="pagingArea" align="center">
+							<% if(currentPage != 1){ %>
+					            <!-- 맨 처음으로 (<<) -->
+					            <button class="btn btn-info" onclick="location.href='<%=contextPath%>/MemberList.bo?currentPage=1';"> &lt;&lt; </button>
+					            <!-- 이전페이지로 (<) -->
+					            <button class="btn btn-info" onclick="location.href='<%=contextPath%>/MemberList.bo?currentPage=<%=currentPage-1%>';"> &lt; </button>
+							<% } %>
+							
+							<% for(int p=startPage; p<=endPage; p++){ %>
+								<% if(p != currentPage){ %>
+				            	<button class="btn btn-info" onclick="location.href='<%=contextPath%>/MemberList.bo?currentPage=<%=p%>';"><%= p %></button>
+				            	<% }else{ %>
+				            	<button class="btn btn-info" disabled><%= p %></button>
+				            	<% } %>
+				            <% } %>
+							
+							<% if(currentPage != maxPage){ %>
+					            <!-- 다음페이지로 (>) -->
+					            <button class="btn btn-info" onclick="location.href='<%=contextPath%>/MemberList.bo?currentPage=<%=currentPage+1%>';"> &gt; </button>
+					            <!-- 맨 끝으로 (>>) -->
+					            <button class="btn btn-info" onclick="location.href='<%=contextPath%>/MemberList.bo?currentPage=<%=maxPage%>';"> &gt;&gt; </button>
+							<% } %>
+	              	 	</div>
+					</div>
 				    <!-- 끝 -->
 				</div>
-
 			<!-- ****************	여기까지!! 	***************** -->
         	</div>
 			
