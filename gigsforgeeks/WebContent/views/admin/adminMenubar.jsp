@@ -43,13 +43,13 @@
     <!-- 좌측 상세메뉴 -->
     <div id="content_l_navi">
         <div id="navi_main">회원관리</div>
-        <div id="navi_sub" OnClick="location.href ='${contextPath}/admin'">전체회원 보기</div>
-        <div id="navi_sub" OnClick="location.href ='${contextPath}/views/admin/premiumMember.jsp'">우수 프리랜서</div>
+        <div id="navi_sub" OnClick="location.href ='${contextPath}/MemberList.bo?currentPage=1'">전체회원 보기</div>
+        <%-- <div id="navi_sub" OnClick="location.href ='${contextPath}/views/admin/premiumMember.jsp'">우수 프리랜서</div>
         <div id="navi_sub" OnClick="location.href ='${contextPath}/views/admin/membershipMember.jsp'">멤버십 회원</div>
-        <div id="navi_sub" OnClick="location.href ='${contextPath}/views/admin/reportMember.jsp'">신고 내역</div>
+        <div id="navi_sub" OnClick="location.href ='${contextPath}/views/admin/reportMember.jsp'">신고 내역</div> --%>
         <div id="navi_main">프로젝트 관리</div>
         <div id="navi_sub" OnClick="location.href ='${contextPath}/views/admin/manageProject.jsp'">프로젝트 관리</div>
-        <div id="navi_sub" OnClick="location.href ='${contextPath}/views/admin/endProject.jsp'">마감된 프로젝트</div>
+        <%-- <div id="navi_sub" OnClick="location.href ='${contextPath}/views/admin/endProject.jsp'">마감된 프로젝트</div> --%>
         <div id="navi_main">고객지원 관리</div>
         <div id="navi_sub" OnClick="location.href ='${contextPath}/views/admin/faqManage.jsp'">FAQ 관리</div>
         <div id="navi_sub" OnClick="location.href ='${contextPath}/enqlist.bo?currentPage=1'">1:1 문의</div>
