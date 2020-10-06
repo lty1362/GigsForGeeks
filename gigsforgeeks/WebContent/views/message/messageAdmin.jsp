@@ -88,7 +88,7 @@
 									                <td><%= m.getMessageReceiveTime()%></td>
 									            </tr>
 									           <% } %>
-							        	  <% } %>	  
+							        	  <% } %> 
 							        </tbody>
 							    </table>
 							 </form>
@@ -142,14 +142,13 @@
 		              <div class="modal-body" align="center">
 		             	<button type="button" class="close" data-dismiss="modal" style="font-family:sans-serif;">&times;</button> <br>
 		                <p>메세지를 정말로 삭제하시겠습니까?</p>
-		                <button id="btn4" class="btn btn-outline-info">OK</button>
+		                <button class="btn btn-outline-info">OK</button>
 		                <button class="btn btn-outline-info">Cancel</button>
 		              </div>
 		            </div>
 		          </div>
 		        </div>
-		    </div>
- 		</div>
+		
     <%-- End Of Content --%>
     
     <%-- Footer --%>

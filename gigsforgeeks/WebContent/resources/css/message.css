@@ -54,7 +54,7 @@ box-sizing: border-box;
 }
 #search_btn1 #btn1{
     margin: auto;
-    font-size: 12px;
+    font-size: 15px;
     width: 110px;
     height: 35px;
 }
@@ -81,14 +81,8 @@ box-sizing: border-box;
 }
 
 /*전체메세지*/
-#search_btn2 #btn2{
-    margin: auto;
-    font-size: 12px;
-    width: 80px;
-    height: 35px;
-}
 #keepbutton>#btn2{
-	margin-left:1400px
+	margin-left:1000px;
 }
 #search_btn2{
    border:1px solid white;
@@ -112,7 +106,6 @@ box-sizing: border-box;
    cursor:pointer;
    text-decoration:underline white;
 }
-.modal-body #btn4{margin-right: 30px;}
 
 /*읽지않은메세지*/
 .messageNotRead{
@@ -183,6 +176,12 @@ box-sizing: border-box;
 /*메세지 상세보기*/
 #t2{font-size:20px;}
 #t1{padding-left: 900px;}
+.detail{
+   border:1px solid white;
+   text-align:center;
+   width: 100%;
+   height: 70%;
+}
 #messageDetailes{
     margin:auto;
     margin-top:50px;
@@ -198,4 +197,9 @@ box-sizing: border-box;
 #detailMe td{text-align:center;}
 #t3>th, #t3>td{
     padding-top: 10px;
+}
+
+/*메세지삭제*/
+#deletems{
+	margin-right:120px
 }
