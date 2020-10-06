@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.gigsforgeeks.message.model.service.MessageService;
 
@@ -31,16 +32,28 @@ public class MessageKeepServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int messageNo = Integer.parseInt(request.getParameter("nno"));
-		System.out.println(messageNo);
+
+		request.setCharacterEncoding("utf-8");
 		
-		int result = new MessageService().updateKeep(messageNo);
+		String[] keeps = request.getParameterValues("keeps"); //["1","2"]
+		String keep = "";
+	
+		if(keeps != null) {
+			keep = String.join(",", keeps); //["1,2"]
+		}
 		
-		System.out.println(result);
+		HttpSession session = request.getSession();
+		int result = new MessageService().updateKeep(keep);
+		
+		if(result > 0) {	
+			session.setAttribute("alertMsg", "보관하였습니다.");
+			response.sendRedirect(request.getContextPath()+"/list.ms?currentPage=1");
+		}else {
+			request.setAttribute("errorMsg", "보관처리 실패하였습니다.");
 			
-			RequestDispatcher view = request.getRequestDispatcher("views/message/MessageDetailes.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
-			
+		}
 		
 	}
 

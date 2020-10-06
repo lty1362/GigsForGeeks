@@ -193,11 +193,15 @@ public class MessageService {
 		return list;
 	}
 
-	
-	public int updateKeep(int messageNo) {
+	/**
+	 * 메세지 보관하기 표시
+	 * @param messageNo
+	 * @return
+	 */
+	public int updateKeep(String keep) {
 		Connection conn = getConnection();
 		
-		int result  = new MessageDAO().updateKeep(conn, messageNo);
+		int result  = new MessageDAO().updateKeep(conn, keep);
 		
 		if(result  > 0) {
 			commit(conn);
@@ -210,8 +214,36 @@ public class MessageService {
 		return result;
 	}
 
+	/**
+	 * 보관메세지 갯수
+	 * @param userId
+	 * @return
+	 */
+	public int selectKeepCount(String userId) {
+		Connection conn = getConnection();
+		
+		int listCount = new MessageDAO().selectKeepCount(conn,userId);
+		
+		close(conn);
+		
+		return listCount;
+	}
+
+	/**
+	 * 메세지보관 조회
+	 * @param pi
+	 * @param userId
+	 * @return
+	 */
+	public ArrayList<Message> selectMessageKeep(PageInfo pi, String userId) {
+		Connection conn = getConnection();
+		
+		ArrayList<Message> list = new MessageDAO().selectMessageKeep(conn,pi,userId);
+		
+		close(conn);
+		
+		return list;
+	}
 
 
-
-	
 }
