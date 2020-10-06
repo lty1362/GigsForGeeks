@@ -45,18 +45,18 @@
 
 				<!-- 테이블 리스트 -->
 	            <table class="table table-hover, listArea">
-	                <thead>
+	                <thead align="center">
 	                    <tr>
 	                        <th width="50">No</th>
-	                        <th width="250">카테고리</th>
-	                        <th width="100">제목</th>
+	                        <th width="100">카테고리</th>
+	                        <th width="200">제목</th>
 	                        <th width="100">최초 등록일</th>
 	                        <th width="100">업데이트 날짜</th>
 	                        <th width="100">등록 상태</th>
 	                    </tr>
 	                </thead>
 	
-	                <tbody>
+	                <tbody align="center">
 	                	<% if(list.isEmpty()) { %>
 	                    <tr>
 	                        <td colspan="5">조회된 리스트가 없습니다.</td>

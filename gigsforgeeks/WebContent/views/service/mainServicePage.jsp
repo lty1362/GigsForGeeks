@@ -134,8 +134,8 @@
 		            <tr>
 		                <th width="100">문의 유형</th>
 		                <th width="600">문의 제목</th>
-		                <!-- <th width="100">조회수</th> -->
-		                <th width="100">등록일</th>
+		                <th width="150">마지막 수정일</th> 
+		                <th width="150">최초 등록일</th>
 		            </tr>
 				</thead>
 
@@ -150,7 +150,7 @@
 		                <tr>
 	                     	<td><%= faq.getFaqCategory() %></td>
 	                        <td><%= faq.getFaqTitle() %></td>
-	                        <%-- <td><%= faq.getFaqCount() %></td> --%>
+	                        <td><%= faq.getFaqUpdate() %></td>
 		                        
 							<% if(faq.getFaqRegister() == null) { %>
 	                       		<td>-</td>
@@ -160,7 +160,8 @@
 		                        
 						</tr>
 						<tr>
-				            <td colspan="3">
+							<td><br><b>상세내용 : </b></td>
+				            <td colspan="2">
 				            	<div class="detailView">
 					            	<div class="faqDetailView">
 					            		<div class="faqDetailContent">
