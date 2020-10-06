@@ -102,30 +102,30 @@
 
 			<div class="wrap" align="center">
 
-				<div id="profile" name="profile">
-					<div id="profilePhoto" name="profilePhoto">
+				<div id="profile" >
+					<div id="profilePhoto" >
 						<img alt="" src="${contextPath}/resources/images/avatar.png"
 							style="width: 100%; height: 100%;">
 					</div>
-					<div id="location" name="location">
+					<div id="location" >
 						희망시급 : <%=payRate%>원 <br>
 						거주지역 : <%=location%>
 						<div id="divClock"></div>
 						가입일 : 20<%=enrollDate%>
 					</div>
-					<div id="userName" name="userName" align="left">
+					<div id="userName"  align="left">
 						<br><br>
 						<span style="font-size: 16px; font-weight: bold;"><%=userId%>@
 						<%=company%>
 						<br><br>
 						<%=jobTitle%>
 						</span></div>
-					<div id="workship" name="workship">워크쉽(리뷰기반)</div>
-					<div id="userContent" name="userContent"><%=selfIntroduction%></div>
-					<div id="hirePositionButton" name="hireButton">
+					<div id="workship" >워크쉽(리뷰기반)</div>
+					<div id="userContent" ><%=selfIntroduction%></div>
+					<div id="hirePositionButton" >
 						<input type="button" value="정보 수정" id="profileButton">
 					</div>
-					<script language="javascript">
+					<script >
 						function showClock() {
 							var currentDate = new Date();
 							var divClock = document.getElementById("divClock");
@@ -153,20 +153,20 @@
 
 
 
-				<div id="portpolyo" name="portpolyo">
+				<div id="portpolyo" >
 					<h1 align="left">포트폴리오 항목</h1>
-					<span id="portpolioTitle" name="portpolioTitle"><h2><%=PortfolioTilte%></h2></span>
-					<span id="portpolioLink" name="portpolioLink"><a><%=PortfolioLink%></a></span>
+					<h2><%=PortfolioTilte%></h2>
+					<span id="portpolioLink" ><a><%=PortfolioLink%></a></span>
 					<br> <br>
-					<div id="portpolioContent" name="portpolioContent"><%=PortfolioContent%></div>
-					<br> <span id="portpolioTime" name="portpolioTime">
+					<div id="portpolioContent" ><%=PortfolioContent%></div>
+					<br> <span id="portpolioTime" >
 						시작시간 : <%=Start%> &nbsp; 완료시간 : <%=End%>
 
-					</span> <br> <span id="portpolioSkill" name="portpolioSkill">사용
+					</span> <br> <span id="portpolioSkill" >사용
 						기술 : <%=PortfolioSkill%></span>
 
 
-					<div id="portpolioModifiy" name="portpolioModifiy">
+					<div id="portpolioModifiy" >
 						<input type="button" value="정보수정" id="portfolioButton"></input>
 					</div>
 
@@ -180,32 +180,32 @@
 				</script>
 
 
-				<div id="review" name="review">
+				<div id="review" >
 					<h1 align="left">리뷰 항목</h1>
-					<span id="reviewTitle" name="reviewTitle"><h2>리뷰 제목(기입)</h2></span>
-					<span id="reviewScore" name="reviewScore">리뷰 점수(기입)</span><br>
-					<span id="reviewLink" name="reviewLink"><a>리뷰 하이퍼링크(기입)</a></span>
+					<h2>리뷰 제목(기입)</h2>
+					<span id="reviewScore" >리뷰 점수(기입)</span><br>
+					<span id="reviewLink" ><a>리뷰 하이퍼링크(기입)</a></span>
 					<br> <br>
-					<div id="reviewContent" name="reviewContent">리뷰 내용(기입)</div>
+					<div id="reviewContent" >리뷰 내용(기입)</div>
 
-					<span id="reviewTime" name="Time">작업시간(기입)</span>
+					<span id="reviewTime">작업시간(기입)</span>
 
-					<div id="reviewModifiy" name="reviewModifiy">
+					<div id="reviewModifiy" >
 
-						<span id="reviewReward" name="reviewReward">리뷰한 프로젝트의
+						<span id="reviewReward" >리뷰한 프로젝트의
 							보상액(기입)</span>
 					</div>
 				</div>
 
-				<div id="career" name="career">
+				<div id="career" >
 					<h1 align="left">경력 항목</h1>
-					<span id="careerTitle" name="careerTitle"><h2><%=CompanyInfo%></h2></span>
+					<h2><%=CompanyInfo%></h2>
 
-					<div id="careerContent" name="careerContent"><%=CareerTitle%></div>
-					<br> <span id="careerTime" name="careerTime">입사일 : <%= Hire %>
+					<div id="careerContent" ><%=CareerTitle%></div>
+					<br> <span id="careerTime" >입사일 : <%= Hire %>
 						&nbsp; / &nbsp;퇴사일 : <%= Retire %> &nbsp; </span>
 
-					<div id="careerModifiy" name="careerModifiy">
+					<div id="careerModifiy" >
 						<input type="button" id="careerButton" value="정보 수정">
 					</div>
 
@@ -219,15 +219,15 @@
 
 
 
-				<div id="education" name="education">
+				<div id="education" >
 					<h1 align="left">교육 항목</h1>
-					<span id="educationTitle" name="educationTitle"><h2><%=University%></h2></span>
+					<h2><%=University%></h2>
 
-					<div id="educationContent" name="educationContent"><%=Major%>/<%=Degree%></div>
-					<br> <span id="educationTime" name="educationTime">입학년도&nbsp; : <%= EduEnrollDate %> 
+					<div id="educationContent" ><%=Major%>/<%=Degree%></div>
+					<br> <span id="educationTime">입학년도&nbsp; : <%= EduEnrollDate %> 
 						/&nbsp; 졸업년도  : <%= EduGrauatedDate %></span>
 
-					<div id="educationModifiy" name="educationModifiy">
+					<div id="educationModifiy" >
 						<input type="button" id="educationButton" value="정보 수정">
 					</div>
 
@@ -239,18 +239,18 @@
 					});
 				</script>
 
-				<div id="cartification" name="cartification">
+				<div id="cartification" >
 					<h1 align="left">자격증 항목</h1>
-					<span id="cartificationTitle" name="cartificationTitle"><h2>
+					<span id="cartificationTitle" ><h2>
 							<%=CetificateName%></h2></span>
 
-					<div id="cartificationContent" name="cartificationContent">
+					<div id="cartificationContent" >
 						<%=CetificateAuth%></div>
-					<br> <span id="cartificationTime" name="cartificationTime">
+					<br> <span id="cartificationTime" >
 						<%=CetificateDate%>
 					</span>
 
-					<div id="cartificationModifiy" name="cartificationModifiy">
+					<div id="cartificationModifiy" >
 						<input type="button" id="certificationButton" value="정보 수정">
 					</div>
 				</div>
@@ -263,24 +263,21 @@
 							});
 				</script>
 
-				<div id="publication" name="publication">
+				<div id="publication" >
 					<h1 align="left">출판물 항목</h1>
-					<span id="publicationTitle" name="publicationTitle">
-						<h2>
-							<%=BookName%>
-						</h2>
-					</span>
+					<h2><%=BookName%></h2>
+					
 
-					<div id="publicationContent" name="publicationContent">
+					<div id="publicationContent" >
 						<%=BookInfo%>
 					</div>
-					<span id="publisher" name="publisher"> <%--Publisher--%></span> <br>
-					<br> <span id="publicationTime" name="publicationTime">
+					<span id="publisher"> <%--Publisher--%></span> <br>
+					<br> <span id="publicationTime" >
 						<%=BookDate%></span>
 
 
 
-					<div id="publicationModifiy" name="cartificationModifiy">
+					<div id="publicationModifiy" >
 						<input type="button" id="publicationButton" value="정보수정">
 					</div>
 				</div>

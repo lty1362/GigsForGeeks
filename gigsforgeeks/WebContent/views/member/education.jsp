@@ -42,23 +42,23 @@
 <body onload="showClock()">
 	<form action="updateEducation.up" method="POST">
 		<h1 align="left">교육 항목</h1>
-		<span id="educationTitle" name="educationTitle">대학 이름 : <input type="text" name="University"></span>
+		<span id="educationTitle">대학 이름 : <input type="text" name="University"></span>
 		<br><br>
-		<div id="educationContent" name="educationContent">
+		<div id="educationContent">
 			전공명 : <input type="text" name="Major">
 			<br><br>
 			학위 : <input type="text" name="Degree">
 		</div>
 		<br>
-		<span id="educationTime" name="educationTime">
+		<span id="educationTime">
 			입학 : <input type="date" name="EnrollDate"> 
 			졸업 : <input type="date" name="GrauateDate"></span>
 			<br><br>
 			졸업여부 : <input type="checkbox">
-		<div id="educationModifiy" name="educationModifiy"><button type="submit">저장</button><button type="reset">리셋</button></div>
+		<div id="educationModifiy"><button type="submit">저장</button><button type="reset">리셋</button></div>
 
-	</div>
-
+	
+	</form>
 
 
 </body>

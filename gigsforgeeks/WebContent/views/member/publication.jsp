@@ -42,15 +42,15 @@
 <body onload="showClock()">
 	<form action="updatePublication.up" method="POST">
 		<h1 align="left">출판물 항목</h1>
-		<span id="publicationTitle" name="publicationTitle">출판물 제목 : <input type="text" name="BookTitle"></span>
+		<span id="publicationTitle" >출판물 제목 : <input type="text" name="BookTitle"></span>
 		<br><br>
-		<div id="publicationContent" name="publicationContent">출판물 내용 : <textarea cols="50" rows="4" name="BookContent"></textarea></div>
+		<div id="publicationContent" >출판물 내용 : <textarea cols="50" rows="4" name="BookContent"></textarea></div>
 		
-		<span id="publisher" name="publisher">출판사 : <input type="text" name="Publisher"></span>
+		<span id="publisher" >출판사 : <input type="text" name="Publisher"></span>
 		
-		<span id="publicationTime" name="publicationTime">출판날짜 : <input type="month" name="BookDate"></span>
+		<span id="publicationTime" >출판날짜 : <input type="month" name="BookDate"></span>
 
-		<div id="publicationModifiy" name="cartificationModifiy"><button type="submit">수정</button><button type="reset">리셋</button></div>
+		<div id="publicationModifiy" ><button type="submit">수정</button><button type="reset">리셋</button></div>
 	</form>
 
 

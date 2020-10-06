@@ -45,10 +45,10 @@
 
 			
 				<h1 align="left">경력 항목</h1>
-				<span id="careerTitle" name="careerTitle">기업 이름 : <input type="text" name="CareerTitle"></span>
+				<span id="careerTitle">기업 이름 : <input type="text" name="CareerTitle"></span>
 				<br>
 	
-				<div id="careerContent" name="careerContent">회사 설명 : <textarea cols="50" rows="5" name="CareerContent"></textarea></div>
+				<div id="careerContent">회사 설명 : <textarea cols="50" rows="5" name="CareerContent"></textarea></div>
 				<br>
 				<fieldset id="careerTime" name="careerTime" style="border: none;">
 					입사일 : <input type="date" name="CareerHire">
@@ -58,8 +58,8 @@
 				
 				
 	
-				<div id="careerModifiy" name="careerModifiy"><button type="submit">저장</button><button type="reset">리셋</button></div>
-	
+				<div id="careerModifiy" ><button type="submit">저장</button><button type="reset">리셋</button></div>
+				</div>
 		
 	</form>
 

@@ -45,13 +45,13 @@
 
 	
 		<h1 align="left">자격증 항목</h1>
-		<span id="cartificationTitle" name="cartificationTitle">자격증 이름 : <input type="text" name="CertifiTitle"></h2></span>
+		<span id="cartificationTitle" >자격증 이름 : <input type="text" name="CertifiTitle"></span>
 		<br><br><br>
-		<div id="cartificationContent" name="cartificationContent">주최기관 : <input type="text" name="CertifiAuth"></div>
+		<div id="cartificationContent">주최기관 : <input type="text" name="CertifiAuth"></div>
 		<br><br>
-		<span id="cartificationTime" name="cartificationTime">취득년도: <input type="month" name="CertifiDate"></span>
+		<span id="cartificationTime">취득년도: <input type="month" name="CertifiDate"></span>
 
-		<div id="cartificationModifiy" name="cartificationModifiy"><button type="submit">저장</button><button type="reset">리셋</button></div>
+		<div id="cartificationModifiy"><button type="submit">저장</button><button type="reset">리셋</button></div>
 	</form>
 
 

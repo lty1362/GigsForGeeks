@@ -44,11 +44,41 @@
 		<div class="wrap" align="center">
 
 			
-				<div id="profilePhoto" name="profilePhoto">
+				<div id="profilePhoto" >
 					<img src="${contextPath}/resources/images/avatar.png"
-						style="width: 100%; height: 100%;">
+						style="width: 100%; height: 100%;" id="profileDefault">
 				</div>
-				<div id="location" name="location">
+				
+				<div id="profileWrap">
+				<input type="file" name="profileimg" id="profileimg" onchange="loading(this);">
+				</div>
+				<script>
+					$(function(){
+						$("#profileWrap").hide();
+
+						$("#profileDefault").click(function(){
+							$("#profileimg").click();
+						});
+
+					});
+
+					function loadImg(inputfile){
+						if(inputfile.files.length == 1){
+							var reader = new FileReader();
+
+							reader.readAsDataURL(inputfile.files[0]);
+
+							reader.onload = function(e){
+								$("#profileDefault").attr("src", e.target.result);
+							}
+						}else{
+							$("#profileDefault").attr("src","${contextPath}/resources/images/avatar.png")
+					}
+					};
+				</script>
+				
+				
+				<div id="location" >
 					희망 시급 : <input type="range" min="0" max="20000" step="100" name="pay-rate" 
 					oninput="document.getElementById('value1').innerHTML=this.value;"> <span id="value1"></span>원
 
@@ -66,18 +96,18 @@
 				</div>
 
 
-				<div id="userName" name="userName">
+				<div id="userName" >
 					<%= loginUser.getUserId() %><br> /@<input type="text" placeholder="회사명"
 						id="userCompany" name="userCompany"><br> /<input
 						type="text" placeholder="직급명" id="jobTitle" name="jobTitle">
 				</div>
-				<div id="workship" name="workship">워크쉽(리뷰기반)</div>
-				<div id="userContent" name="userContent">
+				<div id="workship" >워크쉽(리뷰기반)</div>
+				<div id="userContent" >
 					<textarea name="self-Introduction" id="self-Introduction" cols="30"
 						rows="7" style="resize: none;" placeholder="간략한 자기 소개를 써주세요">
                             </textarea>
 				</div>
-				<div id="hirePositionButton" name="hireButton">
+				<div id="hirePositionButton">
 					<button type="submit">수정</button><button type="reset">리셋</button>
 				</div>
 

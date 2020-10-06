@@ -40,19 +40,19 @@
 
 			
 				<h1 align="left">포트폴리오 항목</h1>
-				<span id="portpolyoTitle" name="portpolyoTitle"> 포트폴리오 제목 : <input
+				<span id="portpolyoTitle" > 포트폴리오 제목 : <input
 					type="text" name="PortTitle">
-				</span> <br> <br> <span id="portpolyoLink" name="portpolyoLink">
-					포트폴리오 링크 : <input type="link" placeholder="https://"
+				</span> <br> <br> <span id="portpolyoLink" >
+					포트폴리오 링크 : <input type="text" placeholder="https://"
 					name="PortLink">
 				</span> <br>
 				
-				<div id="portpolyoContent" name="portpolyoContent">
+				<div id="portpolyoContent" >
 					포트폴리오 내용 :
 					<textarea cols="40" rows="3"></textarea>
 				</div>
-				<span id="portpolyoTime" name="portpolyoTime"> 포트폴리오 제작날짜 :
-					시작 <input type="date" name="PortStart""> 종료:<input
+				<span id="portpolyoTime" > 포트폴리오 제작날짜 :
+					시작 <input type="date" name="PortStart"> 종료:<input
 					type="date" name="PortEnd">
 				</span>
 
@@ -70,7 +70,7 @@
 				</fieldset>
 
 
-				<div id="portpolyoModifiy" name="portpolyoModifiy">
+				<div id="portpolyoModifiy" >
 					<button type="submit">저장</button><button type="reset">리셋</button>
 				</div>
 
