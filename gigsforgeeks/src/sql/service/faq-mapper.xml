@@ -34,18 +34,18 @@
 	</entry>
 	
 	
-	<entry key="insertEnquiry">
+	<entry key="insertFaq">
 		INSERT
-	    INTO ENQUIRY
-	    (
-	        ENQ_NO
-	      , USER_ID
-	      , ENQUIRY_TYPE
-	      , ENQUIRY_TITLE
-	      , ENQUIRY_CONTENT
-	      , ENQUIRY_DATE
-	      , ANSWER_STATE
-	      , ANSWER_DATE
+	    INTO FAQ
+	    (	    
+            FAQ_NO
+	      , FAQ_CATEGORY
+	      , FAQ_TITLE
+	      , FAQ_CONTENT
+	      , FAQ_COUNT
+	      , FAQ_STATE
+	      , FAQ_REGISTER
+	      , FAQ_UPDATE
 	    )
 	    VALUES
 	    (
@@ -53,12 +53,15 @@
 	      , ?
 	      , ?
 	      , ?
-	      , ?
-	      , SYSDATE
+	      , 0
 	      , 'N'
+	      , SYSDATE
 	      , null
-	    )
+          )
 	</entry>
+
+
+
 
 		<entry key="selectEnquiry">
 		SELECT 

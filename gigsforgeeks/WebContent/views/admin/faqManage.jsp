@@ -8,6 +8,7 @@
 <%
 	ArrayList<FAQ> list = (ArrayList<FAQ>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	FAQ f = (FAQ)request.getAttribute("FAQ");
 	String contextPath = request.getContextPath();
 	
 	int listCount = pi.getListCount();
@@ -39,8 +40,11 @@
         	<div id="content_r">
 				<div id="content_r_center_h" style="padding: 30px; font-size: 40px;">
 			        <b>FAQ 관리</b>
+			        
+			        <br>
+			        <button class="btn btn-success" style="float: right;" onclick="location.href='<%=contextPath%>/faqInsert';">FAQ추가</button>
 			    </div>
-			    
+
 			    <br>
 
 				<!-- 테이블 리스트 -->

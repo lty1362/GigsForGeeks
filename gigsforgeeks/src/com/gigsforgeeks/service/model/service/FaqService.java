@@ -1,7 +1,9 @@
 package com.gigsforgeeks.service.model.service;
 
 import static com.gigsforgeeks.common.JDBCTemplate.close;
+import static com.gigsforgeeks.common.JDBCTemplate.commit;
 import static com.gigsforgeeks.common.JDBCTemplate.getConnection;
+import static com.gigsforgeeks.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -44,6 +46,27 @@ public class FaqService {
 		return list;		
 	}
 	
-	
+	/**
+	 * FAQ 추가하기
+	 * @param enq
+	 * @return
+	 */
+	public int insertFaq(FAQ enq) {
+		
+		Connection conn = getConnection();
+		
+		int result = new FaqDao().insertFaq(conn, enq);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+		
+	}
 	
 }

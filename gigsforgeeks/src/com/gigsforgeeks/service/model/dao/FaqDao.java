@@ -107,4 +107,38 @@ public class FaqDao {
 		
 	}
 	
+	
+	/**
+	 * 회원 FAQ등록
+	 * @param conn
+	 * @param enq
+	 * @return
+	 */
+	public int insertFaq(Connection conn, FAQ enq) {
+
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertFaq");
+		
+		try {
+			pstmt = conn.prepareStatement(sql); // 미완성된 sql문
+			
+			pstmt.setString(1, enq.getFaqCategory());
+			pstmt.setString(2, enq.getFaqTitle());
+			pstmt.setString(3, enq.getFaqContent());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+	
 }
