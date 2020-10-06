@@ -118,25 +118,14 @@
 	        <h1 align="center">무엇을 도와드릴까요?</h1>
 	        <br>
 	
-	        <div id="question">
+<%--미구현 	        <div id="question">
 		        <form action="${contextPath}/notYet.enq" method="POST">
 		            <input id="question1" type="text" placeholder="무엇을 도와드릴까요?">
 		            <button id="question2">검색</button>
 	            </form>
-	        </div>
+	        </div> --%>
 	
 	        <hr>
-        
-	        <!-- 상단 메뉴바 -->
-	        <div id="faqCategory" role="group">
-		        <ul id="faqCategory">
-		            <li><a href="">일반</a></li>
-		            <li><a href="">프로젝트</a></li>
-		            <li><a href="">지불관련</a></li>
-		            <li><a href="">멤버십</a></li>
-		            <li><a href="">프로필</a></li>
-		        </ul>
-	        </div>
         
 	        <br><br>
 	
@@ -190,7 +179,6 @@
 					<% } %>
                 </tbody>	
 	        </table>
-        
         
         
 	   	    <!-- 페이징 -->
@@ -249,12 +237,36 @@
 	    </script>
 	    
 	    
-	    <!-- 테이블 ajaxPage -->
+	    <!-- --------------------------------	test	------------------------------------ -->
+	    
+   <!--      Ajax Test
+        <div id="btnfaqCategory" role="group">
+			<button onclick="faqCategory();">일반</button>  
+			
+			<table id="faqCategory" border="1" style="text-align:center">
+				<thead>
+					<tr>
+						<th>문의유형</th>
+						<th>문의제목</th>
+						<th>등록일</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>      
+				
+        </div>
+       
+       
+       
+       
+      	테이블 ajaxPage
 	    <script>
 	    	function faqCategory(){
 	    		
 	    		$.ajax({
-	    				url:"",
+	    				url:"faqCategory.do",
 	    				type:"get",
 	    				success:function(list){
 	    					
@@ -268,13 +280,12 @@
 	    									"<td>" + list[i].getFaqCategory() + "</td>" +
 	    									"<td>" + list[i].getFaqTitle() + "</td>" +
 	    									"<td>" + list[i].getFaqRegister() + "</td>" +
-	    									"<td>" + list[i].getFaqCategory() + "</td>" +
 	    								  "</tr>"; 
 	    					}
 	    					
 	    					console.log(result);
 	    					
-	    					$("#faqCategory tbody").html(result);
+	    					$("#btnfaqCategory tbody").html(result);
 	    		
 	    				}, error:function(){
 	    					console.log("ajax 통신 실패");
@@ -282,7 +293,83 @@
 	    		
 	    		});
 	    	}
-	    </script>
+	    </script>	 
+	    
+	    -->
+	    
+	    
+	       <%--  <!-- 상단 메뉴바 -->
+	        <div id="faqCategory" role="group">
+		        <ul id="faqCategory">
+		            <li><a href="">일반</a></li>
+		            <li><a href="">프로젝트</a></li>
+		            <li><a href="">지불관련</a></li>
+		            <li><a href="">멤버십</a></li>
+		            <li><a href="">프로필</a></li>
+		        </ul>
+	        </div>
+        
+	        <br><br>
+	
+	        <table class="table table-hover, listArea" id="faqList">
+	        	<thead>
+		            <tr>
+		                <th width="100">문의 유형</th>
+		                <th width="600">문의 제목</th>
+		                <!-- <th width="100">조회수</th> -->
+		                <th width="100">등록일</th>
+		            </tr>
+				</thead>
+
+       		 	<tbody>
+		            <% if(list.isEmpty()) { %>
+	                <tr>
+	                	<td colspan="4">조회된 리스트가 없습니다.</td>
+					</tr>
+					<% } else {%>
+					
+		            	<% for(FAQ faq : list) { %>
+		                <tr>
+	                     	<td><%= faq.getFaqCategory() %></td>
+	                        <td><%= faq.getFaqTitle() %></td>
+	                        <td><%= faq.getFaqCount() %></td>
+		                        
+							<% if(faq.getFaqRegister() == null) { %>
+	                       		<td>-</td>
+		   					<% } else { %>
+	                       		<td><%= faq.getFaqRegister() %></td>
+	                        <% } %>
+		                        
+						</tr>
+						<tr>
+				            <td colspan="3">
+				            	<div class="detailView">
+					            	<div class="faqDetailView">
+					            		<div class="faqDetailContent">
+						            	<% if(faq.getFaqContent() == null) { %>
+				                       		<b>아직 답장이 안왔습니다.</b>
+					   					<% } else { %>
+						                	<b><%= faq.getFaqContent() %></b>
+				                        <% } %>
+			                        	</div>
+			                        </div>
+		                        </div>
+				            </td>
+				        </tr>
+	                   	<% } %>
+	                    	
+					<% } %>
+                </tbody>	
+	        </table> --%>	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    <!-- --------------------------------	test	------------------------------------ -->
+	    
 	    
     </main>	
     <%-- End Of Content --%>

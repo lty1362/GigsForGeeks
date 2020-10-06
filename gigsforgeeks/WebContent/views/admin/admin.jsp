@@ -129,6 +129,8 @@
 				        </table>
 				        <!-- 테이블 리스트 끝 -->
 				
+						<br><br>
+						
 				        <div class="pagingArea" align="center">
 							<% if(currentPage != 1){ %>
 					            <!-- 맨 처음으로 (<<) -->
