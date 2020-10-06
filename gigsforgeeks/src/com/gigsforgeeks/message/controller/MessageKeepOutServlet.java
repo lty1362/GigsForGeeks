@@ -12,18 +12,17 @@ import javax.servlet.http.HttpSession;
 
 import com.gigsforgeeks.message.model.service.MessageService;
 
-
 /**
- * Servlet implementation class MessageKeepServlet
+ * Servlet implementation class MessageKeepOutServlet
  */
-@WebServlet("/keep.ms")
-public class MessageKeepServlet extends HttpServlet {
+@WebServlet("/keepOut.ms")
+public class MessageKeepOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MessageKeepServlet() {
+    public MessageKeepOutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,29 +31,27 @@ public class MessageKeepServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		
-		String[] keeps = request.getParameterValues("keeps"); //["1","2"]
+		String[] keeps = request.getParameterValues("keeps");
 		String keep = "";
 	
 		if(keeps != null) {
-			keep = String.join(",", keeps); //["1,2"]
+			keep = String.join(",", keeps);
 		}
 		
-		int result = new MessageService().updateKeep(keep);
+		int result = new MessageService().updateKeepOut(keep);
 		
 		if(result > 0) {	
-			session.setAttribute("alertMsg", "보관하였습니다.");
-			response.sendRedirect(request.getContextPath()+"/list.ms?currentPage=1");
+			session.setAttribute("alertMsg", "보관하기 해제하였습니다.");
+			response.sendRedirect(request.getContextPath()+"/keepList.ms?currentPage=1");
 		}else {
-			request.setAttribute("errorMsg", "보관처리 실패하였습니다.");
+			request.setAttribute("errorMsg", "보관하기 해제를 실패하였습니다.");
 			
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
 		}
-		
 	}
 
 	/**

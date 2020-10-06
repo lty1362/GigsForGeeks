@@ -544,6 +544,32 @@ public class MessageDAO {
 		return list;
 	}
 
+	/**
+	 * 메세지 보관 해제
+	 * @param conn
+	 * @param keep
+	 * @return
+	 */
+	public int updateKeepOut(Connection conn, String keep) {
+		int result = 0;
+		
+		Statement stmt = null;
+	    String sql = prop.getProperty("messageKeepOut");
+	    sql += "WHERE MESSAGE_NO IN (" + keep + ")";
+	      
+	      try {
+	         stmt = conn.createStatement();
+	         result = stmt.executeUpdate(sql);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(stmt);
+		}
+		
+		return result;
+	}
+
 	
 	
 

@@ -245,5 +245,26 @@ public class MessageService {
 		return list;
 	}
 
+	/**
+	 * 메세지보관 해제
+	 * @param keep
+	 * @return
+	 */
+	public int updateKeepOut(String keep) {
+		Connection conn = getConnection();
+		
+		int result  = new MessageDAO().updateKeepOut(conn, keep);
+		
+		if(result  > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
 
 }
