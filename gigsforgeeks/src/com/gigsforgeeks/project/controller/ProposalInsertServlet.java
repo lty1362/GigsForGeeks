@@ -58,7 +58,7 @@ public class ProposalInsertServlet extends HttpServlet {
 		if(result > 0) { // 입찰견적서 전달성공
 			
 			request.getSession().setAttribute("alertMsg", "입찰견적서가 성공적으로 보내졌습니다.");
-			response.sendRedirect(request.getContextPath() + "/detailSelect.do?projectId =" + proposalProjectId);
+			response.sendRedirect(request.getContextPath() + "/detailSelect.do?projectId=" + proposalProjectId);
 		
 		}else { // 전달실패
 			

@@ -61,6 +61,9 @@
    
                    <!-- 프로젝트 입찰견적서 -->
                    <div id="proposal">
+                   <% if(loginUser == null){ %>
+                   <h5>입찰 견적서 제안하기를 원하시면<a href="${contextPath}/views/member/login.jsp">&nbsp;로그인&nbsp;</a>후에 이용가능한 서비스입니다.</h5>
+                   <% }else {  %>
                        <form action="${contextPath}/proposal.do" method="POST">
                            <h3>이 프로젝트에 대한 입찰견적서</h3>
                            <hr>
@@ -69,7 +72,7 @@
    
                            <h4>입찰 관련 세부사항</h4>
                            <label>입찰 제안가 : </label>
-                           <input type="hidden" name="projectId" value="${contextPath}/proposal.do?projectId=<%= project.getProjectId() %>">
+                           <input type="hidden" name="projectId" value="<%= project.getProjectId() %>">
                            <input type="number" name="proposalPrice" placeholder="￦200,000이상 입력해주세요." min="200000" style="width:250px" required> 
                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                            <label>이 프로젝트의 작업 예상기간 : </label>
@@ -79,13 +82,14 @@
    
                            <br><br><br>
                            <h4>고객님의 입찰 견적서에 대한 설명</h4>
-                           <textarea name="proposalInfo" id="proposalInfo" cols="125" rows="10" style="resize:none;"></textarea>
+                           <textarea name="proposalInfo" id="proposalInfo" cols="125" rows="10" style="resize:none;" required></textarea>
 
                            <br><br><br><br>
                            <button type="submit" id="submitBtn" class="btn btn-outline-info">프로젝트 내용 제출하기</button>
                            <br><br>
                        </form>
                    </div>
+                   <% } %>
                </div>
    
    			   <!-- 고용주 소개 -->

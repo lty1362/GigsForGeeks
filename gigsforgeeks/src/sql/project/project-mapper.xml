@@ -249,7 +249,7 @@
 	</entry>
 	
 	
-	<entry key="excellnetSelectList">
+	<entry key="excellentSelectList">
 		SELECT
 		        USER_ID
 		      , EXCELLENT_FREELANCE
@@ -263,6 +263,6 @@
 		    AND ADMIN = 'N'
 		    AND EXCELLENT_FREELANCE = 'Y'
 		  ORDER 
-		     BY USER_ID DESC; 
+		     BY USER_ID DESC
 	</entry>
 </properties>

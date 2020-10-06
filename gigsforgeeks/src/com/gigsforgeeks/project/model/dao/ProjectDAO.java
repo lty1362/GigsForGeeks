@@ -376,7 +376,7 @@ public class ProjectDAO {
 		Statement stmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("excellnetSelectList");
+		String sql = prop.getProperty("excellentSelectList");
 		
 		try {
 			stmt = conn.createStatement();

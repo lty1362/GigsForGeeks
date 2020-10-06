@@ -105,7 +105,7 @@
 	          		<% }else { %>
 	          		<!-- 리스트가 비어있지 않을 경우 -->
 	                <% for(Member m : list) { %>
-	                	<div onclick="location.href='${contextPath}/views/member/myAccount.jsp'" id="searchFreelancerList">
+	                	<div onclick="location.href='${contextPath}/views/member/userAccount.jsp'" id="searchFreelancerList">
 	                    <label><img alt="" src="${contextPath}/resources/images/avatar.png" style="width: 50px; height: 50px;"><%= m.getProfileImage() %></label>
 	                    <label id="freelancerTitle"><%= m.getUserId() %></label> 
 	                    <label id="price">희망시급 : <%= m.getPayRate() %>￦</label><br>
