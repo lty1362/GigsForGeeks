@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, 
-            com.gigsforgeeks.project.model.vo.Project" %>
+    import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*" %>
 <% ArrayList<Project> myProjectList = (ArrayList<Project>)request.getAttribute("myProjectList"); %>
 <!DOCTYPE html>
 <html>
@@ -59,7 +58,7 @@
             	</tr>
             	<% }else { %>
             		<% for(Project myProject : myProjectList) { %>
-            			<% if(myProject.getProjectStatus().equals("START")) { %>
+            			<% if(myProject.getProjectStatus().equals("START") || myProject.getProjectStatus().equals("PROCESS") || myProject.getProjectStatus().equals("HOLD")) { %>
 			                <tr>
 			                    <td>
 			                    	<a href=""><%= myProject.getProjectName() %></a>
@@ -83,20 +82,15 @@
         <%-- Paging Section --%>
         <div class="pagingArea" align="center">
 	        <!-- 맨 처음으로 (<<) -->
-	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=1';"> &lt;&lt; </button>
+	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.proj?currentPage=1';">&lt;&lt;</button>
 	        <!-- 이전페이지로 (<) -->
-	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=<%--currentPage-1--%>';"> &lt; </button>
-			<%-- <% for(int p=startPage; p<=endPage; p++) {%>
-				<%if(p != currentPage){ %>
-					<button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=<%=p%>';"><%= p %></button>
-				<%}else{ %>
-					<button class="btn btn-outline-info" disabled><%= p %></button>
-				<%} %>
-			<%} %> --%>
+	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.proj?currentPage=<%= 1-1 %>';">&lt;</button>
+				<%-- <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.proj?currentPage=<%= 1 %>';">1</button> --%>
+				<button class="btn btn-outline-info" disabled><%= 1 %></button>
 	        <!-- 다음페이지로 (>) -->
-	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=<%--currentPage+--%>';"> &gt; </button>
+	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.proj?currentPage=<%= 1+1 %>';">&gt;</button>
 	        <!-- 맨 끝으로 (>>) -->
-	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=<%--maxPage--%>';"> &gt;&gt; </button>
+	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.proj?currentPage=<%= 2 %>';">&gt;&gt;</button>
 	    </div>
 	    <%-- End of Paging Section --%>
     </main>	

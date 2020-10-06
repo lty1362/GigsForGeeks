@@ -10,8 +10,6 @@ $(function(){
 		var $reqType = "";
 		if($(this).hasClass("e")){ // "E(고용주)" 유형으로 요청 시
 			$reqType = "E";
-			
-			
 		}else{ // "F(프리랜서)" 유형으로 요청 시
 			$reqType = "F";
 		}
@@ -33,13 +31,13 @@ $(function(){
 					if($reqType == "E"){ // 유형이 E(고용주)일 때
 					
 						$(".myProjectNav").empty();
-						$(".myProjectNav").append("<a href='' style='font-weight: bolder'>열린 프로젝트</a> | ");
-						$(".myProjectNav").append("<a href=''>시작 프로젝트</a> | ");
+						$(".myProjectNav").append("<a href=''>열린 프로젝트</a> | ");
+						$(".myProjectNav").append("<a style='font-weight: bolder'>시작 프로젝트</a> | ");
 						$(".myProjectNav").append("<a href=''>피드백</a> | ");
 						$(".myProjectNav").append("<a href=''>과거 프로젝트</a>");
 						
 						for(var i in myProjectList){
-							if(myProjectList[i].projectStatus == "OPEN"){
+							if(myProjectList[i].projectStatus == "START" || myProjectList[i].projectStatus == "PROCESS" || myProjectList[i].projectStatus == "HOLD"){
 								result += "<tr>" +
 												"<td>" + 
 												    "<a href=''>" + myProjectList[i].projectName + "</a>" + 
@@ -61,11 +59,11 @@ $(function(){
 							
 							$(".myProjectNav").empty();
 							$(".myProjectNav").append("<a href=''>제안 작업</a> | ");
-							$(".myProjectNav").append("<a href='' style='font-weight: bolder'>현재 작업</a> | ");
-							$(".myProjectNav").append("<a href=''>과거 작업</a> | ");
+							$(".myProjectNav").append("<a style='font-weight: bolder'>현재 작업</a> | ");
+							$(".myProjectNav").append("<a href=''>과거 작업</a>");
 							
 							for(var i in myProjectList){
-								if(myProjectList[i].projectStatus == "START"){
+								if(myProjectList[i].projectStatus == "START" || myProjectList[i].projectStatus == "PROCESS" || myProjectList[i].projectStatus == "HOLD"){
 									result += "<tr>" +
 													"<td>" + 
 													    "<a href=''>" + myProjectList[i].projectName + "</a>" + 

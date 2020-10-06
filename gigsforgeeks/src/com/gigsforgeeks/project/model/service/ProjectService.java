@@ -1,9 +1,6 @@
 package com.gigsforgeeks.project.model.service;
 
-import static com.gigsforgeeks.common.JDBCTemplate.close;
-import static com.gigsforgeeks.common.JDBCTemplate.commit;
-import static com.gigsforgeeks.common.JDBCTemplate.getConnection;
-import static com.gigsforgeeks.common.JDBCTemplate.rollback;
+import static com.gigsforgeeks.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -38,15 +35,49 @@ public class ProjectService {
 	}
 	
 	/**
-	 * 2. 내 프로젝트 목록 조회 서비스
+	 * 2_1. 내 프로젝트 총 갯수 조회 서비스
 	 * 
-	 * @param userId    현재 로그인한 사용자 아이디
-	 * @return          해당 사용자의 등록/진행 프로젝트 목록
+	 * @param userId      조회할 사용자 아이디
+	 * @param listType    조회할 리스트 타입 ("E" 고용주 / "F" 프리랜서)
+	 * @return            조회된 프로젝트의 총 갯수
 	 */
-	public ArrayList<Project> selectMyProjectList(String userId, String userType) {
+	public int selectMyProjectCount(String userId, String listType) {
 		
 		Connection con = getConnection();
-		ArrayList<Project> myProjectList = new ProjectDAO().selectMyProjectList(con, userId, userType);
+		int projectCount = new ProjectDAO().selectMyProjectCount(con, userId, listType);
+		close(con);
+		return projectCount;
+		
+	}
+	
+	/**
+	 * 2_2. 내 프로젝트 목록 조회 서비스
+	 * 
+	 * @param userId      현재 로그인한 사용자 아이디
+	 * @param userType    조회할 리스트 타입 ("E" 고용주 / "F" 프리랜서)
+	 * @return            해당 사용자의 등록/진행 프로젝트 목록
+	 */
+	public ArrayList<Project> selectMyProjectList(String userId, String listType) {
+		
+		Connection con = getConnection();
+		ArrayList<Project> myProjectList = new ProjectDAO().selectMyProjectList(con, userId, listType);
+		close(con);
+		return myProjectList;
+		
+	}
+	
+	/**
+	 * 2_3. 내 프로젝트 목록 조회 서비스
+	 * 
+	 * @param userId      현재 로그인한 사용자 아이디
+	 * @param userType    조회할 리스트 타입 ("E" 고용주 / "F" 프리랜서)
+	 * @param pi          페이징 정보를 담은 PageInfo 객체
+	 * @return            해당 사용자의 등록/진행 프로젝트 목록
+	 */
+	public ArrayList<Project> selectMyProjectList(String userId, String listType, PageInfo pi) {
+		
+		Connection con = getConnection();
+		ArrayList<Project> myProjectList = new ProjectDAO().selectMyProjectList(con, userId, listType, pi);
 		close(con);
 		return myProjectList;
 		
@@ -153,12 +184,11 @@ public class ProjectService {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Member> list = new ProjectDAO().freelancerSelectList(conn);
+		ArrayList<Member> list = new ProjectDAO().excellentSelectList(conn);
 		
 		close(conn);
 		
 		return list;
-		
 	}
 	
 	

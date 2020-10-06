@@ -1,6 +1,6 @@
 package com.gigsforgeeks.project.model.dao;
 
-import static com.gigsforgeeks.common.JDBCTemplate.close;
+import static com.gigsforgeeks.common.JDBCTemplate.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -74,13 +74,53 @@ public class ProjectDAO {
 	}
 	
 	/**
-	 * 2. 내 프로젝트 목록 조회 DAO
+	 * 2_1. 내 프로젝트 총 갯수 조회 서비스
 	 * 
-	 * @param con       Service로부터 받은 DB Connection 객체
-	 * @param userId    현재 로그인한 사용자 아이디
-	 * @return          해당 사용자의 등록/진행 프로젝트 목록
+	 * @param con         Service로부터 받은 DB Connection 객체
+	 * @param userId      조회할 사용자 아이디
+	 * @param listType    조회할 리스트 타입 ("E" 고용주 / "F" 프리랜서)
+	 * @return            조회된 프로젝트의 총 갯수
 	 */
-	public ArrayList<Project> selectMyProjectList(Connection con, String userId, String userType) {
+	public int selectMyProjectCount(Connection con, String userId, String listType) {
+		
+		int projectCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		if(listType.equals("F")) { // 프리랜서의 경우
+			sql = prop.getProperty("selectMyBidProjectCount");
+		}else { // 고용주의 경우
+			sql = prop.getProperty("selectMyProjectCount");
+		}
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) projectCount = rs.getInt(1);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		return projectCount;
+		
+	}
+	
+	/**
+	 * 2_2. 내 프로젝트 목록 조회 DAO
+	 * 
+	 * @param con         Service로부터 받은 DB Connection 객체
+	 * @param userId      현재 로그인한 사용자 아이디
+	 * @param listType    조회할 리스트 타입 ("E" 고용주 / "F" 프리랜서)
+	 * @return            해당 사용자의 등록/진행 프로젝트 목록
+	 */
+	public ArrayList<Project> selectMyProjectList(Connection con, String userId, String listType) {
 		
 		ArrayList<Project> myProjectList = new ArrayList<>();
 		
@@ -88,7 +128,7 @@ public class ProjectDAO {
 		ResultSet rs = null;
 		
 		String sql = "";
-		if(userType.equals("F")) { // 프리랜서의 경우
+		if(listType.equals("F")) { // 프리랜서의 경우
 			sql = prop.getProperty("selectMyBidProjectList");
 		}else { // 고용주의 경우
 			sql = prop.getProperty("selectMyProjectList");
@@ -97,6 +137,75 @@ public class ProjectDAO {
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				myProjectList.add(new Project(rs.getInt("project_id"),
+						                      rs.getString("client_id"),
+						                      rs.getString("required_skill"),
+						                      rs.getString("project_name"),
+						                      rs.getString("description"),
+						                      rs.getString("project_status"),
+						                      rs.getDate("expect_start").toLocalDate(),
+						                      rs.getDate("expect_end").toLocalDate(),
+						                      rs.getString("means_of_payment"),
+						                      rs.getInt("min_bid"),
+						                      rs.getInt("max_bid"),
+						                      rs.getDate("start_bid").toLocalDate(),
+						                      rs.getDate("end_bid").toLocalDate(),
+						                      rs.getInt("count_bid"),
+						                      rs.getInt("average_bid"),
+						                      rs.getString("winner_id"),
+						                      rs.getInt("winning_bid"),
+						                      (rs.getDate("start_date") == null ? null : rs.getDate("start_date").toLocalDate()),
+						                      (rs.getDate("end_date") == null ? null : rs.getDate("start_date").toLocalDate())));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return myProjectList;
+		
+	}
+	
+	/**
+	 * 2_3. 내 프로젝트 목록 조회 DAO
+	 * 
+	 * @param con         Service로부터 받은 DB Connection 객체
+	 * @param userId      현재 로그인한 사용자 아이디
+	 * @param userType    조회할 리스트 타입 ("E" 고용주 / "F" 프리랜서)
+	 * @param pi          페이징 정보를 담은 PageInfo 객체
+	 * @return            해당 사용자의 등록/진행 프로젝트 목록
+	 */
+	public ArrayList<Project> selectMyProjectList(Connection con, String userId, String listType, PageInfo pi) {
+		
+		ArrayList<Project> myProjectList = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		if(listType.equals("F")) { // 프리랜서의 경우
+			sql = prop.getProperty("selectMyBidProjectList");
+		}else { // 고용주의 경우
+			sql = prop.getProperty("selectMyProjectList");
+		}
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -228,7 +337,6 @@ public class ProjectDAO {
 		
 	}
 	
-	
 	/**
 	 * 프로젝트 전체리스트 조회용 서비스
 	 * 
@@ -256,7 +364,8 @@ public class ProjectDAO {
 									 rset.getInt("MIN_BID"),
 									 rset.getInt("MAX_BID"),
 									 rset.getDate("END_BID").toLocalDate(),
-									 rset.getInt("COUNT_BID")));
+									 rset.getInt("COUNT_BID"),
+									 rset.getString("REQUIRED_SKILL")));
 				
 				
 			}
@@ -270,7 +379,6 @@ public class ProjectDAO {
 		
 		return list;
 	}
-	
 	
 	/**
 	 * 프리랜서 전체리스트 조회용 서비스
@@ -313,7 +421,6 @@ public class ProjectDAO {
 		return list;
 		
 	}
-	
 	
 	/**
 	 * 탐색 클릭시 프로젝트 상세보기 서비스

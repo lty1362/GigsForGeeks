@@ -69,7 +69,7 @@
 		            <div id="search_btn2">
 				   	 	<form id="keepbutton" action="<%= request.getContextPath()%>/keepNotRead.ms" method="post">
 							<button type="submit" id="btn2" class="btn btn-outline-info">보관하기</button>
-								<br>
+								<br><br>
 						            <table class="messageNotRead">
 								        <thead>
 								            <tr>

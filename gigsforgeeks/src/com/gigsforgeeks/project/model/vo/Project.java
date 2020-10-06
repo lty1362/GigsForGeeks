@@ -73,7 +73,7 @@ public class Project {
 	
 	// to use in searcListProject method
 	public Project(int projectId, String projectName, String description, String projectStatus, int minBid, int maxBid,
-			LocalDate endBid, int countBid) {
+			LocalDate endBid, int countBid, String requiredSkill) {
 		super();
 		this.projectId = projectId;
 		this.projectName = projectName;
@@ -83,6 +83,7 @@ public class Project {
 		this.MaxBid = maxBid;
 		this.endBid = endBid;
 		this.countBid = countBid;
+		this.requiredSkill = requiredSkill;
 	}
 	
 	// Getters and Setters

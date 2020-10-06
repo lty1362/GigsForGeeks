@@ -130,7 +130,5 @@ public class PageInfo {
 				+ ", boardLimit=" + boardLimit + ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage="
 				+ endPage + ", notReadCount=" + notReadCount + ", keepCount=" + keepCount + "]";
 	}
-
-	
 	
 }

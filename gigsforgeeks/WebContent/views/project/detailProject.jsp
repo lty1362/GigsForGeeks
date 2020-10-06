@@ -53,7 +53,7 @@
                        <br><br>
                        
                        <h4>요구 기술</h4>
-                       <label><%= project.getRequiredSkill().replace(",", " ") %></label>
+                       <label><%= project.getRequiredSkill().replace(" ", "  ") %></label>
    
                        <br><br>
                        <p style="font-size: small;">프로젝트 고유번호(ID) : <%= project.getProjectId() %></p>
@@ -62,7 +62,7 @@
                    <!-- 프로젝트 입찰견적서 -->
                    <div id="proposal">
                    <% if(loginUser == null){ %>
-                   <h5>입찰 견적서 제안하기를 원하시면<a href="${contextPath}/views/member/login.jsp">&nbsp;로그인&nbsp;</a>후에 이용가능한 서비스입니다.</h5>
+                   <h5>입찰견적서 제안은 <a href="${contextPath}/views/member/login.jsp">&nbsp;로그인&nbsp;</a>후에 이용가능한 서비스입니다.</h5>
                    <% }else {  %>
                        <form action="${contextPath}/proposal.do" method="POST">
                            <h3>이 프로젝트에 대한 입찰견적서</h3>
@@ -88,8 +88,8 @@
                            <button type="submit" id="submitBtn" class="btn btn-outline-info">프로젝트 내용 제출하기</button>
                            <br><br>
                        </form>
+                      <% } %>
                    </div>
-                   <% } %>
                </div>
    
    			   <!-- 고용주 소개 -->
@@ -126,16 +126,20 @@
                        <p>- 평균 입찰금액 : <%= project.getAverageBid() %>￦</p>
                    </div>
    
+   				   <% if(loginUser == null) { %>
+   				   
+   				   <%}else { %>
                    <div id="btnGroup">
                        <button type="button" class="btn btn-outline-info" style="width: 250px; height: 30px;">즐겨찾기 등록</button> 
                        <br><br>
                        <button type="button" class="btn btn-outline-info" style="width: 250px; height: 30px;">프로젝트 신고</button>
                    </div>
+                   <% } %>
                </div>
            </div>
        </main>   
        
-      <br style="clear:both">
+      <br style="clear:both"><br><br><br><br>
       
     <%-- Footer --%>
     <jsp:include page="/views/common/footer.jsp" flush="true"></jsp:include>
