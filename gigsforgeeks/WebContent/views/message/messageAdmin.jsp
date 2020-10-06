@@ -132,7 +132,8 @@
 				    </div>  
 				 </div>
 		      </div>
-      
+         </div>
+     </div>
 		       <!-- The Modal -->
 		        <div class="modal" id="message_delete">
 		          <div class="modal-dialog">
