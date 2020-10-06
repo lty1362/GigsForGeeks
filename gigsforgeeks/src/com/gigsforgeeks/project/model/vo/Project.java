@@ -24,6 +24,7 @@ public class Project {
 	private int winningBid;
 	private LocalDate startDate;
 	private LocalDate endDate;
+
 	
 	// Constructors
 	public Project() {}
@@ -51,6 +52,7 @@ public class Project {
 		this.winningBid = winningBid;
 		this.startDate = startDate;
 		this.endDate = endDate;
+
 	}
 	
 	// to use in insertProject method

@@ -167,12 +167,16 @@ form #feelter_sub p{font-weight: bold}
 .feelter_main{
     font-size: 18px;
     margin: 5px;
+    color:black;
 }
-.feelter_main:visited{
+.feelter_main>a:hover{
     font-size: 20px;
     height: 40px;
     font-weight: bold;
     background: #cfd1d8;
+    cursor:pointer;
+    text-deroration:none;
+    color:black;
 }
 #searchProject{
     background: #f0f1f3;
@@ -210,12 +214,16 @@ form #feelter_sub{font-weight: bold}
 .feelter_main{
     font-size: 18px;
     margin: 5px;
+    color:black;
 }
-.feelter_main:active{
+.feelter_main>a:hover{
     font-size: 20px;
     height: 40px;
     font-weight: bold;
     background: #cfd1d8;
+    cursor:pointer;
+    text-deroration:none;
+    
 }
 #searchFreelancer{
     background: #f0f1f3;

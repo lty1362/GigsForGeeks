@@ -54,8 +54,8 @@
                        
                        <h4>요구 기술</h4>
                        <label class="projectSkill"><%= project.getRequiredSkill() %></label>
-                       <label class="projectSkill">HTML</label>
-                       <label class="projectSkill">CSS</label>
+                       <label class="projectSkill"><%= project.getRequiredSkill() %></label>
+                       <label class="projectSkill"><%= project.getRequiredSkill() %></label>
    
                        <br><br>
                        <p style="font-size: small;">프로젝트 고유번호(ID) : <%= project.getProjectId() %></p>
@@ -126,7 +126,7 @@
                        <h3>고용주 인증상태</h3>
                        <hr>
                        <ul>
-                           <li>지불수단 인증 완료</li>
+                           <li><%= project.getMeansOfPayment() %></li>
                            <li>입금 완료됨</li>
                            <li>이메일 주소 인증 완료</li>
                            <li>프로필 작성완료</li>
@@ -139,8 +139,8 @@
                    <div id="employerInfo1" style="border: 1px solid black;">
                        <h3>입찰내역</h3>
                        <hr>
-                       <p>- 입찰수 : 1건</p>
-                       <p>- 평균 입찰금액 : 5,000,000￦</p>
+                       <p>- <%= project.getCountBid() %></p>
+                       <p>- 평균 입찰금액 : <%= project.getAverageBid() %>￦</p>
                    </div>
    
                    <div id="btnGroup">

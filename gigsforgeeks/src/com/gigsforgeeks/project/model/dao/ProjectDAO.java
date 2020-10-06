@@ -321,7 +321,7 @@ public class ProjectDAO {
 	 * @param userId
 	 * @return
 	 */
-	public Project projectSelectDetail(Connection conn, int projectId, String userId, String location, String enrollDate) {
+	public Project projectSelectDetail(Connection conn, int projectId, String userId) {
 		
 		Project project = null;
 		

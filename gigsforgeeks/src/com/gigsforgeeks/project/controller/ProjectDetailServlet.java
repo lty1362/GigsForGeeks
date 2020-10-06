@@ -36,25 +36,21 @@ public class ProjectDetailServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
-		String location = loginUser.getLocation();
-		String enrollDate  = loginUser.getEnrollDate();
-		String userId= loginUser.getUserId();
+		String userId = loginUser.getUserId();
 		int projectId = Integer.parseInt(request.getParameter("projectId"));
 		
-		Project project = new ProjectService().projectSelectDetail(projectId, userId, location, enrollDate); 
+		Project project = new ProjectService().selectMyProject(projectId, userId);
 		
-		if(project != null) { // 프로젝트 상세조회 요청성공시
+		if(project != null) { // 프로젝트 상세조회 요청 성공 시
 			request.setAttribute("project", project);
 			RequestDispatcher view = request.getRequestDispatcher("views/project/detailProject.jsp");
 			view.forward(request, response);
-		
-		}else { // 실패시
+			
+		}else { // 실패 시
 			request.getSession().setAttribute("errorMsg", "프로젝트 상세조회에 실패했습니다.");
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
-			
 		}
-
 		
 		
 	}

@@ -26,10 +26,10 @@
             <!-- 좌측 검색필터 카테고리 -->
             <div id="freelancerCategory">
                 <form id="feelterbar" action="" method="POST">
-                    <div class="feelter_main">프로젝트</div> <br>
-                    <div class="feelter_main">프리랜서</div> <br>
-                    <div class="feelter_main">우수 프리랜서</div>
-                    <br>
+                    <a href="${contextPath}/projectList.do" class="feelter_main">프로젝트</a> <br><br>
+                    <a href="${contextPath}/freelancerList.do" class="feelter_main">프리랜서</a> <br><br>
+                    <a href="${contextPath}/freelancerList.do" class="feelter_main">우수 프리랜서</a><br>
+                    <br><br>
              
                     <div id="feelter_sub">
                         <p>프리랜서 유형:</p>
