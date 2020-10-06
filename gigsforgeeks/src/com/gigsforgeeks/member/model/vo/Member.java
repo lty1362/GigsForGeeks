@@ -93,6 +93,7 @@ public class Member {
 	
 	
 	
+	
 	public String getUserId() {
 		return userId;
 	}

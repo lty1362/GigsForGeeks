@@ -296,6 +296,21 @@ public class MemberService {
 		return list;		
 	}
 	
+	/**
+	 * 성희) 탐색 프리랜서 클릭시 상세조회 서비스
+	 * @return
+	 */
+	public Member freelancerSelectDetail(String userId) {
+		
+		Connection conn = getConnection();
+		
+		Member member = new MemberDAO().freelancerSelectDetail(conn, userId);
+		
+		close(conn);
+		
+		return member;
+		
+	}
 	
 	
 }

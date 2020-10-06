@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.gigsforgeeks.project.model.service.ProjectService;
-import com.gigsforgeeks.project.model.vo.Project;
+import com.gigsforgeeks.member.model.service.MemberService;
+import com.gigsforgeeks.member.model.vo.Member;
 
 /**
- * Servlet implementation class DetailSelectProject
+ * Servlet implementation class FreelancerDetailServlet
  */
-@WebServlet("/detailSelect.do")
-public class ProjectDetailServlet extends HttpServlet {
+@WebServlet("/freelancerDetail.do")
+public class FreelancerDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProjectDetailServlet() {
+    public FreelancerDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,22 +33,22 @@ public class ProjectDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 
-		int projectId = Integer.parseInt(request.getParameter("projectId"));
+		String userId = request.getParameter("userId");
 		
-		Project project = new ProjectService().projectSelectDetail(projectId);
+		Member member = new MemberService().freelancerSelectDetail(userId);
 		
-		if(project != null) { // 프로젝트 상세조회 요청 성공 시
+		if(member != null) {
 			
-			request.setAttribute("project", project);
-			RequestDispatcher view = request.getRequestDispatcher("views/project/detailProject.jsp");
+			request.setAttribute("member", member);
+			RequestDispatcher view = request.getRequestDispatcher("views/member/userAccount.jsp");
 			view.forward(request, response);
 			
-		}else { // 실패 시
-			request.getSession().setAttribute("errorMsg", "프로젝트 상세조회에 실패했습니다.");
+		}else {
+			
+			request.getSession().setAttribute("alertMsg", "프리랜서 상세조회에 실패하셨습니다.");
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
 		}
-		
 		
 	}
 

@@ -800,5 +800,55 @@ public class MemberDAO {
 		
 	}
 	
+	public Member freelancerSelectDetail(Connection conn, String userId) {
+		
+		Member member = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("freelancerSelectDetail");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				member = new Member(rset.getString("USER_ID"),
+										rset.getString("USER_EMAIL"),
+										rset.getString("USER_PWD"),
+										rset.getString("ENROLL_DATE"),
+										rset.getString("OUTROLL_DATE"),
+										rset.getString("STATUS"),
+										rset.getString("MEMBERSHIP"),
+										rset.getString("EXCELLENT_FREELANCE"),
+										rset.getString("BLACKLIST"),
+										rset.getString("IDENTIFY_EMAIL"),
+										rset.getString("ADMIN"),
+										rset.getString("USER_TYPE"),
+										rset.getString("JOB_TITLE"),
+										rset.getString("COMPANY"),
+										rset.getString("SKILL"),
+										rset.getInt("PAY_RATE"),
+										rset.getString("PROFILE_IMAGE"),
+										rset.getString("LOCATION"),
+										rset.getString("SELF_INTRODUCTION"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return member;
+		
+	}
+		
+		
+	
 
 }

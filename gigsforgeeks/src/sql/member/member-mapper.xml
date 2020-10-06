@@ -351,5 +351,30 @@
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 		
-	
+	<entry key="freelancerSelectDetail">
+		SELECT 
+		       USER_ID
+		     , USER_EMAIL
+		     , USER_PWD
+		     , ENROLL_DATE
+		     , OUTROLL_DATE
+		     , STATUS
+		     , MEMBERSHIP
+		     , EXCELLENT_FREELANCE
+		     , BLACKLIST
+		     , IDENTIFY_EMAIL
+		     , ADMIN
+		     , USER_TYPE
+		     , JOB_TITLE
+		     , COMPANY
+		     , SKILL
+		     , PAY_RATE
+		     , PROFILE_IMAGE
+		     , LOCATION
+		     , SELF_INTRODUCTION
+		  FROM MEMBER
+		 WHERE USER_ID = ?
+		   AND STATUS = 'Y'
+		   AND ADMIN = 'N'
+	</entry>
 </properties>
