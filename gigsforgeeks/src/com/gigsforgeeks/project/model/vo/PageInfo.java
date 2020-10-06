@@ -56,6 +56,11 @@ public class PageInfo {
 		this.keepCount = keepCount;
 	}
 	
+	public PageInfo(int keepCount) {
+		super();
+		this.keepCount = keepCount;
+	}
+
 	public PageInfo(int notReadCount, int keepCount) {
 		super();
 		this.notReadCount = notReadCount;
