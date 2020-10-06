@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.project.model.dao.ProjectDAO;
+import com.gigsforgeeks.project.model.vo.PageInfo;
 import com.gigsforgeeks.project.model.vo.Project;
 
 public class ProjectService {
@@ -158,6 +159,38 @@ public class ProjectService {
 		
 		return list;
 		
+	}
+	
+	
+	/**
+	 * 진섭) 멤버 총 일반게시글 갯수 조회용 서비스
+	 * @return		총 갯수
+	 */
+	public int selectListCount() {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new ProjectDAO().selectProjectListCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+		
+	}
+	
+	/**
+	 * 진섭) 현재요청한 페이지에 보여져야할 리스트 조회용 서비스
+	 * @param pi		현재요청한페이지, 게시글최대갯수가 담겨있는 PageInfo 객체
+	 * @return			조회된 결과가 담겨있는 list
+	 */
+	public ArrayList<Project> selectList(PageInfo pi){
+		Connection conn = getConnection();
+		
+		ArrayList<Project> list = new ProjectDAO().selectList(conn, pi);
+		
+		close(conn);
+		
+		return list;		
 	}
 	
 	

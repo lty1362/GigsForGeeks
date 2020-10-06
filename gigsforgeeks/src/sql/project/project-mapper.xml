@@ -265,4 +265,52 @@
 		  ORDER 
 		     BY USER_ID DESC
 	</entry>
+	
+	
+	<!-- 진섭 : 전체 프로젝트 수 불러오기 => 페이징 총 수량으로 사용 -->
+	<entry key="selectProjectListCount">
+		SELECT 
+			   COUNT(*) LISTCOUNT
+		  FROM PROJECT
+		  <!-- 빼야할 것 있으면 뺴기! -->
+	</entry>
+	
+	<!-- 진섭 : 프로젝트 List 배열 가져오기 -->
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT 
+		               ROWNUM RNUM
+		             , A.*
+		          FROM (
+		                SELECT 
+		                       PROJECT_ID
+						     , CLIENT_ID
+						     , REQUIRED_SKILL
+						     , PROJECT_NAME
+						     , DESCRIPTION
+						     , PROJECT_STATUS
+						     , EXPECT_START
+						     , EXPECT_END
+						     , MEANS_OF_PAYMENT
+						     , MIN_BID
+						     , MAX_BID
+						     , START_BID
+						     , END_BID
+						     , COUNT_BID
+						     , AVERAGE_BID
+						     , WINNER_ID
+						     , WINNING_BID
+						     , START_DATE
+						     , END_DATE
+		                  FROM PROJECT
+ 		                 ORDER 
+		                    BY PROJECT_ID DESC
+		               ) A
+		       )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>	
+	
+	
+	
 </properties>

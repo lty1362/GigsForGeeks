@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.gigsforgeeks.member.model.vo.Member;
+import com.gigsforgeeks.project.model.vo.PageInfo;
 import com.gigsforgeeks.project.model.vo.Project;
 
 public class ProjectDAO {
@@ -406,6 +407,100 @@ public class ProjectDAO {
 		
 	}
 		
+	
+	/**
+	 * 진섭 : 회원조회 페이징 ListCount
+	 * @param conn
+	 * @return
+	 */
+	public int selectProjectListCount(Connection conn) {
+		int listCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectProjectListCount");
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				listCount = rset.getInt("LISTCOUNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return listCount;
+		
+	}
+	
+	
+	/**
+	 * 진섭: 프로젝트 조회 리스트 가져오기
+	 * @param conn
+	 * @param pi
+	 * @return
+	 */
+	public ArrayList<Project> selectList(Connection conn, PageInfo pi){
+		// select 문 => 여러행 조회
+		ArrayList<Project> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Project(rset.getInt("project_id"),
+								  	 rset.getString("client_id"),
+									 rset.getString("required_skill"),
+									 rset.getString("project_name"),
+									 rset.getString("description"),
+									 rset.getString("project_status"),
+									 rset.getDate("expect_start").toLocalDate(),
+									 rset.getDate("expect_end").toLocalDate(),
+									 rset.getString("means_of_payment"),
+									 rset.getInt("min_bid"),
+									 rset.getInt("max_bid"),
+									 rset.getDate("start_bid").toLocalDate(),
+									 rset.getDate("end_bid").toLocalDate(),
+									 rset.getInt("count_bid"),
+									 rset.getInt("average_bid"),
+									 rset.getString("winner_id"),
+									 rset.getInt("winning_bid"),
+									 rset.getDate("start_date").toLocalDate(),
+									 rset.getDate("end_date").toLocalDate()
+									 )
+						);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
 	
 	
 }
