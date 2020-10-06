@@ -17,7 +17,7 @@ import com.gigsforgeeks.project.model.vo.PageInfo;
 /**
  * Servlet implementation class adminMemberListServlet
  */
-@WebServlet("/MemberList.bo")
+@WebServlet("/memberList.bo")
 public class adminMemberListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

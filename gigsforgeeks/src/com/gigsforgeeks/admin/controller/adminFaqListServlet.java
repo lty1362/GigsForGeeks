@@ -10,21 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.gigsforgeeks.project.model.service.ProjectService;
 import com.gigsforgeeks.project.model.vo.PageInfo;
-import com.gigsforgeeks.project.model.vo.Project;
+import com.gigsforgeeks.service.model.service.FaqService;
+import com.gigsforgeeks.service.model.vo.FAQ;
 
 /**
- * Servlet implementation class adminProjectListServlet
+ * Servlet implementation class adminFaqListServlet
  */
-@WebServlet("/projectList.bo")
-public class adminProjectListServlet extends HttpServlet {
+@WebServlet("/faqList.bo")
+public class adminFaqListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminProjectListServlet() {
+    public adminFaqListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,7 +44,7 @@ public class adminProjectListServlet extends HttpServlet {
 		int startPage;		// 현재 페이지에 하단에 보여질 페이징 바의 시작 수
 		int endPage;		// 현재 페이지에 하단에 보여질 페이징 바의 끝 수
 		
-		listCount = new ProjectService().selectListCount();
+		listCount = new FaqService().selectListCount();
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		pageLimit = 10;
 		boardLimit = 10;
@@ -63,12 +63,12 @@ public class adminProjectListServlet extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		// 2. 현재 요청한 페이지(currentPage)에 보여질 게시글 리스트 조회해오기
-		ArrayList<Project> list = new ProjectService().selectList(pi);
+		ArrayList<FAQ> list = new FaqService().selectList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/admin/manageProject.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("views/admin/faqManage.jsp");
 		view.forward(request, response);
 		
 	}

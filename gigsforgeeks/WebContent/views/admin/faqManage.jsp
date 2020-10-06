@@ -2,7 +2,20 @@
     pageEncoding="UTF-8"
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.service.model.vo.FAQ" %>
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*" %>
+<%@ page import="com.gigsforgeeks.member.model.vo.Member" %>
+<%
+	ArrayList<FAQ> list = (ArrayList<FAQ>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	String contextPath = request.getContextPath();
+	
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>       
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +23,7 @@
 
 	<meta charset="UTF-8">
    	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/adminCommon.css">
+   	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/adminTableList.css">
 	<title>관리자 메인페이지 = 회원전체조회 페이지</title>
 </head>
 <body>
@@ -23,7 +37,81 @@
         	
         	<!-- 우측 회원조회 -->
         	<div id="content_r">
+				<div id="content_r_center_h" style="padding: 30px; font-size: 40px;">
+			        <b>FAQ 관리</b>
+			    </div>
+			    
+			    <br>
 
+				<!-- 테이블 리스트 -->
+	            <table class="table table-hover, listArea">
+	                <thead>
+	                    <tr>
+	                        <th width="50">No</th>
+	                        <th width="250">카테고리</th>
+	                        <th width="100">제목</th>
+	                        <th width="100">최초 등록일</th>
+	                        <th width="100">업데이트 날짜</th>
+	                        <th width="100">등록 상태</th>
+	                    </tr>
+	                </thead>
+	
+	                <tbody>
+	                	<% if(list.isEmpty()) { %>
+	                    <tr>
+	                        <td colspan="5">조회된 리스트가 없습니다.</td>
+	                    </tr>
+	                	<% } else {%>
+	                		<% for(FAQ faq : list) { %>
+	                     <tr>
+	                      	<td><%= faq.getFaqNo() %></td>
+	                         <td><%= faq.getFaqCategory() %></td>
+	                         <td><%= faq.getFaqTitle() %></td>
+	                         <td><%= faq.getFaqRegister() %></td>
+	                         <td><%= faq.getFaqUpdate() %></td>
+	                         <td><%= faq.getFaqState() %></td>
+	                     </tr>
+	                    	<% } %>
+	                   <% } %>
+	                </tbody>
+	            </table>
+                   
+<%--                	<script>
+	        	$(function(){
+	        		$(".listArea>tbody>tr").click(function(){
+	        			location.href = "<%=contextPath%>/detail.enq?nno=" + $(this).children().eq(0).text();
+	        			
+	        			/* var nno = $(this).children().eq(0).text();
+		    			location.href = "${contextPath}/detail.enq?nno=" + nno; */
+	        		});									
+	        	});
+	        	</script> --%>
+		
+		        <br><br>
+		
+		        <div class="pagingArea" align="center">
+					<% if(currentPage != 1){ %>
+			            <!-- 맨 처음으로 (<<) -->
+			            <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faqList.bo?currentPage=1';"> &lt;&lt; </button>
+			            <!-- 이전페이지로 (<) -->
+			            <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faqList.bo?currentPage=<%=currentPage-1%>';"> &lt; </button>
+					<% } %>
+					
+					<% for(int p=startPage; p<=endPage; p++){ %>
+						<% if(p != currentPage){ %>
+		            	<button class="btn btn-info" onclick="location.href='<%=contextPath%>/faqList.bo?currentPage=<%=p%>';"><%= p %></button>
+		            	<% }else{ %>
+		            	<button class="btn btn-info" disabled><%= p %></button>
+		            	<% } %>
+		            <% } %>
+					
+					<% if(currentPage != maxPage){ %>
+			            <!-- 다음페이지로 (>) -->
+			            <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faqList.bo?currentPage=<%=currentPage+1%>';"> &gt; </button>
+			            <!-- 맨 끝으로 (>>) -->
+			            <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faqList.bo?currentPage=<%=maxPage%>';"> &gt;&gt; </button>
+					<% } %>
+          	 	</div>
         	</div>
         </div>
     </div>

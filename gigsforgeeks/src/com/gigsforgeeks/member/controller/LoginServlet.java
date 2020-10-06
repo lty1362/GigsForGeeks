@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 		    	session.setAttribute("loginUser", loginUser);
 				
-		    	response.sendRedirect(request.getContextPath() + "/MemberList.bo?currentPage=1");
+		    	response.sendRedirect(request.getContextPath() + "/memberList.bo?currentPage=1");
 			}
 			
 			// 관리자 아닌경우(일반로그인)
