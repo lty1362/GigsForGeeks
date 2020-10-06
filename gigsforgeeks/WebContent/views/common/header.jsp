@@ -79,7 +79,7 @@
                         </script>
                         
                         <!-- 탐색 팝업폼 레이어  -->
-                        <div id="popupLayer">
+                        <div id="popupLayer" style="height:320px;">
                             <div>
                                 <span onClick="closeLayer(this)" style="cursor:pointer;font-size:1.5em" title="닫기">X</span>
                             </div>
@@ -101,9 +101,6 @@
                                 <img src="${contextPath}/resources/images/greatFreelancer.png">우수 프리랜서</a>
                                 <label><small>평점이 높은 프리랜서 탐색</small></label>
                                 <br><br>
-                                <a href="${contextPath}/views/project/favoriteProject.jsp">
-                                <img src="${contextPath}/resources/images/favorite.png">즐겨찾기</a>
-                                <label><small>내가 즐겨찾기한 프로젝트 탐색</small></label>
                         </div>
                         
                         <script>

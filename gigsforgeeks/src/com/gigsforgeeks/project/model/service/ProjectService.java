@@ -184,12 +184,11 @@ public class ProjectService {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Member> list = new ProjectDAO().freelancerSelectList(conn);
+		ArrayList<Member> list = new ProjectDAO().excellentSelectList(conn);
 		
 		close(conn);
 		
 		return list;
-		
 	}
 	
 	
