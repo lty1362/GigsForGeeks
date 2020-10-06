@@ -49,7 +49,7 @@
 		<!--검색창-->
         <div id="cont">
         <br>
-        <h3>보관 메세지</h3>
+        <h3>보관 메세지 (<%=listCount%>)</h3>
             <div id="content_2" align="right">
                 <form action="" id="search_form">
                     <div id="search_text">
