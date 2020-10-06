@@ -118,8 +118,12 @@
 	                    <label id="price"><%= p.getMinBid() %>￦ - <%= p.getMaxBid() %>￦</label><br>
 	                    <p><%= p.getDescription() %></p>
 	                    <br>
-	                    <li>입찰 마감일 : <%=p.getEndBid() %></li>
-	                    <li>입찰수 : <%= p.getCountBid() %></li>
+	                    <ul>
+		                    <li>입찰 마감일 : <%=p.getEndBid() %></li>
+		                    <li>요구되는 기술 : <%= p.getRequiredSkill() %></li>
+		                    <li>입찰수 : <%= p.getCountBid() %></li>
+		                    
+	                    </ul>
 	                </div>
 	        		<hr>
                 	<% } %>

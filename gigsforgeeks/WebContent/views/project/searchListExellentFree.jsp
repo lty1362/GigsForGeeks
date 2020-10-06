@@ -115,6 +115,7 @@
 		                    <li>지역 : <%= m.getLocation() %></li>
 		                    <li>기술 : <%= m.getSkill() %></li>
 	                	</div>
+	                	
 	                	<hr>
                 	<% } %>
 	       		 <% } %> 

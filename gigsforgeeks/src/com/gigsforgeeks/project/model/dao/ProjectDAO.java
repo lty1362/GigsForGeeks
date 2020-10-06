@@ -364,7 +364,8 @@ public class ProjectDAO {
 									 rset.getInt("MIN_BID"),
 									 rset.getInt("MAX_BID"),
 									 rset.getDate("END_BID").toLocalDate(),
-									 rset.getInt("COUNT_BID")));
+									 rset.getInt("COUNT_BID"),
+									 rset.getString("REQUIRED_SKILL")));
 				
 				
 			}

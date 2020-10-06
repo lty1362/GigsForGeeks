@@ -288,7 +288,7 @@
 	</entry>
 	
 	<entry key="projectSelectList">
-			SELECT
+		SELECT
 		       PROJECT_ID
 		     , PROJECT_NAME
 		     , PROJECT_STATUS
@@ -297,6 +297,7 @@
 		     , MIN_BID
 		     , MAX_BID
 		     , COUNT_BID
+		     , REQUIRED_SKILL
 		  FROM PROJECT
 		 WHERE PROJECT_STATUS='OPEN'
 		 ORDER 
