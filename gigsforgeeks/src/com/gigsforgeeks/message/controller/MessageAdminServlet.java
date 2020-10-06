@@ -35,6 +35,7 @@ public class MessageAdminServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		int listCount;		
 		int currentPage;	
 		int pageLimit;		
@@ -48,16 +49,15 @@ public class MessageAdminServlet extends HttpServlet {
 		int keepCount;
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
-		pageLimit =10;
-		
-		boardLimit = 10;
-		
 		request.setCharacterEncoding("utf-8");
-
 		HttpSession session = request.getSession();
 
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		String userId = loginUser.getUserId();
+		
+		pageLimit =10;
+		
+		boardLimit = 10;
 		
 		Message messageReceiver = new MessageService().messageReceiver(userId);
 		

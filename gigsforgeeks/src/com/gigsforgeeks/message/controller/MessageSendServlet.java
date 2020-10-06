@@ -46,6 +46,7 @@ public class MessageSendServlet extends HttpServlet {
 		keepCount = new MessageService().selectKeepCount(userId);
 		PageInfo pi = new PageInfo(notReadCount,keepCount);
 		
+		request.setAttribute("messageReceiver", messageReceiver);
 		request.setAttribute("pi", pi);
 		request.getRequestDispatcher("views/message/messageSend.jsp").forward(request, response);
 	}
