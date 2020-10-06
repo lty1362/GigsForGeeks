@@ -132,15 +132,31 @@ public class ProjectService {
 	 * @param userId
 	 * @return
 	 */
-	public Project projectSelectDetail(int projectId, String userId) {
+	public Project projectSelectDetail(int projectId) {
 		
 		Connection conn = getConnection();
 		
-		Project myProject = new ProjectDAO().projectSelectDetail(conn, projectId, userId);
+		Project myProject = new ProjectDAO().projectSelectDetail(conn, projectId);
 		
 		close(conn);
 		
 		return myProject;
+		
+	}
+	
+	/**
+	 * 우수프리랜서만 조회하는 리스트 서비스
+	 * @return
+	 */
+	public ArrayList<Member> excellentSelectList(){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Member> list = new ProjectDAO().freelancerSelectList(conn);
+		
+		close(conn);
+		
+		return list;
 		
 	}
 	

@@ -243,11 +243,26 @@
 		     , START_DATE
 		     , END_DATE
 		  FROM PROJECT
-		  JOIN MEMBER ON (CLIENT_ID = USER_ID)
-		  WHERE CLIENT_ID = ?
+		  WHERE PROJECT_ID = ?
 		    AND
 		    NOT PROJECT_STATUS = 'DELETE'
-		  ORDER
-		     BY PROJECT_ID DESC
+	</entry>
+	
+	
+	<entry key="excellnetSelectList">
+		SELECT
+		        USER_ID
+		      , EXCELLENT_FREELANCE
+		      , SKILL
+		      , PAY_RATE
+		      , LOCATION
+		      , SELF_INTRODUCTION
+		      , PROFILE_IMAGE
+		   FROM MEMBER
+		  WHERE STATUS = 'Y'
+		    AND ADMIN = 'N'
+		    AND EXCELLENT_FREELANCE = 'Y'
+		  ORDER 
+		     BY USER_ID DESC; 
 	</entry>
 </properties>

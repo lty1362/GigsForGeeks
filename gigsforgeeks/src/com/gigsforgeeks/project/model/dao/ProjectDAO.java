@@ -321,7 +321,7 @@ public class ProjectDAO {
 	 * @param userId
 	 * @return
 	 */
-	public Project projectSelectDetail(Connection conn, int projectId, String userId) {
+	public Project projectSelectDetail(Connection conn, int projectId) {
 		
 		Project project = null;
 		
@@ -333,8 +333,6 @@ public class ProjectDAO {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, projectId);
-			pstmt.setString(2, userId);
-			pstmt.setString(3, userId);
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -370,5 +368,44 @@ public class ProjectDAO {
 		return project;
 		
 	}
+	
+	public ArrayList<Member> excellentSelectList(Connection conn){
+		
+		ArrayList<Member> list = new ArrayList<>();
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("excellnetSelectList");
+		
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				list.add(new Member(rset.getString("USER_ID"),
+									 rset.getString("EXCELLENT_FREELANCE"),
+									 rset.getString("SKILL"),
+									 rset.getInt("PAY_RATE"),
+									 rset.getString("LOCATION"),
+									 rset.getString("SELF_INTRODUCTION"),
+									 rset.getString("PROFILE_IMAGE")));
+				
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return list;
+		
+	}
+		
+	
 	
 }

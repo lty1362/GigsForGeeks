@@ -97,7 +97,7 @@
                                 <img src="${contextPath}/resources/images/freelancer.png">프리랜서</a>
                                 <label><small>프리랜서 탐색</small></label>
                                 <br><br>
-                                <a href="${contextPath}/freelancerList.do">
+                                <a href="${contextPath}/excellent.do">
                                 <img src="${contextPath}/resources/images/greatFreelancer.png">우수 프리랜서</a>
                                 <label><small>평점이 높은 프리랜서 탐색</small></label>
                                 <br><br>
@@ -187,7 +187,7 @@
                                 <img src="${contextPath}/resources/images/freelancer.png">프리랜서</a>
                                 <label><small>프리랜서 탐색</small></label>
                                 <br><br>
-                                <a href="${contextPath}/freelancerList.do">
+                                <a href="${contextPath}/excellent.do">
                                 <img src="${contextPath}/resources/images/greatFreelancer.png">우수 프리랜서</a>
                                 <label><small>평점이 높은 프리랜서 탐색</small></label>
                                 <br><br>

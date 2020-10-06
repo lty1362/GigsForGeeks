@@ -1,6 +1,7 @@
 package com.gigsforgeeks.project.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.project.model.service.ProjectService;
-import com.gigsforgeeks.project.model.vo.Project;
 
 /**
- * Servlet implementation class DetailSelectProject
+ * Servlet implementation class SearchListExcellentFree
  */
-@WebServlet("/detailSelect.do")
-public class ProjectDetailServlet extends HttpServlet {
+@WebServlet("/excellent.do")
+public class SearchListExcellentFree extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProjectDetailServlet() {
+    public SearchListExcellentFree() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,24 +32,13 @@ public class ProjectDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		ArrayList<Member> list = new ProjectService().excellentSelectList();
 		
-
-		int projectId = Integer.parseInt(request.getParameter("projectId"));
+		request.setAttribute("list", list);
 		
-		Project project = new ProjectService().projectSelectDetail(projectId);
-		
-		if(project != null) { // 프로젝트 상세조회 요청 성공 시
-			request.setAttribute("project", project);
-			RequestDispatcher view = request.getRequestDispatcher("views/project/detailProject.jsp");
-			view.forward(request, response);
-			
-		}else { // 실패 시
-			request.getSession().setAttribute("errorMsg", "프로젝트 상세조회에 실패했습니다.");
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
-		}
-		
-		
+		RequestDispatcher view = request.getRequestDispatcher("views/project/searchListExellentFree.jsp");
+		view.forward(request, response);
 	}
 
 	/**

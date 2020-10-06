@@ -29,7 +29,7 @@
                <h1><%= project.getProjectName() %></h1> 
                <label align="center"><%= project.getProjectStatus() %></label>
                <br>
-               <a href="${contextPath}/views/project/detailProject.jsp">프로젝트 상세보기</a> 
+               <a href="${contextPath}/detailSelect.do?projectId=<%= project.getProjectId() %>">프로젝트 상세보기</a> 
                <!-- <a href="">이 프로젝트에 대한 제안들</a> -->
                <!-- <a href="">파일등록</a> | -->
                <!-- <a href="">프로젝트 재등록</a> | -->
@@ -53,9 +53,7 @@
                        <br><br>
                        
                        <h4>요구 기술</h4>
-                       <label class="projectSkill"><%= project.getRequiredSkill() %></label>
-                       <label class="projectSkill"><%= project.getRequiredSkill() %></label>
-                       <label class="projectSkill"><%= project.getRequiredSkill() %></label>
+                       <label><%= project.getRequiredSkill().replace(",", " ") %></label>
    
                        <br><br>
                        <p style="font-size: small;">프로젝트 고유번호(ID) : <%= project.getProjectId() %></p>
@@ -71,8 +69,8 @@
    
                            <h4>입찰 관련 세부사항</h4>
                            <label>입찰 제안가 : </label>
-                           <input type="number" name="proposalPrice" placeholder="￦200,000이상 입력해주세요." 
-                           		  min="200000" style="width:250px" required> 
+                           <input type="hidden" name="projectId" value="${contextPath}/proposal.do?projectId=<%= project.getProjectId() %>">
+                           <input type="number" name="proposalPrice" placeholder="￦200,000이상 입력해주세요." min="200000" style="width:250px" required> 
                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                            <label>이 프로젝트의 작업 예상기간 : </label>
                            <input type="date" name="proposalStart" placeholder="날짜를 입력해주세요." required>
@@ -84,25 +82,6 @@
                            <textarea name="proposalInfo" id="proposalInfo" cols="125" rows="10" style="resize:none;"></textarea>
 
                            <br><br><br><br>
-
-						   <!-- 프로젝트 멤버십 -->
-                           <h3>멤버십 추가</h3>
-                           <hr>
-                           <p>
-					                         프로젝트로서의 성공과 수입 확대를 최대화하고자 하는 목적으로 설계되어 있습니다. <br>
-					                         멤버십에 가입하시면 최대 20%까지 할인해 드리고 있습니다.
-                           </p>
-                           <br>
-                           <h4>멤버십 금액</h4>
-                           <h2>100,000￦</h2>
-                           <br>
-                           <h4>멤버십을 추가하시겠습니까?</h4>
-                           <input type="radio" name="addmembership" id="membership1"> 
-                           <label for="membership1">멤버십 추가</label>
-                           <input type="radio" name="addmembership" id="membership2"> 
-                           <label for="membership2">멤버십 추가안함</label>
-
-                           <br>
                            <button type="submit" id="submitBtn" class="btn btn-outline-info">프로젝트 내용 제출하기</button>
                            <br><br>
                        </form>
@@ -126,7 +105,7 @@
                        <h3>고용주 인증상태</h3>
                        <hr>
                        <ul>
-                           <li><%= project.getMeansOfPayment() %></li>
+                           <li>지불상태 완료</li>
                            <li>입금 완료됨</li>
                            <li>이메일 주소 인증 완료</li>
                            <li>프로필 작성완료</li>
@@ -139,7 +118,7 @@
                    <div id="employerInfo1" style="border: 1px solid black;">
                        <h3>입찰내역</h3>
                        <hr>
-                       <p>- <%= project.getCountBid() %></p>
+                       <p>- 입찰수 : <%= project.getCountBid() %></p>
                        <p>- 평균 입찰금액 : <%= project.getAverageBid() %>￦</p>
                    </div>
    
