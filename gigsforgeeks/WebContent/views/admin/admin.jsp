@@ -52,10 +52,10 @@
 				        <b>전체 회원 보기</b>
 				    </div>
 				
-				    <!-- 1. 상세검색 -->
+				    <!--1. 상세검색
 				    <div id="content_r_center_m">
 						
-						<!-- 검색필터 -->
+						검색필터
 						<div id="content_r_center_filter">
 					        <form action="searchMember.do" method="GET">
 					            <table>
@@ -95,7 +95,7 @@
 					            <button type="reset" class="btn btn-info" style="width: 15%; ">초기화</button>
 					        </form>
 						</div>
-						<!-- 검색필터끝 -->
+						검색필터끝 -->
 						
 				   	 	<!-- 회원조회 영역 -->
 				        <table class="table table-hover, listArea">
