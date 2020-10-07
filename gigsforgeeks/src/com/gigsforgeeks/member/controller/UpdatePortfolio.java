@@ -53,6 +53,7 @@ public class UpdatePortfolio extends HttpServlet {
 		int result = new MemberService().updatePortfolio(userId, updatePortfolio);
 		
 		if(result>0) {
+			session.setAttribute("Portfolio", updatePortfolio);
 			RequestDispatcher view = request.getRequestDispatcher("LoadingUser.load");
 			view.forward(request, response);
 		}else {

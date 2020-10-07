@@ -50,6 +50,7 @@ public class UpdatePublication extends HttpServlet {
 		int result = new MemberService().updatePublication(userId, updatePublication);
 		
 		if(result == 1) {
+			session.setAttribute("Publication", updatePublication);
 			RequestDispatcher view = request.getRequestDispatcher("LoadingUser.load");
 			view.forward(request, response);
 		}else {

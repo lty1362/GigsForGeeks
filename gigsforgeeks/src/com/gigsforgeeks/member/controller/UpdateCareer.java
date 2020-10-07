@@ -52,6 +52,8 @@ public class UpdateCareer extends HttpServlet {
 		int result = new MemberService().updateCareer(userId, updateCareer);
 				
 		if(result>0) {
+			session.setAttribute("Career", updateCareer);
+			
 			RequestDispatcher view = request.getRequestDispatcher("LoadingUser.load");
 			view.forward(request, response);
 		}else {

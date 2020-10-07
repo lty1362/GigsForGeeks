@@ -529,9 +529,11 @@ public class MemberDAO {
 
 
 	public int updateUser(String userId, Member updateMember, Connection conn) {
-		int result = 0;
+		
 		
 		PreparedStatement pstmt = null;
+		
+		int result =0;
 		
 		String sql = prop.getProperty("updateMember");
 		
@@ -541,10 +543,12 @@ public class MemberDAO {
 			pstmt.setString(2, updateMember.getCompany());
 			pstmt.setString(3, updateMember.getSelfIntroduction());
 			pstmt.setInt(4, updateMember.getPayRate());
-			pstmt.setString(5, userId);
-			
+			pstmt.setString(5, updateMember.getJobTitle());
+			pstmt.setString(6, userId);
 			
 			result = pstmt.executeUpdate();
+			
+			
 			
 			
 		} catch (SQLException e) {

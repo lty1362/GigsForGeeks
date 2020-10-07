@@ -45,11 +45,14 @@ public class UpdateProfile extends HttpServlet {
 		String Company = request.getParameter("userCompany");
 		String selfIntroduction = request.getParameter("self-Introduction");
 		int payRate = Integer.parseInt(request.getParameter("pay-rate"));
-		Member updateMember = new Member(location, Company, selfIntroduction, userId, payRate);
+		String jobTitle = request.getParameter("jobTitle");
+		Member updateMember = new Member(location, Company, selfIntroduction, userId, payRate, jobTitle);
 		
 		int result = new MemberService().updateProfile(userId, updateMember);
 		
 		if(result>0) {
+			
+			session.setAttribute("loginUser", updateMember);
 			RequestDispatcher view = request.getRequestDispatcher("LoadingUser.load");
 			view.forward(request, response);
 		}else {

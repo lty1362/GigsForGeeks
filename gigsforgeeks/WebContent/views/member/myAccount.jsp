@@ -111,7 +111,7 @@
 						희망시급 : <%=payRate%>원 <br>
 						거주지역 : <%=location%>
 						<div id="divClock"></div>
-						가입일 : 20<%=enrollDate%>
+						
 					</div>
 					<div id="userName"  align="left">
 						<br><br>
