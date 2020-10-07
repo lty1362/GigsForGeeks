@@ -1,4 +1,4 @@
-package com.gigsforgeeks.project.controller;
+package com.gigsforgeeks.member.controller;
 
 import java.io.IOException;
 
@@ -9,20 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.gigsforgeeks.member.model.service.MemberService;
-import com.gigsforgeeks.member.model.vo.Member;
-
 /**
- * Servlet implementation class FreelancerDetailServlet
+ * Servlet implementation class PaymentServlet
  */
-@WebServlet("/freelancerDetail.do")
-public class FreelancerDetailServlet extends HttpServlet {
+@WebServlet("/payment.me")
+public class PaymentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FreelancerDetailServlet() {
+    public PaymentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,24 +29,8 @@ public class FreelancerDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
-		String userId = "user01";
-		
-		Member member = new MemberService().freelancerSelectDetail(userId);
-		
-		if(member != null) {
-			
-			request.setAttribute("member", member);
-			RequestDispatcher view = request.getRequestDispatcher("views/member/userAccount.jsp");
-			view.forward(request, response);
-			
-		}else {
-			
-			request.getSession().setAttribute("alertMsg", "프리랜서 상세조회에 실패하셨습니다.");
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
-		}
-		
+		RequestDispatcher view = request.getRequestDispatcher("views/member/payment.jsp");
+		view.forward(request, response);
 	}
 
 	/**
