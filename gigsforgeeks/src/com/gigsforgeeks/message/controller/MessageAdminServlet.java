@@ -46,7 +46,9 @@ public class MessageAdminServlet extends HttpServlet {
 		int endPage;		
 		
 		int notReadCount;
-		int keepCount;
+		int adminCount; //keepCount에 넣을수없어 여기에 보관후 jsp에 keepCount로 변환
+		int fullCount;
+		
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
 		request.setCharacterEncoding("utf-8");
@@ -63,7 +65,8 @@ public class MessageAdminServlet extends HttpServlet {
 		
         listCount = new MessageService().selectAdminCount(userId);
         notReadCount = new MessageService().selectNotReadCount(userId);
-        keepCount = new MessageService().selectKeepCount(userId);
+        adminCount = new MessageService().selectKeepCount(userId);
+        fullCount = new MessageService().selectListCount(userId);
         
 		maxPage = (int)Math.ceil((double)listCount / boardLimit); 
 	
@@ -75,7 +78,7 @@ public class MessageAdminServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 
-		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage ,notReadCount,keepCount);
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage ,notReadCount,adminCount, fullCount);
 		
 		ArrayList<Message> adminMs = new MessageService().selectMessageAdmin(pi,userId);
 		
