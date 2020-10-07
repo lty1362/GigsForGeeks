@@ -51,10 +51,10 @@
 	        	</div>
 	         	<br>
 	         	<div class="detail">
-	         	  <table class="table table-hover, listArea" id="detailMe" style="border: 1px solid black">
+	         	  <table class="table table-hover, listArea" id="detailMe" style="border: 1px solid #dee2e6;">
 	         	  		<tr>
-	         	  			<th width="400" height="50" colspan="2"><%=m.getMessageTitle()%></th>
-	         	  			<th width="400" height="50" colspan="2"><%=m.getMessageReceiveTime()%></th>
+	         	  			<th width="400" height="50" colspan="3" style="font-size:30px; line-height: 40px;"><%=m.getMessageTitle()%></th>
+	         	  			<th width="400" height="50" colspan="1" style="font-size:20px; line-height: 50px;"><%=m.getMessageReceiveTime()%></th>
 	         	  		</tr>
 	         	  		<tr>
 	         	  			<td>받는 사람 : </td>
@@ -62,7 +62,9 @@
 	         	  			<td>보낸 사람 : </td>
 							<td><%=m.getMessageRecepient() %></td>
 	         	  		</tr>
-	         	  
+	         	  		<tr>
+	         	  			<td colspan="4"><%=m.getMessageContent()%></td>
+	         	  		</tr>
 	         	  
 	         	  
 	<%-- 	            <tr>
