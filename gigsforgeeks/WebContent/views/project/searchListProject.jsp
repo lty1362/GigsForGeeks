@@ -30,7 +30,7 @@
                 <form id="feelterbar" action="" method="POST">
                     <a href="${contextPath}/projectList.do" class="feelter_main">프로젝트</a> <br><br>
                     <a href="${contextPath}/freelancerList.do" class="feelter_main">프리랜서</a> <br><br>
-                    <a href="${contextPath}/freelancerList.do" class="feelter_main">우수 프리랜서</a><br>
+                    <a href="${contextPath}/excellent.do" class="feelter_main">우수 프리랜서</a><br>
                     <br><br>
              
                     <div id="feelter_sub">
@@ -118,12 +118,9 @@
 	                    <label id="price"><%= p.getMinBid() %>￦ - <%= p.getMaxBid() %>￦</label><br>
 	                    <p><%= p.getDescription() %></p>
 	                    <br>
-	                    <ul>
-		                    <li>입찰 마감일 : <%=p.getEndBid() %></li>
-		                    <li>요구되는 기술 : <%= p.getRequiredSkill() %></li>
-		                    <li>입찰수 : <%= p.getCountBid() %></li>
-		                    
-	                    </ul>
+	                    <li>입찰 마감일 : <%=p.getEndBid() %></li>
+	                    <li>요구되는 기술 : <%= p.getRequiredSkill() %></li>
+	                    <li>입찰수 : <%= p.getCountBid() %></li>
 	                </div>
 	        		<hr>
                 	<% } %>
