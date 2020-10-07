@@ -40,11 +40,11 @@ public class UpdateProfile extends HttpServlet {
 		String userId = loginUser.getUserId(); 
 		
 		
+		
 		String location = request.getParameter("location");
 		String Company = request.getParameter("userCompany");
 		String selfIntroduction = request.getParameter("self-Introduction");
 		int payRate = Integer.parseInt(request.getParameter("pay-rate"));
-		
 		Member updateMember = new Member(location, Company, selfIntroduction, userId, payRate);
 		
 		int result = new MemberService().updateProfile(userId, updateMember);

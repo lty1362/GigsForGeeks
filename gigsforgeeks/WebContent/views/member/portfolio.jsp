@@ -59,13 +59,13 @@
 				<fieldset id="portpolyoSkill" name="portpolyoSkill"
 					style="border: none;">
 					요구 기술 : <input type="checkbox" name="portSkill" value="SQL">SQL 
-					    <input type="checkbox" name="portSkill" value="java">JAVA
-						<input type="checkbox" name="portSkill" value="PYTHON">PYTHON 
-						<input type="checkbox" name="portSkill" value="JavaSciropt">JavaScript
-						<input type="checkbox" name="portSkill" value="HTML">HTML
-						<input type="checkbox" name="portSkill" value="CSS">CSS
-						<input type="checkbox" name="portSkill" value="AJAX">AJAX
-						<input type="checkbox" name="portSkill" value="WordPress">WordPress 
+					     	<input type="checkbox" name="portSkill" value="java" checked>JAVA
+							<input type="checkbox" name="portSkill" value="PYTHON">PYTHON 
+							<input type="checkbox" name="portSkill" value="JavaSciropt">JavaScript
+							<input type="checkbox" name="portSkill" value="HTML">HTML
+							<input type="checkbox" name="portSkill" value="CSS">CSS
+							<input type="checkbox" name="portSkill" value="AJAX">AJAX
+							<input type="checkbox" name="portSkill" value="WordPress">WordPress 
 						
 				</fieldset>
 
