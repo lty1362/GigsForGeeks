@@ -39,8 +39,8 @@
         <%-- Project Navigator --%>
         <nav class="myProjectNav">
         	<a href="${contextPath}/list2.proj">열린 프로젝트</a> | 
-        	<a style="font-weight: bolder;">시작 프로젝트</a> | 
-        	<a href="${contextPath}/list3.proj">피드백</a> | 
+        	<a href="${contextPath}/list.proj">시작 프로젝트</a> | 
+        	<a style="font-weight: bolder;">피드백</a> | 
         	<a href="${contextPath}/list4.proj">과거 프로젝트</a>
         </nav>
         <%-- End of Project Navigator --%>
