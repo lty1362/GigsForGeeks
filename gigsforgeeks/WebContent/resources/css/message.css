@@ -164,15 +164,13 @@ box-sizing: border-box;
 
 /*메세지작성하기*/
 #meContent{resize:none;}
-#meTitle{
-	margin-right: 800px; 
-	width:500px; 
-	height:30px;
-}
 #meUserId{
 	width:200px; 
 	height:30px;
 }
+#msBtn{	
+	float:right;
+	margin-right:5%;}
 
 /*메세지 상세보기*/
 #t2{font-size:20px;}

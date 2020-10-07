@@ -56,10 +56,10 @@
 	        
 	        <b>제목 : </b> 
 	        <input type="text" id="meTitle" name="meTitle" placeholder="제목을 입력해주세요." required>
-	        <button type="submit" class="btn btn-outline-info">메세지 보내기</button>
+	        <button type="submit" id="msBtn" class="btn btn-outline-info">메세지 보내기</button>
 	        <br><br>
 	        
-	        <textarea id="meContent" name="meContent" placeholder="내용을 입력해주세요." required  cols="190" rows="30" ></textarea>
+	        <textarea id="meContent" name="meContent" placeholder="내용을 입력해주세요." required  cols="130" rows="25" ></textarea>
    		   </form>
    		 </div>
        </div>
