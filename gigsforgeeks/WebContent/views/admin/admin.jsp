@@ -8,7 +8,6 @@
 <%
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	String contextPath = request.getContextPath();
 	
 	int listCount = pi.getListCount();
 	int currentPage = pi.getCurrentPage();
@@ -134,14 +133,14 @@
 				        <div class="pagingArea" align="center">
 							<% if(currentPage != 1){ %>
 					            <!-- 맨 처음으로 (<<) -->
-					            <button class="btn btn-info" onclick="location.href='<%=contextPath%>/memberList.bo?currentPage=1';"> &lt;&lt; </button>
+					            <button class="btn btn-info" onclick="location.href='${contextPath}/memberList.bo?currentPage=1';"> &lt;&lt; </button>
 					            <!-- 이전페이지로 (<) -->
-					            <button class="btn btn-info" onclick="location.href='<%=contextPath%>/memberList.bo?currentPage=<%=currentPage-1%>';"> &lt; </button>
+					            <button class="btn btn-info" onclick="location.href='${contextPath}/memberList.bo?currentPage=<%=currentPage-1%>';"> &lt; </button>
 							<% } %>
 							
 							<% for(int p=startPage; p<=endPage; p++){ %>
 								<% if(p != currentPage){ %>
-				            	<button class="btn btn-info" onclick="location.href='<%=contextPath%>/memberList.bo?currentPage=<%=p%>';"><%= p %></button>
+				            	<button class="btn btn-info" onclick="location.href='${contextPath}/memberList.bo?currentPage=<%=p%>';"><%= p %></button>
 				            	<% }else{ %>
 				            	<button class="btn btn-info" disabled><%= p %></button>
 				            	<% } %>
@@ -149,9 +148,9 @@
 							
 							<% if(currentPage != maxPage){ %>
 					            <!-- 다음페이지로 (>) -->
-					            <button class="btn btn-info" onclick="location.href='<%=contextPath%>/memberList.bo?currentPage=<%=currentPage+1%>';"> &gt; </button>
+					            <button class="btn btn-info" onclick="location.href='${contextPath}/memberList.bo?currentPage=<%=currentPage+1%>';"> &gt; </button>
 					            <!-- 맨 끝으로 (>>) -->
-					            <button class="btn btn-info" onclick="location.href='<%=contextPath%>/memberList.bo?currentPage=<%=maxPage%>';"> &gt;&gt; </button>
+					            <button class="btn btn-info" onclick="location.href='${contextPath}/memberList.bo?currentPage=<%=maxPage%>';"> &gt;&gt; </button>
 							<% } %>
 	              	 	</div>
 					</div>

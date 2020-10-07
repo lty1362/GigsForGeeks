@@ -6,7 +6,7 @@
 		font-size: 15px;
 	}
 	
-	th {text-align: center; background:rgb(173, 255, 125, 0.2);}
+	th {text-align: center; background:#0F4C75; color:white;}
 
 	div.modal-content>table>tfoot, tbody {
 	   	text-align: center;
