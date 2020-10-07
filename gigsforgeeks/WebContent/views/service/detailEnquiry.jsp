@@ -21,7 +21,7 @@
     <main id="contentMain">
     
     <div class="wrap" style="width: 1000px;">
-        <div class="wrapSize" style="padding-left: 50%;">
+        <div class="wrapSize" style="padding-left: 10%;">
             <h1><b>문의 하기</b></h1>
             <hr>
             <br>
@@ -50,9 +50,9 @@
                     <textarea name="content" id="content" cols="67" rows="7" required maxlength="1000" placeholder="최대 1000글자까지 작성 가능합니다." style="border-radius: 10px;"></textarea>
                 </div>
                 
-                <button type="submit" class="btn btn-info btn-lg">제출하기</button>
-                <button type="reset" class="btn btn-danger btn-lg">초기화</button>
-                <button class="btn btn-secondary btn-lg" type="button" onclick="history.back();">뒤로가기</button>
+                <button type="submit" class="btn btn-outline-info btn-lg">제출하기</button>
+                <button type="reset" class="btn btn-outline-info btn-lg">초기화</button>
+                <button class="btn btn-outline-info btn-lg" type="button" onclick="history.back();">뒤로가기</button>
                 
             </form>
         </div>
