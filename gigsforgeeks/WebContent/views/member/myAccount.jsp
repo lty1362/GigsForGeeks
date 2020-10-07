@@ -120,10 +120,10 @@
 						<br><br>
 						<%=jobTitle%>
 						</span></div>
-					<div id="workship" >워크쉽(리뷰기반)</div>
+					<div id="workship" >워크쉽</div>
 					<div id="userContent" ><%=selfIntroduction%></div>
 					<div id="hirePositionButton" >
-						<input type="button" value="정보 수정" id="profileButton" class="btn btn-primary">
+						<input type="button" value="정보 수정" id="profileButton" class="btn btn-outline-info">
 					</div>
 					<script >
 						function showClock() {
@@ -167,7 +167,7 @@
 
 
 					<div id="portpolioModifiy" >
-						<input type="button" value="정보수정" id="portfolioButton" class="btn btn-primary"></input>
+						<input type="button" value="정보수정" id="portfolioButton" class="btn btn-outline-info"></input>
 					</div>
 
 				</div>
@@ -206,7 +206,7 @@
 						&nbsp; / &nbsp;퇴사일 : <%= Retire %> &nbsp; </span>
 
 					<div id="careerModifiy" >
-						<input type="button" id="careerButton" value="정보 수정" class="btn btn-primary"> 
+						<input type="button" id="careerButton" value="정보 수정" class="btn btn-outline-info"> 
 					</div>
 
 				</div>
@@ -228,7 +228,7 @@
 						/&nbsp; 졸업년도  : <%= EduGrauatedDate %></span>
 
 					<div id="educationModifiy" >
-						<input type="button" id="educationButton" value="정보 수정" class="btn btn-primary">
+						<input type="button" id="educationButton" value="정보 수정" class="btn btn-outline-info">
 					</div>
 
 				</div>
@@ -250,7 +250,7 @@
 					</span>
 
 					<div id="cartificationModifiy" >
-						<input type="button" id="certificationButton" value="정보 수정" class="btn btn-primary">
+						<input type="button" id="certificationButton" value="정보 수정" class="btn btn-outline-info">
 					</div>
 				</div>
 				<script>
@@ -277,7 +277,7 @@
 
 
 					<div id="publicationModifiy" >
-						<input type="button" id="publicationButton" value="정보수정" class="btn btn-primary">
+						<input type="button" id="publicationButton" value="정보수정" class="btn btn-outline-info">
 					</div>
 				</div>
 				<script>

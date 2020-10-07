@@ -58,7 +58,7 @@
 				
 				
 	
-				<div id="careerModifiy" ><button type="submit" class="btn btn-primary">저장</button></div>
+				<div id="careerModifiy" ><button type="submit" class="btn btn-outline-info">저장</button></div>
 				</div>
 		
 	</form>

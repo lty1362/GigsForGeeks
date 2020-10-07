@@ -71,7 +71,7 @@
 
 
 				<div id="portpolyoModifiy" >
-					<button type="submit" class="btn btn-primary">저장</button>
+					<button type="submit" class="btn btn-outline-info">저장</button>
 				</div>
 
 			

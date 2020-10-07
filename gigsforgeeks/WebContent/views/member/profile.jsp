@@ -113,7 +113,7 @@
                             </textarea>
 			</div>
 			<div id="hirePositionButton">
-				<button type="submit" class="btn btn-primary">수정</button>
+				<button type="submit" class="btn btn-outline-info">수정</button>
 				
 			</div>
 

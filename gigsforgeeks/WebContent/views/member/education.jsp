@@ -55,7 +55,7 @@
 			졸업 : <input type="date" name="GrauateDate"></span>
 			<br><br>
 			졸업여부 : <input type="checkbox">
-		<div id="educationModifiy"><button type="submit" class="btn btn-primary">저장</button></div>
+		<div id="educationModifiy"><button type="submit" class="btn btn-outline-info">저장</button></div>
 
 	
 	</form>

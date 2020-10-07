@@ -53,6 +53,8 @@ input[type="radio"]{
 	height: 15px;
 	line-height:25px;
 }
+
+hr{color: black;}
 </style>
 </head>
 <body>
@@ -64,7 +66,7 @@ input[type="radio"]{
 			<h2>사용자 설정</h2>
 			<label>이름 </label> <br> <input type="text"
 				placeholder="이름을 입력해주세요"><br><br>
-			<button class="btn btn-primary">저장</button>
+			<button class="btn btn-outline-info">저장</button>
 			<br><br>
 			<hr>
 			<label>주소</label> <br> <span style="font-size: 10px;">상세주소</span>
@@ -77,7 +79,7 @@ input[type="radio"]{
 				type="text" style="width: 100px;"> 
 			
 
-			<button class="btn btn-primary">저장</button>
+			<button class="btn btn-outline-info">저장</button>
 			
 			<hr>
 
@@ -88,7 +90,7 @@ input[type="radio"]{
 			<br> <span>비밀번호 확인</span> <br> <input type="password"
 				placeholder="현재 비밀번호를 입력해주세요" style="width:250px;"> <br>
 			<br>
-			<button class="btn btn-primary">저장</button>
+			<button class="btn btn-outline-info">저장</button>
 			<br>
 			<br>
 			<hr>
@@ -101,7 +103,7 @@ input[type="radio"]{
 				<span>변경할 비밀번호 확인</span><br>
 				<input type="password" style="width: 250px;" placeholder="비밀번호를 확인해주세요"><br>
 			
-			<button class="btn btn-primary">저장</button>
+			<button class="btn btn-outline-info">저장</button>
 			<br><br>
 			<hr>
 			<div>
@@ -112,7 +114,7 @@ input[type="radio"]{
 			</div>
 			<br>
 
-			<button type="button" class="btn btn-primary">저장</button>
+			<button type="button" class="btn btn-outline-info">저장</button>
 
 			<br>
 			<br>
@@ -125,7 +127,7 @@ input[type="radio"]{
 			</div>
 			<br>
 			<br>
-			<button type="button" class="btn btn-primary">저장</button>
+			<button type="button" class="btn btn-outline-info">저장</button>
 
 			<br>
 			<br>
