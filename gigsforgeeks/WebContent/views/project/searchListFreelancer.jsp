@@ -115,8 +115,8 @@
 	                    <p><%= m.getSelfIntroduction() %></p>
 	                    <br>
 	                    <li>우수 프리랜서 : <%= m.getExcellentFreelance() %></li>
-	                    <li>지역 : <%= m.getLocation() %></li>
 	                    <li>기술 : <%= m.getSkill() %></li>
+	                    <li>지역 : <%= m.getLocation() %></li>
 	                    <!-- <button class="btn btn-outline-info">고용해주세요!</button>-->
 	                </div>
 	                <hr>
