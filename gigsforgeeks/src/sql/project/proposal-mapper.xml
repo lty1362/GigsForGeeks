@@ -16,7 +16,7 @@
 	  )
 	VALUES
 	  (
-	      SEQ_PNO.NEXTVAL
+	      SEQ_PROP.NEXTVAL
 	    , ?
 	    , ?
 	    , ?
