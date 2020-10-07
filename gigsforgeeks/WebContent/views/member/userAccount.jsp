@@ -120,7 +120,7 @@
 						<br><br>
 						<%=jobTitle%>
 						</span></div>
-					<div id="workship" >워크쉽(리뷰기반)</div>
+					<div id="workship" >워크쉽</div>
 					<div id="userContent" ><%=selfIntroduction%></div>
 
 					<script >
@@ -171,20 +171,20 @@
 				</script>
 
 
-				<div id="review" name="review">
+				<div id="review" >
 					<h1 align="left">리뷰 항목</h1>
-					<span id="reviewTitle" ><h2>리뷰 제목(기입)</h2></span>
-					<span id="reviewScore" >리뷰 점수(기입)</span><br>
-					<span id="reviewLink" ><a>리뷰 하이퍼링크(기입)</a></span>
+					<h2>리뷰 제목</h2>
+					<span id="reviewScore" >리뷰 점수</span><br>
+					<span id="reviewLink" ><a>리뷰 하이퍼링크</a></span>
 					<br> <br>
-					<div id="reviewContent" >리뷰 내용(기입)</div>
+					<div id="reviewContent" >리뷰 내용</div>
 
-					<span id="reviewTime" >작업시간(기입)</span>
+					<span id="reviewTime" >작업시간</span>
 
 					<div id="reviewModifiy" >
 
 						<span id="reviewReward" >리뷰한 프로젝트의
-							보상액(기입)</span>
+							보상액</span>
 					</div>
 				</div>
 

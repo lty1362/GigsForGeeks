@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
-<%@ page import ="com.gigsforgeeks.project.model.vo.Project,java.text.NumberFormat, java.util.Locale" %>
+<%@ page import ="com.gigsforgeeks.project.model.vo.Project,java.text.NumberFormat, java.util.Locale, java.text.DecimalFormat" %>
 <%
 	Project project = (Project)request.getAttribute("project");
+
+	DecimalFormat formatter = new DecimalFormat("###,###");
 %>
 <%-- Template HTML 1 : 일반 화면용 --%>
 <!DOCTYPE html>
@@ -42,7 +44,7 @@
                    <div id="detail_Content">
 
                        <label id="detail_Title">프로젝트 관련 세부사항</label>  
-                       <label id="price"><%= project.getMinBid() %>￦ - <%= project.getMaxBid() %>￦</label>
+                       <label id="price"><%= formatter.format(project.getMinBid()) %>￦ - <%= formatter.format(project.getMaxBid()) %>￦</label>
                        
                        <br><br><hr>
                        <p><%= project.getDescription() %></p>

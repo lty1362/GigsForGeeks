@@ -22,7 +22,7 @@
         <div class="signUpArea">
         <!-- 1. 회원가입 form-->
             <form id="signUpForm" action="<%= request.getContextPath()%>/insert.me" method="post">
-            <br><br><br><br><br><br>
+            <br><br><br><br>
             <input type="hidden" name="userType" id="userType" value="">
             <table>
                 <tr>

@@ -14,8 +14,8 @@
 <!-- 페이지의 타이틀을 작성하세요 -->
 <title>계정 설정</title>
 <style>
-body{
-	margin: auto;
+body form{
+	margin: 15px;
 }	
 input[type=password] {
 	border-radius: 7%;
@@ -39,17 +39,22 @@ span {
 	font-size: 10px;
 	margin: 5px;
 }
-
-#buttonPlace {
-	width: 100px;
-	height: 50px;
+button{
 	position: absolute;
-	right: 1px;
+	right: 15px;
 }
+
+
 input[type="checkbox"]{
- height: 20px;
- line-height: 24px;
+ height: 15px;
+ line-height: 25px;
 }
+input[type="radio"]{
+	height: 15px;
+	line-height:25px;
+}
+
+hr{color: black;}
 </style>
 </head>
 <body>
@@ -61,19 +66,21 @@ input[type="checkbox"]{
 			<h2>사용자 설정</h2>
 			<label>이름 </label> <br> <input type="text"
 				placeholder="이름을 입력해주세요"><br><br>
-			<button class="btn btn-primary">저장</button>
-			<br>
+			<button class="btn btn-outline-info">저장</button>
+			<br><br>
 			<hr>
 			<label>주소</label> <br> <span style="font-size: 10px;">상세주소</span>
 			<br> <input type="text" style="width: 400px;"> <br>
 			<br> <input type="text" style="width: 400px;"> <br>
 			<br> <span style="font-size: 10px;">우편번호</span> <br> <input
 				type="text" style="width: 100px;"> <br>
-			<br> <span style="font-size: 10px;">국가</span> <br> <input
-				type="text" style="width: 100px;"> <br>
-			<br>
+			<br> <span style="font-size: 10px;">국가</span> <br> 
+			<input
+				type="text" style="width: 100px;"> 
+			
 
-			<button class="btn btn-primary">저장</button>
+			<button class="btn btn-outline-info">저장</button>
+			
 			<hr>
 
 			<label>이메일</label> <br>
@@ -83,7 +90,7 @@ input[type="checkbox"]{
 			<br> <span>비밀번호 확인</span> <br> <input type="password"
 				placeholder="현재 비밀번호를 입력해주세요" style="width:250px;"> <br>
 			<br>
-			<button class="btn btn-primary">저장</button>
+			<button class="btn btn-outline-info">저장</button>
 			<br>
 			<br>
 			<hr>
@@ -95,9 +102,9 @@ input[type="checkbox"]{
 				<br>
 				<span>변경할 비밀번호 확인</span><br>
 				<input type="password" style="width: 250px;" placeholder="비밀번호를 확인해주세요"><br>
-			<br>
-			<button class="btn btn-primary">저장</button>
-			<br>
+			
+			<button class="btn btn-outline-info">저장</button>
+			<br><br>
 			<hr>
 			<div>
 				<label>알림 설정</label> <br> <input type="checkbox" id="chk1" ><label for="chk1" style="font-size: 13px;"> 게시한
@@ -107,7 +114,7 @@ input[type="checkbox"]{
 			</div>
 			<br>
 
-			<button type="button" class="btn btn-primary">저장</button>
+			<button type="button" class="btn btn-outline-info">저장</button>
 
 			<br>
 			<br>
@@ -115,12 +122,12 @@ input[type="checkbox"]{
 			<label>계정 유형</label> <br>
 			<br>
 			<div>
-				<input type="radio" name="acccountClass"> 구인 
-				<input type="radio" name="acccountClass"> 구직
+				<label><input type="radio" name="optradio">구인</label>
+				<label><input type="radio" name="optradio">구직</label>
 			</div>
 			<br>
 			<br>
-			<button type="button" class="btn btn-primary">저장</button>
+			<button type="button" class="btn btn-outline-info">저장</button>
 
 			<br>
 			<br>
@@ -154,8 +161,8 @@ input[type="checkbox"]{
 				<br> 더이상 알림을 받지 않게됩니다. <br>
 				<br> 사이트에 다시 로그인 할수 없습니다.
 			</h4>
-
 			<button type="button" class="btn btn-danger">계정 탈퇴</button>
+			<br><br><br>
 		</form>
 	</section>
 	

@@ -170,10 +170,10 @@ box-sizing: border-box;
 }
 #msBtn{	
 	float:left;
-
+}
 /*메세지 상세보기*/
-#t2{font-size:20px;}
-#t1{padding-left: 900px;}
+/* #t2{font-size:20px;}
+#t1{padding-left: 900px;} */
 .detail{
    border:1px solid white;
    text-align:center;
@@ -187,15 +187,16 @@ box-sizing: border-box;
    height: 80%;
 }
 #detailMe p{
-    border-top:1px solid black;
+    /* border-top:1px solid black; */
     padding-top: 10px;
     }
 #detailMe p{height:auto}
-#detailMe th{text-align:center;}
+#detailMe th{text-align:center; font-size:20px;}
 #detailMe td{text-align:center;}
 #t3>th, #t3>td{
     padding-top: 10px;
 }
+
 
 /*메세지삭제*/
 #deletems{

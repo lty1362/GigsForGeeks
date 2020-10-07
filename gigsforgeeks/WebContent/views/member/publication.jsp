@@ -50,7 +50,7 @@
 		
 		<span id="publicationTime" >출판날짜 : <input type="month" name="BookDate"></span>
 
-		<div id="publicationModifiy" ><button type="submit">수정</button><button type="reset">리셋</button></div>
+		<div id="publicationModifiy" ><button type="submit" class="btn btn-outline-info">수정</button></div>
 	</form>
 
 

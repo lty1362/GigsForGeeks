@@ -64,10 +64,10 @@ input[type="checkbox"] {
 
 			<span>인증 받을 이메일 기재</span><br> <input type="text"
 				placeholder="이메일을 입력해주세요" style="width: 400px;">
-			<button class="btn btn-primary">인증번호 전송</button>
+			<button class="btn btn-outline-info">인증번호 전송</button>
 			<br>
 			<br> <span>인증번호 입력</span> <br> <input type="text">
-			<button class="btn btn-primary">제출</button>
+			<button class="btn btn-outline-info">제출</button>
 			<br>
 			<br>
 			<hr>
