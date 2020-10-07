@@ -256,20 +256,20 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                <td><a href="" style="color: black;">잔고</a></td>
+                                                <td><a href="" style="color: black;"></a></td>
                                                 <td><a href="${contextPath}/LoadingUser.load" style="color: black;">내 프로필</a></td>
                                             </tr>
                                             <tr>
-                                                <td>1000원</td>
+                                                <td></td>
                                                 <td><a href="" style="color: black;">맴버쉽</a></td>
                                             </tr>
                                             <tr>
-                                                <td><a href="" style="color: black;">입금서비스</a></td>
+                                                <td><a href="" style="color: black;"></a></td>
                                                 <td><a href="" style="color: black;"></a></td>
                                             </tr>
                                             <tr>
-                                                <td><a href="" style="color: black;">출금서비스 요청</a></td>
-                                                <td><a href="" style="color: black;">고객지원 요청</a></td>
+                                                <td><a href="" style="color: black;"></a></td>
+                                                <td><a href="${contextPath}/faq?currentPage=1" style="color: black;">고객지원 요청</a></td>
                                             </tr>
                                             <tr>
                                                 <td><a href="" style="color: black;">재정통계</a></td>
