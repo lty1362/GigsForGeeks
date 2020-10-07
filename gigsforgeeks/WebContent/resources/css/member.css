@@ -305,4 +305,21 @@ textarea{
  margin-right:5%;
 }  
 
-
+/*멤버쉽가입이용*/
+#memberShip {
+	text-align: center;
+	height: 100%;
+	}
+#money{margin-top:20px}
+#memberShipImg{padding:50px;}
+#memberShipImg td{
+	width: 250px;
+	height: 300px;
+    text-align: center;
+	}	
+#memberShip td {padding: 5px;}
+#faq1 p{
+	font-size: 15px;
+	text-align:left;
+	}
+#faq1 b{font-size: 13.5px;}

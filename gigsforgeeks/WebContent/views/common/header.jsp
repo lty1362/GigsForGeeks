@@ -261,7 +261,7 @@
                                             </tr>
                                             <tr>
                                                 <td></td>
-                                                <td><a href="" style="color: black;">맴버쉽</a></td>
+                                                <td><a href="${contextPath}/memberShip.me" style="color: black;">맴버쉽</a></td>
                                             </tr>
                                             <tr>
                                                 <td><a href="" style="color: black;"></a></td>
