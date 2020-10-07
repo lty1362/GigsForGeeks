@@ -66,7 +66,7 @@
 		font-size: 15px;
 	}
 	
-	th {background:rgb(0, 255, 125, 0.2); font-size:20px;}
+	th {background:#0f4c75; color: white; font-size:20px;}
 
 	div.modal-content>table>tfoot, tbody {
 	   	text-align: center;
@@ -181,24 +181,24 @@
 	      	<div class="pagingArea" align="center">
 	 			<% if(currentPage != 1){ %>
 		           <!-- 맨 처음으로 (<<) -->
-		           <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=1';"> &lt;&lt; </button>
+		           <button class="btn btn-outline-info" onclick="location.href='<%=contextPath%>/faq?currentPage=1';"> &lt;&lt; </button>
 		           <!-- 이전페이지로 (<) -->
-		           <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=currentPage-1%>';"> &lt; </button>
+		           <button class="btn btn-outline-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=currentPage-1%>';"> &lt; </button>
 				<% } %>
 				
 				<% for(int p=startPage; p<=endPage; p++){ %>
 					<% if(p != currentPage){ %>
-		          	<button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=p%>';"><%= p %></button>
+		          	<button class="btn btn-outline-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=p%>';"><%= p %></button>
 		          	<% }else{ %>
-		          	<button class="btn btn-info" disabled><%= p %></button>
+		          	<button class="btn btn-outline-info" disabled><%= p %></button>
 		          	<% } %>
 	          	<% } %>
 				
 				<% if(currentPage != maxPage){ %>
 		           <!-- 다음페이지로 (>) -->
-		           <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=currentPage+1%>';"> &gt; </button>
+		           <button class="btn btn-outline-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=currentPage+1%>';"> &gt; </button>
 		           <!-- 맨 끝으로 (>>) -->
-		           <button class="btn btn-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=maxPage%>';"> &gt;&gt; </button>
+		           <button class="btn btn-outline-info" onclick="location.href='<%=contextPath%>/faq?currentPage=<%=maxPage%>';"> &gt;&gt; </button>
 				<% } %>
 	        </div>
         
