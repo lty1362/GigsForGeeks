@@ -142,8 +142,8 @@
                         <a href="${contextPath}/faq?currentPage=1">문의하기</a>
                     </nav>
                     <aside id="headerAside">
-                        <a href="${contextPath}/views/member/login.jsp">로그인</a>
-                        <a href="${contextPath}/views/member/signUp.jsp">회원가입</a>
+                        <a href="${contextPath}/login.me">로그인</a>
+                        <a href="${contextPath}/signUp.me">회원가입</a>
                     </aside>
                 </main>
 	        <% } else { %>
