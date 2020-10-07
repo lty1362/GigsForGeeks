@@ -9,13 +9,20 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <!-- 
+  	로그인 체크 필터
+  	*.proj
+  	*.ms
+  	위에 해당되는 요청마다 로그인 여부 판단
+   -->
   <filter>
     <filter-name>LoginCheckFilter</filter-name>
     <filter-class>com.gigsforgeeks.common.LoginCheckFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>LoginCheckFilter</filter-name>
-    <url-pattern>*.proj,*.ms</url-pattern>
+    <url-pattern>*.proj</url-pattern>
+    <url-pattern>*.ms</url-pattern>
   </filter-mapping>
   <servlet>
     <servlet-name>Admin</servlet-name>
