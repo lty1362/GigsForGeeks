@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
-<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*"%>
-
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*, java.text.NumberFormat, java.text.DecimalFormat"%>
 <%
 	ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("list");
 
+	DecimalFormat formatter = new DecimalFormat("###,###");
 %>
 <!DOCTYPE html>
 <html>
@@ -115,7 +115,7 @@
 	                <% for(Project p : list) { %>
 	                <div onclick="location.href='${contextPath}/detailSelect.do?projectId=<%= p.getProjectId() %>';" id="searchprojectList">
 	                    <label id="projectTitle"><%= p.getProjectName() %></label> 
-	                    <label id="price"><%= p.getMinBid() %>￦ - <%= p.getMaxBid() %>￦</label><br>
+	                    <label id="price"><%= formatter.format(p.getMinBid()) %>￦ - <%= formatter.format(p.getMaxBid()) %>￦</label><br>
 	                    <p><%= p.getDescription() %></p>
 	                    <br>
 	                    <li>입찰 마감일 : <%=p.getEndBid() %></li>

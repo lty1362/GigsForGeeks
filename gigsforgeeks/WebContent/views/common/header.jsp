@@ -86,7 +86,7 @@
                             </div>
                                 <!-- 레이어 안의 내용 -->
                                 <form action="" method="GET">
-                                    <input type="text" name="totalSearch" id="searchInput" placeholder="통합검색">
+                                    <input type="text" name="totalSearch" id="searchInput" placeholder="채용 정보 찾아보기">
                                     <button type="submit" onclick="window.open('${contextPath}/views/project/totalSearch.jsp')" class="btn btn-info">검색</button>
                                 </form>
                                 <br>
@@ -173,7 +173,7 @@
                             </div>
                                 <!-- 레이어 안의 내용 -->
                                 <form action="" method="GET">
-                                    <input type="text" name="totalSearch" id="searchInput" placeholder="통합검색">
+                                    <input type="text" name="totalSearch" id="searchInput" placeholder="채용 정보 찾아보기">
                                     <button type="submit" onclick="window.open('${contextPath}/views/project/totalSearch.jsp')" class="btn btn-info">검색</button>
                                 </form>
                                 <br>
@@ -261,7 +261,7 @@
                                             </tr>
                                             <tr>
                                                 <td></td>
-                                                <td><a href="" style="color: black;">맴버쉽</a></td>
+                                                <td><a href="${contextPath}/memberShip.me" style="color: black;">맴버쉽</a></td>
                                             </tr>
                                             <tr>
                                                 <td><a href="" style="color: black;"></a></td>
@@ -272,7 +272,7 @@
                                                 <td><a href="${contextPath}/faq?currentPage=1" style="color: black;">고객지원 요청</a></td>
                                             </tr>
                                             <tr>
-                                                <td><a href="" style="color: black;">재정통계</a></td>
+                                                <td><a href="" style="color: black;"></a></td>
                                                 <td><a href="${contextPath}/setup.set" style="color: black;">계정설정</a></td>
                                             </tr>
                                             <tr>

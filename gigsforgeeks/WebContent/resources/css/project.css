@@ -284,10 +284,12 @@ form #feelter_sub{font-weight: bold}
       width: 1000px;
   }
   #project div:hover{
-      box-shadow:4px 4px 4px 4px gray
+      box-shadow:4px 4px 4px 4px gray;
+      cursor:pointer;
   }
   #freelancer div:hover{
-      box-shadow: 4px 4px 4px 4px gray
+      box-shadow: 4px 4px 4px 4px gray;
+      cursor:pointer;
   }
   #project input{width: 300px}
   #freelancer input{width: 300px}

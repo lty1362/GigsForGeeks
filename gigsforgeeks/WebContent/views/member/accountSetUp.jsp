@@ -14,6 +14,9 @@
 <!-- 페이지의 타이틀을 작성하세요 -->
 <title>계정 설정</title>
 <style>
+body{
+	margin: auto;
+}	
 input[type=password] {
 	border-radius: 7%;
 	border: 1px solid skyblue;
@@ -52,7 +55,7 @@ input[type="checkbox"]{
 <body>
 	<%-- Content --%>
 	<!-- 여기서부터 내용 작성하면 됩니다. -->
-	<main id="contentMain">
+	
 	<section>
 		<form action="" method="POST">
 			<h2>사용자 설정</h2>
@@ -155,7 +158,7 @@ input[type="checkbox"]{
 			<button type="button" class="btn btn-danger">계정 탈퇴</button>
 		</form>
 	</section>
-	</main>
+	
 	<%-- End Of Content --%>
 
 	<%-- Footer --%>
