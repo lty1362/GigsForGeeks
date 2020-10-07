@@ -261,4 +261,48 @@ textarea{
 	width: 100%; box-sizing: border-box;
 }
 
+/*계좌설정*/
+#accountInfor{
+	border-top:1px solid black; 
+	padding-top:10px;
+	height: 250px;
+	}
+#accountInfor>table th{text-align:left;}
+#accountInfor>table td{
+    color: gray;
+    padding: 5px;
+    text-align:left;
+    }
+#accountInfor input{
+	height: 40px;
+}
+#bank{height: 35px;}
+#account{width: 300px;}
+#bankBtn{
+    float:right;
+ margin-right:5%;
+}
+
+/*카드설정*/
+#cardInfor{
+	height: 250px;
+    margin-top: 5px;
+    padding-top:10px;
+    border-top:1px solid black;
+    }
+#cardInfor>table th{text-align:left;}
+#cardInfor>table td{
+    color: gray;
+    padding: 5px;
+    text-align:left;
+    }
+#cardInfor input{
+	height: 40px;
+}
+#card{width: 300px;}
+#cardBtn{
+    float:right;
+ margin-right:5%;
+}  
+
 
