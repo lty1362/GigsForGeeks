@@ -40,12 +40,10 @@ public class LoginCheckFilter implements Filter {
 		
 		if(!requestURI.equals(req.getContextPath() + "/login.me")) {
 			
-			System.out.println(isRedirect);
 			Member loginUser = (Member) req.getSession().getAttribute("loginUser");
 			if(loginUser == null) {
 				isRedirect = true;
 			}
-			System.out.println(isRedirect);
 			
 		}
 		
