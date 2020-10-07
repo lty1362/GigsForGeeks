@@ -92,7 +92,7 @@
 
 
 	<%-- Content --%>
-	<main id="contentMain">
+	
 
 	<section>
 
@@ -241,8 +241,7 @@
 
 				<div id="cartification" >
 					<h1 align="left">자격증 항목</h1>
-					<span id="cartificationTitle" ><h2>
-							<%=CetificateName%></h2></span>
+					<h2><%=CetificateName%></h2>
 
 					<div id="cartificationContent" >
 						<%=CetificateAuth%></div>
@@ -296,7 +295,7 @@
 
 
 	</section>
-	</main>
+	
 	<%-- End Of Content --%>
 
 	<%-- Footer --%>
