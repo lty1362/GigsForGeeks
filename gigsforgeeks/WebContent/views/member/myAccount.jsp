@@ -20,16 +20,16 @@
 	href="${contextPath}/resources/css/member.css">
 <%-- End Of Header --%>
 <!-- 페이지의 타이틀을 작성하세요 -->
-<title>Insert title here</title>
+<title>마이페이지</title>
 </head>
 <body onload="showClock()">
 
 	<%
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 hh시");
+		
 		String userId = loginUser.getUserId();
 		int payRate = (loginUser.getPayRate() == 0) ? 0 : loginUser.getPayRate();
 		String location = (loginUser.getLocation() == null) ? "입력하지 않으셨습니다." : loginUser.getLocation();
-		Date enrollDate = loginUser.getEnrollDate();
+		String enrollDate = loginUser.getEnrollDate();
 		String company = (loginUser.getCompany() == null) ? "COMPANY" : loginUser.getCompany();
 		String jobTitle = (loginUser.getJobTitle() == null) ? "입력하지 않으셨습니다." : loginUser.getJobTitle();
 		String selfIntroduction = (loginUser.getSelfIntroduction() == null) ? "" : loginUser.getSelfIntroduction();
@@ -52,28 +52,25 @@
 		String PortfolioSkill = (userPortfolio.getPortfolioSkill() == null)
 				? ""
 				: userPortfolio.getPortfolioSkill();
-		/*String Start = (sdf.format(userPortfolio.getPortfolioStart()) == null) ? ""
-				: sdf.format(userPortfolio.getPortfolioStart());
-		String End = (sdf.format(userPortfolio.getPortfolioEnd()) == null) ? ""
-				: sdf.format(userPortfolio.getPortfolioEnd());*/
+		String Start = (userPortfolio.getPortfolioStart() == null) ? "" : userPortfolio.getPortfolioStart();
+		String End = (userPortfolio.getPortfolioEnd() == null) ? "" : userPortfolio.getPortfolioEnd();
 
 		/*경력정보*/
 		String CompanyInfo = (userCareer.getCompanyInfo() == null) ? "회사정보" : userCareer.getCompanyInfo();
 		String CareerTitle = (userCareer.getCareerTitle() == null) ? "직급명" : userCareer.getCareerTitle();
 		String CareerInfo = (userCareer.getCareerInfo() == null) ? "" : userCareer.getCareerInfo();
-		/*String Hire = (sdf.format(userCareer.getHireDate()) == null) ? "" : sdf.format(userCareer.getHireDate());
-		String Retire = (sdf.format(userCareer.getRetireDate()) == null) ? ""
-				: sdf.format(userCareer.getRetireDate()); */
+		String Hire = (userCareer.getHireDate() == null) ? "" : userCareer.getHireDate();
+		String Retire = (userCareer.getRetireDate() == null) ? "" : userCareer.getRetireDate();
 		String CareerStatus = userCareer.isCareerStatus();
 
 		/*교육정보*/
 		String University = (userEducation.getUniversity() == null) ? "대학명" : userEducation.getUniversity();
 		String Major = (userEducation.getMajor() == null) ? "전공명" : userEducation.getMajor();
 		String Degree = (userEducation.getDegree() == null) ? "전공명" : userEducation.getDegree();
-		/*String EduEnrollDate = (sdf.format(userEducation.getEnrollDate()) == null) ? ""
-				: sdf.format(userEducation.getEnrollDate());
-		String EduGrauatedDate = (sdf.format(userEducation.getGrauatedDate()) == null) ? ""
-				: sdf.format(userEducation.getGrauatedDate());*/
+		String EduEnrollDate = (userEducation.getEnrollDate() == null)
+				? ""
+				: userEducation.getEnrollDate();
+		String EduGrauatedDate = (userEducation.getGrauatedDate() == null) ? "" : userEducation.getGrauatedDate();
 
 		/*자격증 정보*/
 		String CetificateName = (userCertificate.getcetificateName() == null)
@@ -95,155 +92,200 @@
 
 
 	<%-- Content --%>
-	<main id="contentMain">
+	
 
 	<section>
 
 
 		<form action="<%=request.getContextPath()%>/myAccountModify.me"
-			id="myPageForm" method="POST" encottype="multipart/form-data">
+			id="myPageForm" method="POST" enctype="multipart/form-data">
 
 			<div class="wrap" align="center">
 
-				<div id="profile" name="profile">
-					<div id="profilePhoto" name="profilePhoto">
-						<img alt="" src="">
+				<div id="profile" >
+					<div id="profilePhoto" >
+						<img alt="" src="${contextPath}/resources/images/avatar.png"
+							style="width: 100%; height: 100%;">
 					</div>
-					<div id="location" name="location">
-						<%=payRate%>원
-						<br><%=location%>
-						<div id="divClock" ></div>
-						<%=enrollDate%>
+					<div id="location" >
+						희망시급 : <%=payRate%>원 <br>
+						거주지역 : <%=location%>
+						<div id="divClock"></div>
+						
 					</div>
-					<div id="userName" name="userName" align="left">
-						<span><%=userId%></span>@
+					<div id="userName"  align="left">
+						<br><br>
+						<span style="font-size: 16px; font-weight: bold;"><%=userId%>@
 						<%=company%>
-						/<%=jobTitle%></div>
-					<div id="workship" name="workship">워크쉽(리뷰기반)</div>
-					<div id="userContent" name="userContent"><%=selfIntroduction%></div>
-					<div id="hirePositionButton" name="hireButton">
-						<button>고용주측의 프로필 확인</button>
+						<br><br>
+						<%=jobTitle%>
+						</span></div>
+					<div id="workship" >워크쉽</div>
+					<div id="userContent" ><%=selfIntroduction%></div>
+					<div id="hirePositionButton" >
+						<input type="button" value="정보 수정" id="profileButton" class="btn btn-outline-info">
 					</div>
-					<script language="javascript">
+					<script >
 						function showClock() {
 							var currentDate = new Date();
 							var divClock = document.getElementById("divClock");
 
 							var msg = "현재 시간:" + currentDate.getHours() + "시"
 							msg += currentDate.getMinutes() + "분";
-							
 
 							divClock.innerText = msg;
 							setTimeout(showClock, 1000);
-						}
+
+						};
+					</script>
+					<script>
+						$("#profileButton").click(function() {
+							$("#profile").load("views/member/profile.jsp")
+
+						});
 					</script>
 
-
-
-
 				</div>
 
 
-				<div id="portpolyo" name="portpolyo">
+
+
+
+
+
+				<div id="portpolyo" >
 					<h1 align="left">포트폴리오 항목</h1>
-					<span id="portpolioTitle" name="portpolioTitle"><h2><%=PortfolioTilte%></h2></span>
-					<span id="portpolioLink" name="portpolioLink"><a><%=PortfolioLink%></a></span>
+					<h2><%=PortfolioTilte%></h2>
+					<span id="portpolioLink" ><a><%=PortfolioLink%></a></span>
 					<br> <br>
-					<div id="portpolioContent" name="portpolioContent"><%=PortfolioContent%></div>
-					<br> <span id="portpolioTime" name="portpolioTime">
-						시작시간 : &nbsp; 완료시간 : </span> <br> <span id="portpolioSkill"
-						name="portpolioSkill">사용 기술 : <%=PortfolioSkill%></span>
+					<div id="portpolioContent" ><%=PortfolioContent%></div>
+					<br> <span id="portpolioTime" >
+						시작시간 : <%=Start%> &nbsp; 완료시간 : <%=End%>
+
+					</span> <br> <span id="portpolioSkill" >사용
+						기술 : <%=PortfolioSkill%></span>
 
 
-					<div id="portpolioModifiy" name="portpolioModifiy">
-						<button>관리</button>
+					<div id="portpolioModifiy" >
+						<input type="button" value="정보수정" id="portfolioButton" class="btn btn-outline-info"></input>
 					</div>
 
 				</div>
 
+				<script>
+					$("#portfolioButton").click(function() {
+						$("#portpolyo").load("views/member/portfolio.jsp")
 
-				<div id="review" name="review">
+					});
+				</script>
+
+
+				<div id="review" >
 					<h1 align="left">리뷰 항목</h1>
-					<span id="reviewTitle" name="reviewTitle"><h2>리뷰 제목(기입)</h2></span>
-					<span id="reviewScore" name="reviewScore">리뷰 점수(기입)</span><br>
-					<span id="reviewLink" name="reviewLink"><a>리뷰 하이퍼링크(기입)</a></span>
+					<h2>리뷰 제목</h2>
+					<span id="reviewScore" >리뷰 점수</span><br>
+					<span id="reviewLink" ><a>리뷰 하이퍼링크</a></span>
 					<br> <br>
-					<div id="reviewContent" name="reviewContent">리뷰 내용(기입)</div>
+					<div id="reviewContent" >리뷰 내용</div>
 
-					<span id="reviewTime" name="Time">작업시간(기입)</span>
+					<span id="reviewTime">작업시간</span>
 
-					<div id="reviewModifiy" name="reviewModifiy">
+					<div id="reviewModifiy" >
 
-						<span id="reviewReward" name="reviewReward">리뷰한 프로젝트의
-							보상액(기입)</span>
+						<span id="reviewReward" >리뷰한 프로젝트의
+							보상액</span>
 					</div>
 				</div>
 
-				<div id="career" name="career">
+				<div id="career" >
 					<h1 align="left">경력 항목</h1>
-					<span id="careerTitle" name="careerTitle"><h2><%=CompanyInfo%></h2></span>
+					<h2><%=CompanyInfo%></h2>
 
-					<div id="careerContent" name="careerContent"><%=CareerTitle%></div>
-					<br> <span id="careerTime" name="careerTime">입사일 :
-						&nbsp; / &nbsp;퇴사일 ></span>
+					<div id="careerContent" ><%=CareerTitle%></div>
+					<br> <span id="careerTime" >입사일 : <%= Hire %>
+						&nbsp; / &nbsp;퇴사일 : <%= Retire %> &nbsp; </span>
 
-					<div id="careerModifiy" name="careerModifiy">
-						<button>관리</button>
+					<div id="careerModifiy" >
+						<input type="button" id="careerButton" value="정보 수정" class="btn btn-outline-info"> 
 					</div>
 
 				</div>
+				<script>
+					$("#careerButton").click(function() {
+						$("#career").load("views/member/career.jsp")
 
-				<div id="education" name="education">
+					});
+				</script>
+
+
+
+				<div id="education" >
 					<h1 align="left">교육 항목</h1>
-					<span id="educationTitle" name="educationTitle"><h2><%=University%></h2></span>
+					<h2><%=University%></h2>
 
-					<div id="educationContent" name="educationContent"><%=Major%>/<%=Degree%></div>
-					<br> <span id="educationTime" name="educationTime">입학년도&nbsp;
-						/&nbsp; 졸업년도 </span>
+					<div id="educationContent" ><%=Major%>/<%=Degree%></div>
+					<br> <span id="educationTime">입학년도&nbsp; : <%= EduEnrollDate %> 
+						/&nbsp; 졸업년도  : <%= EduGrauatedDate %></span>
 
-					<div id="educationModifiy" name="educationModifiy">
-						<button>관리</button>
+					<div id="educationModifiy" >
+						<input type="button" id="educationButton" value="정보 수정" class="btn btn-outline-info">
 					</div>
 
 				</div>
+				<script>
+					$("#educationButton").click(function() {
+						$("#education").load("views/member/education.jsp")
 
-				<div id="cartification" name="cartification">
+					});
+				</script>
+
+				<div id="cartification" >
 					<h1 align="left">자격증 항목</h1>
-					<span id="cartificationTitle" name="cartificationTitle"><h2>
-							<%=CetificateName%></h2></span>
+					<h2><%=CetificateName%></h2>
 
-					<div id="cartificationContent" name="cartificationContent">
+					<div id="cartificationContent" >
 						<%=CetificateAuth%></div>
-					<br> <span id="cartificationTime" name="cartificationTime">
+					<br> <span id="cartificationTime" >
 						<%=CetificateDate%>
 					</span>
 
-					<div id="cartificationModifiy" name="cartificationModifiy">
-						<button>관리</button>
+					<div id="cartificationModifiy" >
+						<input type="button" id="certificationButton" value="정보 수정" class="btn btn-outline-info">
 					</div>
 				</div>
+				<script>
+					$("#certificationButton").click(
+							function() {
+								$("#cartification").load(
+										"views/member/certification.jsp")
 
-				<div id="publication" name="publication">
+							});
+				</script>
+
+				<div id="publication" >
 					<h1 align="left">출판물 항목</h1>
-					<span id="publicationTitle" name="publicationTitle">
-						<h2>
-							<%=BookName%>
-						</h2>
-					</span>
+					<h2><%=BookName%></h2>
+					
 
-					<div id="publicationContent" name="publicationContent">
+					<div id="publicationContent" >
 						<%=BookInfo%>
 					</div>
-					<span id="publisher" name="publisher"> <%--Publisher--%></span> <br>
-					<br> <span id="publicationTime" name="publicationTime">
+					<span id="publisher"> <%--Publisher--%></span> <br>
+					<br> <span id="publicationTime" >
 						<%=BookDate%></span>
 
 
 
-					<div id="publicationModifiy" name="cartificationModifiy">
-						<button>관리</button>
+					<div id="publicationModifiy" >
+						<input type="button" id="publicationButton" value="정보수정" class="btn btn-outline-info">
 					</div>
 				</div>
+				<script>
+					$("#publicationButton").click(function() {
+						$("#publication").load("views/member/publication.jsp")
+
+					});
+				</script>
 			</div>
 
 
@@ -253,7 +295,7 @@
 
 
 	</section>
-	</main>
+	
 	<%-- End Of Content --%>
 
 	<%-- Footer --%>

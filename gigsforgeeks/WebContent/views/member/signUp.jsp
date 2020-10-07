@@ -22,7 +22,7 @@
         <div class="signUpArea">
         <!-- 1. 회원가입 form-->
             <form id="signUpForm" action="<%= request.getContextPath()%>/insert.me" method="post">
-            <br><br><br><br><br><br>
+            <br><br><br><br>
             <input type="hidden" name="userType" id="userType" value="">
             <table>
                 <tr>
@@ -50,7 +50,7 @@
                     <td>
                         <div class="modal-footer">
                             <p>이미  계정을 가지고 계십니까?</p>
-                            <a href="${contextPath}/views/member/login.jsp">로그인</a>
+                            <a href="${contextPath}/login.me">로그인</a>
                           </div>
                     </td>
                 </tr>

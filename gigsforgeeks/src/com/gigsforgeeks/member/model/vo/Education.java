@@ -1,6 +1,6 @@
 package com.gigsforgeeks.member.model.vo;
 
-import java.sql.Date;
+
 
 public class Education {
 
@@ -25,6 +25,19 @@ public class Education {
 		this.grauatedDate = grauatedDate;
 		this.userId = userId;
 	}
+	
+	
+	/*updateUser에서의 Education updateEducation*/
+	public Education(String University, String Major, String Degree, String EnrollDate, String GrauateDate ) {
+		super();
+		this.university=University;
+		this.major=Major;
+		this.degree=Degree;
+		this.enrollDate=EnrollDate;
+		this.grauatedDate=GrauateDate;
+		
+	}
+	
 
 	public int getEducationNumber() {
 		return educationNumber;

@@ -68,8 +68,6 @@ public class adminEnquiryServlet extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("views/admin/enqManage.jsp");
 		view.forward(request, response);
 		
-		System.out.println(currentPage);
-		
 	}
 
 	/**

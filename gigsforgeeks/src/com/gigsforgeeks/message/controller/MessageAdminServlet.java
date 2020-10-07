@@ -35,6 +35,7 @@ public class MessageAdminServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		int listCount;		
 		int currentPage;	
 		int pageLimit;		
@@ -45,23 +46,27 @@ public class MessageAdminServlet extends HttpServlet {
 		int endPage;		
 		
 		int notReadCount;
+		int adminCount; //keepCount에 넣을수없어 여기에 보관후 jsp에 keepCount로 변환
+		int fullCount;
+		
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
-		pageLimit =10;
-		
-		boardLimit = 10;
-		
 		request.setCharacterEncoding("utf-8");
-
 		HttpSession session = request.getSession();
 
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		String userId = loginUser.getUserId();
 		
+		pageLimit =10;
+		
+		boardLimit = 10;
+		
 		Message messageReceiver = new MessageService().messageReceiver(userId);
 		
         listCount = new MessageService().selectAdminCount(userId);
         notReadCount = new MessageService().selectNotReadCount(userId);
+        adminCount = new MessageService().selectKeepCount(userId);
+        fullCount = new MessageService().selectListCount(userId);
         
 		maxPage = (int)Math.ceil((double)listCount / boardLimit); 
 	
@@ -73,7 +78,7 @@ public class MessageAdminServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 
-		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage ,notReadCount);
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage ,notReadCount,adminCount, fullCount);
 		
 		ArrayList<Message> adminMs = new MessageService().selectMessageAdmin(pi,userId);
 		

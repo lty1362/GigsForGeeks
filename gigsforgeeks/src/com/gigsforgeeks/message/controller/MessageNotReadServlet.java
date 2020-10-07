@@ -44,6 +44,9 @@ public class MessageNotReadServlet extends HttpServlet {
 		int startPage;		
 		int endPage;		
 		
+		int keepCount;
+		int adminCount;
+		int fullCount;
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
 		pageLimit =10;
@@ -59,6 +62,9 @@ public class MessageNotReadServlet extends HttpServlet {
 		Message messageReceiver = new MessageService().messageReceiver(userId);
 		
         listCount = new MessageService().selectNotReadCount(userId);
+        keepCount = new MessageService().selectKeepCount(userId);
+        adminCount = new MessageService().selectAdminCount(userId);
+		fullCount = new MessageService().selectListCount(userId);
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit); 
 	
@@ -71,11 +77,13 @@ public class MessageNotReadServlet extends HttpServlet {
 		}
 
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		PageInfo p = new PageInfo(keepCount,adminCount,fullCount);
 		
 		ArrayList<Message> notRead = new MessageService().selectMessageNotRead(pi,userId);
 		
 		request.setAttribute("messageReceiver", messageReceiver);
 		request.setAttribute("pi", pi);
+		request.setAttribute("p", p);
 		request.setAttribute("notRead", notRead);
 	
 		RequestDispatcher view = request.getRequestDispatcher("views/message/messageNotRead.jsp");

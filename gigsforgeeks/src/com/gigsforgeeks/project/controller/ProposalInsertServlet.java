@@ -42,12 +42,9 @@ public class ProposalInsertServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
-		//Project project = (Project)session.getAttribute("projectId"); => 프로젝트 아이디 불러올거임
-		
 		String inputPrice = (String)request.getParameter("proposalPrice");
-		System.out.println("가격" + (String)request.getParameter("proposalPrice"));
 		
-		String proposalProjectId = "1";/*project.getProjectId()*/										// 프로젝트 아이디를 불러옴		
+		int proposalProjectId = Integer.parseInt(request.getParameter("projectId"));						// 프로젝트 아이디를 불러옴		
 		String proposalUserId = loginUser.getUserId();														// 사용자 아이디
 		String proposalInfo = request.getParameter("proposalInfo");											// 사용자가 입력한 제안내용
 		int proposalPrice = Integer.parseInt(inputPrice);													// 사용자가 입력한 제안가격
@@ -61,11 +58,11 @@ public class ProposalInsertServlet extends HttpServlet {
 		if(result > 0) { // 입찰견적서 전달성공
 			
 			request.getSession().setAttribute("alertMsg", "입찰견적서가 성공적으로 보내졌습니다.");
-			response.sendRedirect(request.getContextPath() + "/proposal.do");
+			response.sendRedirect(request.getContextPath() + "/detailSelect.do?projectId=" + proposalProjectId);
 		
 		}else { // 전달실패
 			
-			request.setAttribute("errorMsg", "입찰견적서를 제대로 전달하지 못했습니다.");
+			request.setAttribute("errorMsg", "입찰견적서 전달에 실패하셨습니다.");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 			
 		}

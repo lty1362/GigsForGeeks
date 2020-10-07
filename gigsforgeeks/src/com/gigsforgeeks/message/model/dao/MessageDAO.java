@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -167,7 +168,6 @@ public class MessageDAO {
 			pstmt.setString(3, m.getMessageReceiver());
 			pstmt.setString(4, userId);
 			
-			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			
@@ -201,10 +201,10 @@ public class MessageDAO {
 			
 
 			if(rset.next()) {
-				m = new Message(rset.getInt("MESSAGE_NO"),			   		     
+				m = new Message(rset.getInt("MESSAGE_NO"),
+					     rset.getString("MESSAGE_TITLE"),		   		     
 			   		     rset.getString("MESSAGE_RECEIVER"),
 					     rset.getString("MESSAGE_RECEPIENT"),
-					     rset.getString("MESSAGE_TITLE"),
 					     rset.getString("MESSAGE_CONTENT"),
 					     rset.getDate("MESSAGE_RECEIVE_TIME"),
 					     rset.getDate("MESSAGE_SEND_TIME"),
@@ -243,9 +243,9 @@ public class MessageDAO {
 			
 			if(rset.next()) {
 				ms = new Message(rset.getInt("MESSAGE_NO"),	
+					     rset.getString("MESSAGE_TITLE"),
 			   		     rset.getString("MESSAGE_RECEIVER"),
 					     rset.getString("MESSAGE_RECEPIENT"),
-					     rset.getString("MESSAGE_TITLE"),
 					     rset.getString("MESSAGE_CONTENT"),
 					     rset.getDate("MESSAGE_RECEIVE_TIME"));
 			}
@@ -289,6 +289,13 @@ public class MessageDAO {
 		return result;
 	}
 
+	/**
+	 * 읽지않은 메세지 조회
+	 * @param conn
+	 * @param pi
+	 * @param userId
+	 * @return
+	 */
 	public ArrayList<Message> selectMessageNotRead(Connection conn, PageInfo pi, String userId) {
 		ArrayList<Message> list = new ArrayList<>();
 		
@@ -435,9 +442,162 @@ public class MessageDAO {
 		return list;
 	}
 
+	/**
+	 * 메세지 보관하기표시
+	 * @param conn
+	 * @param keep
+	 * @return
+	 */
+	public int updateKeep(Connection conn, String keep) {
+		int result = 0;
+		
+		Statement stmt = null;
+	    String sql = prop.getProperty("messageKeep");
+	    sql += "WHERE MESSAGE_NO IN (" + keep + ")";
+	      
+	      try {
+	         stmt = conn.createStatement();
+	         result = stmt.executeUpdate(sql);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(stmt);
+		}
+		
+		return result;
+	}
 
+	/**
+	 * 보관메세지 갯수
+	 * @param conn
+	 * @param userId
+	 * @return
+	 */
+	public int selectKeepCount(Connection conn, String userId) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectKeepCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("LISTCOUNT"); 
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
 
+	/**
+	 * 보관메세지 조회
+	 * @param conn
+	 * @param pi
+	 * @param userId
+	 * @return
+	 */
+	public ArrayList<Message> selectMessageKeep(Connection conn, PageInfo pi, String userId) {
+		ArrayList<Message> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMessageKeep"); 
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Message(rset.getInt("MESSAGE_NO"),
+			   		     rset.getString("MESSAGE_TITLE"),
+			   		     rset.getString("MESSAGE_RECEIVER"),
+					     rset.getString("MESSAGE_RECEPIENT"),
+					     rset.getDate("MESSAGE_RECEIVE_TIME")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 
+	/**
+	 * 메세지 보관 해제
+	 * @param conn
+	 * @param keep
+	 * @return
+	 */
+	public int updateKeepOut(Connection conn, String keep) {
+		int result = 0;
+		
+		Statement stmt = null;
+	    String sql = prop.getProperty("messageKeepOut");
+	    sql += "WHERE MESSAGE_NO IN (" + keep + ")";
+	      
+	      try {
+	         stmt = conn.createStatement();
+	         result = stmt.executeUpdate(sql);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(stmt);
+		}
+		
+		return result;
+	}
+
+	/**
+	 * 메세지 삭제
+	 * @param conn
+	 * @param delete
+	 * @return
+	 */
+	public int deleteMessage(Connection conn, int messageNo) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteMessage");
+		
+		try {
+			pstmt = conn.prepareStatement(sql); 
+			
+			pstmt.setInt(1, messageNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
 	
 	

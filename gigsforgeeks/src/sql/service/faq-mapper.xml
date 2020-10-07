@@ -2,14 +2,51 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
+	<!-- 일반회원 리스트카운트 -->
 	<entry key="selectListCount">
 		SELECT 
 			   COUNT(*) LISTCOUNT
 		  FROM FAQ
-<!-- 		 WHERE FAQ_STATE=? -->
+ 		 WHERE FAQ_STATE='Y'
+	</entry>
+
+	<!-- 관리자 리스트카운트 -->	
+	<entry key="adminSelectListCount">
+		SELECT 
+			   COUNT(*) LISTCOUNT
+		  FROM FAQ
 	</entry>
 	
+	
+	<!-- 일반회원 조회 -->
 	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT 
+		               ROWNUM RNUM
+		             , A.*
+		          FROM (
+		                SELECT 
+		                       FAQ_NO
+		                     , FAQ_CATEGORY
+		                     , FAQ_TITLE
+		                     , FAQ_CONTENT
+		                     , FAQ_COUNT
+		                     , FAQ_STATE
+		                     , FAQ_REGISTER
+		                     , FAQ_UPDATE
+		                  FROM FAQ
+		                 WHERE FAQ_STATE='Y'
+		                 ORDER 
+		                    BY FAQ_NO DESC
+		               ) A
+		       )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	
+	<!-- 관리자 회원 조회 -->
+	<entry key="adminSelectList">
 		SELECT *
 		  FROM (
 		        SELECT 
@@ -34,18 +71,18 @@
 	</entry>
 	
 	
-	<entry key="insertEnquiry">
+	<entry key="insertFaq">
 		INSERT
-	    INTO ENQUIRY
-	    (
-	        ENQ_NO
-	      , USER_ID
-	      , ENQUIRY_TYPE
-	      , ENQUIRY_TITLE
-	      , ENQUIRY_CONTENT
-	      , ENQUIRY_DATE
-	      , ANSWER_STATE
-	      , ANSWER_DATE
+	    INTO FAQ
+	    (	    
+            FAQ_NO
+	      , FAQ_CATEGORY
+	      , FAQ_TITLE
+	      , FAQ_CONTENT
+	      , FAQ_COUNT
+	      , FAQ_STATE
+	      , FAQ_REGISTER
+	      , FAQ_UPDATE
 	    )
 	    VALUES
 	    (
@@ -53,12 +90,21 @@
 	      , ?
 	      , ?
 	      , ?
-	      , ?
-	      , SYSDATE
+	      , 0
 	      , 'N'
+	      , SYSDATE
 	      , null
-	    )
+          )
 	</entry>
+
+	<entry key="updateCheckFaq">
+		UPDATE
+		       FAQ
+		   SET FAQ_STATE='Y'
+		     , FAQ_UPDATE=SYSDATE
+		 WHERE FAQ_NO=?
+	</entry>
+
 
 		<entry key="selectEnquiry">
 		SELECT 

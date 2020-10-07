@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+	<!-- 내 프로젝트 관련 SQL문 -->
 	<entry key="insertProject">
-		INSERT
+		INSERT /* 프로젝트 등록 */
 		  INTO PROJECT
 		  (
 		   PROJECT_ID,
@@ -49,68 +50,141 @@
 		  )
 	</entry>
 	
-	<entry key="selectMyBidProjectList">
-		SELECT
-		       PROJECT_ID
-		     , CLIENT_ID
-		     , REQUIRED_SKILL
-		     , PROJECT_NAME
-		     , DESCRIPTION
-		     , PROJECT_STATUS
-		     , EXPECT_START
-		     , EXPECT_END
-		     , MEANS_OF_PAYMENT
-		     , MIN_BID
-		     , MAX_BID
-		     , START_BID
-		     , END_BID
-		     , COUNT_BID
-		     , AVERAGE_BID
-		     , WINNER_ID
-		     , WINNING_BID
-		     , START_DATE
-		     , END_DATE
+	<entry key="selectMyProjectCount">
+		SELECT /* 고용주용 내 프로젝트 총 갯수 조회 */
+		       COUNT(*) PROJECTCOUNT
 		  FROM PROJECT
 		  JOIN MEMBER ON (CLIENT_ID = USER_ID)
-		  WHERE WINNER_ID = ?
-		    AND
-		    NOT PROJECT_STATUS = 'DELETE'
-		  ORDER
-		     BY PROJECT_ID DESC
+		 WHERE
+		   NOT PROJECT_STATUS = 'DELETE'
+		   AND CLIENT_ID = ?
+	</entry>
+	
+	<entry key="selectMyBidProjectCount">
+		SELECT /* 프리랜서용 내 프로젝트 총 갯수 조회 */
+		       COUNT(*) PROJECTCOUNT
+		  FROM PROJECT
+		  JOIN MEMBER ON (WINNER_ID = USER_ID)
+		 WHERE
+		   NOT PROJECT_STATUS = 'DELETE'
+		   AND WINNER_ID = ?
 	</entry>
 
 	<entry key="selectMyProjectList">
-		SELECT
-		       PROJECT_ID
-		     , CLIENT_ID
-		     , REQUIRED_SKILL
-		     , PROJECT_NAME
-		     , DESCRIPTION
-		     , PROJECT_STATUS
-		     , EXPECT_START
-		     , EXPECT_END
-		     , MEANS_OF_PAYMENT
-		     , MIN_BID
-		     , MAX_BID
-		     , START_BID
-		     , END_BID
-		     , COUNT_BID
-		     , AVERAGE_BID
-		     , WINNER_ID
-		     , WINNING_BID
-		     , START_DATE
-		     , END_DATE
+	    SELECT /* 고용주용 내 프로젝트 리스트 조회 */
+	           PROJECT_ID
+	         , CLIENT_ID
+	         , REQUIRED_SKILL
+	         , PROJECT_NAME
+	         , DESCRIPTION
+	         , PROJECT_STATUS
+	         , EXPECT_START
+	         , EXPECT_END
+	         , MEANS_OF_PAYMENT
+	         , MIN_BID
+	         , MAX_BID
+	         , START_BID
+	         , END_BID
+	         , COUNT_BID
+	         , AVERAGE_BID
+	         , WINNER_ID
+	         , WINNING_BID
+	         , START_DATE
+	         , END_DATE
+	      FROM PROJECT
+	      JOIN MEMBER ON (CLIENT_ID = USER_ID)
+	      WHERE CLIENT_ID = ?
+	        AND
+	        NOT PROJECT_STATUS = 'DELETE'
+	      ORDER
+	         BY PROJECT_ID DESC
+	</entry>
+
+	<entry key="selectMyBidProjectList">
+	    SELECT /* 프리랜서용 내 프로젝트 리스트 조회 */
+	           PROJECT_ID
+	         , CLIENT_ID
+	         , REQUIRED_SKILL
+	         , PROJECT_NAME
+	         , DESCRIPTION
+	         , PROJECT_STATUS
+	         , EXPECT_START
+	         , EXPECT_END
+	         , MEANS_OF_PAYMENT
+	         , MIN_BID
+	         , MAX_BID
+	         , START_BID
+	         , END_BID
+	         , COUNT_BID
+	         , AVERAGE_BID
+	         , WINNER_ID
+	         , WINNING_BID
+	         , START_DATE
+	         , END_DATE
+	      FROM PROJECT
+	      JOIN MEMBER ON (WINNER_ID = USER_ID)
+	      WHERE WINNER_ID = ?
+	        AND
+	        NOT PROJECT_STATUS = 'DELETE'
+	      ORDER
+	         BY PROJECT_ID DESC
+	</entry>
+
+	<entry key="selectUpdateCount">
+		SELECT /* 업데이트 프로젝트 총 갯수 조회 */
+		       COUNT(*)
 		  FROM PROJECT
 		  JOIN MEMBER ON (CLIENT_ID = USER_ID)
-		  WHERE CLIENT_ID = ?
-		    AND
-		    NOT PROJECT_STATUS = 'DELETE'
-		  ORDER
-		     BY PROJECT_ID DESC
+          WHERE
+            NOT CLIENT_ID = ?
+            AND
+            NOT PROJECT_STATUS = 'DELETE'
+            AND PROJECT_STATUS = 'OPEN'
+	</entry>
+
+	<entry key="selectUpdateList">
+		SELECT * /* 프로젝트 업데이트 리스트 조회 */
+		  FROM (
+		    SELECT
+		           ROWNUM RNUM
+		         , A.*
+		      FROM (
+		        SELECT
+		               PROJECT_ID
+		             , CLIENT_ID
+		             , REQUIRED_SKILL
+		             , PROJECT_NAME
+		             , DESCRIPTION
+		             , PROJECT_STATUS
+		             , EXPECT_START
+		             , EXPECT_END
+		             , MEANS_OF_PAYMENT
+		             , MIN_BID
+		             , MAX_BID
+		             , START_BID
+		             , END_BID
+		             , COUNT_BID
+		             , AVERAGE_BID
+		             , WINNER_ID
+		             , WINNING_BID
+		             , START_DATE
+		             , END_DATE
+		          FROM PROJECT
+		          JOIN MEMBER ON (CLIENT_ID = USER_ID)
+		          WHERE
+		            NOT CLIENT_ID = ?
+		            AND
+		            NOT PROJECT_STATUS = 'DELETE'
+		            AND PROJECT_STATUS = 'OPEN'
+		          ORDER
+		             BY PROJECT_ID DESC
+		        ) A
+		    )
+		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	<entry key="selectMyProject">
-		SELECT
+		SELECT /* 프로젝트 상세조회 */
 		       PROJECT_ID
 		     , CLIENT_ID
 		     , REQUIRED_SKILL
@@ -139,6 +213,37 @@
 		    NOT PROJECT_STATUS = 'DELETE'
 	</entry>
 	
+	<entry key="deleteMyProject">
+		UPDATE /* 고용주용 내 프로젝트 삭제 */
+		       PROJECT
+		   SET PROJECT_STATUS = 'DELETE'
+		 WHERE PROJECT_ID = ?
+		   AND CLIENT_ID = ?
+		   AND 
+		   NOT PROJECT_STATUS = 'DELETE'
+	</entry>
+	
+	<entry key="deleteMyBid">
+		UPDATE /* 프리랜서용 내 프로젝트 삭제 */
+		       PROJECT
+		   SET WINNER_ID = NULL
+		     , PROJECT_STATUS = 'HOLD'
+		 WHERE PROJECT_ID = ?
+		   AND WINNER_ID = ?
+		   AND 
+		   NOT PROJECT_STATUS
+		    IN ('DELETE', 'OPEN')
+	</entry>
+	
+	<!-- 탐색 관련 SQL문 -->
+	<entry key="selectListCount">
+		SELECT COUNT(*)
+		  FROM PROJECT
+		 WHERE PROJECT_STATUS='OPEN'
+		   AND MIN_BID BETWEEN 200000 AND ?
+		   AND MAX_BID BETWEEN ? AND 5000000;
+	</entry>
+	
 	<entry key="searchListProject">
 		SELECT
 		       PROJECT_ID
@@ -156,4 +261,132 @@
 		 ORDER 
 		    BY PROJECT_ID DESC
 	</entry>
+	
+	<entry key="projectSelectList">
+		SELECT
+		       PROJECT_ID
+		     , PROJECT_NAME
+		     , PROJECT_STATUS
+		     , DESCRIPTION
+		     , END_BID
+		     , MIN_BID
+		     , MAX_BID
+		     , COUNT_BID
+		     , REQUIRED_SKILL
+		  FROM PROJECT
+		 WHERE PROJECT_STATUS='OPEN'
+		 ORDER 
+		    BY PROJECT_ID DESC
+	</entry>
+	
+	<entry key="freelancerSelectList">
+		SELECT
+		        USER_ID
+		      , EXCELLENT_FREELANCE
+		      , SKILL
+		      , PAY_RATE
+		      , LOCATION
+		      , SELF_INTRODUCTION
+		      , PROFILE_IMAGE
+		   FROM MEMBER
+		  WHERE STATUS = 'Y'
+		    AND ADMIN = 'N'
+		  ORDER 
+		     BY USER_ID DESC
+	</entry>
+	
+	<entry key="projectSelectDetail">
+		SELECT
+		       PROJECT_ID
+		     , CLIENT_ID
+		     , REQUIRED_SKILL
+		     , PROJECT_NAME
+		     , DESCRIPTION
+		     , PROJECT_STATUS
+		     , EXPECT_START
+		     , EXPECT_END
+		     , MEANS_OF_PAYMENT
+		     , MIN_BID
+		     , MAX_BID
+		     , START_BID
+		     , END_BID
+		     , COUNT_BID
+		     , AVERAGE_BID
+		     , WINNER_ID
+		     , WINNING_BID
+		     , START_DATE
+		     , END_DATE
+		  FROM PROJECT
+		  WHERE PROJECT_ID = ?
+		    AND
+		    NOT PROJECT_STATUS = 'DELETE'
+	</entry>
+	
+	
+	<entry key="excellentSelectList">
+		SELECT
+		        USER_ID
+		      , EXCELLENT_FREELANCE
+		      , SKILL
+		      , PAY_RATE
+		      , LOCATION
+		      , SELF_INTRODUCTION
+		      , PROFILE_IMAGE
+		   FROM MEMBER
+		  WHERE STATUS = 'Y'
+		    AND ADMIN = 'N'
+		    AND EXCELLENT_FREELANCE = 'Y'
+		  ORDER 
+		     BY USER_ID DESC
+	</entry>
+	
+	
+	<!-- 진섭 : 전체 프로젝트 수 불러오기 => 페이징 총 수량으로 사용 -->
+	<entry key="selectProjectListCount">
+		SELECT 
+			   COUNT(*) LISTCOUNT
+		  FROM PROJECT
+		 WHERE PROJECT_STATUS = 'OPEN'
+		  <!-- 빼야할 것 있으면 뺴기! -->
+	</entry>
+	
+	<!-- 진섭 : 프로젝트 List 배열 가져오기 -->
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT 
+		               ROWNUM RNUM
+		             , A.*
+		          FROM (
+		                SELECT 
+		                       PROJECT_ID
+						     , CLIENT_ID
+						     , REQUIRED_SKILL
+						     , PROJECT_NAME
+						     , DESCRIPTION
+						     , PROJECT_STATUS
+						     , EXPECT_START
+						     , EXPECT_END
+						     , MEANS_OF_PAYMENT
+						     , MIN_BID
+						     , MAX_BID
+						     , START_BID
+						     , END_BID
+						     , COUNT_BID
+						     , AVERAGE_BID
+						     , WINNER_ID
+						     , WINNING_BID
+						     , START_DATE
+						     , END_DATE
+		                  FROM PROJECT
+                         WHERE PROJECT_STATUS = 'OPEN'
+ 		                 ORDER 
+		                    BY PROJECT_ID DESC
+		               ) A
+		       )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>	
+	
+	
+	
 </properties>

@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"
     isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*" %>
+<%@ page import="com.gigsforgeeks.member.model.vo.Member" %>
+
+<%
+	ArrayList<Project> pList = (ArrayList<Project>)request.getAttribute("list");
+	ArrayList<Member> mList = (ArrayList<Member>)request.getAttribute("list");
+
+%>
 <%-- Template HTML 1 : 일반 화면용 --%>
 <!DOCTYPE html>
 <html>
@@ -19,45 +27,49 @@
 
     <%-- Content --%>
     <main id="contentMain">
-	    <div id="totalSearch">
-	    	<br>
-	        <h1>통합검색</h1>
-	        <br>
-	        <form action="" method="GET">
-	            <div id="project">
-	                <span class="search">프로젝트 찾기 : &nbsp;
-	                    <input type="text" name="proejctSearch">
-	                </span>
-	                <button type="submit" class="btn btn-outline-info">검색</button>
-	                <br><hr><br>
-	                <div>
-	                    <label class="title">프로젝트1 제목</label>
-	                    <label class="price">프로젝트 가격￦</label>
-	                    <p>프로젝트1 내용</p><br>
-	                    <p>프로젝트 마감일자(열기 6일전-85건의 입찰)</p>
-	                    <p>프로젝트 기술(PHP, WordPress, html, java)</p>
-	                </div>    
-	            </div>
-	        </form>
-	
-	        <br>
-	        <form action="" method="GET">
-	            <div id="freelancer">
-	                <span class="search">프리랜서 찾기 : &nbsp;
-	                    <input type="text" name="freelancer">
-	                </span>
-	                <button type="submit" class="btn btn-outline-info">검색</button>
-	                <br><hr><br>
-	                <div>
-	                    <label class="title">프리랜서 이름</label>
-	                    <label class="price">프리랜서 가격￦</label>
-	                    <p>프리랜서1 내용</p><br>
-	                    <p>프리랜서 평점(90건의 리뷰)</p>
-	                    <p>프리랜서 기술(html, 웹사이트 디자인, PHP, 워드프레스, CSS</p>
-	                </div>
-	            </div>
-	        </form>
-	    </div>
+	      <div id="totalSearch">
+        <br>
+        <h1>채용 정보 찾아보기</h1>
+        <br>
+        <form action="" method="GET">
+            <div id="project">
+                <span class="search">프로젝트 검색 : &nbsp;
+                    <input type="text" name="proejctSearch">
+                </span>
+                <button type="submit" class="btn btn-outline-info">검색</button>
+                <br><hr>
+                <div>
+                    <label class="title">프로젝트1 이름</label>
+                    <label class="price">200,000￦ - 500,000￦</label>
+                    <p>프로젝트의 내용입니다 1</p><br>
+                    <li>프로젝트 마감일자 : 2020-09-16</li>
+                    <li>프로젝트 기술 : JAVA, PHP, WordPress, HTML</li>
+                    <li>입찰수 : 0</li>
+                </div>    
+            </div>
+        </form>
+
+        <br>
+        <form action="" method="GET">
+            <div onclick="location.href='${contextPath}/freelancerDetail.do?userId=user01';" id="freelancer">
+                <span class="search">프리랜서 검색 : &nbsp;
+                    <input type="text" name="freelancer">
+                </span>
+                <button type="submit" class="btn btn-outline-info">검색</button>
+                <br><hr>
+                <div>
+                    <label class="title">프리랜서 user01</label>
+                    <label class="price">희망시급 : 80,000￦</label>
+	                <p>프리랜서의 자기소개 내용입니다 1</p><br>
+	                <li>우수 프리랜서 : Y</li>
+	                <li>프리랜서 기술 : JAVA, JavaScript, PHP, CSS</li>
+                    <li>지역 : 서울</li>
+	                
+                </div>
+            </div>
+        </form>
+    </div>
+
     </main>	
     
    <br style="clear:both"><br><br><br><br><br><br><br><br><br><br><br>

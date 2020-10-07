@@ -1,14 +1,14 @@
 package com.gigsforgeeks.member.model.vo;
 
-import java.sql.Date;
+
 
 public class Member {
 
 	private String userId;				// 회원아이디
 	private String userEmail;			// 회원이메일
 	private String userPwd;				// 회원 비밀번호
-	private Date enrollDate;			// 가입일
-	private Date outrollDate;			// 탈퇴일
+	private String enrollDate;			// 가입일
+	private String outrollDate;			// 탈퇴일
 	private String status;				// 탈퇴여부
 	private String membership;			// 멤버십여부
 	private String excellentFreelance;	// 우수 프리랜서 여부
@@ -29,7 +29,7 @@ public class Member {
 		
 	}
 	
-	public Member(String userId, String userEmail, String userPwd, Date enrollDate, Date outrollDate,
+	public Member(String userId, String userEmail, String userPwd, String enrollDate, String outrollDate,
 			String status, String membership, String excellentFreelance, String blackList, String identifyEmail,
 			String admin, String userType, String jobTitle, String company, String skill, int payRate,
 			String profileImage, String location, String selfIntroduction) {
@@ -64,12 +64,40 @@ public class Member {
 		this.userPwd = userPwd;
 		this.userType = userType;
 	}
+	
+	/*updateUser에서의 Member updateMember*/
+	public Member(String location, String company, String selfIntroduction, String userId, int payRate, String jobTilte) {
+		super();
+		this.location =location;
+		this.company= company;
+		this.selfIntroduction =selfIntroduction;
+		this.userId =userId;
+		this.payRate =payRate;
+		this.jobTitle=jobTilte;
+		
+	}
 
+	
+	/*freelancer의 freelancerSelectList*/
+	public Member(String userId, String excellentFreelance, String skill, int payRate, String location,
+			String selfIntroduction, String profileImage) {
+		super();
+		this.userId = userId;
+		this.excellentFreelance = excellentFreelance;
+		this.skill = skill;
+		this.payRate = payRate;
+		this.location = location;
+		this.selfIntroduction = selfIntroduction;
+		this.profileImage = profileImage;
+	}
+	
+	
 	
 	
 	public String getUserId() {
 		return userId;
 	}
+
 
 	public void setUserId(String userId) {
 		this.userId = userId;
@@ -91,19 +119,19 @@ public class Member {
 		this.userPwd = userPwd;
 	}
 
-	public Date getEnrollDate() {
+	public String getEnrollDate() {
 		return enrollDate;
 	}
 
-	public void setEnrollDate(Date enrollDate) {
+	public void setEnrollDate(String enrollDate) {
 		this.enrollDate = enrollDate;
 	}
 
-	public Date getOutpllDate() {
+	public String getOutpllDate() {
 		return outrollDate;
 	}
 
-	public void setOutpllDate(Date outrpllDate) {
+	public void setOutpllDate(String outrpllDate) {
 		this.outrollDate = outrpllDate;
 	}
 

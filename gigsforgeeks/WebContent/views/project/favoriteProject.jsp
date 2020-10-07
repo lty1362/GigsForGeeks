@@ -24,12 +24,12 @@
     <main id="contentMain">
         <div id="favoriteCategory">
             <a href="">내가 즐겨찾는 프로젝트</a>&nbsp;&nbsp;&nbsp;
-            <a href="${contextPath}/views/project/searchListProject.jsp">프로젝트 탐색</a>
+            <a href="${contextPath}/projectList.do">프로젝트 탐색</a>
         </div>
         <br><br>
         
         <div id="favoriteProject">
-            <h3>내가 즐겨찾는 프로젝트</h2><br>
+            <h3>내가 즐겨찾는 프로젝트</h3><br>
             <table>
                 <tr>
                     <th scope="row">프로젝트 명</th>
@@ -56,8 +56,29 @@
             </table>
             <br>
             <div style="float:right; width:170px;">
-            <button class="btn btn-outline-info">지금 입찰하기</button><br><br>
-            <button type="button" class="btn btn-outline-info">즐겨찾기 삭제</button>
+            	<a href="${contextPath}/detailSelect.do?projectId=16" target="_blank" class="btn btn-outline-info">지금 입찰하기</a><br><br>
+            	<button class="btn btn-outline-info" data-toggle="modal" data-target="#favorite_delete">즐겨찾기 삭제</button>
+            </div>
+            
+            <!-- 즐겨찾기 삭제 모달 -->
+            <div class="modal" id="favorite_delete" style="display:none;" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content" style="height:300px;">
+			      <!-- Modal body -->
+			      <div class="modal-body">
+			        <button type="button" class="close" data-dismiss="modal" style="font-family:sans-serif;">x</button>
+			      	<h3>즐겨찾기 삭제</h3>
+		        	<br><br>
+		        	<b>즐겨찾기한 해당목록을 정말로 삭제하시겠습니까?</b>
+		        	<br>
+			      </div>
+			      <form action="" method="post" style="margin:10px; margin-left:120px">
+					 <button type="button" onclick="alert('해당 프로젝트가 삭제되었습니다.')" class="btn btn-outline-info" data-dismiss="modal">OK</button>
+					 <button type="button" class="btn btn-outline-info" data-dismiss="modal">Cancel</button>
+				  </form><br>
+			  </div>
+			</div>
+            
             </div>
         </div>
     </main>	

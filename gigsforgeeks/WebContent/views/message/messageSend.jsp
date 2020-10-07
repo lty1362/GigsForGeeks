@@ -6,6 +6,9 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	int NotReadCount = pi.getNotReadCount();
+	int KeepCount = pi.getKeepCount();
+	int adminCount = pi.getAdminCount();
+	int fullCount = pi.getFullCount();
 %>		
 <%-- Template HTML 1 : 일반 화면용 --%>
 <!DOCTYPE html>
@@ -29,10 +32,10 @@
         <!-- 메뉴바 -->
         <div id="con">           
             <div id="content_1">
-                <div id="naviMain"><a href="${contextPath}/list.ms?currentPage=1">전체메세지</a></div>
+                <div id="naviMain"><a href="${contextPath}/list.ms?currentPage=1">전체메세지 (<%=fullCount%>)</a></div>
                 <div id="naviNotRead"><a href="${contextPath}/notRead.ms?currentPage=1">읽지않음 (<%=NotReadCount%>)</a></div>
-                <div id="naviKeep"><a href="${contextPath}/views/message/messageKeep.jsp">보관 메세지</a></div>
-                <div id="naviAdmin"><a href="${contextPath}/admin.ms?currentPage=1">고객 지원팀</a></div>
+                <div id="naviKeep"><a href="${contextPath}/keepList.ms?currentPage=1">보관 메세지 (<%=KeepCount%>)</a></div>
+                <div id="naviAdmin"><a href="${contextPath}/admin.ms?currentPage=1">고객 지원팀 (<%=adminCount%>)</a></div>
             </div>
         </div>
             
@@ -42,7 +45,9 @@
 		 <div id="messageSend">
 		 <form action="${contextPath}/insert.ms" method="POST" id="sendForm">
 		 
+		 	<br><br>
 	        <h1>메세지 보내기</h1>
+	        <hr>
 	        <br>
 	        
 	        <b>보내는 사람 : </b>
@@ -55,10 +60,13 @@
 	        
 	        <b>제목 : </b> 
 	        <input type="text" id="meTitle" name="meTitle" placeholder="제목을 입력해주세요." required>
-	        <button type="submit" class="btn btn-outline-info">메세지 보내기</button>
 	        <br><br>
 	        
-	        <textarea id="meContent" name="meContent" placeholder="내용을 입력해주세요." required  cols="190" rows="30" ></textarea>
+	        <textarea id="meContent" name="meContent" placeholder="내용을 입력해주세요." required  cols="100" rows="15"></textarea>
+			<br><br>
+			
+	        <button style="width: 200px; margin-right: 30px;" type="submit" id="msBtn" class="btn btn-outline-info btn-lg">메세지 보내기</button>
+	        <button style="width: 200px;" type="reset" id="msBtn	" class="btn btn-outline-info  btn-lg">다시쓰기</button>
    		   </form>
    		 </div>
        </div>

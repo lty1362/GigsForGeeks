@@ -8,50 +8,47 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.project.model.service.ProjectService;
 import com.gigsforgeeks.project.model.vo.Project;
 
 /**
- * Servlet implementation class MyProjectDetailServlet
+ * Servlet implementation class DetailSelectProject
  */
-@SuppressWarnings("serial")
-@WebServlet("/detail.proj")
+@WebServlet("/detailSelect.do")
 public class ProjectDetailServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ProjectDetailServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
+
+		int projectId = Integer.parseInt(request.getParameter("projectId"));
 		
-		if(loginUser != null) { // 현재 사용자가 회원인 경우
+		Project project = new ProjectService().projectSelectDetail(projectId);
+		
+		if(project != null) { // 프로젝트 상세조회 요청 성공 시
 			
-			String userId = loginUser.getUserId();
-			String projectId = request.getParameter("projectId");
+			request.setAttribute("project", project);
+			RequestDispatcher view = request.getRequestDispatcher("views/project/detailProject.jsp");
+			view.forward(request, response);
 			
-			Project myProject = new ProjectService().selectProject(projectId, userId);
-			
-			if(myProject != null) { // 프로젝트 상세조회 요청 성공 시
-				request.setAttribute("myProject", myProject);
-				RequestDispatcher view = request.getRequestDispatcher("views/project/detail.jsp");
-				view.forward(request, response);
-				
-			}else { // 실패 시
-				request.getSession().setAttribute("errorMsg", "프로젝트 상세조회에 실패했습니다.");
-				RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-				view.forward(request, response);
-			}
-			
-		}else { // 비회원인 경우
-			request.getSession().setAttribute("alertMsg", "로그인 후에 이용하세요.");
-			RequestDispatcher view = request.getRequestDispatcher("views/member/login.jsp");
+		}else { // 실패 시
+			request.getSession().setAttribute("errorMsg", "프로젝트 상세조회에 실패했습니다.");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
 		}
+		
 		
 	}
 
@@ -59,6 +56,7 @@ public class ProjectDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -36,14 +36,21 @@ public class MessageSendServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		int notReadCount;
+		int keepCount;
+		int adminCount;
+		int fullCount;
 		
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		String userId = loginUser.getUserId();
 		
 		Message messageReceiver = new MessageService().messageReceiver(userId);
 		notReadCount = new MessageService().selectNotReadCount(userId);
-		PageInfo pi = new PageInfo(notReadCount);
+		keepCount = new MessageService().selectKeepCount(userId);
+		adminCount = new MessageService().selectAdminCount(userId);
+		fullCount = new MessageService().selectListCount(userId);
+		PageInfo pi = new PageInfo(notReadCount,keepCount, adminCount,fullCount);
 		
+		request.setAttribute("messageReceiver", messageReceiver);
 		request.setAttribute("pi", pi);
 		request.getRequestDispatcher("views/message/messageSend.jsp").forward(request, response);
 	}

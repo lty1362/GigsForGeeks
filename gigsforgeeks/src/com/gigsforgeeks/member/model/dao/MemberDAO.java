@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import com.gigsforgeeks.member.model.vo.Career;
@@ -15,6 +17,7 @@ import com.gigsforgeeks.member.model.vo.Education;
 import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.member.model.vo.Portfolio;
 import com.gigsforgeeks.member.model.vo.Publication;
+import com.gigsforgeeks.project.model.vo.PageInfo;
 
 public class MemberDAO {
 	
@@ -57,8 +60,8 @@ public class MemberDAO {
 				m = new Member(rset.getString("USER_ID"),
 						       rset.getString("USER_EMAIL"),
 						       rset.getString("USER_PWD"),
-						       rset.getDate("ENROLL_DATE"),
-						       rset.getDate("OUTROLL_DATE"),
+						       rset.getString("ENROLL_DATE"),
+						       rset.getString("OUTROLL_DATE"),
 						       rset.getString("STATUS"),
 						       rset.getString("MEMBERSHIP"),
 						       rset.getString("EXCELLENT_FREELANCE"),
@@ -224,8 +227,8 @@ public class MemberDAO {
 							  rset.getString("USER_ID"),
 							  rset.getString("COMPANY_INFO"),
 							  rset.getString("CAREER_TITLE"),
-							  rset.getDate("RETIRE_DATE"),
-							  rset.getDate("HIRE_DATE"),
+							  rset.getString("RETIRE_DATE"),
+							  rset.getString("HIRE_DATE"),
 							  rset.getString("CAREER_INFO"),
 							  rset.getString("CAREER_STATUS")
 						);
@@ -275,8 +278,8 @@ public class MemberDAO {
 							  rset.getString("PORTFOLIO_CONTENTS"),
 							  rset.getString("PORTFOLIO_LINK"),
 							  rset.getString("PORTFOLIO_SKILL"),
-							  rset.getDate("PORTFOLIO_START"),
-							  rset.getDate("PORTFOLIO_END"),
+							  rset.getString("PORTFOLIO_START"),
+							  rset.getString("PORTFOLIO_END"),
 							  rset.getString("USER_ID"),
 							  rset.getString("PORTFOLIO_FILE")
 						);
@@ -523,5 +526,333 @@ public class MemberDAO {
 		   
 		return result;
 	}
+
+
+	public int updateUser(String userId, Member updateMember, Connection conn) {
+		
+		
+		PreparedStatement pstmt = null;
+		
+		int result =0;
+		
+		String sql = prop.getProperty("updateMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updateMember.getLocation());
+			pstmt.setString(2, updateMember.getCompany());
+			pstmt.setString(3, updateMember.getSelfIntroduction());
+			pstmt.setInt(4, updateMember.getPayRate());
+			pstmt.setString(5, updateMember.getJobTitle());
+			pstmt.setString(6, userId);
+			
+			result = pstmt.executeUpdate();
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+
+	public int updatePortfolio(String userId, Portfolio updatePortfolio, Connection conn) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updatePortfolio");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updatePortfolio.getPortfolioTitle());
+			pstmt.setString(2, updatePortfolio.getPortfolioLink());
+			pstmt.setString(3, updatePortfolio.getPortfolioContent());
+			pstmt.setString(4, updatePortfolio.getPortfolioStart());
+			pstmt.setString(5, updatePortfolio.getPortfolioEnd());
+			pstmt.setString(6, updatePortfolio.getPortfolioSkill());
+			pstmt.setString(7, userId);
+			
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+
+	public int updateCareer(String userId, Career updateCareer, Connection conn) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateCareer");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updateCareer.getCompanyInfo());
+			pstmt.setString(2, updateCareer.getCareerTitle());
+			pstmt.setString(3, updateCareer.getCareerInfo());
+			pstmt.setString(4, updateCareer.getHireDate());
+			pstmt.setString(5, updateCareer.getRetireDate());
+			pstmt.setString(6, userId);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+
+	public int updateEducation(String userId, Education updateEducation, Connection conn) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateEducation");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updateEducation.getUniversity());
+			pstmt.setString(2, updateEducation.getMajor());
+			pstmt.setString(3, updateEducation.getDegree());
+			pstmt.setString(4, updateEducation.getEnrollDate());
+			pstmt.setString(5, updateEducation.getGrauatedDate());
+			pstmt.setString(6, userId);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+
+	public int updateCertificate(String userId, Certificate updateCertificate, Connection conn) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateCertificate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updateCertificate.getcetificateName());
+			pstmt.setString(2, updateCertificate.getcetificateAuth());
+			pstmt.setString(3, updateCertificate.getcetificateDate());
+			pstmt.setString(4, userId);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+
+	public int updatePublication(String userId, Publication updatePublication, Connection conn) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updatePublication");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updatePublication.getBookName());
+			pstmt.setString(2, updatePublication.getBookInfo());
+			pstmt.setString(3, updatePublication.getPublisher());
+			pstmt.setString(4, updatePublication.getBookDate());
+			pstmt.setString(5, userId);
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+
+	/**
+	 * 진섭 : 회원조회 페이징 ListCount
+	 * @param conn
+	 * @return
+	 */
+	public int selectListCount(Connection conn) {
+		int listCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				listCount = rset.getInt("LISTCOUNT");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return listCount;
+		
+	}
 	
+	
+	/**
+	 * 진섭: 회원조회 배열
+	 * @param conn
+	 * @param pi
+	 * @return
+	 */
+	public ArrayList<Member> selectList(Connection conn, PageInfo pi){
+		// select 문 => 여러행 조회
+		ArrayList<Member> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Member(rset.getString("USER_ID"),
+							        rset.getString("USER_EMAIL"),
+							        rset.getString("USER_PWD"),
+							        rset.getString("ENROLL_DATE"),
+							        rset.getString("OUTROLL_DATE"),
+							        rset.getString("STATUS"),
+							        rset.getString("MEMBERSHIP"),
+							        rset.getString("EXCELLENT_FREELANCE"),
+							        rset.getString("BLACKLIST"),
+							        rset.getString("IDENTIFY_EMAIL"),
+							        rset.getString("ADMIN"),
+							        rset.getString("USER_TYPE"),
+							        rset.getString("JOB_TITLE"),
+							        rset.getString("COMPANY"),
+							        rset.getString("SKILL"),
+							        rset.getInt("PAY_RATE"),
+							        rset.getString("PROFILE_IMAGE"),
+							        rset.getString("LOCATION"),
+							        rset.getString("SELF_INTRODUCTION")
+								    )
+						);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
+	
+	public Member freelancerSelectDetail(Connection conn, String userId) {
+		
+		Member member = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("freelancerSelectDetail");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				member = new Member(rset.getString("USER_ID"),
+										rset.getString("USER_EMAIL"),
+										rset.getString("USER_PWD"),
+										rset.getString("ENROLL_DATE"),
+										rset.getString("OUTROLL_DATE"),
+										rset.getString("STATUS"),
+										rset.getString("MEMBERSHIP"),
+										rset.getString("EXCELLENT_FREELANCE"),
+										rset.getString("BLACKLIST"),
+										rset.getString("IDENTIFY_EMAIL"),
+										rset.getString("ADMIN"),
+										rset.getString("USER_TYPE"),
+										rset.getString("JOB_TITLE"),
+										rset.getString("COMPANY"),
+										rset.getString("SKILL"),
+										rset.getInt("PAY_RATE"),
+										rset.getString("PROFILE_IMAGE"),
+										rset.getString("LOCATION"),
+										rset.getString("SELF_INTRODUCTION"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return member;
+		
+	}
+		
+		
+	
+
 }

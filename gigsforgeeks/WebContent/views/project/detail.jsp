@@ -27,30 +27,28 @@
     <!-- 여기서부터 내용 작성하면 됩니다. -->
     <main id="contentMain">
 		<h2 id="contentTitle"><%= myProject.getProjectName() %></h2>
-		<nav class="myProjectNav">
-			<a href="" style="font-weight: bolder;">상세보기</a> | 
-			<a href="">제안들</a> | 
-			<a href="">파일</a> | 
-			<a href="">프로젝트 재등록</a> | 
-			<a href="">프로젝트 삭제</a>
-		</nav>
-		<section>
-			<form action="${contextPath}/postProject.do" method="post" class="projectForm">
-				<section>
-					<p><b>프로젝트 예상 입찰가</b>: <%= minBid %>~<%= maxBid %></p>
-				</section>
-				<section>
-					<p><b>프로젝트의 예정 진행 기간</b>: <%= myProject.getExpectStart() %>~<%= myProject.getExpectEnd() %></p>
-				</section>
-				<section>
-					<p><b>프로젝트 상세내용</b></p>
-					<textarea name="description" cols="100" rows="10" readonly><%= myProject.getDescription() %></textarea>
-				</section>
-				<section>
-					<p><b>요구 기술</b>: <%= myProject.getRequiredSkill().replace(",", " ") %></p>
-				</section>
-			</form>
-		</section>
+		<form action="" method="post" class="projectForm">
+			<nav class="myProjectNav">
+				<a href="" style="font-weight: bolder;">상세보기</a> | 
+				<a href="">제안들</a> | 
+				<a href="">파일</a> | 
+				<a href="">프로젝트 재등록</a> | 
+				<a href="" class="deleteProject">프로젝트 삭제</a>
+			</nav>
+			<section>
+				<p><b>프로젝트 예상 입찰가</b>: <%= minBid %>~<%= maxBid %></p>
+			</section>
+			<section>
+				<p><b>프로젝트의 예정 진행 기간</b>: <%= myProject.getExpectStart() %>~<%= myProject.getExpectEnd() %></p>
+			</section>
+			<section>
+				<p><b>프로젝트 상세내용</b></p>
+				<textarea name="description" cols="100" rows="10" readonly><%= myProject.getDescription() %></textarea>
+			</section>
+			<section>
+				<p><b>요구 기술</b>: <%= myProject.getRequiredSkill().replace(",", " ") %></p>
+			</section>
+		</form>
 	</main>
 	 <%-- End Of Content --%>
 	

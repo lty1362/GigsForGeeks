@@ -16,7 +16,7 @@ import com.gigsforgeeks.member.model.vo.Member;
 /**
  * Servlet implementation class loginServlet
  */
-@WebServlet("/login.me")
+@WebServlet("/loginMe.me")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 		    	session.setAttribute("loginUser", loginUser);
 				
-		    	response.sendRedirect(request.getContextPath() + "/admin");
+		    	response.sendRedirect(request.getContextPath() + "/memberList.bo?currentPage=1");
 			}
 			
 			// 관리자 아닌경우(일반로그인)

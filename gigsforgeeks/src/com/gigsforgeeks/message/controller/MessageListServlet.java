@@ -46,6 +46,9 @@ public class MessageListServlet extends HttpServlet {
 		int endPage;		
 		
 		int notReadCount;
+		int adminCount; 
+		int fullCount; //keepCount에 넣을수없어 여기에 보관후 jsp에 keepCount로 변환
+		
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
 		pageLimit =10;
@@ -62,6 +65,8 @@ public class MessageListServlet extends HttpServlet {
 		
         listCount = new MessageService().selectListCount(userId);
         notReadCount = new MessageService().selectNotReadCount(userId);
+        fullCount = new MessageService().selectKeepCount(userId);
+        adminCount = new MessageService().selectAdminCount(userId);
         
 		maxPage = (int)Math.ceil((double)listCount / boardLimit); 
 	
@@ -73,7 +78,7 @@ public class MessageListServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 
-		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage,notReadCount);
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage,notReadCount,adminCount,fullCount);
 		
 		ArrayList<Message> list = new MessageService().selectMessageList(pi,userId);
 		

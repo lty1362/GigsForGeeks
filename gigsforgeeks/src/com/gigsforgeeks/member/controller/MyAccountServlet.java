@@ -10,13 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.gigsforgeeks.member.model.service.MemberService;
-import com.gigsforgeeks.member.model.vo.Career;
-import com.gigsforgeeks.member.model.vo.Certificate;
-import com.gigsforgeeks.member.model.vo.Education;
-import com.gigsforgeeks.member.model.vo.Member;
-import com.gigsforgeeks.member.model.vo.Portfolio;
-import com.gigsforgeeks.member.model.vo.Publication;
+
 
 /**
  * Servlet implementation class MyAccountServlet

@@ -5,6 +5,7 @@ import static com.gigsforgeeks.common.JDBCTemplate.commit;
 import static com.gigsforgeeks.common.JDBCTemplate.getConnection;
 import static com.gigsforgeeks.common.JDBCTemplate.rollback;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import com.gigsforgeeks.member.model.dao.MemberDAO;
 import com.gigsforgeeks.member.model.vo.Career;
@@ -13,6 +14,7 @@ import com.gigsforgeeks.member.model.vo.Education;
 import com.gigsforgeeks.member.model.vo.Member;
 import com.gigsforgeeks.member.model.vo.Portfolio;
 import com.gigsforgeeks.member.model.vo.Publication;
+import com.gigsforgeeks.project.model.vo.PageInfo;
 
 public class MemberService {
 
@@ -171,4 +173,144 @@ public class MemberService {
 
 		return userCareer;
 	}
+
+
+
+	public int updateProfile(String userId, Member updateMember) {
+		Connection conn = getConnection();
+		
+		int result  =0;
+		
+		result = new MemberDAO().updateUser(userId, updateMember, conn);
+		
+		if(result <0) {
+			result = 0;
+		}
+		
+		return result;
+	}
+
+	public int updatePortfolio(String userId, Portfolio updatePortfolio) {
+		Connection conn = getConnection();
+		
+		int result  =0;
+		
+		result = new MemberDAO().updatePortfolio(userId, updatePortfolio, conn);
+		
+		if(result <0) {
+			result = 0;
+		}
+		
+		return result;
+	}
+
+	public int updateCareer(String userId, Career updateCareer) {
+		Connection conn = getConnection();
+		
+		int result  =0;
+		
+		result = new MemberDAO().updateCareer(userId, updateCareer, conn);
+		
+		if(result <0) {
+			result = 0;
+		}
+		
+		return result;
+	}
+
+	public int updateEducation(String userId, Education updateEducation) {
+		Connection conn = getConnection();
+		
+		int result  =0;
+		
+		result = new MemberDAO().updateEducation(userId, updateEducation, conn);
+		
+		if(result <0) {
+			result = 0;
+		}
+		
+		return result;
+	}
+
+	public int updateCertificate(String userId, Certificate updateCertificate) {
+		Connection conn = getConnection();
+		
+		int result  =0;
+		
+		result = new MemberDAO().updateCertificate(userId, updateCertificate, conn);
+		
+		if(result <0) {
+			result = 0;
+		}
+		
+		return result;
+	}
+
+	public int updatePublication(String userId, Publication updatePublication) {
+		Connection conn = getConnection();
+		
+		int result  =0;
+		
+		result = new MemberDAO().updatePublication(userId, updatePublication, conn);
+		
+		if(result <0) {
+			result = 0;
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	/**
+	 * 진섭) 멤버 총 일반게시글 갯수 조회용 서비스
+	 * @return		총 갯수
+	 */
+	public int selectListCount() {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new MemberDAO().selectListCount(conn);
+		
+		close(conn);
+		
+		return listCount;
+		
+	}
+	
+	
+	/**
+	 * 진섭) 현재요청한 페이지에 보여져야할 리스트 조회용 서비스
+	 * @param pi		현재요청한페이지, 게시글최대갯수가 담겨있는 PageInfo 객체
+	 * @return			조회된 결과가 담겨있는 list
+	 */
+	public ArrayList<Member> selectList(PageInfo pi){
+		Connection conn = getConnection();
+		
+		ArrayList<Member> list = new MemberDAO().selectList(conn, pi);
+		
+		close(conn);
+		
+		return list;		
+	}
+	
+	/**
+	 * 성희) 탐색 프리랜서 클릭시 상세조회 서비스
+	 * @return
+	 */
+	public Member freelancerSelectDetail(String userId) {
+		
+		Connection conn = getConnection();
+		
+		Member member = new MemberDAO().freelancerSelectDetail(conn, userId);
+		
+		close(conn);
+		
+		return member;
+		
+	}
+	
+	
 }

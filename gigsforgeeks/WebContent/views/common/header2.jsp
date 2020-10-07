@@ -23,6 +23,7 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="${contextPath}/resources/images/favicon.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/common.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -31,7 +32,7 @@
     <script src="${contextPath}/resources/js/common.js"></script>
     <script>
 		/* jQuery에서 사용할 contextPath 변수 선언 및 초기화 */
-		var contextPath = "${contextPath}";
+		var $contextPath = "${contextPath}";
     	
     	/* 사용자 요청 성공시 alert 메시지 띄워주는 script */
     	window.onload = function() {

@@ -47,11 +47,6 @@ public class EnquiryInsertServlet extends HttpServlet {
 		enq.setEnquiryType(enqType);
 		enq.setEnquiryContent(content);
 		
-//		System.out.println(userId);
-//		System.out.println(title);
-//		System.out.println(enqType);
-//		System.out.println(content);
-		
 		int result = new EnquiryService().insertEnquiry(enq);
 		
 		if(result > 0) { // 성공 => 공지사항리스트 페이지

@@ -23,6 +23,7 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/png" href="${contextPath}/resources/images/favicon.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/common.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -31,7 +32,7 @@
     <script src="${contextPath}/resources/js/common.js"></script>
     <script>
     	/* jQuery에서 사용할 contextPath 변수 선언 및 초기화 */
-    	var contextPath = "${contextPath}";
+    	var $contextPath = "${contextPath}";
     	
     	/* 사용자 요청 성공시 alert 메시지 띄워주는 script */
     	window.onload = function() {
@@ -79,31 +80,28 @@
                         </script>
                         
                         <!-- 탐색 팝업폼 레이어  -->
-                        <div id="popupLayer">
+                        <div id="popupLayer" style="height:320px;">
                             <div>
                                 <span onClick="closeLayer(this)" style="cursor:pointer;font-size:1.5em" title="닫기">X</span>
                             </div>
                                 <!-- 레이어 안의 내용 -->
                                 <form action="" method="GET">
-                                    <input type="text" name="totalSearch" id="searchInput" placeholder="통합검색">
+                                    <input type="text" name="totalSearch" id="searchInput" placeholder="채용 정보 찾아보기">
                                     <button type="submit" onclick="window.open('${contextPath}/views/project/totalSearch.jsp')" class="btn btn-info">검색</button>
                                 </form>
                                 <br>
-                                <a href="${contextPath}//views/project/searchListProject.jsp">
+                                <a href="${contextPath}/projectList.do?currentPage=1">
                                 <img src="${contextPath}/resources/images/project.png">프로젝트</a>
                                 <label><small>일할만한 프로젝트 탐색</small></label>
                                 <br><br>
-                                <a href="${contextPath}/views/project/searchListFreelancer.jsp">
+                                <a href="${contextPath}/freelancerList.do">
                                 <img src="${contextPath}/resources/images/freelancer.png">프리랜서</a>
                                 <label><small>프리랜서 탐색</small></label>
                                 <br><br>
-                                <a href="" id="greatFreelancerform">
+                                <a href="${contextPath}/excellent.do">
                                 <img src="${contextPath}/resources/images/greatFreelancer.png">우수 프리랜서</a>
                                 <label><small>평점이 높은 프리랜서 탐색</small></label>
                                 <br><br>
-                                <a href="" id="favoriteform">
-                                <img src="${contextPath}/resources/images/favorite.png">즐겨찾기</a>
-                                <label><small>내가 즐겨찾기한 프로젝트 탐색</small></label>
                         </div>
                         
                         <script>
@@ -145,8 +143,8 @@
                         <a href="${contextPath}/faq?currentPage=1">문의하기</a>
                     </nav>
                     <aside id="headerAside">
-                        <a href="${contextPath}/views/member/login.jsp">로그인</a>
-                        <a href="${contextPath}/views/member/signUp.jsp">회원가입</a>
+                        <a href="${contextPath}/login.me">로그인</a>
+                        <a href="${contextPath}/signUp.me">회원가입</a>
                     </aside>
                 </main>
 	        <% } else { %>
@@ -175,23 +173,23 @@
                             </div>
                                 <!-- 레이어 안의 내용 -->
                                 <form action="" method="GET">
-                                    <input type="text" name="totalSearch" id="searchInput" placeholder="통합검색">
+                                    <input type="text" name="totalSearch" id="searchInput" placeholder="채용 정보 찾아보기">
                                     <button type="submit" onclick="window.open('${contextPath}/views/project/totalSearch.jsp')" class="btn btn-info">검색</button>
                                 </form>
                                 <br>
-                                <a href="${contextPath}/views/project/searchListProject.jsp">
+                                <a href="${contextPath}/projectList.do?currentPage=1">
                                 <img src="${contextPath}/resources/images/project.png">프로젝트</a>
                                 <label><small>일할만한 프로젝트 탐색</small></label>
                                 <br><br>
-                                <a href="${contextPath}/views/project/searchListFreelancer.jsp">
+                                <a href="${contextPath}/freelancerList.do">
                                 <img src="${contextPath}/resources/images/freelancer.png">프리랜서</a>
                                 <label><small>프리랜서 탐색</small></label>
                                 <br><br>
-                                <a href="${contextPath}/views/project/searchListFreelancer.jsp">
+                                <a href="${contextPath}/excellent.do">
                                 <img src="${contextPath}/resources/images/greatFreelancer.png">우수 프리랜서</a>
                                 <label><small>평점이 높은 프리랜서 탐색</small></label>
                                 <br><br>
-                                <a href="" id="favoriteform">
+                                <a href="${contextPath}/views/project/favoriteProject.jsp">
                                 <img src="${contextPath}/resources/images/favorite.png">즐겨찾기</a>
                                 <label><small>내가 즐겨찾기한 프로젝트 탐색</small></label>
                         </div>
@@ -233,7 +231,7 @@
                         
                         <a href="${contextPath}/list.proj">내 프로젝트</a>
                         <a href="${contextPath}/list.ms?currentPage=1">메시지</a>
-                        <a href="">업데이트</a>
+                        <a href="${contextPath}/update.proj?currentPage=1">업데이트</a>
                         <a href="${contextPath}/faq?currentPage=1">문의하기</a>
                     </nav>
                     <aside id="headerAside">
@@ -258,34 +256,34 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                <td><a href="" style="color: black;">잔고</a></td>
+                                                <td><a href="" style="color: black;"></a></td>
                                                 <td><a href="${contextPath}/LoadingUser.load" style="color: black;">내 프로필</a></td>
                                             </tr>
                                             <tr>
-                                                <td>1000원</td>
-                                                <td><a href="" style="color: black;">맴버쉽</a></td>
+                                                <td></td>
+                                                <td><a href="${contextPath}/memberShip.me" style="color: black;">맴버쉽</a></td>
                                             </tr>
                                             <tr>
-                                                <td><a href="" style="color: black;">입금서비스</a></td>
-                                                <td><a href="" style="color: black;">사용자설정</a></td>
+                                                <td><a href="" style="color: black;"></a></td>
+                                                <td><a href="" style="color: black;"></a></td>
                                             </tr>
                                             <tr>
-                                                <td><a href="" style="color: black;">출금서비스 요청</a></td>
-                                                <td><a href="" style="color: black;">고객지원 요청</a></td>
+                                                <td><a href="" style="color: black;"></a></td>
+                                                <td><a href="${contextPath}/faq?currentPage=1" style="color: black;">고객지원 요청</a></td>
                                             </tr>
                                             <tr>
-                                                <td><a href="" style="color: black;">재정통계</a></td>
-                                                <td><a href="" style="color: black;">계정설정</a></td>
+                                                <td><a href="" style="color: black;"></a></td>
+                                                <td><a href="${contextPath}/setup.set" style="color: black;">계정설정</a></td>
                                             </tr>
                                             <tr>
-                                                <td><a href="" style="color: black;">재정설정</a></td>
+                                                <td><a href="${contextPath}/payment.me" style="color: black;">재정설정</a></td>
                                                 <td><a href="${contextPath}/logout.me" style="color: black;">로그아웃</a></td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td>이메일 인증여부</td>
-                                                <td><a href="" style="color: black;">인증페이지</a></td>
+                                                <td></td>
+                                                <td><a href="${contextPath}/email.con" style="color: black;">인증페이지</a></td>
                                             </tr>
                                         </tfoot>
                                     </table>

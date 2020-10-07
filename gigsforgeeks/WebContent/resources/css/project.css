@@ -14,6 +14,11 @@
 	box-sizing: border-box;
 }
 
+.projectForm input[type='checkbox'],
+.projectForm input[type='radio'] {
+	height: 1em;
+}
+
 .projectForm textarea {
 	resize: none;
 }
@@ -100,8 +105,8 @@
     box-sizing:border-box;
 }
 #detailProject{
-    width:1000px;
-    margin:50px;
+    /* width:1000px; */
+    /* margin:50px; */
     margin-top:40px;
     float: left;
 }
@@ -119,11 +124,7 @@
     font-weight: bold;
     float:right;
 }
-.projectSkill{
-    border:1px solid black;
-    padding:6px;
-    border-radius: 2px;
-}
+
 #proposal{
     border: 1px solid black;
     padding: 30px;
@@ -135,9 +136,9 @@
     margin-top: 20px;
 }
 #employerInfo1, #btnGroup{
-    width: 280px;
+    /* width: 280px; */
     padding: 20px;
-    margin: 40px;
+    margin: 40px 0 40px 40px;
 }
 #submitBtn{
     float: right;
@@ -160,19 +161,26 @@
 #projectCategory{
     background: #f0f1f3;
     padding: 18px;
-    width:340px;
+    width:320px;
     float:left;
 }
 form #feelter_sub p{font-weight: bold}
 .feelter_main{
     font-size: 18px;
     margin: 5px;
+    color:black;
+    font-size: 20px;
+    height: 40px;
+    font-weight: bold;
 }
-.feelter_main:visited{
+.feelter_main>a:hover{
     font-size: 20px;
     height: 40px;
     font-weight: bold;
     background: #cfd1d8;
+    cursor:pointer;
+    text-deroration:none;
+    color:black;
 }
 #searchProject{
     background: #f0f1f3;
@@ -203,19 +211,26 @@ form #feelter_sub p{font-weight: bold}
 #freelancerCategory{
     background: #f0f1f3;
     padding: 18px;
-    width:340px;
+    width:320px;
     float:left;
 }
 form #feelter_sub{font-weight: bold}
 .feelter_main{
     font-size: 18px;
     margin: 5px;
+    color:black;
+    font-size: 20px;
+    height: 40px;
+    font-weight: bold;
 }
-.feelter_main:active{
+.feelter_main>a:hover{
     font-size: 20px;
     height: 40px;
     font-weight: bold;
     background: #cfd1d8;
+    cursor:pointer;
+    text-deroration:none;
+    
 }
 #searchFreelancer{
     background: #f0f1f3;
@@ -250,11 +265,11 @@ form #feelter_sub{font-weight: bold}
       margin: auto;
   }
   .search{
-      font-size:23px;
+      font-size:20px;
       font-weight:bold;
   }
   .title{
-      font-size:20px; 
+      font-size:18px; 
       font-weight: bold;
   }
   .price{
@@ -269,10 +284,12 @@ form #feelter_sub{font-weight: bold}
       width: 1000px;
   }
   #project div:hover{
-      box-shadow:4px 4px 4px 4px gray
+      box-shadow:4px 4px 4px 4px gray;
+      cursor:pointer;
   }
   #freelancer div:hover{
-      box-shadow: 4px 4px 4px 4px gray
+      box-shadow: 4px 4px 4px 4px gray;
+      cursor:pointer;
   }
   #project input{width: 300px}
   #freelancer input{width: 300px}

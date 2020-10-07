@@ -23,8 +23,8 @@
         <div class="loginArea">
         
         <!-- 1. 로그인페이지로 들어왔을때 보여지는 로그인 form-->
-            <form id="loginForm" action="<%= request.getContextPath()%>/login.me" method="post">
-            <br><br><br><br><br><br>
+            <form id="loginForm" action="<%= request.getContextPath()%>/loginMe.me" method="post">
+            <br><br><br><br>
             <table>
                 <tr>
                     <td><h1>Gigs for Geeks</h1></td>

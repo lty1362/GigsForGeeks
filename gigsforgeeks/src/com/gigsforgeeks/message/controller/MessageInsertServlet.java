@@ -51,11 +51,10 @@ public class MessageInsertServlet extends HttpServlet {
 		m.setMessageContent(meContent);
 		
 		int result = new MessageService().insertMessage(m,userId);
-		
+		request.setAttribute("messageRecepient", messageRecepient);
 		if(result > 0) { 
-			//request.setAttribute("messageRecepient", messageRecepient);
-			//request.getSession().setAttribute("alertMsg", "성공적으로 메세지를 전송하였습니다.");
 			
+			request.getSession().setAttribute("alertMsg", "성공적으로 메세지를 전송하였습니다.");
 			response.sendRedirect(request.getContextPath() + "/list.ms?currentPage=1");
 			
 		}else {

@@ -140,8 +140,8 @@
 	 	 , NULL
 	 	 , NULL
 	 	 , NULL
-	 	 , TO_DATE('2220-01-01','YYYY-MM-DD')
-	 	 , TO_DATE('2220-12-31','YYYY-MM-DD')
+	 	 , NULL
+	 	 , NULL
 	 	 , NULL
 		 )	  	   
 	</entry>
@@ -164,8 +164,8 @@
 	     , NULL
 	     , NULL
 	     , NULL
-	     , TO_DATE('2220-01-01','YYYY-MM-DD')
-	     , TO_DATE('2220-12-31','YYYY-MM-DD')
+	     , NULL
+	     , NULL
 	     , DEFAULT
 	     )
 	</entry>
@@ -205,8 +205,8 @@
 	     , NULL
 	     , NULL
 	     , NULL
-	     , TO_DATE('2220-01-01','YYYY-MM-DD')
-	     , TO_DATE('2220-12-31','YYYY-MM-DD')
+	     , NULL
+	     , NULL
 	     )
 	</entry>
 	<entry key="createPublication">
@@ -239,5 +239,143 @@
 	</entry>
 	
 	
+	<entry key="updateMember">
+	UPDATE
+           MEMBER
+       SET LOCATION = ?
+         , COMPANY = ?
+         , SELF_INTRODUCTION = ?
+         , PAY_RATE = ? 
+         , JOB_TITLE = ?
+     WHERE USER_ID= ? 
+	</entry>
 	
+	
+	<entry key="updatePortfolio">
+	 UPDATE
+            PORTFOLIO
+        SET PORTFOLIO_TITLE = ?
+          , PORTFOLIO_LINK = ?
+          , PORTFOLIO_CONTENTS = ?
+          , PORTFOLIO_START = ?
+          , PORTFOLIO_END = ?
+          , PORTFOLIO_SKILL = ?
+      WHERE USER_ID = ?
+	</entry>
+	
+	
+	<entry key="updateCareer">
+	  UPDATE
+             CAREER
+         SET COMPANY_INFO = ?
+           , CAREER_TITLE = ?
+           , CAREER_INFO = ?
+           , HIRE_DATE = ?
+           , RETIRE_DATE =?
+       WHERE USER_ID =?
+	</entry>
+	
+	
+	<entry key="updateEducation">
+	   UPDATE
+              EDUCATION
+          SET UNIVERSITY = ?
+            , MAJOR = ?
+            , DEGREE = ?
+            , ENROLL_DATE = ?
+            , GRAUATED_DATE = ?
+        WHERE USER_ID = ?
+	</entry>
+	
+	
+	<entry key="updateCertificate">
+	    UPDATE
+               CERTIFICATION
+           SET CERTIFICATE_NAME = ?
+             , CERTIFICATE_AUTH = ?
+             , CERTIFICATE_DATE = ?
+         WHERE USER_ID = ?
+	
+	</entry>
+	
+	
+	<entry key="updatePublication">
+	    UPDATE 
+               PUBLICATION
+           SET BOOK_NAME = ?
+             , BOOK_INFO = ?
+             , PUBLISHER = ?
+             , BOOK_DATE = ?
+         WHERE USER_ID = ?
+	</entry>
+	
+	
+	<entry key="selectListCount">
+		SELECT 
+			   COUNT(*) LISTCOUNT
+		  FROM MEMBER
+ 		 WHERE ADMIN='N'
+	</entry>	
+	
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT 
+		               ROWNUM RNUM
+		             , A.*
+		          FROM (
+		                SELECT 
+		                       USER_ID
+		                     , USER_EMAIL
+		                     , USER_PWD
+				             , ENROLL_DATE
+				             , OUTROLL_DATE
+				             , STATUS
+				             , MEMBERSHIP
+				             , EXCELLENT_FREELANCE
+				             , BLACKLIST
+				             , IDENTIFY_EMAIL
+				             , ADMIN
+				             , USER_TYPE
+				             , JOB_TITLE
+				             , COMPANY
+				             , SKILL
+				             , PAY_RATE
+				             , PROFILE_IMAGE
+				             , LOCATION
+				             , SELF_INTRODUCTION
+		                  FROM MEMBER
+<!-- 		                 ORDER 
+		                    BY FAQ_NO DESC -->
+		               ) A
+		       )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+		
+	<entry key="freelancerSelectDetail">
+		SELECT 
+		       USER_ID
+		     , USER_EMAIL
+		     , USER_PWD
+		     , ENROLL_DATE
+		     , OUTROLL_DATE
+		     , STATUS
+		     , MEMBERSHIP
+		     , EXCELLENT_FREELANCE
+		     , BLACKLIST
+		     , IDENTIFY_EMAIL
+		     , ADMIN
+		     , USER_TYPE
+		     , JOB_TITLE
+		     , COMPANY
+		     , SKILL
+		     , PAY_RATE
+		     , PROFILE_IMAGE
+		     , LOCATION
+		     , SELF_INTRODUCTION
+		  FROM MEMBER
+		 WHERE USER_ID = ?
+		   AND STATUS = 'Y'
+		   AND ADMIN = 'N'
+	</entry>
 </properties>

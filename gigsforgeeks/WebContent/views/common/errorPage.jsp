@@ -40,8 +40,8 @@
     		<table>
     			<tr>
     			    <td><button type="button" class="btn btn-outline-info" onclick="history.back();">이전페이지로</button>&nbsp;&nbsp;</td>
-    				<td><a href="" class="btn btn-outline-info">자주 묻는 질문들</a>&nbsp;&nbsp;</td>
-    				<td><a href="" class="btn btn-outline-info">문의하기</a>&nbsp;&nbsp;</td>
+    				<td><a href="${contextPath}/faq?currentPage=1" class="btn btn-outline-info">자주 묻는 질문들</a>&nbsp;&nbsp;</td>
+    				<td><a href="${contextPath}/enquiryEnrollForm" class="btn btn-outline-info">문의하기</a>&nbsp;&nbsp;</td>
     				<td><a href="${contextPath}"class="btn btn-outline-info">메인페이지</a></td>
     			</tr>
     		</table>

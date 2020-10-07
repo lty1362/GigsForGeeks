@@ -58,7 +58,6 @@ public class ServiceMainPageServlet extends HttpServlet {
 			endPage = maxPage;
 		}
 		
-		System.out.println(listCount);
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		ArrayList<FAQ> list = new FaqService().selectList(pi);

@@ -1,6 +1,6 @@
 package com.gigsforgeeks.member.model.vo;
 
-import java.sql.Date;
+
 
 public class Portfolio {
 	private int portfolioNumber;      //포트폴리오 번소
@@ -8,8 +8,8 @@ public class Portfolio {
 	private String portfolioContent;  //포트폴리오 내용
 	private String portfolioLink;     //포트폴리오 링크
 	private String portfolioSkill;    //포트폴리오 사용기술
-	private Date portfolioStart;      //포트폴리오 시작일
-	private Date portfolioEnd;        //포트폴리오 완료일
+	private String portfolioStart;      //포트폴리오 시작일
+	private String portfolioEnd;        //포트폴리오 완료일
 	private String userId;		      //회원아이디
 	private String portfolioFile;     //포트폴리오 파일
 	
@@ -18,7 +18,7 @@ public class Portfolio {
 
 
 	public Portfolio(int portfolioNumber, String portfolioTitle, String portfolioContent, String portfolioLink,
-			String portfolioSkill, Date portfolioStart, Date portfolioEnd, String userId, String portfolioFile) {
+			String portfolioSkill, String portfolioStart, String portfolioEnd, String userId, String portfolioFile) {
 		super();
 		this.portfolioNumber = portfolioNumber;
 		this.portfolioTitle = portfolioTitle;
@@ -29,6 +29,18 @@ public class Portfolio {
 		this.portfolioEnd = portfolioEnd;
 		this.userId = userId;
 		this.portfolioFile = portfolioFile;
+	}
+
+	/*updateUser에서의 Portfolio updatePortfolio*/
+	public Portfolio(String PortTitle,String PortLink, String portConent, String PortStart, String PortEnd, String portpolyoSkill) {
+		super();
+		this.portfolioTitle=PortTitle;
+		this.portfolioLink=PortLink;
+		this.portfolioContent=portConent;
+		this.portfolioStart=PortStart;
+		this.portfolioEnd=PortEnd;
+		this.portfolioSkill=portpolyoSkill;
+		
 	}
 
 
@@ -82,22 +94,22 @@ public class Portfolio {
 	}
 
 
-	public Date getPortfolioStart() {
+	public String getPortfolioStart() {
 		return portfolioStart;
 	}
 
 
-	public void setPortfolioStart(Date portfolioStart) {
+	public void setPortfolioStart(String portfolioStart) {
 		this.portfolioStart = portfolioStart;
 	}
 
 
-	public Date getPortfolioEnd() {
+	public String getPortfolioEnd() {
 		return portfolioEnd;
 	}
 
 
-	public void setPortfolioEnd(Date portfolioEnd) {
+	public void setPortfolioEnd(String portfolioEnd) {
 		this.portfolioEnd = portfolioEnd;
 	}
 

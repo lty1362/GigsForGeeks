@@ -87,11 +87,11 @@ public class MessageService {
 	public Message messageRecepient(String userId) {
 		Connection conn = getConnection();
 
-		Message messageReceiver = new MessageDAO().messageRecepient(userId, conn);
+		Message messageRecepient = new MessageDAO().messageRecepient(userId, conn);
 
 		close(conn);
 
-		return messageReceiver;
+		return messageRecepient;
 	}
 	
 	/**
@@ -193,8 +193,99 @@ public class MessageService {
 		return list;
 	}
 
+	/**
+	 * 메세지 보관하기 표시
+	 * @param messageNo
+	 * @return
+	 */
+	public int updateKeep(String keep) {
+		Connection conn = getConnection();
+		
+		int result  = new MessageDAO().updateKeep(conn, keep);
+		
+		if(result  > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/**
+	 * 보관메세지 갯수
+	 * @param userId
+	 * @return
+	 */
+	public int selectKeepCount(String userId) {
+		Connection conn = getConnection();
+		
+		int listCount = new MessageDAO().selectKeepCount(conn,userId);
+		
+		close(conn);
+		
+		return listCount;
+	}
+
+	/**
+	 * 메세지보관 조회
+	 * @param pi
+	 * @param userId
+	 * @return
+	 */
+	public ArrayList<Message> selectMessageKeep(PageInfo pi, String userId) {
+		Connection conn = getConnection();
+		
+		ArrayList<Message> list = new MessageDAO().selectMessageKeep(conn,pi,userId);
+		
+		close(conn);
+		
+		return list;
+	}
+
+	/**
+	 * 메세지보관 해제
+	 * @param keep
+	 * @return
+	 */
+	public int updateKeepOut(String keep) {
+		Connection conn = getConnection();
+		
+		int result  = new MessageDAO().updateKeepOut(conn, keep);
+		
+		if(result  > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/**
+	 * 메세지 삭제
+	 * @param delete
+	 * @return
+	 */
+	public int deleteMessage(int messageNo) {
+		Connection conn = getConnection();
+		
+		int result  = new MessageDAO().deleteMessage(conn, messageNo);
+		
+		if(result  > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
 
 
-
-	
 }

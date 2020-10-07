@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, 
-            com.gigsforgeeks.project.model.vo.Project" %>
+    import="java.util.ArrayList,
+    		com.gigsforgeeks.project.model.vo.*,
+    		java.text.NumberFormat,
+			java.util.Locale" %>
 <% ArrayList<Project> myProjectList = (ArrayList<Project>)request.getAttribute("myProjectList"); %>
 <!DOCTYPE html>
 <html>
@@ -13,6 +15,10 @@
 	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/project.css">
 	<%-- End Of Header --%>
 	<!-- 페이지의 타이틀을 작성하세요 -->
+	<script>
+   	    // 세션 비우기
+   	    sessionStorage.clear();
+    </script>
 	<title>내 프로젝트</title>
 </head>
 <body>
@@ -24,16 +30,16 @@
 	        <h2 id="contentTitle" class="project">내 프로젝트</h2>
 			<div class="bs-example" data-example-id="simple-button-group">
 			    <div class="btn-group" role="group" aria-label="Basic example">
-			        <a href="${contextPath}/list.proj?reqType=E" class="btn btn-primary e">고용주</a>
-			        <a href="${contextPath}/list.proj?reqType=F" class="btn btn-default f">프리랜서</a>
+			        <button class="btn btn-primary setReqType e">고용주</button>
+			        <button class="btn btn-default setReqType f">프리랜서</button>
 			    </div>
 			</div>
         </section>
         <%-- End of Project Header --%>
         <%-- Project Navigator --%>
         <nav class="myProjectNav">
-        	<a style="font-weight: bolder;">열린 작업</a> | 
-        	<a href="">진행중인 작업</a> | 
+        	<a href="">열린 프로젝트</a> | 
+        	<a style="font-weight: bolder;">시작 프로젝트</a> | 
         	<a href="">피드백</a> | 
         	<a href="">과거 프로젝트</a>
         </nav>
@@ -42,36 +48,36 @@
         <table class="projectTable">
             <thead>
                 <tr>
-                	<th>프로젝트ID</th>
                     <th>프로젝트명</th>
-                    <th>프리랜서</th>
-                    <th>낙찰가</th>
-                    <th>종료일</th>
+                    <th>입찰</th>
+                    <th>평균입찰가</th>
+                    <th>입찰마감일</th>
                     <th>실행옵션</th>
                 </tr>
             </thead>
             <tbody>
             	<% if(myProjectList.isEmpty()) { %>
             	<tr>
-            		<td colspan="6">입찰 중인 프로젝트가 없습니다.</td>
+            		<td colspan="5">입찰 중인 프로젝트가 없습니다.</td>
             	</tr>
             	<% }else { %>
             		<% for(Project myProject : myProjectList) { %>
-		                <tr>
-		                	<td><%= myProject.getProjectId() %></td>
-		                    <td>
-		                    	<a href=""><%= myProject.getProjectName() %></a>
-		                    	<span style="visibility: hidden;"><%= myProject.getProjectId() %></span>
-		                    </td>
-		                    <td><%= myProject.getWinnerId() %></td>
-		                    <td><%= myProject.getWinningBid() %></td>
-		                    <td><%= myProject.getEndDate() %></td>
-		                    <td>
-		                        <select name="projectStatus">
-		                            <option value="process"><%= myProject.getProjectStatus() %></option>
-		                        </select>
-		                    </td>
-		                </tr>
+            			<% if(myProject.getProjectStatus().equals("START") || myProject.getProjectStatus().equals("PROCESS") || myProject.getProjectStatus().equals("HOLD")) { %>
+			                <tr>
+			                    <td>
+			                    	<a href=""><%= myProject.getProjectName() %></a>
+			                    	<span style="visibility: hidden;"><%= myProject.getProjectId() %></span>
+			                    </td>
+			                    <td><%= myProject.getCountBid() %></td>
+			                    <td><%= NumberFormat.getCurrencyInstance(Locale.KOREA).format(myProject.getAverageBid()) %></td>
+			                    <td><%= myProject.getExpectEnd() %></td>
+			                    <td>
+			                        <select name="projectStatus">
+			                            <option value="process"><%= myProject.getProjectStatus() %></option>
+			                        </select>
+			                    </td>
+			                </tr>
+			            <% } %>
 	                <% } %>
                 <% } %>
             </tbody>
@@ -80,20 +86,15 @@
         <%-- Paging Section --%>
         <div class="pagingArea" align="center">
 	        <!-- 맨 처음으로 (<<) -->
-	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=1';"> &lt;&lt; </button>
+	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.proj?currentPage=1';">&lt;&lt;</button>
 	        <!-- 이전페이지로 (<) -->
-	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=<%--currentPage-1--%>';"> &lt; </button>
-			<%-- <% for(int p=startPage; p<=endPage; p++) {%>
-				<%if(p != currentPage){ %>
-					<button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=<%=p%>';"><%= p %></button>
-				<%}else{ %>
-					<button class="btn btn-outline-info" disabled><%= p %></button>
-				<%} %>
-			<%} %> --%>
+	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.proj?currentPage=<%= 1-1 %>';">&lt;</button>
+				<%-- <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.proj?currentPage=<%= 1 %>';">1</button> --%>
+				<button class="btn btn-outline-info" disabled><%= 1 %></button>
 	        <!-- 다음페이지로 (>) -->
-	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=<%--currentPage+--%>';"> &gt; </button>
+	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.proj?currentPage=<%= 1+1 %>';">&gt;</button>
 	        <!-- 맨 끝으로 (>>) -->
-	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.ms?currentPage=<%--maxPage--%>';"> &gt;&gt; </button>
+	        <button class="btn btn-outline-info" onclick="location.href='${contextPath}/list.proj?currentPage=<%= 2 %>';">&gt;&gt;</button>
 	    </div>
 	    <%-- End of Paging Section --%>
     </main>	

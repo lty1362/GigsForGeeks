@@ -44,7 +44,7 @@ public class ProposalDAO {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, proposal.getProposalProjectId());
+			pstmt.setInt(1, proposal.getProposalProjectId());
 			pstmt.setString(2, proposal.getProposalUserId());
 			pstmt.setString(3, proposal.getProposalInfo());
 			pstmt.setInt(4, proposal.getProposalPrice());

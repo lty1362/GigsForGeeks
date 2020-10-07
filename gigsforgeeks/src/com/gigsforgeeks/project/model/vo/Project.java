@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Project {
 	
 	// Fields
-	private String projectId;
+	private int projectId;
 	private String clientId;
 	private String requiredSkill;
 	private String projectName;
@@ -24,10 +24,11 @@ public class Project {
 	private int winningBid;
 	private LocalDate startDate;
 	private LocalDate endDate;
+
 	
 	// Constructors
 	public Project() {}
-	public Project(String projectId, String clientId, String requiredSkill, String projectName, String description,
+	public Project(int projectId, String clientId, String requiredSkill, String projectName, String description,
 			String projectStatus, LocalDate expectStart, LocalDate expectEnd, String meansOfPayment, int minBid, int maxBid,
 			LocalDate startBid, LocalDate endBid, int countBid, int averageBid, String winnerId, int winningBid,
 			LocalDate startDate, LocalDate endDate) {
@@ -51,9 +52,10 @@ public class Project {
 		this.winningBid = winningBid;
 		this.startDate = startDate;
 		this.endDate = endDate;
+
 	}
 	
-	// to call insertProject method
+	// to use in insertProject method
 	public Project(String clientId, String requiredSkill, String projectName, String description, 
 			LocalDate expectStart, LocalDate expectEnd, String meansOfPayment, int minBid, int maxBid, LocalDate endBid) {
 		super();
@@ -69,9 +71,9 @@ public class Project {
 		this.endBid = endBid;
 	}
 	
-	// searcListProject
-	public Project(String projectId, String projectName, String projectStatus, String description, LocalDate endBid,
-			int minBid, int maxBid,  int countBid) {
+	// to use in searcListProject method
+	public Project(int projectId, String projectName, String description, String projectStatus, int minBid, int maxBid,
+			LocalDate endBid, int countBid, String requiredSkill) {
 		super();
 		this.projectId = projectId;
 		this.projectName = projectName;
@@ -81,13 +83,14 @@ public class Project {
 		this.MaxBid = maxBid;
 		this.endBid = endBid;
 		this.countBid = countBid;
+		this.requiredSkill = requiredSkill;
 	}
 	
 	// Getters and Setters
-	public String getProjectId() {
+	public int getProjectId() {
 		return projectId;
 	}
-	public void setProjectId(String projectId) {
+	public void setProjectId(int projectId) {
 		this.projectId = projectId;
 	}
 	public String getRequiredSkill() {
