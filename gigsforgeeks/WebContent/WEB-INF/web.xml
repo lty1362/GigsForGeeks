@@ -23,7 +23,8 @@
   </filter>
   <filter-mapping>
   	<filter-name>LoginCheckFilter</filter-name>
-  	<url-pattern>*.proj,*.ms</url-pattern>
+  	<url-pattern>*.proj</url-pattern>
+  	<url-pattern>*.ms</url-pattern>
   </filter-mapping>
   
   <!-- 관리자 페이지 mapping -->

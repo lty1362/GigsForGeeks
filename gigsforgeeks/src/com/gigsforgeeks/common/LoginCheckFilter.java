@@ -48,6 +48,7 @@ public class LoginCheckFilter implements Filter {
 		}
 		
 		if(isRedirect == true) {
+			req.getSession().setAttribute("alertMsg", "로그인 후에 이용하세요.");
 			resp.sendRedirect(req.getContextPath() + "/login.me");
 		}else {
 			chain.doFilter(req, resp);
@@ -58,7 +59,6 @@ public class LoginCheckFilter implements Filter {
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
-		System.out.println("filter test");
 
 	}
 
