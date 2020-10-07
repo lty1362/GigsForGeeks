@@ -31,10 +31,10 @@ $(function(){
 					if($reqType == "E"){ // 유형이 E(고용주)일 때
 					
 						$(".myProjectNav").empty();
-						$(".myProjectNav").append("<a href='"+ contextPath +"/list2.proj'>열린 프로젝트</a> | ");
+						$(".myProjectNav").append("<a href=''>열린 프로젝트</a> | ");
 						$(".myProjectNav").append("<a style='font-weight: bolder'>시작 프로젝트</a> | ");
-						$(".myProjectNav").append("<a href='"+ contextPath +"/list3.proj'>피드백</a> | ");
-						$(".myProjectNav").append("<a href='"+ contextPath +"/list4.proj'>과거 프로젝트</a>");
+						$(".myProjectNav").append("<a href=''>피드백</a> | ");
+						$(".myProjectNav").append("<a href=''>과거 프로젝트</a>");
 						
 						$(".projectTable > thead").empty();
 						$(".projectTable > thead").append("<th>프로젝트명</th>");
@@ -65,9 +65,9 @@ $(function(){
 						}else if($reqType == "F") { // 유형이 F(프리랜서)일 때
 							
 							$(".myProjectNav").empty();
-							$(".myProjectNav").append("<a href='"+ contextPath +"/bList1.proj'>제안 작업</a> | ");
+							$(".myProjectNav").append("<a href=''>제안 작업</a> | ");
 							$(".myProjectNav").append("<a style='font-weight: bolder'>현재 작업</a> | ");
-							$(".myProjectNav").append("<a href='" + contextPath +"/bList2.proj'>과거 작업</a>");
+							$(".myProjectNav").append("<a href=''>과거 작업</a>");
 							
 							$(".projectTable > thead").empty();
 							$(".projectTable > thead").append("<th>프로젝트명</th>");
