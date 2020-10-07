@@ -283,7 +283,7 @@
                                         <tfoot>
                                             <tr>
                                                 <td>이메일 인증여부</td>
-                                                <td><a href="" style="color: black;">인증페이지</a></td>
+                                                <td><a href="${contextPath}/email.con" style="color: black;">인증페이지</a></td>
                                             </tr>
                                         </tfoot>
                                     </table>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>gigsforgeeks</display-name>
-  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -10,24 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  <!-- 
-  		로그인 체크 필터
-  		*.proj // 프로젝트
-  		*.ms // 메시지
-  		위 요청 시 마다 로그인 여부 판단
-  -->
   <filter>
-  	<filter-name>LoginCheckFilter</filter-name>
-  	<filter-class>com.gigsforgeeks.common.LoginCheckFilter</filter-class>
+    <filter-name>LoginCheckFilter</filter-name>
+    <filter-class>com.gigsforgeeks.common.LoginCheckFilter</filter-class>
   </filter>
   <filter-mapping>
-  	<filter-name>LoginCheckFilter</filter-name>
-  	<url-pattern>*.proj</url-pattern>
-  	<url-pattern>*.ms</url-pattern>
+    <filter-name>LoginCheckFilter</filter-name>
+    <url-pattern>*.proj,*.ms</url-pattern>
   </filter-mapping>
-  
-  <!-- 관리자 페이지 mapping -->
   <servlet>
     <servlet-name>Admin</servlet-name>
     <jsp-file>/views/admin/admin.jsp</jsp-file>
@@ -36,5 +25,4 @@
     <servlet-name>Admin</servlet-name>
     <url-pattern>/admin</url-pattern>
   </servlet-mapping>
-  
 </web-app>
