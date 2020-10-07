@@ -33,7 +33,7 @@ public class FreelancerDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 
-		String userId = request.getParameter("userId");
+		String userId = "user01";
 		
 		Member member = new MemberService().freelancerSelectDetail(userId);
 		
