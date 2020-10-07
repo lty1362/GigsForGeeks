@@ -67,23 +67,6 @@ public class ProjectService {
 	}
 	
 	/**
-	 * 2_3. 내 프로젝트 목록 조회 서비스
-	 * 
-	 * @param userId      현재 로그인한 사용자 아이디
-	 * @param userType    조회할 리스트 타입 ("E" 고용주 / "F" 프리랜서)
-	 * @param pi          페이징 정보를 담은 PageInfo 객체
-	 * @return            해당 사용자의 등록/진행 프로젝트 목록
-	 */
-	public ArrayList<Project> selectMyProjectList(String userId, String listType, PageInfo pi) {
-		
-		Connection con = getConnection();
-		ArrayList<Project> myProjectList = new ProjectDAO().selectMyProjectList(con, userId, listType, pi);
-		close(con);
-		return myProjectList;
-		
-	}
-	
-	/**
 	 * 3. 내 프로젝트 상세조회 서비스
 	 * 
 	 * @param projectId    상세조회 요청한 프로젝트 아이디
@@ -119,6 +102,38 @@ public class ProjectService {
 		close(con);
 		
 		return result;
+		
+	}
+
+	/**
+	 * 5_1. 프로젝트 업데이트 총 갯수 조회 서비스
+	 * 
+	 * @param userId      조회할 사용자 아이디
+	 * @param listType    조회할 리스트 타입 ("E" 고용주 / "F" 프리랜서)
+	 * @return            조회된 프로젝트 업데이트 총 갯수
+	 */
+	public int selectUpdateCount(String userId) {
+		
+		Connection con = getConnection();
+		int projectCount = new ProjectDAO().selectUpdateCount(con, userId);
+		close(con);
+		return projectCount;
+		
+	}
+	
+	/**
+	 * 5_2. 프로젝트 업데이트 목록 조회 서비스
+	 * 
+	 * @param userId      현재 로그인한 사용자 아이디
+	 * @param pi          페이징 정보를 담은 PageInfo 객체
+	 * @return            업데이트 된 입찰 프로젝트 목록
+	 */
+	public ArrayList<Project> selectUpdateList(String userId, PageInfo pi) {
+		
+		Connection con = getConnection();
+		ArrayList<Project> myProjectList = new ProjectDAO().selectUpdateList(con, userId, pi);
+		close(con);
+		return myProjectList;
 		
 	}
 	
