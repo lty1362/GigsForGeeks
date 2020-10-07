@@ -43,7 +43,9 @@
 		 <div id="messageSend">
 		 <form action="${contextPath}/insert.ms" method="POST" id="sendForm">
 		 
+		 	<br><br>
 	        <h1>메세지 보내기</h1>
+	        <hr>
 	        <br>
 	        
 	        <b>보내는 사람 : </b>
@@ -56,10 +58,13 @@
 	        
 	        <b>제목 : </b> 
 	        <input type="text" id="meTitle" name="meTitle" placeholder="제목을 입력해주세요." required>
-	        <button type="submit" id="msBtn" class="btn btn-outline-info">메세지 보내기</button>
 	        <br><br>
 	        
-	        <textarea id="meContent" name="meContent" placeholder="내용을 입력해주세요." required  cols="130" rows="25" ></textarea>
+	        <textarea id="meContent" name="meContent" placeholder="내용을 입력해주세요." required  cols="100" rows="15"></textarea>
+			<br><br>
+			
+	        <button style="width: 200px; margin-right: 30px;" type="submit" id="msBtn" class="btn btn-outline-info btn-lg">메세지 보내기</button>
+	        <button style="width: 200px;" type="reset" id="msBtn	" class="btn btn-outline-info  btn-lg">다시쓰기</button>
    		   </form>
    		 </div>
        </div>
