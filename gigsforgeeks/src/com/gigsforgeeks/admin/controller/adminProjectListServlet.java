@@ -71,6 +71,7 @@ public class adminProjectListServlet extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("views/admin/manageProject.jsp");
 		view.forward(request, response);
 		
+		
 	}
 
 	/**

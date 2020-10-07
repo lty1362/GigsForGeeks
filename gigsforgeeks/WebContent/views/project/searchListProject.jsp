@@ -3,10 +3,17 @@
     isELIgnored="false" %>
 <%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*, java.text.NumberFormat, java.text.DecimalFormat"%>
 <%
-	ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("list");
-
 	DecimalFormat formatter = new DecimalFormat("###,###");
-%>
+
+	ArrayList<Project> list = (ArrayList<Project>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,7 +120,7 @@
 	          		<% }else { %>
 	          		<!-- 리스트가 비어있지 않을 경우 -->
 	                <% for(Project p : list) { %>
-	                <div onclick="location.href='${contextPath}/detailSelect.do?projectId=<%= p.getProjectId() %>';" id="searchprojectList">
+	                <div onclick="location.href='${contextPath}/detailSelect.do<%= p.getProjectId() %>';" id="searchprojectList">
 	                    <label id="projectTitle"><%= p.getProjectName() %></label> 
 	                    <label id="price"><%= formatter.format(p.getMinBid()) %>￦ - <%= formatter.format(p.getMaxBid()) %>￦</label><br>
 	                    <p><%= p.getDescription() %></p>
@@ -125,7 +132,37 @@
 	        		<hr>
                 	<% } %>
 	       		 <% } %> 
+	       		 
+	       		<div class="pagingArea" align="center">
+				<% if(currentPage != 1){ %>
+		            <!-- 맨 처음으로 (<<) -->
+		            <button class="btn btn-outline-info" onclick="location.href='${contextPath}/projectList.do?currentPage=1';"> &lt;&lt; </button>
+		            <!-- 이전페이지로 (<) -->
+		            <button class="btn btn-outline-info" onclick="location.href='${contextPath}/projectList.do?currentPage=<%=currentPage-1%>';"> &lt; </button>
+				<% } %>
+				
+				<% for(int p=startPage; p<=endPage; p++){ %>
+					<% if(p != currentPage){ %>
+	            	<button class="btn btn-outline-info" onclick="location.href='${contextPath}/projectList.do?currentPage=<%=p%>';"><%= p %></button>
+	            	<% }else{ %>
+	            	<button class="btn btn-outline-info" disabled><%= p %></button>
+	            	<% } %>
+	            <% } %>
+				
+				<% if(currentPage != maxPage){ %>
+		            <!-- 다음페이지로 (>) -->
+		            <button class="btn btn-outline-info" onclick="location.href='${contextPath}/projectList.do?currentPage=<%=currentPage+1%>';"> &gt; </button>
+		            <!-- 맨 끝으로 (>>) -->
+		            <button class="btn btn-outline-info" onclick="location.href='${contextPath}/projectList.do?currentPage=<%=maxPage%>';"> &gt;&gt; </button>
+				<% } %>
+           	 </div>  
             </div>
+     
+     
+			<br><br>
+			
+   
+     
      
         </div>
 
