@@ -69,7 +69,7 @@
 		    	<img alt="" style="max-width: 40%; height: auto;" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/259/credit-card_1f4b3.png">
 		        <br><br>
 		        <h1>안전한 지불</h1>
-		        <p><b>Freelancer.com 서비스에서는 안전한 결제 시스템과 수 천 명 수준의 전문가를 준비해 두고 있어서 인터넷 상에서 가장 간편하고 안전한 방법으로 일을 처리하실 수 있습니다.</b></p>
+		        <p><b>GigsForGeeks.com 서비스에서는 안전한 결제 시스템과 수 천 명 수준의 전문가를 준비해 두고 있어서 인터넷 상에서 가장 간편하고 안전한 방법으로 일을 처리하실 수 있습니다.</b></p>
 		    </div>
 		</div>
 	    
