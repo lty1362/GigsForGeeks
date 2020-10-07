@@ -29,7 +29,7 @@
     <main id="contentMain">
 	      <div id="totalSearch">
         <br>
-        <h1>통합검색</h1>
+        <h1>채용 정보 찾아보기</h1>
         <br>
         <form action="" method="GET">
             <div id="project">
@@ -39,31 +39,32 @@
                 <button type="submit" class="btn btn-outline-info">검색</button>
                 <br><hr>
                 <div>
-                    <label class="title">프로젝트1 제목</label>
-                    <label class="price">프로젝트 가격￦</label>
+                    <label class="title">프로젝트1 이름</label>
+                    <label class="price">200,000￦ - 500,000￦</label>
                     <p>프로젝트의 내용입니다 1</p><br>
-                    <p>- 프로젝트 마감일자 : 2020-09-16</p>
-                    <p>- 프로젝트 기술 : PHP, WordPress, HTML, JAVA</p>
-                    <p>- 입찰수 : 0
+                    <li>프로젝트 마감일자 : 2020-09-16</li>
+                    <li>프로젝트 기술 : JAVA, PHP, WordPress, HTML</li>
+                    <li>입찰수 : 0</li>
                 </div>    
             </div>
         </form>
 
         <br>
         <form action="" method="GET">
-            <div id="freelancer">
+            <div onclick="location.href='${contextPath}/freelancerDetail.do?userId=user01';" id="freelancer">
                 <span class="search">프리랜서 검색 : &nbsp;
                     <input type="text" name="freelancer">
                 </span>
                 <button type="submit" class="btn btn-outline-info">검색</button>
                 <br><hr>
                 <div>
-                    <label class="title">프리랜서 이름</label>
-                    <label class="price">프리랜서 가격￦</label>
+                    <label class="title">프리랜서 user01</label>
+                    <label class="price">희망시급 : 80,000￦</label>
 	                <p>프리랜서의 자기소개 내용입니다 1</p><br>
-	                <p>- 우수 프리랜서 : Y</p>
-                    <p>- 지역 : 서울</p>
-	                <p>- 프리랜서 기술 : HTML, 웹사이트 디자인, PHP, 워드프레스, CSS</p>
+	                <li>우수 프리랜서 : Y</li>
+	                <li>프리랜서 기술 : JAVA, JavaScript, PHP, CSS</li>
+                    <li>지역 : 서울</li>
+	                
                 </div>
             </div>
         </form>

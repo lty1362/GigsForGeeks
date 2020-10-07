@@ -86,7 +86,7 @@
                             </div>
                                 <!-- 레이어 안의 내용 -->
                                 <form action="" method="GET">
-                                    <input type="text" name="totalSearch" id="searchInput" placeholder="통합검색">
+                                    <input type="text" name="totalSearch" id="searchInput" placeholder="채용 정보 찾아보기">
                                     <button type="submit" onclick="window.open('${contextPath}/views/project/totalSearch.jsp')" class="btn btn-info">검색</button>
                                 </form>
                                 <br>
@@ -173,7 +173,7 @@
                             </div>
                                 <!-- 레이어 안의 내용 -->
                                 <form action="" method="GET">
-                                    <input type="text" name="totalSearch" id="searchInput" placeholder="통합검색">
+                                    <input type="text" name="totalSearch" id="searchInput" placeholder="채용 정보 찾아보기">
                                     <button type="submit" onclick="window.open('${contextPath}/views/project/totalSearch.jsp')" class="btn btn-info">검색</button>
                                 </form>
                                 <br>

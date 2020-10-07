@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
-<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*" %>
+<%@ page import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*, java.text.DecimalFormat" %>
 <%@ page import="com.gigsforgeeks.member.model.vo.Member" %>
 <%
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+
+	DecimalFormat formatter = new DecimalFormat("###,###");
 %>
 <!DOCTYPE html>
 <html>
@@ -108,7 +110,7 @@
 		                	<div onclick="location.href='${contextPath}/freelancerDetail.do?userId=<%= m.getUserId() %>';" id="searchFreelancerList">
 		                    <label><img src="${contextPath}/resources/images/avatar.png" style="width: 50px; height: 50px;"><%= m.getProfileImage() %></label>
 		                    <label id="freelancerTitle"><%= m.getUserId() %></label> 
-		                    <label id="price">희망시급 : <%= m.getPayRate() %>￦</label><br>
+		                    <label id="price">희망시급 : <%= formatter.format(m.getPayRate()) %>￦</label><br>
 		                    <p><%= m.getSelfIntroduction() %></p>
 		                    <br>
 		                    <li>우수 프리랜서 : <%= m.getExcellentFreelance() %></li>
