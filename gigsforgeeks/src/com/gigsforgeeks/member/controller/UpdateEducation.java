@@ -51,6 +51,8 @@ public class UpdateEducation extends HttpServlet {
 		int result = new MemberService().updateEducation(userId, updateEducation);
 		
 		if(result == 1) {
+			
+			session.setAttribute("Education", updateEducation);
 			RequestDispatcher view = request.getRequestDispatcher("LoadingUser.load");
 			view.forward(request, response);
 		}else {

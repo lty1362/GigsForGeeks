@@ -49,6 +49,8 @@ public class UpdateCertificaition extends HttpServlet {
 		int result = new MemberService().updateCertificate(userId, updateCertificate);
 		
 		if(result == 1) {
+			session.setAttribute("Certificate", updateCertificate);
+			
 			RequestDispatcher view = request.getRequestDispatcher("LoadingUser.load");
 			view.forward(request, response);
 		}else {

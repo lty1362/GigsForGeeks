@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="shortcut icon" type="image/png" href="resources/images/favicon.png">
 <title>Geeks Swim In Gigs! | Gigs For Geeks</title>
 </head>
 <body>

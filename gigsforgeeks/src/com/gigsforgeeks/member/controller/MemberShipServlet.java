@@ -10,31 +10,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class myAccountModifyServlet
+ * Servlet implementation class MemberShipServlet
  */
-@WebServlet("/myAccountModify.me")
-public class MyAccountModifyServlet extends HttpServlet {
+@WebServlet("/memberShip.me")
+public class MemberShipServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyAccountModifyServlet() {
+    public MemberShipServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-	 * 맴버 업데이트 서블릿
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// "회원정보 수정 페이지"가 보여지게 하는 서블릿
-		
-		RequestDispatcher view = request.getRequestDispatcher("views/member/myAccountModify.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("views/member/memberShip.jsp");
 		view.forward(request, response);
-		
 	}
 
 	/**

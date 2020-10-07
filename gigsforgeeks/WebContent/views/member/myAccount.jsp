@@ -92,7 +92,7 @@
 
 
 	<%-- Content --%>
-	<main id="contentMain">
+	
 
 	<section>
 
@@ -111,7 +111,7 @@
 						희망시급 : <%=payRate%>원 <br>
 						거주지역 : <%=location%>
 						<div id="divClock"></div>
-						가입일 : 20<%=enrollDate%>
+						
 					</div>
 					<div id="userName"  align="left">
 						<br><br>
@@ -241,8 +241,7 @@
 
 				<div id="cartification" >
 					<h1 align="left">자격증 항목</h1>
-					<span id="cartificationTitle" ><h2>
-							<%=CetificateName%></h2></span>
+					<h2><%=CetificateName%></h2>
 
 					<div id="cartificationContent" >
 						<%=CetificateAuth%></div>
@@ -296,7 +295,7 @@
 
 
 	</section>
-	</main>
+	
 	<%-- End Of Content --%>
 
 	<%-- Footer --%>

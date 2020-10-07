@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.gigsforgeeks.member.model.service.MemberService;
 import com.gigsforgeeks.member.model.vo.Member;
@@ -34,20 +35,29 @@ public class FreelancerDetailServlet extends HttpServlet {
 		
 
 		String userId = "user01";
+		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
 		
-		Member member = new MemberService().freelancerSelectDetail(userId);
-		
-		if(member != null) {
+		if(loginUser != null) { // 사용자가 로그인 회원일 때
 			
-			request.setAttribute("member", member);
-			RequestDispatcher view = request.getRequestDispatcher("views/member/userAccount.jsp");
-			view.forward(request, response);
+			Member member = new MemberService().freelancerSelectDetail(userId);
 			
-		}else {
+			if(member != null) {
+				
+				request.setAttribute("member", member);
+				RequestDispatcher view = request.getRequestDispatcher("views/member/userAccount.jsp");
+				view.forward(request, response);
+				
+			}else {
+				
+				request.getSession().setAttribute("alertMsg", "프리랜서 상세조회에 실패하셨습니다.");
+				RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+				view.forward(request, response);
+			}
 			
-			request.getSession().setAttribute("alertMsg", "프리랜서 상세조회에 실패하셨습니다.");
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
+		}else { // 비회원일 때
+			HttpSession session = request.getSession();
+			session.setAttribute("alertMsg", "로그인 후 이용하세요.");
+			response.sendRedirect(request.getContextPath() + "/login.me");
 		}
 		
 	}

@@ -92,7 +92,7 @@
 
 
 	<%-- Content --%>
-	<main id="contentMain">
+	
 
 	<section>
 
@@ -152,7 +152,7 @@
 					<span id="portpolioLink" ><a><%=PortfolioLink%></a></span>
 					<br> <br>
 					<div id="portpolioContent" ><%=PortfolioContent%></div>
-					<br> <span id="portpolioTime" ">
+					<br> <span id="portpolioTime" >
 						시작시간 : <%=Start%> &nbsp; 완료시간 : <%=End%>
 
 					</span> <br> <span id="portpolioSkill" >사용
@@ -258,7 +258,7 @@
 
 
 	</section>
-	</main>
+	
 	<%-- End Of Content --%>
 
 	<%-- Footer --%>

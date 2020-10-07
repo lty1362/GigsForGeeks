@@ -40,16 +40,15 @@ public class LoginCheckFilter implements Filter {
 		
 		if(!requestURI.equals(req.getContextPath() + "/login.me")) {
 			
-			System.out.println(isRedirect);
 			Member loginUser = (Member) req.getSession().getAttribute("loginUser");
 			if(loginUser == null) {
 				isRedirect = true;
 			}
-			System.out.println(isRedirect);
 			
 		}
 		
 		if(isRedirect == true) {
+			req.getSession().setAttribute("alertMsg", "로그인 후에 이용하세요.");
 			resp.sendRedirect(req.getContextPath() + "/login.me");
 		}else {
 			chain.doFilter(req, resp);
@@ -60,7 +59,6 @@ public class LoginCheckFilter implements Filter {
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
-		System.out.println("filter test");
 
 	}
 

@@ -246,6 +246,7 @@
          , COMPANY = ?
          , SELF_INTRODUCTION = ?
          , PAY_RATE = ? 
+         , JOB_TITLE = ?
      WHERE USER_ID= ? 
 	</entry>
 	

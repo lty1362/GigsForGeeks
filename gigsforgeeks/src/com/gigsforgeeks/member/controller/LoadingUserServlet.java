@@ -43,6 +43,8 @@ public class LoadingUserServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if(loginUser !=null) {
 		String userId = loginUser.getUserId(); 
 		
 		Career userCareer = new MemberService().searchCareer(userId);	          	  //userCareer = 회원 경력정보
@@ -66,7 +68,13 @@ public class LoadingUserServlet extends HttpServlet {
 		session.setAttribute("publication", userPublication);
 		
 		RequestDispatcher view = request.getRequestDispatcher("MyAccount.me");
-		view.forward(request, response);
+		view.forward(request, response);}else {
+			
+			session.setAttribute("alertMsg", "로그인 후 이용가능한 서비스입니다.");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view.forward(request, response);
+			
+		}
 	}
 
 	/**

@@ -1,6 +1,6 @@
 package com.gigsforgeeks.member.model.vo;
 
-import java.sql.Date;
+
 
 public class Member {
 
@@ -66,14 +66,14 @@ public class Member {
 	}
 	
 	/*updateUser에서의 Member updateMember*/
-	public Member(String location, String company, String selfIntroduction, String userId, int payRate) {
+	public Member(String location, String company, String selfIntroduction, String userId, int payRate, String jobTilte) {
 		super();
 		this.location =location;
 		this.company= company;
 		this.selfIntroduction =selfIntroduction;
 		this.userId =userId;
 		this.payRate =payRate;
-		
+		this.jobTitle=jobTilte;
 		
 	}
 

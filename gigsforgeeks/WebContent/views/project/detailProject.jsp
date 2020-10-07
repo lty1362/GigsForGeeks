@@ -130,11 +130,51 @@
    				   
    				   <%}else { %>
                    <div id="btnGroup">
-                       <button type="button" class="btn btn-outline-info" style="width: 250px; height: 30px;">즐겨찾기 등록</button> 
+                       <button type="button" data-toggle="modal" data-target="#favorite_input" class="btn btn-outline-info" style="width: 250px; height: 30px;">즐겨찾기 등록</button> 
                        <br><br>
-                       <button type="button" class="btn btn-outline-info" style="width: 250px; height: 30px;">프로젝트 신고</button>
+                       <button type="button" data-toggle="modal" data-target="#project_blackList" class="btn btn-outline-info" style="width: 250px; height: 30px;">프로젝트 신고</button>
                    </div>
                    <% } %>
+                   
+                   </div>
+		            <!-- 즐겨찾기 추가 모달 -->
+		            <div class="modal" id="favorite_input" style="display:none;" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content" style="height:300px;">
+					      <!-- Modal body -->
+					      <div class="modal-body">
+					        <button type="button" class="close" data-dismiss="modal" style="font-family:sans-serif;">x</button>
+				        	<h3>즐겨찾기 추가</h3>
+				        	<br><br>
+				        	<b>해당 프로젝트를 즐겨찾기에 추가하시겠습니까?</b>
+				        	<br>
+					      </div>
+					      <form action="" method="post" style="margin:10px; margin-left:120px">
+							 <button type="button" onClick="alert('성공적으로 추가되었습니다!')" class="btn btn-outline-info" data-dismiss="modal">OK</button>
+							 <button type="button" class="btn btn-outline-info" data-dismiss="modal">Cancel</button>
+						  </form><br>
+					  </div>
+					</div>
+					</div>
+					
+					<!-- 프로젝트 신고 모달 -->
+		            <div class="modal" id="project_blackList" style="display:none;" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content" style="height:300px;">
+					      <!-- Modal body -->
+					      <div class="modal-body">
+					        <button type="button" class="close" data-dismiss="modal" style="font-family:sans-serif;">x</button>
+				        	<h3>프로젝트 신고</h3>
+				        	<br><br>
+				        	<b>해당 프로젝트를 정말로 신고하시겠습까?</b>
+				        	<br>
+					      </div>
+					      <form action="" method="post" style="margin:10px; margin-left:120px">
+							 <button type="button" onClick="alert('해당 프로젝트 신고가 성공적으로 접수되었습니다.')" class="btn btn-outline-info" data-dismiss="modal">OK</button>
+							 <button type="button" class="btn btn-outline-info" data-dismiss="modal">Cancel</button>
+						  </form><br>
+					  </div>
+					</div>
                </div>
            </div>
        </main>   

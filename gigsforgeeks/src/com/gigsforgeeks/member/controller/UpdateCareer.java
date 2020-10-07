@@ -1,7 +1,7 @@
 package com.gigsforgeeks.member.controller;
 
 import java.io.IOException;
-import java.sql.Date;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -52,6 +52,8 @@ public class UpdateCareer extends HttpServlet {
 		int result = new MemberService().updateCareer(userId, updateCareer);
 				
 		if(result>0) {
+			session.setAttribute("Career", updateCareer);
+			
 			RequestDispatcher view = request.getRequestDispatcher("LoadingUser.load");
 			view.forward(request, response);
 		}else {
