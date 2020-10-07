@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, com.gigsforgeeks.project.model.vo.*" %>
+    import="java.util.ArrayList,
+    		com.gigsforgeeks.project.model.vo.*,
+    		java.text.NumberFormat,
+			java.util.Locale" %>
 <% ArrayList<Project> myProjectList = (ArrayList<Project>)request.getAttribute("myProjectList"); %>
 <!DOCTYPE html>
 <html>
@@ -66,7 +69,7 @@
 			                    	<span style="visibility: hidden;"><%= myProject.getProjectId() %></span>
 			                    </td>
 			                    <td><%= myProject.getCountBid() %></td>
-			                    <td><%= myProject.getAverageBid() %></td>
+			                    <td><%= NumberFormat.getCurrencyInstance(Locale.KOREA).format(myProject.getAverageBid()) %></td>
 			                    <td><%= myProject.getExpectEnd() %></td>
 			                    <td>
 			                        <select name="projectStatus">

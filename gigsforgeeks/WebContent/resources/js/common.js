@@ -36,6 +36,13 @@ $(function(){
 						$(".myProjectNav").append("<a href=''>피드백</a> | ");
 						$(".myProjectNav").append("<a href=''>과거 프로젝트</a>");
 						
+						$(".projectTable > thead").empty();
+						$(".projectTable > thead").append("<th>프로젝트명</th>");
+						$(".projectTable > thead").append("<th>입찰</th>");
+						$(".projectTable > thead").append("<th>평균입찰가</th>");
+						$(".projectTable > thead").append("<th>입찰마감일</th>");
+						$(".projectTable > thead").append("<th>실행옵션</th>");
+						
 						for(var i in myProjectList){
 							if(myProjectList[i].projectStatus == "START" || myProjectList[i].projectStatus == "PROCESS" || myProjectList[i].projectStatus == "HOLD"){
 								result += "<tr>" +
@@ -44,7 +51,7 @@ $(function(){
 												    "<span style='visibility: hidden;'>" + myProjectList[i].projectId + "</span>" + 
 												"</td>" +
 												"<td>" + myProjectList[i].countBid + "</td>" +
-												"<td>" + myProjectList[i].averageBid + "</td>" +
+												"<td>₩" + comma(myProjectList[i].averageBid) + "</td>" +
 												"<td>" + myProjectList[i].expectEnd + "</td>" +
 												"<td>" + 
 												"<select name='projectStatus'>" + 
@@ -55,12 +62,20 @@ $(function(){
 								}
 							}
 					
-						}else{ // 유형이 F(프리랜서)일 때
+						}else if($reqType == "F") { // 유형이 F(프리랜서)일 때
 							
 							$(".myProjectNav").empty();
 							$(".myProjectNav").append("<a href=''>제안 작업</a> | ");
 							$(".myProjectNav").append("<a style='font-weight: bolder'>현재 작업</a> | ");
 							$(".myProjectNav").append("<a href=''>과거 작업</a>");
+							
+							$(".projectTable > thead").empty();
+							$(".projectTable > thead").append("<th>프로젝트명</th>");
+							$(".projectTable > thead").append("<th>고용주</th>");
+							$(".projectTable > thead").append("<th>낙찰가</th>");
+							$(".projectTable > thead").append("<th>종료일</th>");
+							$(".projectTable > thead").append("<th>실행옵션</th>");
+							
 							
 							for(var i in myProjectList){
 								if(myProjectList[i].projectStatus == "START" || myProjectList[i].projectStatus == "PROCESS" || myProjectList[i].projectStatus == "HOLD"){
@@ -70,7 +85,7 @@ $(function(){
 													    "<span style='visibility: hidden;'>" + myProjectList[i].projectId + "</span>" +
 													"</td>" +
 													"<td>" + myProjectList[i].clientId + "</td>" +
-													"<td>" + myProjectList[i].winningBid + "</td>" +
+													"<td>₩" + comma(myProjectList[i].winningBid) + "</td>" +
 													"<td>" + myProjectList[i].endDate + "</td>" +
 													"<td>" + 
 													    "<select name='projectStatus'>" + 
@@ -117,5 +132,11 @@ $(function(){
 		}
 		
 	});
+	
+	// 숫자 3자리 마다 쉼표 찍어주는 함수
+	function comma(str) {
+        str = String(str);
+        return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+    }
 	
 });
