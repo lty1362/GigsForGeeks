@@ -30,8 +30,12 @@
     <%-- Content --%>
     <!-- 여기서부터 내용 작성하면 됩니다. -->
     <main id="contentMain" class="project">
+    	<%-- Project Header --%>
+        <section class="myProjectHeader">
+	        <h2 id="contentTitle" class="project">업데이트</h2>
+	    </section>
         <%-- Project Table --%>
-        <table class="projectTable">
+        <table class="projectTable update">
             <thead>
                 <tr>
                     <th>프로젝트명</th>

@@ -105,8 +105,8 @@
     box-sizing:border-box;
 }
 #detailProject{
-    width:1000px;
-    margin:50px;
+    /* width:1000px; */
+    /* margin:50px; */
     margin-top:40px;
     float: left;
 }
@@ -136,9 +136,9 @@
     margin-top: 20px;
 }
 #employerInfo1, #btnGroup{
-    width: 280px;
+    /* width: 280px; */
     padding: 20px;
-    margin: 40px;
+    margin: 40px 0 40px 40px;
 }
 #submitBtn{
     float: right;

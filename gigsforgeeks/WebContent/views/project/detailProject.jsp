@@ -37,8 +37,8 @@
            </div>
            
            <!-- 프로젝트 상세보기 내용 -->
-           <div id="detail" style="width:1500px; margin:auto;">
-               <div id="detailProject">    
+           <div id="detail" style="margin:auto;">
+               <div id="detailProject" style="width: 70%;">    
                    <div id="detail_Content">
 
                        <label id="detail_Title">프로젝트 관련 세부사항</label>  
@@ -73,8 +73,8 @@
                            <h4>입찰 관련 세부사항</h4>
                            <label>입찰 제안가 : </label>
                            <input type="hidden" name="projectId" value="<%= project.getProjectId() %>">
-                           <input type="number" name="proposalPrice" placeholder="￦200,000이상 입력해주세요." min="200000" style="width:250px" required> 
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           <input type="number" name="proposalPrice" placeholder="￦200,000이상 입력해주세요." min="200000" style="width:250px" required><br><br>
+                           
                            <label>이 프로젝트의 작업 예상기간 : </label>
                            <input type="date" name="proposalStart" placeholder="날짜를 입력해주세요." required>
                            ~
@@ -82,7 +82,7 @@
    
                            <br><br><br>
                            <h4>고객님의 입찰 견적서에 대한 설명</h4>
-                           <textarea name="proposalInfo" id="proposalInfo" cols="125" rows="10" style="resize:none;" required></textarea>
+                           <textarea name="proposalInfo" id="proposalInfo" rows="10" style="width: 100%; resize:none;" required></textarea>
 
                            <br><br><br><br>
                            <button type="submit" id="submitBtn" class="btn btn-outline-info">프로젝트 내용 제출하기</button>
@@ -93,7 +93,7 @@
                </div>
    
    			   <!-- 고용주 소개 -->
-               <div style="float:right">
+               <div style="float:right; width: 30%;">
                    <div id="employerInfo1" style="border: 1px solid black;">
                        <h3>고용주 소개</h3>
                        <hr>

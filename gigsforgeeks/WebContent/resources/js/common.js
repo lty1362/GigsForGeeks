@@ -116,7 +116,12 @@ $(function(){
 	
 		var $projectId = $(this).next().text();
 		sessionStorage.setItem("projectId", $projectId);
-		$(this).attr("href", $contextPath + "/detail.proj?projectId=" + $projectId);
+		
+		if($(".projectTable").hasClass("update")) {
+			$(this).attr("href", $contextPath + "/detailSelect.do?projectId=" + $projectId);
+		}else{
+			$(this).attr("href", $contextPath + "/detail.proj?projectId=" + $projectId);
+		}
 		
 	});
 	
