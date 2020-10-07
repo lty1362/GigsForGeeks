@@ -14,6 +14,11 @@
 	box-sizing: border-box;
 }
 
+.projectForm input[type='checkbox'],
+.projectForm input[type='radio'] {
+	height: 1em;
+}
+
 .projectForm textarea {
 	resize: none;
 }
