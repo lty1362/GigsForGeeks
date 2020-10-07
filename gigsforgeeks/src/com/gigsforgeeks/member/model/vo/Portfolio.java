@@ -1,6 +1,6 @@
 package com.gigsforgeeks.member.model.vo;
 
-import java.sql.Date;
+
 
 public class Portfolio {
 	private int portfolioNumber;      //포트폴리오 번소
