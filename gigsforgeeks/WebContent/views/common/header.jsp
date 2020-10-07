@@ -272,7 +272,7 @@
                                                 <td><a href="${contextPath}/faq?currentPage=1" style="color: black;">고객지원 요청</a></td>
                                             </tr>
                                             <tr>
-                                                <td><a href="" style="color: black;">재정통계</a></td>
+                                                <td><a href="" style="color: black;"></a></td>
                                                 <td><a href="${contextPath}/setup.set" style="color: black;">계정설정</a></td>
                                             </tr>
                                             <tr>
