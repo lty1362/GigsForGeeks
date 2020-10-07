@@ -620,8 +620,8 @@ public class ProjectDAO {
 									 rset.getInt("average_bid"),
 									 rset.getString("winner_id"),
 									 rset.getInt("winning_bid"),
-									 rset.getDate("start_date").toLocalDate(),
-									 rset.getDate("end_date").toLocalDate()
+									 (rset.getDate("start_date") == null ? null : rset.getDate("start_date").toLocalDate()),
+				                     (rset.getDate("end_date") == null ? null : rset.getDate("start_date").toLocalDate())
 									 )
 						);
 			}
