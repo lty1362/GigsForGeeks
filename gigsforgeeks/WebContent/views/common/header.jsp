@@ -265,7 +265,7 @@
                                             </tr>
                                             <tr>
                                                 <td><a href="" style="color: black;">입금서비스</a></td>
-                                                <td><a href="" style="color: black;">사용자설정</a></td>
+                                                <td><a href="" style="color: black;"></a></td>
                                             </tr>
                                             <tr>
                                                 <td><a href="" style="color: black;">출금서비스 요청</a></td>
@@ -273,7 +273,7 @@
                                             </tr>
                                             <tr>
                                                 <td><a href="" style="color: black;">재정통계</a></td>
-                                                <td><a href="" style="color: black;">계정설정</a></td>
+                                                <td><a href="${contextPath}/setup.set" style="color: black;">계정설정</a></td>
                                             </tr>
                                             <tr>
                                                 <td><a href="" style="color: black;">재정설정</a></td>
