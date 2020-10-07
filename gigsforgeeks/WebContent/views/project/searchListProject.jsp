@@ -120,7 +120,7 @@
 	          		<% }else { %>
 	          		<!-- 리스트가 비어있지 않을 경우 -->
 	                <% for(Project p : list) { %>
-	                <div onclick="location.href='${contextPath}/detailSelect.do<%= p.getProjectId() %>';" id="searchprojectList">
+	                <div onclick="location.href='${contextPath}/detailSelect.do?projectId=<%= p.getProjectId() %>';" id="searchprojectList">
 	                    <label id="projectTitle"><%= p.getProjectName() %></label> 
 	                    <label id="price"><%= formatter.format(p.getMinBid()) %>￦ - <%= formatter.format(p.getMaxBid()) %>￦</label><br>
 	                    <p><%= p.getDescription() %></p>
