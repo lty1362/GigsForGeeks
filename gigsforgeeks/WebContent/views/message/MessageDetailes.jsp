@@ -67,28 +67,11 @@
 	         	  		<tr>
 	         	  			<td colspan="4"><%=m.getMessageContent()%></td>
 	         	  		</tr>
-	         	  
-	         	  
-	<%-- 	            <tr>
-		                <th id="t2" ><%=m.getMessageTitle()%></th>
-		                <td id="t1" colspan="3"><%=m.getMessageReceiveTime()%></td>
-		            </tr>
-		            <tr id="t3">
-		                <th>받는 사람</th>
-		                <td><%=m.getMessageReceiver()%></td>
-		                <th>보낸 사람</th>
-		                <td><%=m.getMessageRecepient() %></td>
-		            </tr>
-		            <tr>
-		                <td colspan="4">
-		                    <p><%=m.getMessageContent()%></p>
-		                </td>
-		            </tr> --%>
 	         	  </table>
 	         	</div>
 		        	<br><br>
 			        <div align="center">
-			            <a onclick="history.back();" class="btn btn-secondary">확인</a>
+			            <a href="${contextPath}/list.ms?currentPage=1" class="btn btn-secondary">확인</a>
 			        </div>
 		         </div>
 	        </div>
