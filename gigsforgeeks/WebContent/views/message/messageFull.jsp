@@ -28,7 +28,7 @@
 		<!--검색창-->
         <div id="cont">
         	<br>
-        	<h3>전체 메세지</h3>
+        	<h3>전체 메세지 (<%=listCount%>)</h3>
             	<div id="content_2" align="right">
                 	<div id="search_form">
                 		<input type="hidden" name="messageReceiver" id="messageReceiver" value="">

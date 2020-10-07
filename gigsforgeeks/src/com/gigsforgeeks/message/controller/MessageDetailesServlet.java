@@ -38,6 +38,8 @@ public class MessageDetailesServlet extends HttpServlet {
 		int messageNo = Integer.parseInt(request.getParameter("nno"));
 		int notReadCount;
 		int keepCount;
+		int adminCount;
+		int fullCount;
 		
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
@@ -47,8 +49,10 @@ public class MessageDetailesServlet extends HttpServlet {
 		Message messageReceiver = new MessageService().messageReceiver(userId);
 		notReadCount = new MessageService().selectNotReadCount(userId);
 		keepCount = new MessageService().selectKeepCount(userId); 
+		adminCount = new MessageService().selectAdminCount(userId);
+		fullCount = new MessageService().selectListCount(userId);
 		
-		PageInfo pi = new PageInfo(notReadCount,keepCount);
+		PageInfo pi = new PageInfo(notReadCount,keepCount, adminCount,fullCount);
 		
 		int result = new MessageService().updateMessage(messageNo);
 		Message m = new MessageService().selectMessage(messageNo);

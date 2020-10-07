@@ -12,7 +12,8 @@ public class PageInfo {
 	
 	private int notReadCount;		// 읽지않은 메세지 갯수
 	private int keepCount;			// 보관 메세지 갯수
-
+	private int adminCount;			// 고객지원 메세지 갯수
+	private int fullCount;			// 전체 메세지 갯수
 	public PageInfo() {
 		
 	}
@@ -30,7 +31,7 @@ public class PageInfo {
 	}
 	
 	public PageInfo(int listCount, int currentPage, int pageLimit, int boardLimit, int maxPage, int startPage,
-			int endPage, int notReadCount) {
+			int endPage, int notReadCount,int adminCount, int fullCount) {
 		super();
 		this.listCount = listCount;
 		this.currentPage = currentPage;
@@ -40,33 +41,24 @@ public class PageInfo {
 		this.startPage = startPage;
 		this.endPage = endPage;
 		this.notReadCount = notReadCount;
+		this.adminCount = adminCount;
+		this.fullCount = fullCount;
 	}
 
-	public PageInfo(int listCount, int currentPage, int pageLimit, int boardLimit, int maxPage, int startPage,
-			int endPage, int notReadCount,int keepCount) {
+	public PageInfo(int keepCount, int adminCount, int fullCount) {
 		super();
-		this.listCount = listCount;
-		this.currentPage = currentPage;
-		this.pageLimit = pageLimit;
-		this.boardLimit = boardLimit;
-		this.maxPage = maxPage;
-		this.startPage = startPage;
-		this.endPage = endPage;
-		this.notReadCount = notReadCount;
 		this.keepCount = keepCount;
+		this.adminCount = adminCount;
+		this.fullCount = fullCount;
 	}
 	
-	public PageInfo(int keepCount) {
-		super();
-		this.keepCount = keepCount;
-	}
-
-	public PageInfo(int notReadCount, int keepCount) {
+	public PageInfo(int notReadCount, int keepCount, int adminCount, int fullCount) {
 		super();
 		this.notReadCount = notReadCount;
 		this.keepCount = keepCount;
+		this.adminCount = adminCount;
+		this.fullCount = fullCount;
 	}
-	
 
 	public int getListCount() {
 		return listCount;
@@ -123,12 +115,26 @@ public class PageInfo {
 	public void setKeepCount(int keepCount) {
 		this.keepCount = keepCount;
 	}
+	public int getAdminCount() {
+		return adminCount;
+	}
+
+	public void setAdminCount(int adminCount) {
+		this.adminCount = adminCount;
+	}
+	public int getFullCount() {
+		return fullCount;
+	}
+
+	public void setFullCount(int fullCount) {
+		this.fullCount = fullCount;
+	}
 
 	@Override
 	public String toString() {
 		return "PageInfo [listCount=" + listCount + ", currentPage=" + currentPage + ", pageLimit=" + pageLimit
 				+ ", boardLimit=" + boardLimit + ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage="
-				+ endPage + ", notReadCount=" + notReadCount + ", keepCount=" + keepCount + "]";
+				+ endPage + ", notReadCount=" + notReadCount + ", keepCount=" + keepCount + ", adminCount=" + adminCount + ", fullCount=" + fullCount +"]";
 	}
 	
 }

@@ -7,6 +7,8 @@
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	int NotReadCount = pi.getNotReadCount();
 	int KeepCount = pi.getKeepCount();
+	int adminCount = pi.getAdminCount();
+	int fullCount = pi.getFullCount();
 %>		
 <%-- Template HTML 1 : 일반 화면용 --%>
 <!DOCTYPE html>
@@ -30,10 +32,10 @@
         <!-- 메뉴바 -->
         <div id="con">           
             <div id="content_1">
-                <div id="naviMain"><a href="${contextPath}/list.ms?currentPage=1">전체메세지</a></div>
+                <div id="naviMain"><a href="${contextPath}/list.ms?currentPage=1">전체메세지 (<%=fullCount%>)</a></div>
                 <div id="naviNotRead"><a href="${contextPath}/notRead.ms?currentPage=1">읽지않음 (<%=NotReadCount%>)</a></div>
                 <div id="naviKeep"><a href="${contextPath}/keepList.ms?currentPage=1">보관 메세지 (<%=KeepCount%>)</a></div>
-                <div id="naviAdmin"><a href="${contextPath}/admin.ms?currentPage=1">고객 지원팀</a></div>
+                <div id="naviAdmin"><a href="${contextPath}/admin.ms?currentPage=1">고객 지원팀 (<%=adminCount%>)</a></div>
             </div>
         </div>
             

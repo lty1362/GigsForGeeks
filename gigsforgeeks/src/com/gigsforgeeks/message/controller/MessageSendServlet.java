@@ -37,6 +37,8 @@ public class MessageSendServlet extends HttpServlet {
 		
 		int notReadCount;
 		int keepCount;
+		int adminCount;
+		int fullCount;
 		
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		String userId = loginUser.getUserId();
@@ -44,7 +46,9 @@ public class MessageSendServlet extends HttpServlet {
 		Message messageReceiver = new MessageService().messageReceiver(userId);
 		notReadCount = new MessageService().selectNotReadCount(userId);
 		keepCount = new MessageService().selectKeepCount(userId);
-		PageInfo pi = new PageInfo(notReadCount,keepCount);
+		adminCount = new MessageService().selectAdminCount(userId);
+		fullCount = new MessageService().selectListCount(userId);
+		PageInfo pi = new PageInfo(notReadCount,keepCount, adminCount,fullCount);
 		
 		request.setAttribute("messageReceiver", messageReceiver);
 		request.setAttribute("pi", pi);
