@@ -150,7 +150,7 @@
 				        	<br>
 					      </div>
 					      <form action="" method="post" style="margin:10px; margin-left:120px">
-							 <button type="button" class="btn btn-outline-info" data-dismiss="modal">OK</button>
+							 <button type="button" onClick="alert('성공적으로 추가되었습니다!')" class="btn btn-outline-info" data-dismiss="modal">OK</button>
 							 <button type="button" class="btn btn-outline-info" data-dismiss="modal">Cancel</button>
 						  </form><br>
 					  </div>
@@ -170,7 +170,7 @@
 				        	<br>
 					      </div>
 					      <form action="" method="post" style="margin:10px; margin-left:120px">
-							 <button type="button" class="btn btn-outline-info" data-dismiss="modal">OK</button>
+							 <button type="button" onClick="alert('해당 프로젝트 신고가 성공적으로 접수되었습니다.')" class="btn btn-outline-info" data-dismiss="modal">OK</button>
 							 <button type="button" class="btn btn-outline-info" data-dismiss="modal">Cancel</button>
 						  </form><br>
 					  </div>

@@ -56,7 +56,7 @@
             </table>
             <br>
             <div style="float:right; width:170px;">
-            	<a href="${contextPath}/detailSelect.do?projectId=17" class="btn btn-outline-info">지금 입찰하기</a><br><br>
+            	<a href="${contextPath}/detailSelect.do?projectId=16" target="_blank" class="btn btn-outline-info">지금 입찰하기</a><br><br>
             	<button class="btn btn-outline-info" data-toggle="modal" data-target="#favorite_delete">즐겨찾기 삭제</button>
             </div>
             
@@ -73,7 +73,7 @@
 		        	<br>
 			      </div>
 			      <form action="" method="post" style="margin:10px; margin-left:120px">
-					 <button type="button" class="btn btn-outline-info" data-dismiss="modal">OK</button>
+					 <button type="button" onclick="alert('해당 프로젝트가 삭제되었습니다.')" class="btn btn-outline-info" data-dismiss="modal">OK</button>
 					 <button type="button" class="btn btn-outline-info" data-dismiss="modal">Cancel</button>
 				  </form><br>
 			  </div>
