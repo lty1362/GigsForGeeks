@@ -54,19 +54,19 @@
 		
 		<div id="introduceFirst_0">
 		    <div id="introduceFirst_1">
-		        <img alt="일자리 등록 관련 아이콘" class="NeedWorkDone-image" src="https://www.f-cdn.com/assets/img/homepage/icons/need-work-done/post-a-job-eaf3f61f.svg">
+		    	<img alt="" style="max-width: 40%; height: auto;" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/259/gear_2699.png">
 		        <br><br>
 		        <h1>작업 게시</h1>
 		        <p><b>어렵지 않습니다. 일처리가 필요한 부분에 대한 일자리를 등록하시는 것만으로, 몇 분이 지나지도 않아서 관심있는 프리랜서들이 경쟁력 높은 입찰 견적서를 보내 오기 시작합니다.</b></p>
 		    </div>
 		    <div id="introduceFirst_2">
-		        <img alt="프리랜서 선정 아이콘" class="NeedWorkDone-image" src="https://www.f-cdn.com/assets/img/homepage/icons/need-work-done/choose-freelancers-c7d9fb04.svg">
+		    	<img alt="" style="max-width: 40%; height: auto;" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/259/1st-place-medal_1f947.png">
 		        <br><br>
 		        <h1>프리랜서 선정</h1>
 		        <p><b>어떤 유형의 일거리를 갖고 계시든, 거기에 맞는 프리랜서를 찾으실 수 있습니다. 여기에는, 웹 디자인, 스마트폰 앱 개발, 가상 비서, 제품 생산, 그래픽 디자인, 그리고 그 외에도 매우 많은 예가 있습니다.</b></p>
 		    </div>
 		    <div id="introduceFirst_3">
-		    	<img alt="안전 결제 관련 아이콘" class="NeedWorkDone-image" src="https://www.f-cdn.com/assets/img/homepage/icons/need-work-done/pay-safely-8f390ac2.svg">
+		    	<img alt="" style="max-width: 40%; height: auto;" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/twitter/259/credit-card_1f4b3.png">
 		        <br><br>
 		        <h1>안전한 지불</h1>
 		        <p><b>Freelancer.com 서비스에서는 안전한 결제 시스템과 수 천 명 수준의 전문가를 준비해 두고 있어서 인터넷 상에서 가장 간편하고 안전한 방법으로 일을 처리하실 수 있습니다.</b></p>
