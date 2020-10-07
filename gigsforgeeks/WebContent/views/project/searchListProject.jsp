@@ -35,7 +35,7 @@
             <!-- 좌측 검색필터 카테고리 -->
             <div id="projectCategory">
                 <form id="feelterbar" action="" method="POST">
-                    <a href="${contextPath}/projectList.do" class="feelter_main">프로젝트</a> <br><br>
+                    <a href="${contextPath}/projectList.do?currentPage=1" class="feelter_main">프로젝트</a> <br><br>
                     <a href="${contextPath}/freelancerList.do" class="feelter_main">프리랜서</a> <br><br>
                     <a href="${contextPath}/excellent.do" class="feelter_main">우수 프리랜서</a><br>
                     <br><br>
