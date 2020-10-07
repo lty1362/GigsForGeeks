@@ -276,7 +276,7 @@
                                                 <td><a href="${contextPath}/setup.set" style="color: black;">계정설정</a></td>
                                             </tr>
                                             <tr>
-                                                <td><a href="" style="color: black;">재정설정</a></td>
+                                                <td><a href="${contextPath}/payment.me" style="color: black;">재정설정</a></td>
                                                 <td><a href="${contextPath}/logout.me" style="color: black;">로그아웃</a></td>
                                             </tr>
                                         </tbody>
