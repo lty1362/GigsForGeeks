@@ -82,7 +82,8 @@ box-sizing: border-box;
 
 /*전체메세지*/
 #keepbutton>#btn2{
-	margin-left:1250px;
+	float:right;
+	margin-right:5%;
 }
 #search_btn2{
    border:1px solid white;
