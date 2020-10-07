@@ -51,7 +51,8 @@
 
         <br>
         <form action="" method="GET">
-            <div onclick="location.href='${contextPath}/freelancerDetail.do?userId=user01';" id="freelancer">
+            <!-- <div onclick="location.href='${contextPath}/freelancerDetail.do?userId=user01';" id="freelancer"> -->
+            <div id="freelancer">
                 <span class="search">프리랜서 검색 : &nbsp;
                     <input type="text" name="freelancer">
                 </span>
